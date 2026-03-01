@@ -111,7 +111,7 @@ export function QuizScreen({
                       <div className="relative w-full aspect-[4/3]">
                         <Image
                           src={option.image}
-                          alt={`${option.label} stamped concrete pattern`}
+                          alt={`${option.label} option`}
                           fill
                           className="object-cover"
                           sizes="(max-width: 640px) 50vw, 260px"

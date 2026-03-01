@@ -1,6 +1,6 @@
-# Backyard Bobby's Website
+# Elite Finishes Website
 
-Premium contractor website built with Next.js, TypeScript, TailwindCSS, and shadcn/ui.
+Premium painting and home remodeling contractor website built with Next.js, TypeScript, TailwindCSS, and shadcn/ui.
 
 ## Tech Stack
 
@@ -123,18 +123,21 @@ The following events are tracked via PostHog:
 
 | Page | Primary CTA | Primary Keyword Theme |
 |---|---|---|
-| Home | Get a Free Estimate | outdoor construction Anne Arundel County MD |
-| Services Index | Get a Free Estimate | contractor services Maryland |
-| Accessory Dwelling Units | Get a Free ADU Estimate | ADU builder Anne Arundel County |
-| Driveway Installation | Get a Free Driveway Estimate | driveway installation Maryland |
-| Decks | Get a Free Deck Estimate | deck builder Anne Arundel County |
-| Excavation & Demolition | Get a Free Estimate | excavation contractor Maryland |
-| Fencing | Get a Free Fence Estimate | fence installation Anne Arundel County |
-| Gravel Pads & Concrete Foundations | Get a Free Estimate | gravel pad shed base Maryland |
-| Hardscaping | Get a Free Hardscaping Estimate | hardscaping patio contractor MD |
-| Roofing | Get a Free Roofing Estimate | roofing contractor Anne Arundel County |
-| Stamped Concrete | Get a Free Estimate | stamped concrete patio Maryland |
-| Gallery | Get Your Free Estimate | contractor portfolio Anne Arundel County |
-| About | Get Your Free Estimate | local contractor Anne Arundel County |
-| Blog | Get Your Free Estimate | outdoor construction tips Maryland |
-| Contact | Submit Lead Form | free estimate Anne Arundel County contractor |
+| Home | Get a Free Estimate | painting contractor Baltimore MD |
+| Services Index | Get a Free Estimate | painting and remodeling services Baltimore |
+| Interior Painting | Get a Free Estimate | interior painting Baltimore MD |
+| Exterior Painting | Get a Free Estimate | exterior painting Baltimore MD |
+| Kitchen Remodeling | Get a Free Estimate | kitchen remodeling Baltimore MD |
+| Bathroom Remodeling | Get a Free Estimate | bathroom remodeling Baltimore MD |
+| Home Remodeling | Get a Free Estimate | home remodeling Baltimore County |
+| Basement Remodeling | Get a Free Estimate | basement finishing Baltimore MD |
+| Flooring | Get a Free Estimate | flooring installation Baltimore MD |
+| Decks | Get a Free Estimate | deck building Baltimore MD |
+| Siding | Get a Free Estimate | siding contractor Baltimore MD |
+| Roofing | Get a Free Estimate | roofing contractor Baltimore MD |
+| Concrete & Masonry | Get a Free Estimate | concrete contractor Baltimore MD |
+| Commercial Services | Get a Free Estimate | commercial painting Baltimore MD |
+| Gallery | Get Your Free Estimate | contractor portfolio Baltimore MD |
+| About | Get Your Free Estimate | local painting contractor Baltimore |
+| Blog | Get Your Free Estimate | painting and remodeling tips Baltimore |
+| Contact | Submit Lead Form | free estimate painting Baltimore MD |
