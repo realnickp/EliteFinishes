@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useForm } from "react-hook-form";
 import { usePathname, useSearchParams } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -44,7 +44,15 @@ interface LeadFormProps {
   preferredStyle?: string;
 }
 
-export function LeadForm({ preselectedService, compact, preferredStyle }: LeadFormProps) {
+export function LeadForm(props: LeadFormProps) {
+  return (
+    <Suspense fallback={<div className="animate-pulse space-y-3">{[...Array(4)].map((_, i) => <div key={i} className="h-10 bg-muted rounded-md" />)}</div>}>
+      <LeadFormInner {...props} />
+    </Suspense>
+  );
+}
+
+function LeadFormInner({ preselectedService, compact, preferredStyle }: LeadFormProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [submitted, setSubmitted] = useState(false);

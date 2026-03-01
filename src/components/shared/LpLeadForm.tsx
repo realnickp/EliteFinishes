@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,7 +13,15 @@ interface LpLeadFormProps {
   service: string;
 }
 
-export function LpLeadForm({ service }: LpLeadFormProps) {
+export function LpLeadForm(props: LpLeadFormProps) {
+  return (
+    <Suspense fallback={<div className="animate-pulse space-y-3">{[...Array(3)].map((_, i) => <div key={i} className="h-10 bg-muted rounded-md" />)}</div>}>
+      <LpLeadFormInner {...props} />
+    </Suspense>
+  );
+}
+
+function LpLeadFormInner({ service }: LpLeadFormProps) {
   const searchParams = useSearchParams();
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
