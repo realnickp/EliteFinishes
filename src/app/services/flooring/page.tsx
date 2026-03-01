@@ -7,18 +7,12 @@ export const metadata: Metadata = {
   description:
     "Hardwood, LVP, tile, and carpet flooring installation in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Flooring Installation in Baltimore, MD | ${SITE.name}`,
     description:
       "Hardwood, LVP, tile, and carpet flooring installation in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/flooring`,
-    images: [
-      {
-        url: `/api/og?title=Flooring+Installation&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
-        width: 1200,
-        height: 630,
-        alt: "Flooring Installation in Baltimore, MD | Elite Finishes",
-      },
-    ],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/flooring` },
 };

@@ -7,18 +7,12 @@ export const metadata: Metadata = {
   description:
     "Full kitchen remodeling in Baltimore and surrounding Maryland counties. Cabinets, countertops, tile, and painting all handled by one licensed contractor. Free estimates.",
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Kitchen Remodeling in Baltimore, MD | ${SITE.name}`,
     description:
       "Full kitchen remodeling in Baltimore and surrounding Maryland counties. Cabinets, countertops, tile, and painting all handled by one licensed contractor. Free estimates.",
     url: `${SITE.url}/services/kitchen-remodeling`,
-    images: [
-      {
-        url: `/api/og?title=Kitchen+Remodeling&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
-        width: 1200,
-        height: 630,
-        alt: "Kitchen Remodeling in Baltimore, MD | Elite Finishes",
-      },
-    ],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/kitchen-remodeling` },
 };

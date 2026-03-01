@@ -21,13 +21,10 @@ export const metadata: Metadata = {
   title: `Financing for Painting and Remodeling Projects | ${SITE.name}`,
   description: `Finance your painting or remodeling project in Baltimore with flexible payment plans through Wisetack. Prequalify in minutes with no impact to your credit score. Licensed contractor ${SITE.license}.`,
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Financing for Painting and Remodeling | ${SITE.name}`,
     description: `Flexible financing for Baltimore painting and remodeling. Prequalify in minutes through Wisetack — no hard credit pull. Licensed ${SITE.license}.`,
-    images: [{
-      url: `/api/og?title=Financing+Options&subtitle=Flexible+Payment+Plans+for+Your+Project`,
-      width: 1200, height: 630,
-      alt: "Elite Finishes Financing Options",
-    }],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/financing` },
 };

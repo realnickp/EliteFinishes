@@ -43,17 +43,11 @@ export async function generateMetadata({
     title,
     description,
     openGraph: {
+      siteName: "Elite Finishes",
       title,
       description,
       url: `${SITE.url}/areas/${city.slug}`,
-      images: [
-        {
-          url: `/api/og?title=${encodeURIComponent(`Painting & Remodeling in ${city.name}, MD`)}&subtitle=${encodeURIComponent(city.county)}`,
-          width: 1200,
-          height: 630,
-          alt: `Painting and Remodeling in ${city.name}, MD | Elite Finishes`,
-        },
-      ],
+      images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
     },
     alternates: { canonical: `${SITE.url}/areas/${city.slug}` },
   };

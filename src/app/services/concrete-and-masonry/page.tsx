@@ -7,18 +7,12 @@ export const metadata: Metadata = {
   description:
     "Concrete slabs, steps, patios, and masonry repair in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Concrete and Masonry in Baltimore, MD | ${SITE.name}`,
     description:
       "Concrete slabs, steps, patios, and masonry repair in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/concrete-and-masonry`,
-    images: [
-      {
-        url: `/api/og?title=Concrete+and+Masonry&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
-        width: 1200,
-        height: 630,
-        alt: "Concrete and Masonry in Baltimore, MD | Elite Finishes",
-      },
-    ],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/concrete-and-masonry` },
 };

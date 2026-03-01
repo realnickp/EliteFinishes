@@ -7,18 +7,12 @@ export const metadata: Metadata = {
   description:
     "Full bathroom remodeling in Baltimore and surrounding Maryland counties. Tile, vanities, fixtures, and painting all by one licensed contractor. Free estimates.",
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Bathroom Remodeling in Baltimore, MD | ${SITE.name}`,
     description:
       "Full bathroom remodeling in Baltimore and surrounding Maryland counties. Tile, vanities, fixtures, and painting all by one licensed contractor. Free estimates.",
     url: `${SITE.url}/services/bathroom-remodeling`,
-    images: [
-      {
-        url: `/api/og?title=Bathroom+Remodeling&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
-        width: 1200,
-        height: 630,
-        alt: "Bathroom Remodeling in Baltimore, MD | Elite Finishes",
-      },
-    ],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/bathroom-remodeling` },
 };

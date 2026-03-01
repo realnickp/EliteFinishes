@@ -10,13 +10,10 @@ export const metadata: Metadata = {
   description: `Read real customer reviews for ${SITE.name} painting and home remodeling in Baltimore, MD. 5-star rated. Licensed ${SITE.license}. Free estimates — call ${SITE.phone}.`,
   alternates: { canonical: `${SITE.url}/testimonials` },
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Customer Reviews | ${SITE.name}`,
     description: "Real reviews from homeowners across the Baltimore metro area, Maryland.",
-    images: [{
-      url: `/api/og?title=Customer+Reviews&subtitle=5-Star+Rated+Baltimore+Contractor`,
-      width: 1200, height: 630,
-      alt: "Elite Finishes Customer Reviews and Testimonials",
-    }],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
 };
 

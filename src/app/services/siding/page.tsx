@@ -7,18 +7,12 @@ export const metadata: Metadata = {
   description:
     "Vinyl, fiber cement, and composite siding installation in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Siding Installation in Baltimore, MD | ${SITE.name}`,
     description:
       "Vinyl, fiber cement, and composite siding installation in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/siding`,
-    images: [
-      {
-        url: `/api/og?title=Siding+Installation&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
-        width: 1200,
-        height: 630,
-        alt: "Siding Installation in Baltimore, MD | Elite Finishes",
-      },
-    ],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/siding` },
 };

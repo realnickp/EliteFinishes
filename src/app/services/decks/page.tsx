@@ -7,18 +7,12 @@ export const metadata: Metadata = {
   description:
     "Custom composite and wood deck building in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates. Expand your outdoor living space today.",
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Deck Building in Baltimore, MD | ${SITE.name}`,
     description:
       "Custom composite and wood deck building in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates. Expand your outdoor living space today.",
     url: `${SITE.url}/services/decks`,
-    images: [
-      {
-        url: `/api/og?title=Deck+Building&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
-        width: 1200,
-        height: 630,
-        alt: "Deck Building in Baltimore, MD | Elite Finishes",
-      },
-    ],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/decks` },
 };

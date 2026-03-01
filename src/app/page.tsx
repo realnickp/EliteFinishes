@@ -19,14 +19,11 @@ export const metadata: Metadata = {
   title: `${SITE.name} | Painting and Remodeling Contractor in Baltimore, MD`,
   description: `${SITE.name} is a licensed Baltimore painting and home remodeling contractor serving 28 communities across Baltimore City, Baltimore County, Anne Arundel County, and Howard County. Interior and exterior painting, kitchen and bathroom remodeling, flooring, siding, decks, roofing, and more. ${SITE.license}. Free estimates — call ${SITE.phone}.`,
   openGraph: {
+    siteName: "Elite Finishes",
     title: `${SITE.name} | Painting and Remodeling Contractor in Baltimore, MD`,
     description: `Licensed Baltimore painting and home remodeling contractor. Interior and exterior painting, kitchens, bathrooms, flooring, siding, decks, roofing. ${SITE.license}. Free estimates.`,
     url: SITE.url,
-    images: [{
-      url: `/api/og?title=Elite+Finishes&subtitle=Painting+%26+Remodeling+in+Baltimore%2C+MD`,
-      width: 1200, height: 630,
-      alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD",
-    }],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: SITE.url },
 };

@@ -7,18 +7,12 @@ export const metadata: Metadata = {
   description:
     "Professional interior painting in Baltimore and surrounding Maryland counties. Meticulous prep, premium paints, clean results that last. Licensed contractor with free estimates.",
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Interior Painting in Baltimore, MD | ${SITE.name}`,
     description:
       "Professional interior painting in Baltimore and surrounding Maryland counties. Meticulous prep, premium paints, clean results that last. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/interior-painting`,
-    images: [
-      {
-        url: `/api/og?title=Interior+Painting&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
-        width: 1200,
-        height: 630,
-        alt: "Interior Painting in Baltimore, MD | Elite Finishes",
-      },
-    ],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/interior-painting` },
 };

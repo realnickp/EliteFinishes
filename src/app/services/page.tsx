@@ -11,14 +11,11 @@ export const metadata: Metadata = {
   title: `Our Services | Painting and Home Remodeling`,
   description: `${SITE.name} offers premium painting and home remodeling services in Baltimore, MD: interior painting, exterior painting, kitchen remodeling, bathroom remodeling, basement finishing, flooring, siding, roofing, decks, concrete, and commercial services. Get a free estimate.`,
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Our Services | Painting and Home Remodeling`,
     description: `${SITE.name} offers premium painting and home remodeling services in Baltimore, MD: interior painting, exterior painting, kitchen remodeling, bathroom remodeling, basement finishing, flooring, siding, roofing, decks, concrete, and commercial services. Get a free estimate.`,
     url: `${SITE.url}/services`,
-    images: [{
-      url: `/api/og?title=Our+Services&subtitle=Painting+%26+Home+Remodeling+in+Baltimore`,
-      width: 1200, height: 630,
-      alt: "Elite Finishes Services — Painting and Remodeling in Baltimore, MD",
-    }],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services` },
 };

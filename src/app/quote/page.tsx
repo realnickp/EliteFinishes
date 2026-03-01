@@ -8,13 +8,10 @@ export const metadata: Metadata = {
   description: `Request a free painting or remodeling estimate in Baltimore, MD. No commitment. ${SITE.name} responds within one business day. Call ${SITE.phone}.`,
   alternates: { canonical: `${SITE.url}/quote` },
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Get a Free Estimate | ${SITE.name}`,
     description: `Free, no-pressure estimates for painting and remodeling in Maryland. Licensed ${SITE.license}.`,
-    images: [{
-      url: `/api/og?title=Get+a+Free+Estimate&subtitle=No+Obligation+%E2%80%93+Baltimore%2C+MD`,
-      width: 1200, height: 630,
-      alt: "Get a Free Estimate from Elite Finishes",
-    }],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
 };
 

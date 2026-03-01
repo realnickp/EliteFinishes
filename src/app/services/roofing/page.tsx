@@ -7,18 +7,12 @@ export const metadata: Metadata = {
   description:
     "Expert roof repairs and replacements for Baltimore area homeowners. Licensed Maryland roofing contractor with warranty-backed installations. Free estimates.",
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Roofing Services in Baltimore, MD | ${SITE.name}`,
     description:
       "Expert roof repairs and replacements for Baltimore area homeowners. Licensed Maryland roofing contractor with warranty-backed installations. Free estimates.",
     url: `${SITE.url}/services/roofing`,
-    images: [
-      {
-        url: `/api/og?title=Roofing+Services&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
-        width: 1200,
-        height: 630,
-        alt: "Roofing Services in Baltimore, MD | Elite Finishes",
-      },
-    ],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/roofing` },
 };

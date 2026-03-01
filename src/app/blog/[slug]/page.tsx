@@ -27,19 +27,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.description,
     alternates: { canonical: `${SITE.url}/blog/${slug}` },
     openGraph: {
+      siteName: "Elite Finishes",
       title: post.title,
       description: post.description,
       type: "article",
       publishedTime: post.date,
       url: `${SITE.url}/blog/${slug}`,
-      images: [
-        {
-          url: `/api/og?title=${encodeURIComponent(post.title)}&subtitle=Elite+Finishes+Blog&badge=${encodeURIComponent(post.category)}`,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
+      images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
     },
   };
 }

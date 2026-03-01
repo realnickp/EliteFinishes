@@ -7,18 +7,12 @@ export const metadata: Metadata = {
   description:
     "Expert exterior painting for Baltimore area homes. Power washing, caulking, priming, and premium coatings that stand up to Maryland weather. Licensed contractor with free estimates.",
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Exterior Painting in Baltimore, MD | ${SITE.name}`,
     description:
       "Expert exterior painting for Baltimore area homes. Power washing, caulking, priming, and premium coatings that stand up to Maryland weather. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/exterior-painting`,
-    images: [
-      {
-        url: `/api/og?title=Exterior+Painting&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
-        width: 1200,
-        height: 630,
-        alt: "Exterior Painting in Baltimore, MD | Elite Finishes",
-      },
-    ],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/exterior-painting` },
 };

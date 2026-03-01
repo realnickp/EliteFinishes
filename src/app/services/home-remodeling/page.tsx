@@ -7,18 +7,12 @@ export const metadata: Metadata = {
   description:
     "Whole-home and multi-room remodeling in Baltimore and surrounding Maryland counties. One licensed contractor for every phase. Free estimates.",
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Home Remodeling in Baltimore, MD | ${SITE.name}`,
     description:
       "Whole-home and multi-room remodeling in Baltimore and surrounding Maryland counties. One licensed contractor for every phase. Free estimates.",
     url: `${SITE.url}/services/home-remodeling`,
-    images: [
-      {
-        url: `/api/og?title=Home+Remodeling&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
-        width: 1200,
-        height: 630,
-        alt: "Home Remodeling in Baltimore, MD | Elite Finishes",
-      },
-    ],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/home-remodeling` },
 };

@@ -12,14 +12,11 @@ export const metadata: Metadata = {
   title: "Contact Us | Get a Free Estimate",
   description: `Contact ${SITE.name} for a free estimate on interior painting, exterior painting, kitchen and bathroom remodeling, flooring, siding, roofing, and more in Baltimore, MD. Call ${SITE.phone} or fill out our quick form.`,
   openGraph: {
+    siteName: "Elite Finishes",
     title: "Contact Us | Get a Free Estimate",
     description: `Contact ${SITE.name} for a free estimate on interior painting, exterior painting, kitchen and bathroom remodeling, flooring, siding, roofing, and more in Baltimore, MD. Call ${SITE.phone} or fill out our quick form.`,
     url: `${SITE.url}/contact`,
-    images: [{
-      url: `/api/og?title=Contact+Us&subtitle=Get+a+Free+Estimate+in+Baltimore%2C+MD`,
-      width: 1200, height: 630,
-      alt: "Contact Elite Finishes for a Free Estimate",
-    }],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/contact` },
 };

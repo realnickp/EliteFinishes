@@ -11,13 +11,10 @@ export const metadata: Metadata = {
   description: `${SITE.name} serves Baltimore City neighborhoods and communities across Baltimore County, Anne Arundel County, and Howard County. Licensed painting and remodeling contractor ${SITE.license}. Free estimates. Call ${SITE.phone}.`,
   alternates: { canonical: `${SITE.url}/areas` },
   openGraph: {
+    siteName: "Elite Finishes",
     title: `Service Areas | ${SITE.name}`,
     description: `Professional painting and remodeling in Baltimore City neighborhoods and Baltimore area communities. Free estimates. Call ${SITE.phone}.`,
-    images: [{
-      url: `/api/og?title=Service+Areas&subtitle=28+Communities+Across+the+Baltimore+Area`,
-      width: 1200, height: 630,
-      alt: "Elite Finishes Service Areas — Baltimore Metro Area",
-    }],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
 };
 

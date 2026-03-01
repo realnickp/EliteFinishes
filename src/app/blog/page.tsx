@@ -11,14 +11,11 @@ export const metadata: Metadata = {
   title: "Blog | Tips, Guides & Outdoor Living Ideas",
   description: `Expert advice on interior painting, exterior painting, kitchen remodeling, flooring, and more from ${SITE.name}. Practical guides for homeowners in Baltimore, Maryland.`,
   openGraph: {
+    siteName: "Elite Finishes",
     title: "Blog | Tips, Guides & Outdoor Living Ideas",
     description: `Expert advice on interior painting, exterior painting, kitchen remodeling, flooring, and more from ${SITE.name}. Practical guides for homeowners in Baltimore, Maryland.`,
     url: `${SITE.url}/blog`,
-    images: [{
-      url: `/api/og?title=Blog&subtitle=Tips%2C+Guides+%26+Ideas+for+Baltimore+Homeowners`,
-      width: 1200, height: 630,
-      alt: "Elite Finishes Blog — Tips and Guides for Baltimore Homeowners",
-    }],
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/blog` },
 };
