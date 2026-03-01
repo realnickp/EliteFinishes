@@ -63,10 +63,10 @@ export default function HomePage() {
         {/* Mobile: image background visible */}
         <div className="absolute inset-0 lg:hidden">
           <Image
-            src="/images/pexels-artbovich-7031616.jpg"
-            alt="Elite Finishes painting and remodeling in a Baltimore home"
+            src="/images/pexels-binyaminmellish-106399.jpg"
+            alt="Beautiful home exterior remodeled by Elite Finishes in Baltimore"
             fill
-            className="object-cover"
+            className="object-cover object-[center_60%]"
             priority
             sizes="100vw"
           />
