@@ -22,8 +22,14 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
+const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : SITE.url;
+
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
+  metadataBase: new URL(baseUrl),
   title: {
     default: `${SITE.name} | Painting and Remodeling in Baltimore, MD`,
     template: `%s | ${SITE.name}`,
