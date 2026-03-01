@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: `Service Areas | ${SITE.name}`,
     description: `Professional painting and remodeling in Baltimore City neighborhoods and Baltimore area communities. Free estimates. Call ${SITE.phone}.`,
     images: [{
-      url: `${SITE.url}/api/og?title=Service+Areas&subtitle=28+Communities+Across+the+Baltimore+Area`,
+      url: `/api/og?title=Service+Areas&subtitle=28+Communities+Across+the+Baltimore+Area`,
       width: 1200, height: 630,
       alt: "Elite Finishes Service Areas — Baltimore Metro Area",
     }],

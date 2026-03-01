@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: `Expert advice on interior painting, exterior painting, kitchen remodeling, flooring, and more from ${SITE.name}. Practical guides for homeowners in Baltimore, Maryland.`,
     url: `${SITE.url}/blog`,
     images: [{
-      url: `${SITE.url}/api/og?title=Blog&subtitle=Tips%2C+Guides+%26+Ideas+for+Baltimore+Homeowners`,
+      url: `/api/og?title=Blog&subtitle=Tips%2C+Guides+%26+Ideas+for+Baltimore+Homeowners`,
       width: 1200, height: 630,
       alt: "Elite Finishes Blog — Tips and Guides for Baltimore Homeowners",
     }],

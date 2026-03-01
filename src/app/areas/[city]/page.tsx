@@ -48,7 +48,7 @@ export async function generateMetadata({
       url: `${SITE.url}/areas/${city.slug}`,
       images: [
         {
-          url: `${SITE.url}/api/og?title=${encodeURIComponent(`Painting & Remodeling in ${city.name}, MD`)}&subtitle=${encodeURIComponent(city.county)}`,
+          url: `/api/og?title=${encodeURIComponent(`Painting & Remodeling in ${city.name}, MD`)}&subtitle=${encodeURIComponent(city.county)}`,
           width: 1200,
           height: 630,
           alt: `Painting and Remodeling in ${city.name}, MD | Elite Finishes`,

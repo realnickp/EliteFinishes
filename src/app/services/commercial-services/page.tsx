@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/commercial-services`,
     images: [
       {
-        url: `${SITE.url}/api/og?title=Commercial+Painting&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
+        url: `/api/og?title=Commercial+Painting&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
         width: 1200,
         height: 630,
         alt: "Commercial Painting in Baltimore, MD | Elite Finishes",

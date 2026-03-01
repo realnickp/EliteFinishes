@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description: `Contact ${SITE.name} for a free estimate on interior painting, exterior painting, kitchen and bathroom remodeling, flooring, siding, roofing, and more in Baltimore, MD. Call ${SITE.phone} or fill out our quick form.`,
     url: `${SITE.url}/contact`,
     images: [{
-      url: `${SITE.url}/api/og?title=Contact+Us&subtitle=Get+a+Free+Estimate+in+Baltimore%2C+MD`,
+      url: `/api/og?title=Contact+Us&subtitle=Get+a+Free+Estimate+in+Baltimore%2C+MD`,
       width: 1200, height: 630,
       alt: "Contact Elite Finishes for a Free Estimate",
     }],

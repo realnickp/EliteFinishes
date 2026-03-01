@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: `Browse completed projects by ${SITE.name}: interior and exterior painting, kitchen and bathroom remodeling, flooring, decks, and more across ${SITE.address.region}, MD. See the quality before you hire.`,
     url: `${SITE.url}/gallery`,
     images: [{
-      url: `${SITE.url}/api/og?title=Project+Gallery&subtitle=See+Our+Work+in+Baltimore%2C+MD`,
+      url: `/api/og?title=Project+Gallery&subtitle=See+Our+Work+in+Baltimore%2C+MD`,
       width: 1200, height: 630,
       alt: "Elite Finishes Project Gallery — Baltimore, MD",
     }],

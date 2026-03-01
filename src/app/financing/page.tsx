@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: `Financing for Painting and Remodeling | ${SITE.name}`,
     description: `Flexible financing for Baltimore painting and remodeling. Prequalify in minutes through Wisetack — no hard credit pull. Licensed ${SITE.license}.`,
     images: [{
-      url: `${SITE.url}/api/og?title=Financing+Options&subtitle=Flexible+Payment+Plans+for+Your+Project`,
+      url: `/api/og?title=Financing+Options&subtitle=Flexible+Payment+Plans+for+Your+Project`,
       width: 1200, height: 630,
       alt: "Elite Finishes Financing Options",
     }],

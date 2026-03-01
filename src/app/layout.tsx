@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     url: SITE.url,
     images: [
       {
-        url: `${SITE.url}/api/og?title=Elite+Finishes&subtitle=Painting+%26+Remodeling+in+Baltimore%2C+MD`,
+        url: `/api/og?title=Elite+Finishes&subtitle=Painting+%26+Remodeling+in+Baltimore%2C+MD`,
         width: 1200,
         height: 630,
         alt: `${SITE.name} — Painting and Remodeling in Baltimore, MD`,
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     description: `Licensed Baltimore painting and home remodeling contractor. Free estimates — call ${SITE.phone}.`,
     images: [
       {
-        url: `${SITE.url}/api/og?title=Elite+Finishes&subtitle=Painting+%26+Remodeling+in+Baltimore%2C+MD`,
+        url: `/api/og?title=Elite+Finishes&subtitle=Painting+%26+Remodeling+in+Baltimore%2C+MD`,
         width: 1200,
         height: 630,
         alt: `${SITE.name} — Painting and Remodeling in Baltimore, MD`,

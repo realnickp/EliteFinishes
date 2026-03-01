@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: `${SITE.name} is a family-owned, licensed painting and home remodeling contractor serving Baltimore and surrounding Maryland counties. Learn about our story, values, and commitment to quality.`,
     url: `${SITE.url}/about`,
     images: [{
-      url: `${SITE.url}/api/og?title=About+Elite+Finishes&subtitle=Baltimore%27s+Premier+Painting+Contractor`,
+      url: `/api/og?title=About+Elite+Finishes&subtitle=Baltimore%27s+Premier+Painting+Contractor`,
       width: 1200, height: 630,
       alt: "About Elite Finishes — Baltimore Painting and Remodeling Contractor",
     }],

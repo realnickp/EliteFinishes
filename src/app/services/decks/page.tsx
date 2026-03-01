@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/decks`,
     images: [
       {
-        url: `${SITE.url}/api/og?title=Deck+Building&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
+        url: `/api/og?title=Deck+Building&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
         width: 1200,
         height: 630,
         alt: "Deck Building in Baltimore, MD | Elite Finishes",

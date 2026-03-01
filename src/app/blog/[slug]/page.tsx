@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${SITE.url}/blog/${slug}`,
       images: [
         {
-          url: `${SITE.url}/api/og?title=${encodeURIComponent(post.title)}&subtitle=Elite+Finishes+Blog&badge=${encodeURIComponent(post.category)}`,
+          url: `/api/og?title=${encodeURIComponent(post.title)}&subtitle=Elite+Finishes+Blog&badge=${encodeURIComponent(post.category)}`,
           width: 1200,
           height: 630,
           alt: post.title,

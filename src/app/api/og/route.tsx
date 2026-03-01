@@ -6,8 +6,10 @@ export const runtime = "edge";
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
   const title = searchParams.get("title") || "Elite Finishes";
-  const subtitle = searchParams.get("subtitle") || "Painting & Remodeling in Baltimore, MD";
-  const badge = searchParams.get("badge") || "";
+  const subtitle =
+    searchParams.get("subtitle") || "Painting & Remodeling in Baltimore, MD";
+
+  const fontSize = title.length > 40 ? 40 : 52;
 
   return new ImageResponse(
     (
@@ -20,11 +22,10 @@ export async function GET(request: NextRequest) {
           justifyContent: "center",
           alignItems: "center",
           background: "linear-gradient(135deg, #0c1220 0%, #1a2332 50%, #0c1220 100%)",
-          fontFamily: "system-ui, sans-serif",
+          fontFamily: "sans-serif",
           position: "relative",
         }}
       >
-        {/* Italian flag accent bar */}
         <div
           style={{
             position: "absolute",
@@ -33,11 +34,12 @@ export async function GET(request: NextRequest) {
             right: 0,
             height: 6,
             display: "flex",
+            flexDirection: "row",
           }}
         >
-          <div style={{ flex: 1, background: "#009246" }} />
-          <div style={{ flex: 1, background: "#ffffff" }} />
-          <div style={{ flex: 1, background: "#c8102e" }} />
+          <div style={{ flex: 1, backgroundColor: "#009246" }} />
+          <div style={{ flex: 1, backgroundColor: "#ffffff" }} />
+          <div style={{ flex: 1, backgroundColor: "#c8102e" }} />
         </div>
 
         <div
@@ -45,46 +47,32 @@ export async function GET(request: NextRequest) {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            padding: "0 80px",
-            textAlign: "center",
+            paddingLeft: 80,
+            paddingRight: 80,
           }}
         >
-          {badge && (
-            <div
-              style={{
-                fontSize: 16,
-                color: "#009246",
-                fontWeight: 700,
-                marginBottom: 20,
-                letterSpacing: 3,
-                textTransform: "uppercase",
-              }}
-            >
-              {badge}
-            </div>
-          )}
-          {!badge && (
-            <div
-              style={{
-                fontSize: 24,
-                color: "rgba(255,255,255,0.5)",
-                fontWeight: 600,
-                marginBottom: 12,
-                letterSpacing: 2,
-                textTransform: "uppercase",
-              }}
-            >
-              Elite Finishes
-            </div>
-          )}
           <div
             style={{
-              fontSize: title.length > 40 ? 40 : 52,
+              fontSize: 22,
+              color: "rgba(255,255,255,0.5)",
+              fontWeight: 600,
+              marginBottom: 12,
+              letterSpacing: 2,
+              textTransform: "uppercase" as const,
+            }}
+          >
+            ELITE FINISHES
+          </div>
+          <div
+            style={{
+              fontSize,
               fontWeight: 800,
               color: "#ffffff",
               lineHeight: 1.2,
               marginBottom: 16,
               maxWidth: 900,
+              display: "flex",
+              justifyContent: "center",
             }}
           >
             {title}
@@ -101,12 +89,14 @@ export async function GET(request: NextRequest) {
           </div>
           <div
             style={{
-              fontSize: 20,
-              color: "rgba(255,255,255,0.5)",
-              lineHeight: 1.5,
+              fontSize: 18,
+              color: "rgba(255,255,255,0.45)",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
             }}
           >
-            Licensed Contractor • MHIC 153498 • Free Estimates
+            Licensed Contractor · MHIC 153498 · Free Estimates
           </div>
         </div>
 
@@ -115,14 +105,14 @@ export async function GET(request: NextRequest) {
             position: "absolute",
             bottom: 32,
             display: "flex",
+            flexDirection: "row",
             alignItems: "center",
-            gap: 24,
-            color: "rgba(255,255,255,0.4)",
+            color: "rgba(255,255,255,0.35)",
             fontSize: 16,
           }}
         >
-          <span>443-825-0206</span>
-          <span>•</span>
+          <span style={{ marginRight: 16 }}>443-825-0206</span>
+          <span style={{ marginRight: 16 }}>·</span>
           <span>elitefinishespainting.com</span>
         </div>
       </div>

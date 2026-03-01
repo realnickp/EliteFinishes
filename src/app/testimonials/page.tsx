@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: `Customer Reviews | ${SITE.name}`,
     description: "Real reviews from homeowners across the Baltimore metro area, Maryland.",
     images: [{
-      url: `${SITE.url}/api/og?title=Customer+Reviews&subtitle=5-Star+Rated+Baltimore+Contractor`,
+      url: `/api/og?title=Customer+Reviews&subtitle=5-Star+Rated+Baltimore+Contractor`,
       width: 1200, height: 630,
       alt: "Elite Finishes Customer Reviews and Testimonials",
     }],

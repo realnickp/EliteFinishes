@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/concrete-and-masonry`,
     images: [
       {
-        url: `${SITE.url}/api/og?title=Concrete+and+Masonry&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
+        url: `/api/og?title=Concrete+and+Masonry&subtitle=Baltimore%2C+MD+%26+Surrounding+Counties`,
         width: 1200,
         height: 630,
         alt: "Concrete and Masonry in Baltimore, MD | Elite Finishes",
