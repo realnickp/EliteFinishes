@@ -1,5 +1,5 @@
 // ============================================================
-// DASHBOARD TYPES — Backyard Bobby's Lead Management System
+// DASHBOARD TYPES — Elite Finishes Lead Management System
 // ============================================================
 
 export type LeadStatus =

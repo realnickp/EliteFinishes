@@ -11,7 +11,6 @@ import { GalleryGrid } from "./GalleryGrid";
 import { LeadForm } from "./LeadForm";
 import { ServiceSchema, HowToSchema, FAQPageSchema } from "./SchemaOrg";
 import { Breadcrumbs } from "./Breadcrumbs";
-import { FinancingCallout } from "./FinancingCallout";
 import { ScrollReveal, StaggerChildren, StaggerItem, StickyStack, StackOver, ParallaxImage } from "./animations";
 import { SITE, GALLERY_ITEMS, TESTIMONIALS } from "@/lib/constants";
 
@@ -142,9 +141,11 @@ export function ServicePageTemplate({
               </p>
             ))}
             {factNugget && (
-              <p className="text-sm text-muted-foreground/80 leading-relaxed">
-                {factNugget}
-              </p>
+              <aside className="bg-brand-green/5 border-l-4 border-brand-green rounded-r-lg p-4 mt-2">
+                <p className="text-sm text-foreground/80 leading-relaxed font-medium">
+                  {factNugget}
+                </p>
+              </aside>
             )}
           </ScrollReveal>
           <ScrollReveal direction="right" delay={0.2} className="lg:col-span-2">
@@ -155,11 +156,6 @@ export function ServicePageTemplate({
           </ScrollReveal>
         </div>
 
-        <ScrollReveal delay={0.1}>
-        <div className="mt-8">
-          <FinancingCallout />
-        </div>
-        </ScrollReveal>
       </Section>
 
       {/* ===== Full-Bleed Image Break ===== */}
@@ -306,10 +302,8 @@ export function ServicePageTemplate({
               Call {SITE.phone}
             </CTAButton>
           </div>
-          <p className="mt-5">
-            <a href="/financing" className="text-sm text-white/50 hover:text-brand transition-colors underline underline-offset-2">
-              Financing available — rates as low as 0% APR
-            </a>
+          <p className="mt-5 text-sm text-white/50">
+            Estimates are always free.
           </p>
           </ScrollReveal>
         </div>

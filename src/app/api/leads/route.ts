@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSupabase } from "@/lib/supabase";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { calculateLeadScore } from "@/lib/lead-scoring";
 import { sendSMS, sendEmail, SMS_TEMPLATES, EMAIL_TEMPLATES } from "@/lib/automations";
 import { requireAuth } from "@/lib/auth";
+import { env, hasRecaptcha } from "@/lib/env";
 
 // ── GET /api/leads — list with filters (dashboard only) ───
 
@@ -37,11 +37,26 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const { data, error, count } = await query;
-
+    let result = await query;
+    // If extended schema (lead_notes/lead_communications) missing, fall back to leads only
+    if (result.error && (result.error.message?.includes("lead_notes") || result.error.message?.includes("lead_communications"))) {
+      let fallbackQuery = supabase
+        .from("leads")
+        .select("*", { count: "exact" })
+        .order(sortBy, { ascending: sortDir === "asc" })
+        .range(offset, offset + limit - 1);
+      if (status) fallbackQuery = fallbackQuery.eq("status", status);
+      if (search) {
+        fallbackQuery = fallbackQuery.or(
+          `name.ilike.%${search}%,email.ilike.%${search}%,phone.ilike.%${search}%,service.ilike.%${search}%`
+        );
+      }
+      result = await fallbackQuery;
+    }
+    const { data, error, count } = result;
     if (error) throw error;
 
-    return NextResponse.json({ leads: data, total: count });
+    return NextResponse.json({ leads: data || [], total: count ?? (data?.length ?? 0) });
   } catch (err) {
     console.error("GET /api/leads error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
@@ -127,9 +142,34 @@ function truncate(value: unknown, max: number): string {
   return value.slice(0, max);
 }
 
+async function verifyRecaptcha(token: string): Promise<boolean> {
+  const secret = env.recaptchaSecretKey;
+  if (!secret) return true;
+  try {
+    const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ secret, response: token }).toString(),
+    });
+    const data = await res.json();
+    return Boolean(data?.success);
+  } catch {
+    return false;
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+
+    // Optional reCAPTCHA: when RECAPTCHA_SECRET_KEY is set and token is sent, verify it
+    const recaptchaToken = typeof body.recaptchaToken === "string" ? body.recaptchaToken.trim() : null;
+    if (hasRecaptcha() && recaptchaToken) {
+      const valid = await verifyRecaptcha(recaptchaToken);
+      if (!valid) {
+        return NextResponse.json({ error: "reCAPTCHA verification failed" }, { status: 400 });
+      }
+    }
 
     // Sanitize and limit all string inputs
     const name = truncate(body.name, MAX_NAME).trim();
@@ -167,8 +207,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    // Detect source
-    const source = bodySource || utmSource || (landingPage?.includes("google") ? "google_ads" : "website");
+    // Detect source — prefer the specific label the client sends (e.g. "quote_page", "lp_quiz:interior-painting")
+    const source = bodySource || utmSource || (landingPage?.includes("google") ? "google_ads" : "website:unknown");
 
     // Score the lead
     const { score, factors, priority } = calculateLeadScore({
@@ -211,7 +251,21 @@ export async function POST(request: NextRequest) {
     let leadId: string | null = null;
     const adminSupabase = getSupabaseAdmin();
 
-    // Try full insert, then retry without preferred_style if that column is missing
+    // Minimal payload: only columns in base schema (works if migration hasn't been run)
+    const minimalLeadData = {
+      name,
+      email: email || "",
+      phone,
+      service,
+      city_or_zip: cityOrZip || "Not specified",
+      description: description || `Interested in: ${service}`,
+      timeframe: timeframe || "To be discussed",
+      budget: budget || null,
+      status: "new" as const,
+      notes: [source, utmSource, utmCampaign, landingPage].filter(Boolean).join(" | ") || null,
+    };
+
+    // Try full insert first (supports extended schema)
     let { data, error } = await adminSupabase.from("leads").insert(leadData).select("id").single();
     if (error && error.message?.includes("preferred_style")) {
       delete leadData.preferred_style;
@@ -219,12 +273,21 @@ export async function POST(request: NextRequest) {
       data = retry.data;
       error = retry.error;
     }
-
+    // If full insert fails (e.g. missing columns or status constraint), fall back to minimal so lead still saves
     if (error) {
-      console.error("Lead insert failed:", error.message, error.details);
-    } else if (data) {
-      leadId = data.id;
+      console.warn("Lead full insert failed, trying minimal insert:", error.message);
+      const fallback = await adminSupabase.from("leads").insert(minimalLeadData).select("id").single();
+      if (fallback.error) {
+        console.error("Lead minimal insert also failed:", fallback.error.message, fallback.error.details);
+        return NextResponse.json(
+          { error: "We couldn't save your request. Please call us directly or try again." },
+          { status: 500 }
+        );
+      }
+      data = fallback.data;
+      error = null;
     }
+    if (data) leadId = data.id;
 
     // Fire welcome automation (async — don't block the response)
     if (leadId && phone) {
@@ -234,8 +297,8 @@ export async function POST(request: NextRequest) {
         const tmpl = EMAIL_TEMPLATES.welcome_email(ctx);
         sendEmail(email, tmpl.subject, tmpl.html).catch(console.error);
       }
-      // Notify Bobby immediately via SMS
-      const adminPhone = process.env.ADMIN_PHONE;
+      // Notify team immediately via SMS
+      const adminPhone = env.adminPhone;
       if (adminPhone) {
         const scoreLabel = priority === "hot" ? "🔥 HOT" : priority === "warm" ? "⚡ WARM" : "📋";
         sendSMS(

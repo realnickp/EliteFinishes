@@ -20,7 +20,9 @@ export function initAnalytics() {
 }
 
 export function trackEvent(event: string, properties?: Record<string, unknown>) {
-  if (typeof window !== "undefined" && process.env.NEXT_PUBLIC_POSTHOG_KEY) {
+  if (typeof window === "undefined") return;
+  initAnalytics();
+  if (initialized) {
     posthog.capture(event, properties);
   }
 }

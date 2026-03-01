@@ -1,0 +1,16 @@
+{
+  "name": "Elite Finishes - Painting and Remodeling",
+  "short_name": "Elite Finishes",
+  "description": "Licensed painting and home remodeling contractor in Baltimore, MD",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c1220",
+  "theme_color": "#c8102e",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

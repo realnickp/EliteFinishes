@@ -7,7 +7,7 @@ import { SITE } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
 
 interface CTAButtonProps {
-  variant?: "primary" | "secondary" | "phone" | "outline" | "outline-light";
+  variant?: "primary" | "primaryGreen" | "secondary" | "phone" | "outline" | "outline-light" | "outline-green";
   size?: "default" | "lg";
   href?: string;
   onClick?: () => void;
@@ -29,11 +29,15 @@ export function CTAButton({
   const variants = {
     primary:
       "bg-gradient-to-br from-brand to-brand-dark text-white shadow-lg shadow-brand/25 hover:shadow-xl hover:shadow-brand/30 hover:scale-[1.02] active:scale-[0.98]",
+    primaryGreen:
+      "bg-gradient-to-br from-brand-green to-brand-green-dark text-white shadow-lg shadow-brand-green/25 hover:shadow-xl hover:shadow-brand-green/30 hover:scale-[1.02] active:scale-[0.98]",
     secondary: "bg-primary text-primary-foreground hover:bg-primary/90",
     phone:
       "bg-white/10 text-white border border-white/25 backdrop-blur-sm hover:bg-white/20 hover:border-white/40",
     outline:
       "border-2 border-brand text-brand hover:bg-brand hover:text-white hover:scale-[1.02]",
+    "outline-green":
+      "border-2 border-brand-green text-brand-green hover:bg-brand-green hover:text-white hover:scale-[1.02]",
     "outline-light":
       "border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50",
   };

@@ -8,8 +8,18 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: `Our Services | Outdoor Construction & Renovation`,
-  description: `${SITE.name} offers premium outdoor construction services in ${SITE.address.region}, MD: decks, hardscaping, stamped concrete, fencing, driveways, roofing, ADUs, excavation, and gravel pads. Get a free estimate.`,
+  title: `Our Services | Painting and Home Remodeling`,
+  description: `${SITE.name} offers premium painting and home remodeling services in Baltimore, MD: interior painting, exterior painting, kitchen remodeling, bathroom remodeling, basement finishing, flooring, siding, roofing, decks, concrete, and commercial services. Get a free estimate.`,
+  openGraph: {
+    title: `Our Services | Painting and Home Remodeling`,
+    description: `${SITE.name} offers premium painting and home remodeling services in Baltimore, MD: interior painting, exterior painting, kitchen remodeling, bathroom remodeling, basement finishing, flooring, siding, roofing, decks, concrete, and commercial services. Get a free estimate.`,
+    url: `${SITE.url}/services`,
+    images: [{
+      url: `${SITE.url}/api/og?title=Our+Services&subtitle=Painting+%26+Home+Remodeling+in+Baltimore`,
+      width: 1200, height: 630,
+      alt: "Elite Finishes Services — Painting and Remodeling in Baltimore, MD",
+    }],
+  },
   alternates: { canonical: `${SITE.url}/services` },
 };
 
@@ -19,8 +29,8 @@ export default function ServicesPage() {
       <section className="relative overflow-hidden py-20 md:py-28">
         <div className="absolute inset-0">
           <Image
-            src="/images/s2-1.webp"
-            alt="Backyard Bobby's outdoor construction services"
+            src="/images/pexels-artbovich-8143696.jpg"
+            alt="Elite Finishes painting and remodeling services in Baltimore Maryland"
             fill
             className="object-cover"
             sizes="100vw"
@@ -31,8 +41,8 @@ export default function ServicesPage() {
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-6xl mb-4 text-white">Our Services</h1>
             <p className="text-lg text-white/70 max-w-xl">
-              From the ground up, we handle every aspect of your outdoor project. Licensed, insured,
-              and committed to quality.
+              From a fresh coat of paint to a full kitchen remodel, we handle every aspect of your
+              project. Licensed, insured, and committed to quality craftsmanship.
             </p>
           </div>
         </div>
@@ -68,8 +78,8 @@ export default function ServicesPage() {
       <section className="relative overflow-hidden py-16 md:py-20">
         <div className="absolute inset-0">
           <Image
-            src="/images/op2.webp"
-            alt="Outdoor project by Backyard Bobby's"
+            src="/images/pexels-artbovich-8146201.jpg"
+            alt="Elite Finishes crew completing a painting project in the Baltimore area"
             fill
             className="object-cover"
             sizes="100vw"
@@ -81,7 +91,7 @@ export default function ServicesPage() {
             Not Sure What You Need?
           </h2>
           <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
-            Tell us about your project and we&apos;ll recommend the best approach. Free consultation, zero pressure.
+            Tell us about your project and we will recommend the best approach. Free consultation, zero pressure.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">
             <CTAButton href="/contact" size="lg">
@@ -96,4 +106,3 @@ export default function ServicesPage() {
     </>
   );
 }
-

@@ -99,7 +99,7 @@ export default function LoginPage() {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <Image src="/images/logo.png" alt="Backyard Bobby's" width={200} height={75} className="h-16 w-auto mx-auto mb-4" />
+          <Image src="/images/logo.png" alt="Elite Finishes" width={200} height={75} className="h-16 w-auto mx-auto mb-4" />
           <h1 className="text-xl font-bold text-gray-900">Lead Command Center</h1>
           <p className="text-sm text-gray-500 mt-1">Sign in to manage your leads</p>
         </div>

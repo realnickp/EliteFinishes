@@ -86,7 +86,7 @@ export function DashboardNav() {
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
-          <Image src="/images/logo.png" alt="Backyard Bobby's" width={100} height={37} className="h-7 w-auto brightness-110" />
+          <Image src="/images/logo.png" alt="Elite Finishes" width={100} height={37} className="h-7 w-auto brightness-110" />
         </div>
         <a
           href={SITE.phoneTel}
@@ -114,7 +114,7 @@ export function DashboardNav() {
       {/* Desktop sidebar */}
       <aside className="hidden md:flex w-56 bg-gray-900 text-white flex-col flex-shrink-0 min-h-screen">
         <div className="p-4 border-b border-gray-800">
-          <Image src="/images/logo.png" alt="Backyard Bobby's" width={140} height={52} className="h-10 w-auto brightness-110" />
+          <Image src="/images/logo.png" alt="Elite Finishes" width={140} height={52} className="h-10 w-auto brightness-110" />
           <p className="text-xs text-gray-400 mt-1.5">Lead Command Center</p>
         </div>
         {navLinks}

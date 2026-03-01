@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Loader2, ChevronRight } from "lucide-react";
+import { SITE, CHATBOT_NAME } from "@/lib/constants";
 
 type Phase = "idle" | "form" | "chat";
 
@@ -18,29 +19,33 @@ interface Message {
 }
 
 const SERVICES = [
-  "Deck",
-  "Patio / Stamped Concrete",
-  "Fence",
-  "Driveway / Gravel",
-  "Pergola / Shade Structure",
-  "Retaining Wall",
+  "Interior Painting",
+  "Exterior Painting",
+  "Kitchen Remodeling",
+  "Bathroom Remodeling",
+  "Flooring",
+  "Basement Remodeling",
+  "Home Remodeling",
+  "Roofing",
   "Something else",
 ];
 
 function openingMessage(name: string, service: string): Message {
   const first = name.split(" ")[0];
   const serviceMap: Record<string, string> = {
-    "Deck": "a deck",
-    "Patio / Stamped Concrete": "a patio or stamped concrete",
-    "Fence": "a fence",
-    "Driveway / Gravel": "a driveway or gravel pad",
-    "Pergola / Shade Structure": "a pergola",
-    "Retaining Wall": "a retaining wall",
+    "Interior Painting": "interior painting",
+    "Exterior Painting": "exterior painting",
+    "Kitchen Remodeling": "kitchen remodeling",
+    "Bathroom Remodeling": "bathroom remodeling",
+    "Flooring": "flooring",
+    "Basement Remodeling": "basement remodeling",
+    "Home Remodeling": "home remodeling",
+    "Roofing": "roofing",
   };
   const project = serviceMap[service] || service.toLowerCase();
   return {
     role: "assistant",
-    content: `Hey ${first}! Great choice — Bobby does amazing work on ${project} projects. Are you looking to get started soon, or still in the planning phase?`,
+    content: `Hey ${first}! Great choice — we do excellent work on ${project} projects throughout the Baltimore area. Are you looking to get started soon, or still in the planning phase?`,
   };
 }
 
@@ -89,10 +94,13 @@ export function Chatbot() {
         body: JSON.stringify({
           name: userInfo.name.trim(),
           phone: userInfo.phone.trim(),
-          email: userInfo.email.trim() || undefined,
+          email: userInfo.email.trim() || "",
           service,
-          source: "chatbot",
-          message: `Chatbot lead — interested in: ${service}`,
+          source: `chatbot:${typeof window !== "undefined" ? window.location.pathname : "/"}`,
+          cityOrZip: "From chatbot",
+          description: `Chatbot lead — interested in: ${service}`,
+          timeframe: "To be discussed",
+          landingPage: typeof window !== "undefined" ? window.location.href : "",
         }),
       });
 
@@ -150,7 +158,7 @@ export function Chatbot() {
         ...prev,
         {
           role: "assistant",
-          content: "Sorry, something went wrong. You can reach Bobby directly at (443) 875-8550.",
+          content: `Sorry, something went wrong. You can reach us directly at ${SITE.phone}.`,
         },
       ]);
     } finally {
@@ -180,17 +188,17 @@ export function Chatbot() {
           style={{ maxHeight: "min(520px, calc(100dvh - 6rem))" }}
         >
           {/* Header */}
-          <div className="flex items-center gap-3 px-4 py-3 bg-orange-500 text-white shrink-0">
+          <div className="flex items-center gap-3 px-4 py-3 bg-brand text-brand-foreground shrink-0">
             <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center font-bold select-none">
-              M
+              {CHATBOT_NAME.charAt(0)}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-semibold text-sm leading-tight">Max</p>
-              <p className="text-xs text-orange-100 leading-tight">Backyard Bobby&apos;s Assistant</p>
+              <p className="font-semibold text-sm leading-tight">{CHATBOT_NAME}</p>
+              <p className="text-xs text-brand-foreground/80 leading-tight">Elite Finishes Assistant</p>
             </div>
             {phase === "chat" && leadId && (
               <span className="text-xs bg-green-400 text-green-900 font-semibold px-2 py-0.5 rounded-full shrink-0">
-                ✓ Bobby notified
+                ✓ Team notified
               </span>
             )}
             <button
@@ -206,7 +214,7 @@ export function Chatbot() {
           {phase === "form" && (
             <form onSubmit={handleFormSubmit} className="p-4 sm:p-4 space-y-4 overflow-y-auto flex-1 min-h-0">
               <p className="text-sm text-gray-600">
-                Quick intro before we chat — Bobby&apos;s team will reach out to confirm your estimate.
+                Quick intro before we chat — our team will reach out to confirm your estimate.
               </p>
 
               <div>
@@ -218,7 +226,7 @@ export function Chatbot() {
                   onChange={(e) => setUserInfo((p) => ({ ...p, name: e.target.value }))}
                   placeholder="First and last name"
                   required
-                  className="w-full text-base sm:text-sm px-3 py-3 sm:py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-400 min-h-[44px]"
+                  className="w-full text-base sm:text-sm px-3 py-3 sm:py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand min-h-[44px]"
                 />
               </div>
 
@@ -231,7 +239,7 @@ export function Chatbot() {
                   onChange={(e) => setUserInfo((p) => ({ ...p, phone: e.target.value }))}
                   placeholder="(443) 000-0000"
                   required
-                  className="w-full text-base sm:text-sm px-3 py-3 sm:py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-400 min-h-[44px]"
+                  className="w-full text-base sm:text-sm px-3 py-3 sm:py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand min-h-[44px]"
                 />
               </div>
 
@@ -244,7 +252,7 @@ export function Chatbot() {
                   value={userInfo.email}
                   onChange={(e) => setUserInfo((p) => ({ ...p, email: e.target.value }))}
                   placeholder="you@email.com"
-                  className="w-full text-base sm:text-sm px-3 py-3 sm:py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-400 min-h-[44px]"
+                  className="w-full text-base sm:text-sm px-3 py-3 sm:py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand min-h-[44px]"
                 />
               </div>
 
@@ -260,8 +268,8 @@ export function Chatbot() {
                       onClick={() => setUserInfo((p) => ({ ...p, service: s }))}
                       className={`text-sm px-3.5 py-2.5 rounded-lg border font-medium transition-colors min-h-[44px] ${
                         userInfo.service === s
-                          ? "bg-orange-500 text-white border-orange-500"
-                          : "border-gray-200 text-gray-600 hover:border-orange-300 hover:text-orange-600"
+                          ? "bg-brand text-brand-foreground border-brand"
+                          : "border-gray-200 text-gray-600 hover:border-brand/50 hover:text-brand"
                       }`}
                     >
                       {s}
@@ -274,7 +282,7 @@ export function Chatbot() {
                     value={customService}
                     onChange={(e) => setCustomService(e.target.value)}
                     placeholder="Tell us what you have in mind..."
-                    className="mt-2 w-full text-base sm:text-sm px-3 py-3 sm:py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-400 min-h-[44px]"
+                    className="mt-2 w-full text-base sm:text-sm px-3 py-3 sm:py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand min-h-[44px]"
                     autoFocus
                   />
                 )}
@@ -287,19 +295,19 @@ export function Chatbot() {
               <button
                 type="submit"
                 disabled={formLoading}
-                className="w-full flex items-center justify-center gap-2 py-3.5 bg-orange-500 text-white text-base font-semibold rounded-lg hover:bg-orange-600 transition-colors disabled:opacity-60 min-h-[48px]"
+                className="w-full flex items-center justify-center gap-2 py-3.5 bg-brand text-brand-foreground text-base font-semibold rounded-lg hover:bg-brand-dark transition-colors disabled:opacity-60 min-h-[48px]"
               >
                 {formLoading ? (
                   <Loader2 className="h-5 w-5 animate-spin" />
                 ) : (
                   <>
-                    Chat with Max <ChevronRight className="h-5 w-5" />
+                    Chat with {CHATBOT_NAME} <ChevronRight className="h-5 w-5" />
                   </>
                 )}
               </button>
 
               <p className="text-center text-xs text-gray-400 safe-bottom">
-                Free estimate · No obligation · Licensed MHIC #05-163777
+                Free estimate · No obligation · Licensed {SITE.license}
               </p>
             </form>
           )}
@@ -316,7 +324,7 @@ export function Chatbot() {
                     <div
                       className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed ${
                         msg.role === "user"
-                          ? "bg-orange-500 text-white rounded-br-sm"
+                          ? "bg-brand text-brand-foreground rounded-br-sm"
                           : "bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-sm"
                       }`}
                     >
@@ -349,12 +357,12 @@ export function Chatbot() {
                   onKeyDown={handleKeyDown}
                   placeholder="Type a message..."
                   disabled={chatLoading}
-                  className="flex-1 text-base sm:text-sm px-3 py-3 sm:py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent disabled:opacity-50 bg-gray-50 min-h-[44px]"
+                  className="flex-1 text-base sm:text-sm px-3 py-3 sm:py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent disabled:opacity-50 bg-gray-50 min-h-[44px]"
                 />
                 <button
                   type="submit"
                   disabled={!input.trim() || chatLoading}
-                  className="p-3 sm:p-2.5 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  className="p-3 sm:p-2.5 bg-brand text-brand-foreground rounded-xl hover:bg-brand-dark transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center"
                   aria-label="Send"
                 >
                   {chatLoading ? (
@@ -366,7 +374,7 @@ export function Chatbot() {
               </form>
 
               <p className="text-center text-xs text-gray-400 pb-2 bg-white shrink-0 safe-bottom">
-                Free estimate · No obligation · Licensed MHIC #05-163777
+                Free estimate · No obligation · Licensed {SITE.license}
               </p>
             </>
           )}
@@ -376,7 +384,7 @@ export function Chatbot() {
       {/* Floating button — compact label on mobile, full text on desktop */}
       <button
         onClick={() => setPhase((p) => (p === "idle" ? "form" : "idle"))}
-        className="fixed bottom-20 sm:bottom-6 right-4 z-50 flex items-center justify-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 active:scale-95 text-xs px-3 py-2.5 sm:text-sm sm:px-4 sm:py-3"
+        className="fixed bottom-20 sm:bottom-6 right-4 z-50 flex items-center justify-center gap-1.5 bg-brand hover:bg-brand-dark text-brand-foreground font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 active:scale-95 text-xs px-3 py-2.5 sm:text-sm sm:px-4 sm:py-3"
         aria-label={panelOpen ? "Close chat" : "Chat with us"}
       >
         {panelOpen ? (
@@ -384,8 +392,8 @@ export function Chatbot() {
         ) : (
           <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5" />
         )}
-        {!panelOpen && <span className="sm:hidden">Ask Max</span>}
-        {!panelOpen && <span className="hidden sm:inline">Have a Question? Ask Max</span>}
+        {!panelOpen && <span className="sm:hidden">Ask {CHATBOT_NAME}</span>}
+        {!panelOpen && <span className="hidden sm:inline">Have a Question? Ask {CHATBOT_NAME}</span>}
       </button>
     </>
   );

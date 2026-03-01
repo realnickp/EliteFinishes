@@ -9,16 +9,26 @@ import { GALLERY_ITEMS, SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Project Gallery | See Our Work",
-  description: `Browse completed projects by ${SITE.name}: decks, patios, fencing, driveways, stamped concrete, and more across ${SITE.address.region}, MD. See the quality before you hire.`,
+  description: `Browse completed projects by ${SITE.name}: interior and exterior painting, kitchen and bathroom remodeling, flooring, decks, and more across ${SITE.address.region}, MD. See the quality before you hire.`,
+  openGraph: {
+    title: "Project Gallery | See Our Work",
+    description: `Browse completed projects by ${SITE.name}: interior and exterior painting, kitchen and bathroom remodeling, flooring, decks, and more across ${SITE.address.region}, MD. See the quality before you hire.`,
+    url: `${SITE.url}/gallery`,
+    images: [{
+      url: `${SITE.url}/api/og?title=Project+Gallery&subtitle=See+Our+Work+in+Baltimore%2C+MD`,
+      width: 1200, height: 630,
+      alt: "Elite Finishes Project Gallery — Baltimore, MD",
+    }],
+  },
   alternates: { canonical: `${SITE.url}/gallery` },
 };
 
 const HERO_MOSAIC = [
-  { src: "/images/stamped-concrete-img.webp", alt: "Stamped concrete patio", span: "col-span-2 row-span-2" },
-  { src: "/images/IMG_0178-scaled-e1763134218201.jpeg", alt: "Large composite deck", span: "col-span-1 row-span-1" },
-  { src: "/images/Patio-Red-Block-with-Compas-rotated.webp", alt: "Red block patio with compass design", span: "col-span-1 row-span-1" },
-  { src: "/images/IMG_1481-scaled.webp", alt: "Fencing installation in Pasadena", span: "col-span-1 row-span-1 hidden md:block" },
-  { src: "/images/op2.webp", alt: "Outdoor patio project", span: "col-span-1 row-span-1 hidden md:block" },
+  { src: "/images/pexels-artbovich-7031616.jpg", alt: "Interior painting in a Baltimore home", span: "col-span-2 row-span-2" },
+  { src: "/images/pexels-artbovich-6301185.jpg", alt: "Kitchen remodel by Elite Finishes", span: "col-span-1 row-span-1" },
+  { src: "/images/house-exterior.jpg", alt: "Exterior painting and home exterior in Baltimore area", span: "col-span-1 row-span-1" },
+  { src: "/images/pexels-artbovich-8143696.jpg", alt: "Bathroom remodel in Maryland", span: "col-span-1 row-span-1 hidden md:block" },
+  { src: "/images/pexels-curtis-adams-7601167.jpg", alt: "Deck and outdoor living project", span: "col-span-1 row-span-1 hidden md:block" },
 ];
 
 export default function GalleryPage() {
@@ -47,7 +57,7 @@ export default function GalleryPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-transparent to-primary/30" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center py-20 md:py-24">
-          <p className="inline-block text-brand font-semibold text-sm tracking-widest uppercase mb-4">
+          <p className="inline-block text-brand-green font-semibold text-sm tracking-widest uppercase mb-4">
             Project Gallery
           </p>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 max-w-3xl mx-auto leading-tight">
@@ -66,7 +76,7 @@ export default function GalleryPage() {
       {/* ── Gallery grid with filters ── */}
       <Section>
         <div className="text-center mb-10">
-          <p className="text-brand font-semibold text-sm tracking-widest uppercase mb-3">
+          <p className="text-brand-green font-semibold text-sm tracking-widest uppercase mb-3">
             {GALLERY_ITEMS.length}+ Completed Projects
           </p>
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
@@ -83,8 +93,8 @@ export default function GalleryPage() {
       {/* ── CTA with visible background ── */}
       <section className="relative overflow-hidden py-20 md:py-28">
         <Image
-          src="/images/IMG_0085-scaled-e1763134059488.jpeg"
-          alt="Completed deck installation project"
+          src="/images/pexels-artbovich-8146201.jpg"
+          alt="Completed painting and remodeling project by Elite Finishes"
           fill
           className="object-cover"
           sizes="100vw"

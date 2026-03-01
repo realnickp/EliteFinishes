@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { usePathname, useSearchParams } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,6 +13,31 @@ import { leadSchema, type LeadFormData, TIMEFRAME_OPTIONS, BUDGET_OPTIONS } from
 import { ALL_SERVICES_FOR_FORM, SITE } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
 
+function detectPageSource(pathname: string, searchParams: URLSearchParams): string {
+  const utmSource = searchParams.get("utm_source") || "";
+  const utmMedium = searchParams.get("utm_medium") || "";
+  const fbclid = searchParams.get("fbclid");
+
+  let adPlatform = "";
+  if (utmSource.toLowerCase().includes("facebook") || utmSource.toLowerCase().includes("fb") || fbclid) {
+    adPlatform = "facebook_ads";
+  } else if (utmSource.toLowerCase().includes("google") || utmMedium.toLowerCase() === "cpc") {
+    adPlatform = "google_ads";
+  }
+
+  if (pathname.startsWith("/quote")) return adPlatform ? `${adPlatform}:quote_page` : "quote_page";
+  if (pathname.startsWith("/contact")) return adPlatform ? `${adPlatform}:contact_page` : "contact_page";
+  if (pathname.startsWith("/areas/")) {
+    const city = pathname.split("/areas/")[1]?.split("/")[0] || "unknown";
+    return adPlatform ? `${adPlatform}:area_page:${city}` : `area_page:${city}`;
+  }
+  if (pathname.startsWith("/services/")) {
+    const slug = pathname.split("/services/")[1]?.split("/")[0] || "unknown";
+    return adPlatform ? `${adPlatform}:service_page:${slug}` : `service_page:${slug}`;
+  }
+  return adPlatform || `website:${pathname}`;
+}
+
 interface LeadFormProps {
   preselectedService?: string;
   compact?: boolean;
@@ -19,6 +45,8 @@ interface LeadFormProps {
 }
 
 export function LeadForm({ preselectedService, compact, preferredStyle }: LeadFormProps) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
@@ -37,13 +65,21 @@ export function LeadForm({ preselectedService, compact, preferredStyle }: LeadFo
   async function onSubmit(data: LeadFormData) {
     try {
       setSubmitError("");
+      const source = detectPageSource(pathname, searchParams);
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          source,
+          utmSource: searchParams.get("utm_source") || undefined,
+          utmMedium: searchParams.get("utm_medium") || undefined,
+          utmCampaign: searchParams.get("utm_campaign") || undefined,
+          landingPage: typeof window !== "undefined" ? window.location.href : pathname,
+        }),
       });
       if (!res.ok) throw new Error("Submission failed");
-      trackEvent("lead_submitted", { service: data.service, timeframe: data.timeframe });
+      trackEvent("lead_submitted", { service: data.service, timeframe: data.timeframe, source });
       setSubmitted(true);
     } catch {
       setSubmitError("Something went wrong. Please call us or try again.");

@@ -7,11 +7,16 @@ import { TrustBar } from "@/components/shared/TrustBar";
 
 export const metadata: Metadata = {
   title: `Customer Reviews & Testimonials | ${SITE.name}`,
-  description: `Read real customer reviews for Backyard Bobby's outdoor construction in Anne Arundel County, MD. 5-star rated. Licensed ${SITE.license}. Free estimates — call ${SITE.phone}.`,
+  description: `Read real customer reviews for ${SITE.name} painting and home remodeling in Baltimore, MD. 5-star rated. Licensed ${SITE.license}. Free estimates — call ${SITE.phone}.`,
   alternates: { canonical: `${SITE.url}/testimonials` },
   openGraph: {
     title: `Customer Reviews | ${SITE.name}`,
-    description: "Real reviews from homeowners across Anne Arundel County, Maryland.",
+    description: "Real reviews from homeowners across the Baltimore metro area, Maryland.",
+    images: [{
+      url: `${SITE.url}/api/og?title=Customer+Reviews&subtitle=5-Star+Rated+Baltimore+Contractor`,
+      width: 1200, height: 630,
+      alt: "Elite Finishes Customer Reviews and Testimonials",
+    }],
   },
 };
 
@@ -21,43 +26,43 @@ const ALL_TESTIMONIALS = [
   {
     name: "Kevin & Amanda S.",
     location: "Glen Burnie, MD",
-    text: "They built us a beautiful gravel pad for our new shed and also helped level the area around it. Everything was done in one day and the crew was excellent — friendly, professional, and fast.",
-    service: "Gravel Pads",
+    text: "We had the main floor painted and new LVP flooring installed throughout. The crew was fast, clean, and incredibly professional. The color advice they gave us was spot on. The house looks brand new.",
+    service: "Interior Painting",
     rating: 5,
   },
   {
     name: "Rachel T.",
-    location: "Millersville, MD",
-    text: "I was nervous about the excavation needed for my pool base, but Bobby's team made it look easy. They communicated every step of the way and finished on schedule. Highly recommend.",
-    service: "Excavation",
+    location: "Towson, MD",
+    text: "I was nervous about the tile work in our master bath, but the team made it look easy. They communicated every step of the way and finished exactly on schedule. Highly recommend.",
+    service: "Bathroom Remodeling",
     rating: 5,
   },
   {
     name: "Frank M.",
-    location: "Gambrills, MD",
-    text: "Got three quotes for my driveway. Backyard Bobby's wasn't the cheapest but they were thorough, explained every detail, and delivered exactly what they promised. Worth every penny.",
-    service: "Driveway Installation",
+    location: "Pikesville, MD",
+    text: "Got three quotes for the kitchen remodel. Elite Finishes was not the cheapest but they were thorough, explained every detail, and delivered exactly what they promised. Worth every penny.",
+    service: "Kitchen Remodeling",
     rating: 5,
   },
   {
     name: "Susan L.",
-    location: "Crownsville, MD",
-    text: "The stamped concrete patio they installed is absolutely gorgeous. My neighbors keep asking who did it. Great crew, great experience from start to finish.",
-    service: "Stamped Concrete",
+    location: "Columbia, MD",
+    text: "The exterior paint job is absolutely gorgeous. My neighbors keep asking who did it. Great crew, excellent prep work, and the finished product exceeded our expectations.",
+    service: "Exterior Painting",
     rating: 5,
   },
   {
     name: "Bill & Pam H.",
-    location: "Odenton, MD",
-    text: "We needed a retaining wall and patio built on a pretty challenging slope. Bobby came out personally to assess it and came up with a great plan. The result exceeded our expectations.",
-    service: "Hardscaping",
+    location: "Catonsville, MD",
+    text: "We had a challenging basement finish with low ceilings and an odd layout. They came out, assessed everything carefully, and came up with a great plan. The result is a completely transformed space.",
+    service: "Basement Remodeling",
     rating: 5,
   },
   {
     name: "Tanya R.",
-    location: "Severn, MD",
-    text: "Quick, clean, professional. They put up our fence in one day and were completely tidy when they left. The crew was respectful of our yard and our neighbors. Five stars, no question.",
-    service: "Fencing",
+    location: "Annapolis, MD",
+    text: "Quick, clean, professional. They replaced our hardwood floors in three rooms and were completely tidy when they left. The craftsmanship is outstanding. Five stars, no question.",
+    service: "Flooring",
     rating: 5,
   },
 ];
@@ -100,7 +105,7 @@ export default function TestimonialsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand/15 border border-brand/30 text-brand text-xs font-semibold mb-6">
             <Star className="h-3.5 w-3.5 fill-brand" />
-            5-Star Rated · Anne Arundel County, MD
+            5-Star Rated · Baltimore, MD
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6">
             What Our Customers Say
@@ -153,7 +158,7 @@ export default function TestimonialsPage() {
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl mb-4">All Reviews</h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            From gravel pads to decks, fencing to full outdoor transformations.
+            From interior painting to kitchen remodels, flooring to full home renovations.
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -188,11 +193,11 @@ export default function TestimonialsPage() {
             See Us on Google
           </h2>
           <p className="text-muted-foreground text-lg mb-8">
-            We&apos;re proud of our reputation across Anne Arundel County. Find
+            We are proud of our reputation across Baltimore and surrounding Maryland communities. Find
             our Google Business Profile for the most up-to-date reviews.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">
-            <CTAButton href="/quote" size="lg">
+            <CTAButton href="/contact" size="lg">
               Get Your Free Estimate
               <ArrowRight className="h-5 w-5" />
             </CTAButton>

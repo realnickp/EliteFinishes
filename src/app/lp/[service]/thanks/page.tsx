@@ -9,18 +9,18 @@ import { PRIMARY_SERVICES, SITE } from "@/lib/constants";
 const NEXT_STEPS = [
   {
     emoji: "📋",
-    title: "Bobby reviews your details",
-    desc: "He'll look over exactly what you told us and come prepared with real answers.",
+    title: "We review your details",
+    desc: "Our team looks over exactly what you told us and comes prepared with real answers.",
   },
   {
     emoji: "📞",
-    title: "Bobby or his team calls you",
+    title: "Our team calls you",
     desc: "Most customers hear back within one business day — often much sooner.",
   },
   {
     emoji: "🏡",
     title: "Free on-site estimate",
-    desc: "Bobby visits your property, walks the project with you, and gives you a written quote. No pressure.",
+    desc: "We visit your property, walk the project with you, and give you a written quote. No pressure.",
   },
 ];
 
@@ -37,7 +37,7 @@ function ThanksContent() {
       {/* Top bar */}
       <div className="bg-primary text-primary-foreground py-2.5 px-4 shrink-0">
         <div className="mx-auto max-w-2xl flex items-center justify-between">
-          <span className="text-sm font-bold">Backyard Bobby&apos;s</span>
+          <span className="text-sm font-bold">{SITE.name}</span>
           <a
             href={SITE.phoneTel}
             className="flex items-center gap-1.5 text-sm font-bold hover:opacity-80 transition-opacity"
@@ -49,7 +49,7 @@ function ThanksContent() {
       </div>
 
       {/* Progress bar — full + complete */}
-      <div className="w-full h-2 bg-brand shrink-0" />
+      <div className="w-full h-2 bg-gradient-to-r from-brand via-brand-green to-brand shrink-0" />
 
       {/* Main */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 py-12">
@@ -57,9 +57,9 @@ function ThanksContent() {
 
           {/* Success icon */}
           <div className="flex justify-center mb-6">
-            <div className="relative flex h-24 w-24 items-center justify-center rounded-full bg-brand/10">
-              <CheckCircle className="h-14 w-14 text-brand" />
-              <span className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-brand text-white text-lg">
+            <div className="relative flex h-24 w-24 items-center justify-center rounded-full bg-brand-green/10">
+              <CheckCircle className="h-14 w-14 text-brand-green" />
+              <span className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-brand-green text-white text-lg">
                 ✓
               </span>
             </div>
@@ -70,17 +70,17 @@ function ThanksContent() {
             You&apos;re all set, {firstName}!
           </h1>
           <p className="text-muted-foreground text-lg mb-2">
-            Bobby personally received your{" "}
+            Our team received your{" "}
             <span className="font-semibold text-foreground">{svc?.title ?? service}</span> request.
           </p>
           <p className="text-muted-foreground mb-8">
-            He built his reputation one project at a time — and yours is next on his list.
+            We built our reputation one project at a time — and yours is next on our list.
           </p>
 
           {/* Stars */}
           <div className="flex items-center justify-center gap-1 mb-8">
             {[1, 2, 3, 4, 5].map((i) => (
-              <Star key={i} className="h-5 w-5 fill-brand text-brand" />
+              <Star key={i} className="h-5 w-5 fill-brand-green text-brand-green" />
             ))}
             <span className="ml-2 text-sm text-muted-foreground">5.0 · 500+ Maryland homeowners served</span>
           </div>
@@ -106,27 +106,27 @@ function ThanksContent() {
           </div>
 
           {/* Response time badge */}
-          <div className="inline-flex items-center gap-2 rounded-full bg-brand/10 text-brand text-sm font-semibold px-4 py-2 mb-8">
+          <div className="inline-flex items-center gap-2 rounded-full bg-brand-green/15 text-brand-green text-sm font-semibold px-4 py-2 mb-8">
             <Clock className="h-4 w-4" />
             We respond within one business day
           </div>
 
           {/* Call / text CTAs */}
-          <p className="text-sm text-muted-foreground mb-3">Want to reach Bobby right now?</p>
+          <p className="text-sm text-muted-foreground mb-3">Want to reach us right now?</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
             <a
               href={SITE.phoneTel}
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 min-h-[48px] rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-colors"
             >
               <Phone className="h-4 w-4" />
-              Call Bobby
+              Call Us
             </a>
             <a
               href={SITE.phoneSms}
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 min-h-[48px] rounded-xl border-2 border-primary text-primary font-semibold text-sm hover:bg-primary/5 transition-colors"
             >
               <MessageSquare className="h-4 w-4" />
-              Text Bobby
+              Text Us
             </a>
           </div>
 
@@ -143,7 +143,7 @@ function ThanksContent() {
       {/* Bottom trust */}
       <div className="shrink-0 border-t border-border/30 py-4 px-4 text-center">
         <p className="text-xs text-muted-foreground">
-          {SITE.name} · {SITE.license} · Anne Arundel County, MD & Surrounding Areas
+          {SITE.name} · {SITE.license} · Baltimore Metro Area, MD
         </p>
       </div>
     </div>

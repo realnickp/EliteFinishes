@@ -19,12 +19,14 @@ interface StoredUtm {
   fbclid: string;
 }
 
-function detectSource(utm: StoredUtm): string {
+function detectSource(utm: StoredUtm, service: string): string {
   const src = utm.utm_source.toLowerCase();
   const med = utm.utm_medium.toLowerCase();
-  if (src.includes("facebook") || src.includes("fb") || src === "ig" || utm.fbclid) return "facebook_ads";
-  if (src.includes("google") || med === "cpc" || med === "ppc") return "google_ads";
-  return utm.utm_source || "landing_page";
+  let platform = "";
+  if (src.includes("facebook") || src.includes("fb") || src === "ig" || utm.fbclid) platform = "facebook_ads";
+  else if (src.includes("google") || med === "cpc" || med === "ppc") platform = "google_ads";
+  const label = `lp_quiz:${service}`;
+  return platform ? `${platform}:${label}` : label;
 }
 
 export default function ContactPage() {
@@ -85,7 +87,7 @@ export default function ContactPage() {
 
     setLoading(true);
     try {
-      const source = detectSource(utm);
+      const source = detectSource(utm, service);
       const lastAnswer = answers[answers.length - 1] ?? "";
       const timeframe = extractTimeframe(lastAnswer);
       const budget = extractBudget(answers);
@@ -111,7 +113,7 @@ export default function ContactPage() {
           utmSource: utm.utm_source,
           utmMedium: utm.utm_medium,
           utmCampaign: utm.utm_campaign,
-          landingPage: typeof window !== "undefined" ? window.location.origin + `/lp/${service}` : "",
+          landingPage: typeof window !== "undefined" ? window.location.href : `/lp/${service}/contact`,
         }),
       });
 
@@ -150,7 +152,7 @@ export default function ContactPage() {
       {/* Top bar */}
       <div className="bg-primary text-primary-foreground py-2.5 px-4 shrink-0">
         <div className="mx-auto max-w-2xl flex items-center justify-between">
-          <span className="text-sm font-bold">Backyard Bobby&apos;s</span>
+          <span className="text-sm font-bold">{SITE.name}</span>
           <a
             href={SITE.phoneTel}
             className="flex items-center gap-1.5 text-sm font-bold hover:opacity-80 transition-opacity"
@@ -176,10 +178,10 @@ export default function ContactPage() {
               Almost done!
             </span>
             <h1 className="text-2xl md:text-3xl font-bold mb-3">
-              You&apos;re seconds away from Bobby&apos;s free estimate
+              You&apos;re seconds away from your free estimate
             </h1>
             <p className="text-muted-foreground">
-              Bobby personally reviews every new request and responds within one business day. No pressure, no obligation — just an honest quote.
+              Our team reviews every new request and responds within one business day. No pressure, no obligation — just an honest quote.
             </p>
           </div>
 
@@ -187,7 +189,7 @@ export default function ContactPage() {
           {filledAnswers.length > 0 && (
             <div className="bg-warm-bg rounded-2xl border border-border/30 p-5 mb-7">
               <p className="text-sm font-semibold text-foreground/70 mb-3">
-                Here&apos;s what you told us — Bobby will be prepared:
+                Here&apos;s what you told us — we will be prepared:
               </p>
               <ul className="space-y-2">
                 {questions.map((q, i) =>
@@ -291,10 +293,10 @@ export default function ContactPage() {
               {loading ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Sending to Bobby...
+                  Sending your details...
                 </>
               ) : (
-                "Send Bobby My Project Details →"
+                "Send Us My Project Details →"
               )}
             </button>
 
@@ -320,7 +322,7 @@ export default function ContactPage() {
       {/* Bottom trust */}
       <div className="shrink-0 border-t border-border/30 py-4 px-4 text-center">
         <p className="text-xs text-muted-foreground">
-          {SITE.name} · {SITE.license} · Anne Arundel County, MD & Surrounding Areas
+          {SITE.name} · {SITE.license} · Baltimore Metro Area, MD
         </p>
       </div>
     </div>

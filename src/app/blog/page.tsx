@@ -9,7 +9,17 @@ import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Blog | Tips, Guides & Outdoor Living Ideas",
-  description: `Expert advice on decks, patios, fencing, driveways, and more from ${SITE.name}. Practical guides for homeowners in ${SITE.address.region}, Maryland.`,
+  description: `Expert advice on interior painting, exterior painting, kitchen remodeling, flooring, and more from ${SITE.name}. Practical guides for homeowners in Baltimore, Maryland.`,
+  openGraph: {
+    title: "Blog | Tips, Guides & Outdoor Living Ideas",
+    description: `Expert advice on interior painting, exterior painting, kitchen remodeling, flooring, and more from ${SITE.name}. Practical guides for homeowners in Baltimore, Maryland.`,
+    url: `${SITE.url}/blog`,
+    images: [{
+      url: `${SITE.url}/api/og?title=Blog&subtitle=Tips%2C+Guides+%26+Ideas+for+Baltimore+Homeowners`,
+      width: 1200, height: 630,
+      alt: "Elite Finishes Blog — Tips and Guides for Baltimore Homeowners",
+    }],
+  },
   alternates: { canonical: `${SITE.url}/blog` },
 };
 
@@ -19,8 +29,8 @@ export default function BlogPage() {
       {/* ─── HERO WITH VISIBLE IMAGE ─── */}
       <section className="relative min-h-[380px] md:min-h-[440px] flex items-center overflow-hidden">
         <Image
-          src="/images/IMG_0178-scaled-e1763134218201.jpeg"
-          alt="Outdoor living space built by Backyard Bobby's"
+          src="/images/pexels-artbovich-7031616.jpg"
+          alt="Painting and remodeling project by Elite Finishes"
           fill
           priority
           className="object-cover"
@@ -34,11 +44,11 @@ export default function BlogPage() {
               Guides &amp; Expert Tips
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.1] text-white mb-5">
-              The Backyard Bobby&apos;s Blog
+              The Elite Finishes Blog
             </h1>
             <p className="text-lg text-white/80 max-w-lg leading-relaxed">
               Practical guides, honest comparisons, and expert tips for
-              homeowners planning outdoor projects in Maryland.
+              homeowners planning painting and remodeling projects in Maryland.
             </p>
           </div>
         </div>
@@ -96,8 +106,8 @@ export default function BlogPage() {
       {/* ─── CTA SECTION ─── */}
       <section className="relative overflow-hidden">
         <Image
-          src="/images/stamped-concrete-img.webp"
-          alt="Stamped concrete patio by Backyard Bobby's"
+          src="/images/pexels-artbovich-8146201.jpg"
+          alt="Beautiful home renovation by Elite Finishes"
           fill
           className="object-cover"
           sizes="100vw"

@@ -41,7 +41,7 @@ export function FinancingModal({ children }: { children: React.ReactNode }) {
             <div className="bg-white flex-1 overflow-hidden">
               <iframe
                 src="https://wisetack.us/#/m39n9j4/prequalify"
-                title="Wisetack Financing Prequalification — Backyard Bobby's"
+                title="Wisetack Financing Prequalification — Elite Finishes"
                 className="w-full h-full border-0"
                 style={{ minHeight: "480px", maxHeight: "70vh" }}
                 loading="lazy"

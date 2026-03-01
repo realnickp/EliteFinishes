@@ -18,11 +18,16 @@ import { FAQAccordion } from "@/components/shared/FAQAccordion";
 import { FAQPageSchema } from "@/components/shared/SchemaOrg";
 
 export const metadata: Metadata = {
-  title: `Financing for Outdoor Construction Projects | ${SITE.name}`,
-  description: `Finance your deck, patio, driveway, or outdoor project in Anne Arundel County with flexible payment plans through Wisetack. Prequalify in minutes with no impact to your credit score. Licensed contractor ${SITE.license}.`,
+  title: `Financing for Painting and Remodeling Projects | ${SITE.name}`,
+  description: `Finance your painting or remodeling project in Baltimore with flexible payment plans through Wisetack. Prequalify in minutes with no impact to your credit score. Licensed contractor ${SITE.license}.`,
   openGraph: {
-    title: `Financing for Outdoor Construction Projects | ${SITE.name}`,
-    description: `Flexible financing for Maryland outdoor construction. Prequalify in minutes through Wisetack — no hard credit pull. Licensed ${SITE.license}.`,
+    title: `Financing for Painting and Remodeling | ${SITE.name}`,
+    description: `Flexible financing for Baltimore painting and remodeling. Prequalify in minutes through Wisetack — no hard credit pull. Licensed ${SITE.license}.`,
+    images: [{
+      url: `${SITE.url}/api/og?title=Financing+Options&subtitle=Flexible+Payment+Plans+for+Your+Project`,
+      width: 1200, height: 630,
+      alt: "Elite Finishes Financing Options",
+    }],
   },
   alternates: { canonical: `${SITE.url}/financing` },
 };
@@ -42,40 +47,41 @@ const PAYMENT_OPTIONS = [
   },
   {
     icon: DollarSign,
-    title: "Check & ACH Transfer",
+    title: "Check and ACH Transfer",
     desc: "Traditional payment methods welcomed. No fees on checks or bank transfers.",
     highlight: false,
   },
   {
     icon: CalendarCheck,
     title: "Milestone-Based Payments",
-    desc: "For larger projects, we break payments into milestones tied to project progress. You never pay for work that isn't done. We don't ask for more than 50% upfront.",
+    desc: "For larger projects, we break payments into milestones tied to project progress. You never pay for work that is not done. We do not ask for more than 50% upfront.",
     highlight: false,
   },
 ];
 
 const PRICE_RANGES = [
-  { service: "Gravel Pads & Foundations", range: "$500 – $7,000+", note: "Size, material (gravel vs. concrete), and depth" },
-  { service: "Fencing", range: "$2,500 – $10,000+", note: "Linear footage, material type, and gate count" },
-  { service: "Driveway Installation", range: "$4,000 – $14,000+", note: "Asphalt, concrete, or pavers" },
-  { service: "Hardscaping & Patios", range: "$3,000 – $20,000+", note: "Square footage, material, and design complexity" },
-  { service: "Stamped Concrete", range: "$4,000 – $12,000+", note: "Size and pattern/color complexity" },
-  { service: "Decks", range: "$9,000 – $26,000+", note: "Size, wood vs. composite, and features" },
-  { service: "Roofing", range: "$8,000 – $15,000+", note: "Roof size, pitch, and shingle type" },
-  { service: "Excavation & Site Prep", range: "$1,500 – $10,000+", note: "Scope, access, and demolition needs" },
-  { service: "Accessory Dwelling Units", range: "$100,000 – $250,000+", note: "Size, finishes, and utility connections" },
+  { service: "Interior Painting (single room)", range: "$600 to $2,000+", note: "Room size, ceiling height, and surface condition" },
+  { service: "Interior Painting (whole home)", range: "$3,500 to $12,000+", note: "Square footage, number of rooms, and trim work" },
+  { service: "Exterior Painting", range: "$2,500 to $8,000+", note: "Home size, stories, siding type, and prep required" },
+  { service: "Kitchen Remodeling", range: "$8,000 to $50,000+", note: "Cabinet painting vs. replacement, countertops, and scope" },
+  { service: "Bathroom Remodeling", range: "$6,000 to $35,000+", note: "Tile work, vanity, fixtures, and layout changes" },
+  { service: "Basement Remodeling", range: "$15,000 to $45,000+", note: "Square footage, bathroom addition, and finish quality" },
+  { service: "Flooring Installation", range: "$2,000 to $15,000+", note: "Material type, square footage, and subfloor condition" },
+  { service: "Decks", range: "$10,000 to $28,000+", note: "Size, material (wood vs. composite), and features" },
+  { service: "Siding Replacement", range: "$8,000 to $35,000+", note: "Home size, material type, and removal scope" },
+  { service: "Roofing", range: "$8,000 to $16,000+", note: "Roof size, pitch, material, and decking repairs" },
 ];
 
 const FINANCING_FAQS = [
   {
     question: "How does Wisetack financing work for home improvement projects?",
     answer:
-      "Wisetack offers fixed-rate installment loans for home improvement projects. You prequalify in minutes with a soft credit check that doesn't affect your score. If approved, you choose a payment plan (typically 3–60 months), and Backyard Bobby's gets paid directly so your project starts immediately. You make fixed monthly payments to Wisetack — no balloon payments, no prepayment penalties.",
+      "Wisetack offers fixed-rate installment loans for home improvement projects. You prequalify in minutes with a soft credit check that does not affect your score. If approved, you choose a payment plan (typically 3 to 60 months), and Elite Finishes gets paid directly so your project starts immediately. You make fixed monthly payments to Wisetack with no balloon payments and no prepayment penalties.",
   },
   {
     question: "What credit score do I need to qualify for Wisetack financing?",
     answer:
-      "Wisetack considers multiple factors beyond just your credit score, including income and debt-to-income ratio. There's no minimum score published, but the soft prequalification check takes about 30 seconds and tells you your options without any impact to your credit. If you prequalify, a hard credit check only happens when you formally accept a loan offer.",
+      "Wisetack considers multiple factors beyond just your credit score, including income and debt-to-income ratio. There is no minimum score published, but the soft prequalification check takes about 30 seconds and tells you your options without any impact to your credit. If you prequalify, a hard credit check only happens when you formally accept a loan offer.",
   },
   {
     question: "Does prequalifying affect my credit score?",
@@ -85,17 +91,17 @@ const FINANCING_FAQS = [
   {
     question: "What are the interest rates and loan terms?",
     answer:
-      "Wisetack offers rates as low as 0% APR for qualified borrowers. Terms range from 3 to 60 months depending on the loan amount and your credit profile. Loan amounts range from $500 to $25,000. You'll see your exact rate, monthly payment, and total cost before you commit to anything.",
+      "Wisetack offers rates as low as 0% APR for qualified borrowers. Terms range from 3 to 60 months depending on the loan amount and your credit profile. Loan amounts range from $500 to $25,000. You will see your exact rate, monthly payment, and total cost before you commit to anything.",
   },
   {
-    question: "Can I finance a deck, patio, or driveway project in Anne Arundel County?",
+    question: "Can I finance painting or remodeling projects in the Baltimore area?",
     answer:
-      "Yes — every outdoor construction service we offer is eligible for Wisetack financing. That includes decks, patios, hardscaping, fencing, driveways, stamped concrete, gravel pads, roofing, excavation, and accessory dwelling units. There's no restriction on project type.",
+      "Yes. Every painting and remodeling service we offer is eligible for Wisetack financing. That includes interior painting, exterior painting, kitchen and bathroom remodeling, basement finishing, flooring, siding, roofing, decks, and commercial services. There is no restriction on project type.",
   },
   {
-    question: "How much does Backyard Bobby's require upfront?",
+    question: "How much does Elite Finishes require upfront?",
     answer:
-      "For projects paid in full or by card, we never ask for more than 50% upfront — the balance is due at completion. With Wisetack financing, the lender pays us directly, so you may have zero out-of-pocket upfront depending on your loan terms. We discuss payment structure during your free estimate.",
+      "For projects paid in full or by card, we never ask for more than 50% upfront. The balance is due at completion. With Wisetack financing, the lender pays us directly, so you may have zero out-of-pocket upfront depending on your loan terms. We discuss payment structure during your free estimate.",
   },
   {
     question: "Is there a penalty for paying off the loan early?",
@@ -105,7 +111,7 @@ const FINANCING_FAQS = [
   {
     question: "Do you offer financing for projects over $25,000?",
     answer:
-      "Wisetack loans go up to $25,000, which covers the majority of our projects. For larger projects like ADUs or major hardscaping renovations, we can structure milestone-based payment schedules and discuss additional financing partners. Ask us during your estimate and we'll find a solution that works.",
+      "Wisetack loans go up to $25,000, which covers the majority of our projects. For larger projects like whole-home renovations or major multi-phase work, we can structure milestone-based payment schedules and discuss additional options. Ask us during your estimate and we will find a solution that works for your budget.",
   },
 ];
 
@@ -119,18 +125,18 @@ export default function FinancingPage() {
         <section className="bg-primary text-white py-16 md:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand/15 border border-brand/30 text-brand text-xs font-semibold mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-green/15 border border-brand-green/40 text-brand-green text-xs font-semibold mb-6">
                 <Percent className="h-3.5 w-3.5" />
                 Rates as low as 0% APR
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
-                Finance Your Outdoor Project{" "}
-                <span className="text-brand">With Flexible Payments</span>
+                Finance Your Home Project{" "}
+                <span className="text-brand-green">With Flexible Payments</span>
               </h1>
               <p className="text-white/70 text-lg md:text-xl mb-8 leading-relaxed">
-                Don&apos;t wait to build the backyard you&apos;ve been planning. Prequalify
-                for financing in minutes through Wisetack — no impact to your credit
-                score — and start your project now with fixed monthly payments.
+                Do not wait to get the home you deserve. Prequalify
+                for financing in minutes through Wisetack with no impact to your credit
+                score and start your project now with fixed monthly payments.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <CTAButton href="#prequalify" size="lg">
@@ -154,9 +160,9 @@ export default function FinancingPage() {
               How Contractor Financing Works
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Backyard Bobby&apos;s partners with Wisetack to offer simple, transparent
-              financing for outdoor construction projects in Anne Arundel County.
-              Here&apos;s how the process works.
+              Elite Finishes partners with Wisetack to offer simple, transparent
+              financing for painting and remodeling projects in the Baltimore area.
+              Here is how the process works.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
@@ -164,7 +170,7 @@ export default function FinancingPage() {
               {
                 step: "1",
                 title: "Prequalify in Minutes",
-                desc: "Enter basic info in the Wisetack form below. A soft credit check shows your loan options instantly — no impact to your credit score.",
+                desc: "Enter basic info in the Wisetack form below. A soft credit check shows your loan options instantly with no impact to your credit score.",
               },
               {
                 step: "2",
@@ -174,7 +180,7 @@ export default function FinancingPage() {
               {
                 step: "3",
                 title: "Start Your Project",
-                desc: "Once approved, Wisetack pays Backyard Bobby's directly. Your project starts on schedule and you make fixed monthly payments.",
+                desc: "Once approved, Wisetack pays Elite Finishes directly. Your project starts on schedule and you make fixed monthly payments.",
               },
             ].map((item) => (
               <div key={item.step} className="text-center">
@@ -205,7 +211,7 @@ export default function FinancingPage() {
             <div className="rounded-2xl overflow-hidden border border-border/50 shadow-lg bg-white">
               <iframe
                 src="https://wisetack.us/#/m39n9j4/prequalify"
-                title="Wisetack Financing Prequalification — Backyard Bobby's"
+                title="Wisetack Financing Prequalification for Elite Finishes"
                 className="w-full border-0"
                 style={{ height: "700px", minHeight: "600px" }}
                 loading="lazy"
@@ -214,13 +220,13 @@ export default function FinancingPage() {
             </div>
             <div className="flex items-center justify-center gap-4 mt-4 text-xs text-muted-foreground">
               <span className="flex items-center gap-1">
-                <Shield className="h-3.5 w-3.5" /> Secure & encrypted
+                <Shield className="h-3.5 w-3.5" /> Secure and encrypted
               </span>
               <span className="flex items-center gap-1">
                 <FileText className="h-3.5 w-3.5" /> No hard credit pull
               </span>
               <span className="flex items-center gap-1">
-                <Clock className="h-3.5 w-3.5" /> Takes ~60 seconds
+                <Clock className="h-3.5 w-3.5" /> Takes about 60 seconds
               </span>
             </div>
           </div>
@@ -231,7 +237,7 @@ export default function FinancingPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl mb-4">All Payment Options</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Financing isn&apos;t the only way to pay. Here&apos;s every option we accept.
+              Financing is not the only way to pay. Here is every option we accept.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 max-w-4xl mx-auto">
@@ -289,12 +295,12 @@ export default function FinancingPage() {
               <tbody>
                 {[
                   ["Upfront cost", "As low as $0", "Full amount charged", "Up to 50% deposit"],
-                  ["Interest rate", "As low as 0% APR", "15–25% APR (typical)", "None"],
+                  ["Interest rate", "As low as 0% APR", "15 to 25% APR (typical)", "None"],
                   ["Credit impact to check", "None (soft pull)", "Hard inquiry", "N/A"],
                   ["Monthly payments", "Fixed, predictable", "Variable minimum", "N/A"],
                   ["Prepayment penalty", "None", "None", "N/A"],
-                  ["Best for", "Projects $1,000–$25,000", "Smaller projects", "Any size"],
-                  ["Approval time", "~60 seconds", "Existing card limit", "Immediate"],
+                  ["Best for", "Projects $1,000 to $25,000", "Smaller projects", "Any size"],
+                  ["Approval time", "About 60 seconds", "Existing card limit", "Immediate"],
                 ].map((row, i) => (
                   <tr key={i} className={i % 2 === 0 ? "bg-warm-bg/50" : "bg-white"}>
                     <td className="px-5 py-3 font-medium text-foreground border-b border-border/20">{row[0]}</td>
@@ -315,8 +321,8 @@ export default function FinancingPage() {
               What Do Projects Typically Cost?
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Every project is unique. These ranges give you a starting point —
-              your free estimate will be specific to your property and goals.
+              Every project is unique. These ranges give you a starting point.
+              Your free estimate will be specific to your property and goals.
             </p>
           </div>
           <div className="max-w-3xl mx-auto">
@@ -341,8 +347,8 @@ export default function FinancingPage() {
               ))}
             </div>
             <p className="text-center text-xs text-muted-foreground mt-4">
-              Prices are general ranges based on typical projects in Anne Arundel
-              County. Your estimate will reflect your specific scope, materials,
+              Prices are general ranges based on typical projects in the Baltimore
+              area. Your estimate will reflect your specific scope, materials,
               and site conditions.
             </p>
           </div>
@@ -354,7 +360,7 @@ export default function FinancingPage() {
             <div>
               <h2 className="text-3xl md:text-4xl mb-4">Our Pricing Promise</h2>
               <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-                We give you one price. That&apos;s the price you pay. No change
+                We give you one price. That is the price you pay. No change
                 orders for work we should have accounted for upfront, no surprise
                 fees at the end of a job.
               </p>
@@ -365,10 +371,10 @@ export default function FinancingPage() {
                   "Change orders only for work you specifically add or change",
                   "Payment milestones tied to actual progress on the job",
                   "We never ask for more than 50% upfront",
-                  "Licensed MHIC #05-163777 — backed by Maryland's consumer protection fund",
+                  `Licensed ${SITE.license} — backed by Maryland's consumer protection fund`,
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-brand flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="h-5 w-5 text-brand-green flex-shrink-0 mt-0.5" />
                     <span className="text-sm text-foreground/80">{item}</span>
                   </li>
                 ))}
@@ -379,8 +385,8 @@ export default function FinancingPage() {
                 Not Sure What Your Project Will Cost?
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                Get a free on-site estimate first. We&apos;ll come to your property,
-                assess the project, and give you a clear written price — then you
+                Get a free on-site estimate first. We will come to your property,
+                assess the project, and give you a clear written price. Then you
                 can decide how to pay.
               </p>
               <div className="space-y-3">
@@ -405,8 +411,8 @@ export default function FinancingPage() {
                 Financing FAQs
               </h2>
               <p className="text-muted-foreground text-lg">
-                Common questions about paying for outdoor construction projects in
-                Anne Arundel County.
+                Common questions about paying for painting and remodeling projects
+                in the Baltimore area.
               </p>
             </div>
             <FAQAccordion items={FINANCING_FAQS} />
@@ -432,8 +438,8 @@ export default function FinancingPage() {
               </CTAButton>
             </div>
             <p className="text-sm text-muted-foreground/80 mt-6 max-w-lg mx-auto">
-              Backyard Bobby&apos;s is a licensed outdoor construction contractor
-              (MHIC #05-163777) serving 19 communities across Anne Arundel County,
+              {SITE.name} is a licensed painting and remodeling contractor
+              ({SITE.license}) serving 28 communities across the Baltimore area,
               Maryland. Financing provided by Wisetack, a third-party lender.
               Loan terms and rates subject to credit approval.
             </p>

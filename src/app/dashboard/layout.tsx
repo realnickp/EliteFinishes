@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { DashboardNav } from "@/components/dashboard/DashboardNav";
 
 export const metadata: Metadata = {
-  title: { default: "Lead Command Center", template: "%s | Bobby's CRM" },
+  title: { default: "Lead Command Center", template: "%s | Elite Finishes CRM" },
   robots: { index: false, follow: false },
 };
 

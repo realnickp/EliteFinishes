@@ -3,6 +3,7 @@ import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { sendSMS, sendEmail, SMS_TEMPLATES, EMAIL_TEMPLATES } from "@/lib/automations";
 import { verifySessionToken } from "@/lib/auth";
 import type { AutomationContext } from "@/lib/automations";
+import { env } from "@/lib/env";
 
 // ── POST /api/automations/run ─────────────────────────────
 // Called by Vercel Cron (daily) — processes all pending automations.
@@ -10,8 +11,7 @@ import type { AutomationContext } from "@/lib/automations";
 
 export async function POST(request: NextRequest) {
   const authHeader = request.headers.get("authorization");
-  const cronSecret = process.env.CRON_SECRET;
-  const dashboardPassword = process.env.DASHBOARD_PASSWORD;
+  const { cronSecret, dashboardPassword } = env;
 
   // Allow valid Vercel Cron Bearer token
   const cronAuthorized = cronSecret
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
       await logAction("No Response Follow-up", lead.id, "sms", result.success ? "success" : "failed");
     }
     // Notify admin
-    const adminPhone = process.env.ADMIN_PHONE;
+    const adminPhone = env.adminPhone;
     if (adminPhone) {
       await sendSMS(adminPhone, `⚠️ No contact yet: ${lead.name} · ${lead.service} · ${lead.phone} (24h old)`);
     }

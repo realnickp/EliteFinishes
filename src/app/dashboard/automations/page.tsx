@@ -114,7 +114,7 @@ export default function AutomationsPage() {
             <p className="font-semibold mb-1">Notifications</p>
             <div className="space-y-1">
               <code className="text-xs bg-amber-100 px-1.5 py-0.5 rounded block break-all">ADMIN_PHONE</code>
-              <p className="text-xs mt-1">Bobby&apos;s number for alerts</p>
+              <p className="text-xs mt-1">Team alert number</p>
             </div>
           </div>
         </div>

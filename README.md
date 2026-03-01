@@ -53,16 +53,27 @@ npm start
 
 ## Environment Variables
 
+Copy `.env.local.example` to `.env.local` and fill in your values. The example file lists every variable with comments. Key ones:
+
 | Variable | Required | Description |
 |---|---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | Yes | Supabase project URL |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Yes | Supabase anonymous key |
+| `SUPABASE_SERVICE_ROLE_KEY` | Yes | Supabase service role key (leads + chat transcripts) |
+| `OPENAI_API_KEY` | Yes | OpenAI API key (for chatbot) |
+| `DASHBOARD_PASSWORD` | Yes | Password for `/dashboard` |
+| `CRON_SECRET` | Yes | Secret for cron-triggered automations |
+| `ADMIN_PHONE` | No | Admin phone for lead notifications |
 | `NEXT_PUBLIC_POSTHOG_KEY` | No | PostHog project API key |
 | `NEXT_PUBLIC_POSTHOG_HOST` | No | PostHog host (defaults to us.i.posthog.com) |
 | `NEXT_PUBLIC_CALENDLY_URL` | No | Calendly booking link for estimate scheduling |
 | `RESEND_API_KEY` | No | Resend API key for email notifications |
-| `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` | No | reCAPTCHA site key |
-| `RECAPTCHA_SECRET_KEY` | No | reCAPTCHA secret key |
+| `TWILIO_*` | No | Twilio credentials for SMS (see .env.local.example) |
+| `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` | No | reCAPTCHA site key (for lead form widget) |
+| `RECAPTCHA_SECRET_KEY` | No | reCAPTCHA secret key (when set, POST /api/leads verifies optional `recaptchaToken` in body) |
+| `EMAIL_FROM` | No | From address for Resend (defaults to info@your-domain) |
+
+**Behavior:** Calendly block on the contact page only shows when `NEXT_PUBLIC_CALENDLY_URL` is set. PostHog runs only when `NEXT_PUBLIC_POSTHOG_KEY` is set. Twilio/Resend are used for automations and new-lead notifications when configured. Dashboard and cron use `DASHBOARD_PASSWORD` and `CRON_SECRET`. Server-side config is centralized in `src/lib/env.ts`.
 
 ## Project Structure
 

@@ -7,40 +7,40 @@ import { CTAButton } from "@/components/shared/CTAButton";
 import { TrustBar } from "@/components/shared/TrustBar";
 
 export const metadata: Metadata = {
-  title: `Service Areas in Anne Arundel County, MD | ${SITE.name}`,
-  description: `Backyard Bobby's serves 19 communities across Anne Arundel County, Maryland — from Annapolis to Glen Burnie, Millersville to Shady Side. Licensed outdoor contractor ${SITE.license}. Free estimates. Call ${SITE.phone}.`,
+  title: `Service Areas in Baltimore, MD | ${SITE.name}`,
+  description: `${SITE.name} serves Baltimore City neighborhoods and communities across Baltimore County, Anne Arundel County, and Howard County. Licensed painting and remodeling contractor ${SITE.license}. Free estimates. Call ${SITE.phone}.`,
   alternates: { canonical: `${SITE.url}/areas` },
   openGraph: {
     title: `Service Areas | ${SITE.name}`,
-    description: `Professional outdoor construction in 19 Anne Arundel County communities. Free estimates. Call ${SITE.phone}.`,
+    description: `Professional painting and remodeling in Baltimore City neighborhoods and Baltimore area communities. Free estimates. Call ${SITE.phone}.`,
+    images: [{
+      url: `${SITE.url}/api/og?title=Service+Areas&subtitle=28+Communities+Across+the+Baltimore+Area`,
+      width: 1200, height: 630,
+      alt: "Elite Finishes Service Areas — Baltimore Metro Area",
+    }],
   },
 };
 
 const REGION_GROUPS = [
   {
-    region: "Annapolis & Waterfront Communities",
-    desc: "Maryland's capital and the waterfront communities along the Severn River, South River, and Chesapeake Bay.",
-    slugs: ["annapolis", "edgewater", "riva", "shady-side", "parole"],
+    region: "Baltimore City",
+    desc: "From Federal Hill and Canton to Hampden and Mount Vernon, we serve homeowners in Baltimore City neighborhoods.",
+    slugs: ["baltimore", "federal-hill", "fells-point", "canton", "mount-vernon", "locust-point", "hampden"],
   },
   {
-    region: "Broadneck Peninsula",
-    desc: "The peninsula between the Magothy and Severn Rivers — some of the county's most desirable neighborhoods.",
-    slugs: ["arnold", "severna-park", "herald-harbor"],
+    region: "Baltimore County",
+    desc: "Established communities surrounding Baltimore City with a wide range of residential and commercial painting and remodeling needs.",
+    slugs: ["towson", "catonsville", "pikesville", "owings-mills", "cockeysville", "timonium", "lutherville", "white-marsh", "essex", "dundalk", "reisterstown", "parkville", "overlea", "middle-river", "randallstown", "windsor-mill", "woodlawn", "rosedale", "sparrows-point"],
   },
   {
-    region: "Central Anne Arundel",
-    desc: "Bobby's home base. The heart of the county, where we've completed more projects than anywhere else.",
-    slugs: ["millersville", "crofton", "gambrills", "crownsville"],
+    region: "Howard County",
+    desc: "One of Maryland's most affluent counties with high demand for quality home renovation and painting services.",
+    slugs: ["ellicott-city", "columbia", "jessup"],
   },
   {
-    region: "West County & Fort Meade Corridor",
-    desc: "Anne Arundel's fastest-growing area, driven by Fort Meade, NSA, and new residential development.",
-    slugs: ["odenton", "severn", "hanover"],
-  },
-  {
-    region: "Northern Anne Arundel",
-    desc: "Established communities near BWI and the Baltimore metro — older homes that deserve modern outdoor spaces.",
-    slugs: ["glen-burnie", "pasadena", "linthicum-heights", "riviera-beach"],
+    region: "Anne Arundel County",
+    desc: "From waterfront Annapolis to the communities surrounding BWI, we serve homeowners throughout Anne Arundel County.",
+    slugs: ["annapolis", "glen-burnie", "pasadena", "severna-park", "arnold"],
   },
 ];
 
@@ -51,19 +51,18 @@ export default function AreasPage() {
       <section className="bg-primary text-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand/15 border border-brand/30 text-brand text-xs font-semibold mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-green/15 border border-brand-green/40 text-brand-green text-xs font-semibold mb-6">
               <MapPin className="h-3.5 w-3.5" />
-              19 Communities Across Anne Arundel County
+              Baltimore City Neighborhoods + Communities Across the Baltimore Area
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
-              Outdoor Construction in{" "}
-              <span className="text-brand">Anne Arundel County</span>
+              Painting and Remodeling Throughout{" "}
+              <span className="text-white">the Baltimore Area</span>
             </h1>
             <p className="text-white/70 text-lg md:text-xl mb-8 max-w-2xl leading-relaxed">
-              Based in Millersville, Backyard Bobby&apos;s serves homeowners
-              across Anne Arundel County with licensed, professional outdoor
-              construction — from waterfront Annapolis to growing Odenton and
-              everywhere in between.
+              Based in Baltimore, Elite Finishes serves homeowners across
+              Baltimore City, Baltimore County, Anne Arundel County, and Howard
+              County with licensed, professional painting and remodeling services.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <CTAButton href="/contact" size="lg">
@@ -83,26 +82,25 @@ export default function AreasPage() {
         <div className="grid gap-12 lg:grid-cols-2 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl mb-4">
-              Based Here. Building Here.
+              Based Here. Working Here.
             </h2>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-              We&apos;re not a national chain dispatching unknown subcontractors.
-              Bobby lives in Millersville and works across Anne Arundel County
-              every day. We know the soil conditions, HOA rules, Critical Area
-              regulations, and permit requirements in every community we serve —
-              because we&apos;ve built in all of them.
+              We are not a national chain dispatching unknown subcontractors.
+              Our team lives and works in Baltimore. We know the housing stock,
+              HOA requirements, permit processes, and local building conditions
+              in every community we serve, because we work in all of them every week.
             </p>
             <ul className="space-y-3">
               {[
-                "Licensed Maryland Home Improvement Contractor — " + SITE.license,
-                "Fully insured with general liability coverage",
-                "Familiar with local permit, HOA, and Critical Area requirements",
-                "We return calls quickly — usually same day",
-                "Clean job sites, minimal disruption to your neighbors",
-                "Equipment and crew based in Millersville — fast mobilization anywhere in the county",
+                "Licensed Maryland Home Improvement Contractor " + SITE.license,
+                "Women's Business Enterprise " + SITE.license2,
+                "Fully insured with general liability and workers' compensation coverage",
+                "Familiar with local permit, HOA, and county requirements",
+                "We return calls quickly, usually the same business day",
+                "Clean job sites with minimal disruption to your home and neighbors",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-brand flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="h-5 w-5 text-brand-green flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-foreground/80">{item}</span>
                 </li>
               ))}
@@ -111,7 +109,7 @@ export default function AreasPage() {
           <div className="bg-warm-bg rounded-2xl p-8 border border-border/30">
             <h3 className="text-xl font-bold mb-4">Ready to Start?</h3>
             <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
-              Tell us your city and what you need. We&apos;ll set up a free,
+              Tell us your city and what you need. We will schedule a free,
               no-pressure estimate at your property.
             </p>
             <div className="space-y-3">
@@ -136,7 +134,7 @@ export default function AreasPage() {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4">Find Your Community</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Click your city to see local project details, permit info, FAQs,
+            Click your city to see local project details, permit information, FAQs,
             and get a free estimate specific to your area.
           </p>
         </div>
@@ -175,21 +173,21 @@ export default function AreasPage() {
       <Section>
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl mb-4">
-            Services Available County-Wide
+            Services Available Throughout Our Service Area
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Every service we offer is available in all 19 communities. Same
+            Every service we offer is available in every community we serve. Same
             licensed crew, same quality materials, same guarantee.
           </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { title: "Gravel Pads & Shed Foundations", desc: "Solid bases for sheds, garages, and outdoor structures.", href: "/services/gravel-pads-and-concrete-foundations" },
-            { title: "Excavation & Site Prep", desc: "Professional grading, clearing, and site work.", href: "/services/excavation-and-demolition" },
-            { title: "Driveway Installation", desc: "Durable driveways built to handle Maryland weather.", href: "/services/driveway-installation" },
-            { title: "Decks", desc: "Custom wood and composite decks for outdoor living.", href: "/services/decks" },
-            { title: "Hardscaping & Patios", desc: "Patios, walkways, and retaining walls.", href: "/services/hardscaping" },
-            { title: "Fencing", desc: "Privacy, wood, vinyl, and aluminum fencing.", href: "/services/fencing" },
+            { title: "Interior Painting", desc: "Premium interior painting with meticulous prep and lasting results.", href: "/services/interior-painting" },
+            { title: "Exterior Painting", desc: "Full exterior painting with power washing, caulking, and premium coatings.", href: "/services/exterior-painting" },
+            { title: "Kitchen Remodeling", desc: "Complete kitchen transformations from cabinets to countertops and tile.", href: "/services/kitchen-remodeling" },
+            { title: "Bathroom Remodeling", desc: "Full bathroom renovations including tile, vanities, and painting.", href: "/services/bathroom-remodeling" },
+            { title: "Flooring", desc: "Hardwood, LVP, tile, and carpet installation and refinishing.", href: "/services/flooring" },
+            { title: "Home Remodeling", desc: "Whole-home and multi-room renovations from start to finish.", href: "/services/home-remodeling" },
           ].map((service) => (
             <Link
               key={service.href}
@@ -214,12 +212,12 @@ export default function AreasPage() {
       <section className="bg-primary text-white py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl mb-4">
-            Don&apos;t See Your City?
+            Do Not See Your City?
           </h2>
           <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
-            We serve homeowners throughout Anne Arundel County and select areas
-            nearby. Give us a call — if you&apos;re within 30 miles of
-            Millersville, there&apos;s a good chance we can help.
+            We serve homeowners throughout the Baltimore metro area and select
+            surrounding communities. Give us a call and we will let you know if
+            your location is within our service area.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">
             <CTAButton href="/contact" size="lg">

@@ -31,7 +31,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.description,
       type: "article",
       publishedTime: post.date,
-      images: [{ url: post.image }],
+      url: `${SITE.url}/blog/${slug}`,
+      images: [
+        {
+          url: `${SITE.url}/api/og?title=${encodeURIComponent(post.title)}&subtitle=Elite+Finishes+Blog&badge=${encodeURIComponent(post.category)}`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
   };
 }
@@ -213,16 +221,15 @@ export default async function BlogPostPage({ params }: Props) {
           {/* Author Bio */}
           <div className="mt-10 flex items-start gap-4 p-6 rounded-2xl bg-warm-bg border border-border/30">
             <div className="flex-shrink-0 h-14 w-14 rounded-full bg-gradient-to-br from-brand to-brand-dark flex items-center justify-center text-white font-bold text-xl">
-              B
+              EF
             </div>
             <div>
-              <p className="font-bold text-sm">Bobby</p>
-              <p className="text-xs text-muted-foreground mb-2">Owner & Lead Contractor at Backyard Bobby&apos;s</p>
+              <p className="font-bold text-sm">Elite Finishes Team</p>
+              <p className="text-xs text-muted-foreground mb-2">Licensed Contractors at Elite Finishes</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Bobby is a licensed outdoor construction contractor (MHIC #05-163777) based in Millersville, Maryland.
-                He and his crew have completed hundreds of projects across 19 Anne Arundel County communities — from
-                gravel pads and patios to full deck builds and accessory dwelling units. When he&apos;s not on a job site,
-                he writes about what Maryland homeowners should know before starting their next outdoor project.
+                Elite Finishes is a licensed painting and home remodeling company ({SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County, Maryland.
+                Our team has completed hundreds of interior and exterior painting, kitchen, bathroom, flooring, and full remodeling projects throughout the Baltimore metro area.
+                We write about what Maryland homeowners should know before starting their next home improvement project.
               </p>
             </div>
           </div>
@@ -233,8 +240,7 @@ export default async function BlogPostPage({ params }: Props) {
               Ready to Get Started on Your {post.relatedService} Project?
             </h3>
             <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-              We provide free estimates for all {post.relatedService.toLowerCase()} projects in Anne
-              Arundel County and surrounding areas.
+              We provide free estimates for all {post.relatedService.toLowerCase()} projects in Baltimore and surrounding Maryland communities.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
               <CTAButton href="/contact" size="lg">

@@ -6,9 +6,10 @@ import Image from "next/image";
 import { Menu, X, Phone, ChevronDown, MessageSquare } from "lucide-react";
 import { NAV_LINKS, PRIMARY_SERVICES, CITY_DATA, SITE } from "@/lib/constants";
 import { CTAButton } from "@/components/shared/CTAButton";
+import { FlagStripe } from "@/components/shared/FlagStripe";
 
 const FEATURED_CITIES = CITY_DATA.filter((c) =>
-  ["annapolis", "severna-park", "arnold", "crofton", "millersville", "glen-burnie", "odenton", "pasadena"].includes(c.slug)
+  ["baltimore", "towson", "catonsville", "ellicott-city", "columbia", "annapolis", "glen-burnie", "owings-mills"].includes(c.slug)
 );
 
 export function Header() {
@@ -19,12 +20,13 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.04)]">
+        <FlagStripe />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-22 sm:h-24 md:h-26 lg:h-28 items-center justify-between">
             <Link href="/" className="flex items-center gap-2 flex-shrink-0">
               <Image
                 src="/images/logo.png"
-                alt="Backyard Bobby's Logo"
+                alt="Elite Finishes Logo"
                 width={300}
                 height={112}
                 className="h-20 md:h-22 lg:h-24 w-auto"
@@ -38,7 +40,7 @@ export function Header() {
                   <div key={link.label} className="relative group">
                     <Link
                       href={link.href}
-                      className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/70 hover:text-brand transition-colors rounded-md"
+                      className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/70 hover:text-brand-green transition-colors rounded-md"
                     >
                       {link.label}
                       <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
@@ -49,7 +51,7 @@ export function Header() {
                           <Link
                             key={service.slug}
                             href={`/services/${service.slug}`}
-                            className="block px-4 py-2.5 text-sm text-foreground/70 hover:text-brand hover:bg-warm-bg transition-colors"
+                            className="block px-4 py-2.5 text-sm text-foreground/70 hover:text-brand-green hover:bg-warm-bg transition-colors"
                           >
                             {service.title}
                           </Link>
@@ -83,9 +85,9 @@ export function Header() {
                         <div className="mx-4 mt-2 pt-2 border-t border-border/30">
                           <Link
                             href="/areas"
-                            className="text-xs font-semibold text-brand hover:underline"
+                            className="text-xs font-semibold text-brand-green hover:underline"
                           >
-                            View all 19 service areas →
+                            View all 28 service areas →
                           </Link>
                         </div>
                       </div>
@@ -119,14 +121,14 @@ export function Header() {
                 <Phone className="h-4 w-4" />
                 {SITE.phone}
               </a>
-              <CTAButton href="/contact" size="default">
+              <CTAButton href="/contact" size="default" variant="primaryGreen">
                 Free Estimate
               </CTAButton>
             </div>
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2.5 rounded-lg bg-orange-500 text-white hover:bg-orange-600 min-h-[44px] min-w-[44px] flex items-center justify-center shadow-sm"
+              className="lg:hidden p-2.5 rounded-lg bg-gradient-to-br from-brand-green to-brand-green-dark text-white hover:opacity-90 min-h-[44px] min-w-[44px] flex items-center justify-center shadow-sm"
               aria-label="Toggle navigation"
             >
               {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

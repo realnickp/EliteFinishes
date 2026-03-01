@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import {
   MapPin,
@@ -41,7 +42,19 @@ export async function generateMetadata({
   return {
     title,
     description,
-    openGraph: { title, description },
+    openGraph: {
+      title,
+      description,
+      url: `${SITE.url}/areas/${city.slug}`,
+      images: [
+        {
+          url: `${SITE.url}/api/og?title=${encodeURIComponent(`Painting & Remodeling in ${city.name}, MD`)}&subtitle=${encodeURIComponent(city.county)}`,
+          width: 1200,
+          height: 630,
+          alt: `Painting and Remodeling in ${city.name}, MD | Elite Finishes`,
+        },
+      ],
+    },
     alternates: { canonical: `${SITE.url}/areas/${city.slug}` },
   };
 }
@@ -162,7 +175,7 @@ export default async function CityPage({
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <ScrollReveal direction="up" delay={0.1}>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand/15 border border-brand/30 text-brand text-xs font-semibold mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-green/15 border border-brand-green/40 text-brand-green text-xs font-semibold mb-6">
                 <MapPin className="h-3.5 w-3.5" />
                 {city.name}, {city.county}
               </div>
@@ -180,20 +193,20 @@ export default async function CityPage({
                     {[1, 2, 3, 4, 5].map((i) => (
                       <Star
                         key={i}
-                        className="h-4 w-4 fill-brand text-brand"
+                        className="h-4 w-4 fill-white text-white"
                       />
                     ))}
                   </div>
                   <span className="text-sm text-white/60">5-Star Rated</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-brand" />
+                  <Clock className="h-4 w-4 text-white" />
                   <span className="text-sm text-white/60">
                     Fast call-backs
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Shield className="h-4 w-4 text-brand" />
+                  <Shield className="h-4 w-4 text-white" />
                   <span className="text-sm text-white/60">
                     Licensed {SITE.license}
                   </span>
@@ -236,11 +249,18 @@ export default async function CityPage({
           <ScrollReveal>
           <div>
             <h2 className="text-3xl md:text-4xl mb-4">
-              Why {city.name} Homeowners Choose Bobby
+              Why {city.name} Homeowners Choose Us
             </h2>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
               {city.localDescription}
             </p>
+            {city.factNugget && (
+              <aside className="bg-brand-green/5 border-l-4 border-brand-green rounded-r-lg p-4 mb-6">
+                <p className="text-sm text-foreground/80 leading-relaxed font-medium">
+                  {city.factNugget}
+                </p>
+              </aside>
+            )}
             <div className="bg-warm-bg rounded-2xl p-6 border border-border/30">
               <h3 className="font-bold text-sm uppercase tracking-wide text-brand mb-3 flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
@@ -310,10 +330,12 @@ export default async function CityPage({
               className="group relative overflow-hidden rounded-2xl bg-white border border-border/40 hover:border-brand/40 hover:shadow-lg transition-all block h-full"
             >
               <div className="aspect-[4/3] relative">
-                <img
+                <Image
                   src={service.image}
                   alt={service.title}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <h3 className="absolute bottom-4 left-4 right-4 font-bold text-white text-lg">
@@ -349,7 +371,7 @@ export default async function CityPage({
             Full Service List for {city.name}
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Every outdoor construction service we offer is available in{" "}
+            Every painting and remodeling service we offer is available in{" "}
             {city.name} and throughout {city.county}.
           </p>
         </div>
@@ -453,7 +475,7 @@ export default async function CityPage({
               We Also Serve Areas Near {city.name}
             </h2>
             <p className="text-muted-foreground">
-              Outdoor construction available throughout {city.county} and
+              Painting and remodeling available throughout {city.county} and
               surrounding communities.
             </p>
           </div>
@@ -497,7 +519,7 @@ export default async function CityPage({
           <ScrollReveal delay={0.15}>
           <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
             Get a free, no-pressure estimate from a licensed contractor who
-            shows up on time and does what he says.
+            shows up on time and delivers what we promise.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">
             <CTAButton href="/contact" size="lg">
@@ -520,10 +542,7 @@ export default async function CityPage({
             </a>
           </div>
           <p className="text-white/40 text-sm mt-6">
-            Estimates are always free.{" "}
-            <a href="/financing" className="underline hover:text-brand transition-colors">
-              Financing available
-            </a>
+            Estimates are always free.
           </p>
           </ScrollReveal>
         </div>

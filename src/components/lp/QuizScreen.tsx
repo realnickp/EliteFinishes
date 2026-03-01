@@ -46,7 +46,7 @@ export function QuizScreen({
       {/* Top bar */}
       <div className="bg-primary text-primary-foreground py-2.5 px-4 shrink-0">
         <div className="mx-auto max-w-2xl flex items-center justify-between">
-          <span className="text-sm font-bold">Backyard Bobby&apos;s</span>
+          <span className="text-sm font-bold">{SITE.name}</span>
           <a
             href={SITE.phoneTel}
             className="flex items-center gap-1.5 text-sm font-bold hover:opacity-80 transition-opacity"

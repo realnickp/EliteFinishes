@@ -3,8 +3,8 @@ import { Section } from "@/components/shared/Section";
 import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions | Backyard Bobby's",
-  description: `Terms and Conditions for all services provided by Backyard Bobby's LLC, a Maryland-licensed Home Improvement Contractor (MHIC # 05-163777).`,
+  title: `Terms and Conditions | ${SITE.name}`,
+  description: `Terms and Conditions for all services provided by ${SITE.name}, a Maryland-licensed Home Improvement Contractor (${SITE.license}).`,
   alternates: { canonical: `${SITE.url}/terms` },
 };
 
@@ -22,27 +22,26 @@ export default function TermsPage() {
         <div className="mx-auto max-w-4xl space-y-10">
 
           <p className="text-muted-foreground leading-relaxed">
-            These Terms and Conditions (&ldquo;Terms&rdquo;) govern all services provided by Backyard Bobbys LLC
+            These Terms and Conditions (&ldquo;Terms&rdquo;) govern all services provided by {SITE.name}
             (&ldquo;Company,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;), a Maryland-licensed
-            Home Improvement Contractor (MHIC # 05-163777). By engaging our services, requesting an estimate, or
+            Home Improvement Contractor (MHIC {SITE.license}). By engaging our services, requesting an estimate, or
             making a payment, you (&ldquo;Client,&rdquo; &ldquo;you,&rdquo; or &ldquo;your&rdquo;) agree to these
             Terms. We reserve the right to update these Terms at any time, with notice provided via email or our
-            website (backyardbobbys.com). Continued use of our services constitutes acceptance of changes.
+            website ({SITE.domain}). Continued use of our services constitutes acceptance of changes.
           </p>
 
           <div>
             <h2 className="text-2xl font-bold mb-3">1. Services</h2>
             <div className="space-y-3 text-muted-foreground leading-relaxed">
               <p>
-                We provide site preparation (e.g., gravel pads, foundations), fencing services (installations,
-                removal, reinstallation), hardscaping, concrete solutions (stamped and unstamped slabs, driveways,
-                asphalt), demolition, permit expediting, ADU/additions, and related backyard improvement services
-                in Maryland.
+                We provide interior painting, exterior painting, kitchen remodeling, bathroom remodeling, home
+                remodeling, basement finishing, flooring installation and refinishing, siding installation, roofing,
+                concrete and masonry work, deck building, commercial painting and renovation, and related home
+                improvement services throughout the Baltimore metropolitan area in Maryland.
               </p>
               <p>
-                All services are described in your estimate or contract. We may subcontract portions (e.g., stamped
-                concrete or permits) to qualified professionals, but we remain responsible for overall quality and
-                compliance.
+                All services are described in your estimate or contract. We may subcontract portions to qualified
+                professionals, but we remain responsible for overall quality and compliance.
               </p>
               <p>
                 Services are performed in accordance with Maryland law and MHIC regulations. Customizations or
@@ -137,9 +136,7 @@ export default function TermsPage() {
                 our discretion; no cash refunds.
               </p>
               <p>
-                No warranty for client-provided materials, misuse, normal wear, or acts of God. For concrete
-                services, we do not guarantee against cracking, which can occur due to natural settling, weather
-                changes, soil conditions, or other factors beyond our control.
+                No warranty for client-provided materials, misuse, normal wear, or acts of God.
               </p>
               <p>
                 Services provided &ldquo;as is&rdquo; except as stated; no implied warranties beyond MHIC
@@ -156,8 +153,8 @@ export default function TermsPage() {
                 (e.g., lost profits, property damage from client negligence).
               </p>
               <p>
-                We carry general liability insurance; proof available upon request. You are responsible for your
-                property insurance.
+                We carry general liability insurance and workers&apos; compensation; proof available upon request.
+                You are responsible for your property insurance.
               </p>
               <p>
                 You agree to indemnify us against claims arising from your provided information or site conditions.
@@ -176,7 +173,7 @@ export default function TermsPage() {
                 responsible for compliance.
               </p>
               <p>
-                Secure valuables and pets during work; we are not liable for loss/damage.
+                Secure valuables and pets during work; we are not liable for loss or damage.
               </p>
             </div>
           </div>
@@ -189,7 +186,7 @@ export default function TermsPage() {
                 Maryland before arbitration or court.
               </p>
               <p>
-                Governing law: Maryland. Venue: Anne Arundel County.
+                Governing law: Maryland. Venue: Baltimore City or Baltimore County.
               </p>
             </div>
           </div>
@@ -199,12 +196,13 @@ export default function TermsPage() {
             <div className="space-y-3 text-muted-foreground leading-relaxed">
               <p>
                 We collect personal data (e.g., name, address) for services and marketing. We protect it per
-                privacy laws; no sharing without consent except as required (e.g., subcontractors).
+                privacy laws; no sharing without consent except as required (e.g., subcontractors). See our full
+                Privacy Policy at {SITE.url}/privacy-policy.
               </p>
               <p>
-                Opt out of marketing via email to{" "}
-                <a href="mailto:robert@backyardbobbys.com" className="text-brand hover:underline">
-                  robert@backyardbobbys.com
+                Opt out of marketing communications at any time by contacting us at{" "}
+                <a href={`mailto:info@${SITE.domain}`} className="text-brand hover:underline">
+                  info@{SITE.domain}
                 </a>.
               </p>
             </div>
@@ -218,11 +216,11 @@ export default function TermsPage() {
                 strikes).
               </p>
               <p>
-                <strong>Entire agreement:</strong> These Terms, plus your contract/estimate, supersede prior
+                <strong>Entire agreement:</strong> These Terms, plus your contract or estimate, supersede prior
                 discussions.
               </p>
               <p>
-                <strong>Severability:</strong> Invalid provisions don&apos;t affect others.
+                <strong>Severability:</strong> Invalid provisions do not affect others.
               </p>
             </div>
           </div>
@@ -230,11 +228,13 @@ export default function TermsPage() {
           <div className="border-t border-border pt-8">
             <h2 className="text-2xl font-bold mb-3">Contact</h2>
             <p className="text-muted-foreground leading-relaxed">
-              For questions about these Terms, contact Robert Burchell:
+              For questions about these Terms, please contact us:
             </p>
             <ul className="list-none mt-3 space-y-1 text-muted-foreground">
-              <li>Phone: <a href="tel:+14438758550" className="text-brand hover:underline">443-875-8550</a></li>
-              <li>Email: <a href="mailto:robert@backyardbobbys.com" className="text-brand hover:underline">robert@backyardbobbys.com</a></li>
+              <li><strong>{SITE.name}</strong></li>
+              <li>{SITE.address.street}, {SITE.address.city}, {SITE.address.state} {SITE.address.zip}</li>
+              <li>Phone: <a href={SITE.phoneTel} className="text-brand hover:underline">{SITE.phone}</a></li>
+              <li>Email: <a href={`mailto:info@${SITE.domain}`} className="text-brand hover:underline">info@{SITE.domain}</a></li>
             </ul>
           </div>
 

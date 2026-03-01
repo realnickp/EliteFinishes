@@ -3,8 +3,8 @@ import { Section } from "@/components/shared/Section";
 import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Backyard Bobby's",
-  description: `Privacy Policy for Backyard Bobby's LLC. Learn how we collect, use, store, and protect your personal information.`,
+  title: `Privacy Policy | ${SITE.name}`,
+  description: `Privacy Policy for ${SITE.name}. Learn how we collect, use, store, and protect your personal information.`,
   alternates: { canonical: `${SITE.url}/privacy-policy` },
 };
 
@@ -22,10 +22,10 @@ export default function PrivacyPolicyPage() {
         <div className="mx-auto max-w-4xl space-y-10">
 
           <p className="text-muted-foreground leading-relaxed">
-            Backyard Bobbys LLC (&ldquo;Company,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;),
-            a Maryland-licensed Home Improvement Contractor (MHIC # 05-163777), is committed to protecting your
+            {SITE.name} (&ldquo;Company,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;),
+            a Maryland-licensed Home Improvement Contractor (MHIC {SITE.license}), is committed to protecting your
             privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information
-            when you visit our website (backyardbobbys.com), use our chatbot, submit forms, or otherwise engage
+            when you visit our website ({SITE.domain}), use our chatbot, submit forms, or otherwise engage
             with our services. By using our website or services, you consent to the practices described below.
           </p>
 
@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage() {
               <li>Project details, service preferences, desired timeframe, and budget range</li>
               <li>City, zip code, or other location information</li>
               <li>Photos you upload related to your project</li>
-              <li>Preferred stamped concrete style or material selections</li>
+              <li>Material or finish selections (paint colors, flooring type, tile style)</li>
               <li>Chat conversations with our virtual assistant (&ldquo;Max&rdquo;)</li>
               <li>Financing pre-qualification information submitted through our third-party partner (Wisetack)</li>
               <li>Any other information you choose to provide via forms, email, phone, or text</li>
@@ -89,8 +89,7 @@ export default function PrivacyPolicyPage() {
               </li>
               <li>
                 <strong>Subcontractors:</strong> Licensed professionals we engage to complete portions of your
-                project (e.g., stamped concrete specialists, permit expediters). Only project-relevant information
-                is shared.
+                project. Only project-relevant information is shared.
               </li>
               <li>
                 <strong>Financing partners:</strong> If you apply for financing through Wisetack, your
@@ -168,7 +167,6 @@ export default function PrivacyPolicyPage() {
               <ul className="list-disc pl-6 space-y-2">
                 <li><strong>Wisetack:</strong> Financing pre-qualification — <a href="https://www.wisetack.com/privacy" className="text-brand hover:underline" target="_blank" rel="noopener noreferrer">wisetack.com/privacy</a></li>
                 <li><strong>Google Maps:</strong> Embedded maps for service area display</li>
-                <li><strong>Calendly:</strong> Appointment scheduling</li>
                 <li><strong>OpenAI:</strong> Chatbot AI processing</li>
               </ul>
               <p>
@@ -192,12 +190,12 @@ export default function PrivacyPolicyPage() {
               </ul>
               <p>
                 To exercise any of these rights, contact us at{" "}
-                <a href="mailto:robert@backyardbobbys.com" className="text-brand hover:underline">
-                  robert@backyardbobbys.com
+                <a href={`mailto:info@${SITE.domain}`} className="text-brand hover:underline">
+                  info@{SITE.domain}
                 </a>{" "}
                 or call{" "}
-                <a href="tel:+14438758550" className="text-brand hover:underline">
-                  443-875-8550
+                <a href={SITE.phoneTel} className="text-brand hover:underline">
+                  {SITE.phone}
                 </a>. We will respond within 30 days.
               </p>
             </div>
@@ -225,13 +223,14 @@ export default function PrivacyPolicyPage() {
           <div className="border-t border-border pt-8">
             <h2 className="text-2xl font-bold mb-3">Contact Us</h2>
             <p className="text-muted-foreground leading-relaxed">
-              If you have questions about this Privacy Policy or our data practices, contact Robert Burchell:
+              If you have questions about this Privacy Policy or our data practices, please contact us:
             </p>
             <ul className="list-none mt-3 space-y-1 text-muted-foreground">
-              <li><strong>Backyard Bobby&apos;s LLC</strong></li>
-              <li>Phone: <a href="tel:+14438758550" className="text-brand hover:underline">443-875-8550</a></li>
-              <li>Email: <a href="mailto:robert@backyardbobbys.com" className="text-brand hover:underline">robert@backyardbobbys.com</a></li>
-              <li>Website: <a href="https://backyardbobbys.com" className="text-brand hover:underline">backyardbobbys.com</a></li>
+              <li><strong>{SITE.name}</strong></li>
+              <li>{SITE.address.street}, {SITE.address.city}, {SITE.address.state} {SITE.address.zip}</li>
+              <li>Phone: <a href={SITE.phoneTel} className="text-brand hover:underline">{SITE.phone}</a></li>
+              <li>Email: <a href={`mailto:info@${SITE.domain}`} className="text-brand hover:underline">info@{SITE.domain}</a></li>
+              <li>Website: <a href={SITE.url} className="text-brand hover:underline">{SITE.domain}</a></li>
             </ul>
           </div>
 

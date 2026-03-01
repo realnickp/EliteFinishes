@@ -5,11 +5,16 @@ import { LeadForm } from "@/components/shared/LeadForm";
 
 export const metadata: Metadata = {
   title: `Get a Free Estimate | ${SITE.name}`,
-  description: `Request a free outdoor construction estimate in Anne Arundel County, MD. No commitment. Backyard Bobby's responds within one business day. Call ${SITE.phone}.`,
+  description: `Request a free painting or remodeling estimate in Baltimore, MD. No commitment. ${SITE.name} responds within one business day. Call ${SITE.phone}.`,
   alternates: { canonical: `${SITE.url}/quote` },
   openGraph: {
     title: `Get a Free Estimate | ${SITE.name}`,
-    description: `Free, no-pressure estimates for outdoor construction in Maryland. Licensed ${SITE.license}.`,
+    description: `Free, no-pressure estimates for painting and remodeling in Maryland. Licensed ${SITE.license}.`,
+    images: [{
+      url: `${SITE.url}/api/og?title=Get+a+Free+Estimate&subtitle=No+Obligation+%E2%80%93+Baltimore%2C+MD`,
+      width: 1200, height: 630,
+      alt: "Get a Free Estimate from Elite Finishes",
+    }],
   },
 };
 
@@ -17,7 +22,7 @@ const TRUST_POINTS = [
   { icon: Clock, title: "Fast Response", desc: "We call or text you back within one business day — usually much sooner." },
   { icon: Shield, title: "Licensed & Insured", desc: `Maryland Home Improvement Contractor ${SITE.license} with full liability coverage.` },
   { icon: CheckCircle, title: "Free, No Pressure", desc: "Your estimate costs nothing and comes with zero obligation to proceed." },
-  { icon: Star, title: "5-Star Rated", desc: "Trusted by homeowners across Anne Arundel County and greater Maryland." },
+  { icon: Star, title: "5-Star Rated", desc: "Trusted by homeowners across Baltimore and greater Maryland." },
 ];
 
 export default function QuotePage() {
@@ -25,7 +30,7 @@ export default function QuotePage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Get a Free Estimate",
-    description: `Request a free outdoor construction estimate from ${SITE.name}.`,
+    description: `Request a free painting or remodeling estimate from ${SITE.name}.`,
     url: `${SITE.url}/quote`,
     mainEntity: {
       "@type": "HomeAndConstructionBusiness",
@@ -34,7 +39,7 @@ export default function QuotePage() {
       priceRange: "$$",
       areaServed: {
         "@type": "AdministrativeArea",
-        name: "Anne Arundel County, Maryland",
+        name: "Baltimore, Maryland",
       },
     },
   };
@@ -49,7 +54,7 @@ export default function QuotePage() {
       <div className="bg-primary text-white py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl md:text-4xl lg:text-5xl mb-3">
-            Get Your <span className="text-brand">Free Estimate</span>
+            Get Your <span className="text-white">Free Estimate</span>
           </h1>
           <p className="text-white/70 text-lg max-w-xl mx-auto">
             Tell us about your project. We respond within one business day and your
@@ -107,7 +112,7 @@ export default function QuotePage() {
                 {TRUST_POINTS.map((point) => (
                   <div key={point.title} className="flex gap-4">
                     <div className="flex-shrink-0 h-10 w-10 rounded-xl bg-brand/10 flex items-center justify-center">
-                      <point.icon className="h-5 w-5 text-brand" />
+                      <point.icon className="h-5 w-5 text-brand-green" />
                     </div>
                     <div>
                       <p className="font-semibold text-sm mb-0.5">{point.title}</p>
@@ -145,7 +150,7 @@ export default function QuotePage() {
                   "You receive a clear, written estimate with no surprises.",
                 ].map((step, i) => (
                   <li key={i} className="flex gap-3 items-start">
-                    <span className="flex-shrink-0 h-6 w-6 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center mt-0.5">
+                    <span className="flex-shrink-0 h-6 w-6 rounded-full bg-brand-green text-white text-xs font-bold flex items-center justify-center mt-0.5">
                       {i + 1}
                     </span>
                     <span className="text-sm text-foreground/80">{step}</span>

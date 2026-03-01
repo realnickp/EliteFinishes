@@ -32,13 +32,14 @@ export function LpLeadForm({ service }: LpLeadFormProps) {
   function detectSource() {
     const src = utmSource.toLowerCase();
     const med = utmMedium.toLowerCase();
+    let platform = "";
     if (src.includes("facebook") || src.includes("fb") || src === "ig" || fbclid) {
-      return "facebook_ads";
+      platform = "facebook_ads";
+    } else if (src.includes("google") || med === "cpc" || med === "ppc") {
+      platform = "google_ads";
     }
-    if (src.includes("google") || med === "cpc" || med === "ppc") {
-      return "google_ads";
-    }
-    return utmSource || "landing_page";
+    const label = `lp_form:${service}`;
+    return platform ? `${platform}:${label}` : label;
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -92,7 +93,7 @@ export function LpLeadForm({ service }: LpLeadFormProps) {
         <CheckCircle className="h-16 w-16 text-brand mb-4" />
         <h3 className="text-2xl font-bold mb-2">You&apos;re All Set!</h3>
         <p className="text-muted-foreground mb-6 max-w-xs">
-          Bobby&apos;s team received your request. We&apos;ll call or text you within one business day.
+          Our team received your request. We will call or text you within one business day.
         </p>
         <a
           href={SITE.phoneTel}
