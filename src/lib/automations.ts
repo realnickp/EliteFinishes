@@ -188,7 +188,7 @@ export async function sendEmail(
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ from: `${SITE.name} <${fromEmail}>`, to, subject, html }),
+      body: JSON.stringify({ from: `${SITE.name} <${fromEmail}>`, reply_to: SITE.email, to, subject, html }),
     });
 
     const data = await response.json();
