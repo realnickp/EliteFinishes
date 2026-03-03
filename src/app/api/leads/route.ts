@@ -308,7 +308,7 @@ export async function POST(request: NextRequest) {
       }
 
       // Notify team via email
-      const TEAM_EMAILS = ["realnickpatrick@gmail.com", "elitefinishedmd@gmail.com"];
+      const TEAM_EMAILS = ["realnickpatrick@gmail.com", "Elitefinishesmd@gmail.com"];
       const leadNotifHtml = `
         <h2>New Lead Received</h2>
         <table style="border-collapse:collapse;width:100%;max-width:500px;">

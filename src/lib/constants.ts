@@ -4,7 +4,7 @@ export const SITE = {
   phone: "443-825-0206",
   phoneTel: "tel:+14438250206",
   phoneSms: "sms:+14438250206",
-  email: "elitefinishedmd@gmail.com",
+  email: "Elitefinishesmd@gmail.com",
   license: "MHIC 153498",
   license2: "WBME 22380085",
   domain: "elitefinishesmaryland.com",
