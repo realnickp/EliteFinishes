@@ -289,25 +289,26 @@ export async function POST(request: NextRequest) {
     }
     if (data) leadId = data.id;
 
-    // Fire welcome automation (async — don't block the response)
+    // ── Send all emails and SMS, awaiting completion so Vercel doesn't kill them ──
     if (leadId && phone) {
       const ctx = { leadId, leadName: name, leadPhone: phone, leadEmail: email, leadService: service };
-      sendSMS(phone, SMS_TEMPLATES.welcome_sms(ctx)).catch(console.error);
+
+      const emailPromises: Promise<unknown>[] = [];
+
+      // Welcome email to the lead
       if (email) {
+        console.log("[WELCOME EMAIL] Sending to:", email);
         const tmpl = EMAIL_TEMPLATES.welcome_email(ctx);
-        sendEmail(email, tmpl.subject, tmpl.html).catch(console.error);
-      }
-      // Notify team immediately via SMS
-      const adminPhone = env.adminPhone;
-      if (adminPhone) {
-        const scoreLabel = priority === "hot" ? "🔥 HOT" : priority === "warm" ? "⚡ WARM" : "📋";
-        sendSMS(
-          adminPhone,
-          `${scoreLabel} NEW LEAD (${score}pts): ${name} · ${service} · ${phone} · ${cityOrZip}`
-        ).catch(console.error);
+        emailPromises.push(
+          sendEmail(email, tmpl.subject, tmpl.html)
+            .then((r) => console.log("[WELCOME EMAIL] Result:", JSON.stringify(r)))
+            .catch((err) => console.error("[WELCOME EMAIL] Error:", err))
+        );
+      } else {
+        console.log("[WELCOME EMAIL] Skipped — email is empty. Raw body.email:", JSON.stringify(body.email));
       }
 
-      // Notify team via email
+      // Team notification emails
       const TEAM_EMAILS = ["realnickpatrick@gmail.com", "Elitefinishesmd@gmail.com"];
       const leadNotifHtml = `
         <h2>New Lead Received</h2>
@@ -324,7 +325,25 @@ export async function POST(request: NextRequest) {
       `;
       const scoreEmoji = priority === "hot" ? "🔥" : priority === "warm" ? "⚡" : "📋";
       for (const teamEmail of TEAM_EMAILS) {
-        sendEmail(teamEmail, `${scoreEmoji} New Lead: ${name} — ${service}`, leadNotifHtml).catch(console.error);
+        emailPromises.push(
+          sendEmail(teamEmail, `${scoreEmoji} New Lead: ${name} — ${service}`, leadNotifHtml)
+            .then((r) => console.log("[TEAM EMAIL]", teamEmail, "Result:", JSON.stringify(r)))
+            .catch((err) => console.error("[TEAM EMAIL]", teamEmail, "Error:", err))
+        );
+      }
+
+      // Wait for ALL emails to finish before returning — prevents Vercel from killing the function
+      await Promise.allSettled(emailPromises);
+
+      // SMS notifications (non-critical, fire-and-forget is fine)
+      sendSMS(phone, SMS_TEMPLATES.welcome_sms(ctx)).catch(console.error);
+      const adminPhone = env.adminPhone;
+      if (adminPhone) {
+        const scoreLabel = priority === "hot" ? "🔥 HOT" : priority === "warm" ? "⚡ WARM" : "📋";
+        sendSMS(
+          adminPhone,
+          `${scoreLabel} NEW LEAD (${score}pts): ${name} · ${service} · ${phone} · ${cityOrZip}`
+        ).catch(console.error);
       }
     }
 
