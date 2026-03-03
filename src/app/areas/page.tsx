@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     siteName: "Elite Finishes",
     title: `Service Areas | ${SITE.name}`,
     description: `Professional painting and remodeling in Baltimore City neighborhoods and Baltimore area communities. Free estimates. Call ${SITE.phone}.`,
-    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
 };
 

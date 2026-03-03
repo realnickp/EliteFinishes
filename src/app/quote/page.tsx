@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     siteName: "Elite Finishes",
     title: `Get a Free Estimate | ${SITE.name}`,
     description: `Free, no-pressure estimates for painting and remodeling in Maryland. Licensed ${SITE.license}.`,
-    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
 };
 

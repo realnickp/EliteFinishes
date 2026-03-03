@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
       "Commercial painting and renovation services in Baltimore and surrounding Maryland counties. Offices, retail, and multi-unit properties. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/commercial-services`,
-    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/commercial-services` },
 };

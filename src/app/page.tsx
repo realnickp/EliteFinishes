@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: `${SITE.name} | Painting and Remodeling Contractor in Baltimore, MD`,
     description: `Licensed Baltimore painting and home remodeling contractor. Interior and exterior painting, kitchens, bathrooms, flooring, siding, decks, roofing. ${SITE.license}. Free estimates.`,
     url: SITE.url,
-    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: SITE.url },
 };

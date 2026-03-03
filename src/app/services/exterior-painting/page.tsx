@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
       "Expert exterior painting for Baltimore area homes. Power washing, caulking, priming, and premium coatings that stand up to Maryland weather. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/exterior-painting`,
-    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/exterior-painting` },
 };

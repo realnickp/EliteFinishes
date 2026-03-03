@@ -113,7 +113,7 @@ export async function GET(request: NextRequest) {
         >
           <span style={{ marginRight: 16 }}>443-825-0206</span>
           <span style={{ marginRight: 16 }}>·</span>
-          <span>elitefinishespainting.com</span>
+          <span>elitefinishesmaryland.com</span>
         </div>
       </div>
     ),

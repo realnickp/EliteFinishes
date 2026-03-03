@@ -40,13 +40,13 @@ export const metadata: Metadata = {
     title: `Financing for Painting and Remodeling | ${SITE.name}`,
     description: `Flexible financing for Baltimore painting and remodeling through HFS Financial. Personal loans up to $300,000, terms up to 20 years, low fixed rates. Licensed ${SITE.license}.`,
     url: `${SITE.url}/financing`,
-    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Financing for Painting and Remodeling | ${SITE.name}`,
     description: `Personal home improvement loans up to $300,000 through HFS Financial. Fixed rates, terms up to 20 years, no home equity required. Licensed ${SITE.license}.`,
-    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/financing` },
 };

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
       "Whole-home and multi-room remodeling in Baltimore and surrounding Maryland counties. One licensed contractor for every phase. Free estimates.",
     url: `${SITE.url}/services/home-remodeling`,
-    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/home-remodeling` },
 };

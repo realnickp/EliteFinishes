@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
       "Professional interior painting in Baltimore and surrounding Maryland counties. Meticulous prep, premium paints, clean results that last. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/interior-painting`,
-    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/interior-painting` },
 };

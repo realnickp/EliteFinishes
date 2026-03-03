@@ -7,8 +7,8 @@ export const SITE = {
   email: "info@elitefinishespainting.com",
   license: "MHIC 153498",
   license2: "WBME 22380085",
-  domain: "elitefinishespainting.com",
-  url: "https://elitefinishespainting.com",
+  domain: "elitefinishesmaryland.com",
+  url: "https://www.elitefinishesmaryland.com",
   address: {
     street: "1601 Cuba Street",
     city: "Baltimore",

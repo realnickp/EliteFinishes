@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     siteName: "Elite Finishes",
     title: `Customer Reviews | ${SITE.name}`,
     description: "Real reviews from homeowners across the Baltimore metro area, Maryland.",
-    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
 };
 

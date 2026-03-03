@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
       "Expert roof repairs and replacements for Baltimore area homeowners. Licensed Maryland roofing contractor with warranty-backed installations. Free estimates.",
     url: `${SITE.url}/services/roofing`,
-    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/services/roofing` },
 };

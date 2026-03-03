@@ -11,8 +11,8 @@ export function LocalBusinessSchema() {
     email: SITE.email,
     url: SITE.url,
     sameAs: [
-      "https://www.facebook.com/elitefinishespainting",
-      "https://www.google.com/maps/place/Elite+Finishes+Painting",
+      "https://www.facebook.com/elitefinishesmaryland",
+      "https://www.google.com/maps/place/Elite+Finishes",
     ],
     address: {
       "@type": "PostalAddress",
