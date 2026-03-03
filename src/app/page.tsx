@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Hammer, Users, Clock, ThumbsUp, ShieldCheck, MessageSquare, Star, Award, MapPin } from "lucide-react";
+import { ArrowRight, Hammer, Users, Clock, ThumbsUp, ShieldCheck, MessageSquare, Star, Award, MapPin, DollarSign, Shield } from "lucide-react";
 import { Section } from "@/components/shared/Section";
 import { TrustBar } from "@/components/shared/TrustBar";
 import { ServiceCard } from "@/components/shared/ServiceCard";
@@ -371,6 +371,82 @@ export default function HomePage() {
         <ProcessSteps steps={PROCESS} />
         </ScrollReveal>
       </Section>
+
+      {/* ===== Financing CTA ===== */}
+      <section className="relative overflow-hidden py-16 md:py-20">
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-green-dark via-brand-green to-brand-green-dark" />
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div className="text-white">
+              <ScrollReveal>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 border border-white/30 text-white text-xs font-semibold mb-6">
+                <DollarSign className="h-3.5 w-3.5" />
+                Flexible Financing Available
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight mb-4">
+                Affordable Payments for Your Dream Remodel
+              </h2>
+              <p className="text-white/80 text-lg mb-6 leading-relaxed">
+                Through our partnership with HFS Financial, get personal home improvement
+                loans up to $300,000 with fixed rates, terms up to 20 years, and no home
+                equity required. Inquiring will not impact your credit score.
+              </p>
+              </ScrollReveal>
+              <ScrollReveal delay={0.15}>
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {[
+                  { label: "Rates as low as", value: "7.8%" },
+                  { label: "Terms up to", value: "20 yrs" },
+                  { label: "Loans up to", value: "$300K" },
+                  { label: "Funded in", value: "48 hrs" },
+                ].map((stat) => (
+                  <div key={stat.label} className="bg-white/10 rounded-xl px-4 py-3 backdrop-blur-sm border border-white/10">
+                    <p className="text-2xl font-display text-white">{stat.value}</p>
+                    <p className="text-xs text-white/60 mt-0.5">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <CTAButton href="/financing" size="lg" className="bg-white text-brand-green-dark hover:bg-white/90 border-0">
+                  Learn About Financing
+                  <ArrowRight className="h-5 w-5" />
+                </CTAButton>
+                <CTAButton href="/financing#apply" variant="outline-light" size="lg">
+                  Check Your Rate
+                </CTAButton>
+              </div>
+              </ScrollReveal>
+            </div>
+            <ScrollReveal direction="right">
+            <div className="hidden lg:block bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-8">
+              <h3 className="text-white text-xl font-bold mb-6">How It Works</h3>
+              <div className="space-y-6">
+                {[
+                  { step: "1", title: "Inquire Online", desc: "Quick form, no credit impact, same-day answers" },
+                  { step: "2", title: "Get Prequalified", desc: "View instant loan options or speak with a consultant" },
+                  { step: "3", title: "Verify and Get Funded", desc: "Upload docs, get funds within 48 hours of approval" },
+                ].map((item) => (
+                  <div key={item.step} className="flex gap-4 items-start">
+                    <div className="flex-shrink-0 h-10 w-10 rounded-full bg-white/20 flex items-center justify-center text-white font-bold">
+                      {item.step}
+                    </div>
+                    <div>
+                      <h4 className="text-white font-bold text-sm">{item.title}</h4>
+                      <p className="text-white/60 text-sm">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 pt-6 border-t border-white/10 flex items-center gap-2 text-xs text-white/50">
+                <Shield className="h-3.5 w-3.5" />
+                <span>Powered by HFS Financial &middot; Secure &amp; encrypted</span>
+              </div>
+            </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
 
       {/* ===== Testimonials (Featured + Grid) ===== */}
       <Section variant="warm">

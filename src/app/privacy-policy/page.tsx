@@ -43,7 +43,7 @@ export default function PrivacyPolicyPage() {
               <li>Photos you upload related to your project</li>
               <li>Material or finish selections (paint colors, flooring type, tile style)</li>
               <li>Chat conversations with our virtual assistant (&ldquo;Max&rdquo;)</li>
-              <li>Financing pre-qualification information submitted through our third-party partner (Wisetack)</li>
+              <li>Financing pre-qualification information submitted through our third-party partner (HFS Financial)</li>
               <li>Any other information you choose to provide via forms, email, phone, or text</li>
             </ul>
 
@@ -92,8 +92,8 @@ export default function PrivacyPolicyPage() {
                 project. Only project-relevant information is shared.
               </li>
               <li>
-                <strong>Financing partners:</strong> If you apply for financing through Wisetack, your
-                pre-qualification data is handled directly by Wisetack under their own privacy policy. We do not
+                <strong>Financing partners:</strong> If you apply for financing through HFS Financial, your
+                pre-qualification data is handled directly by HFS Financial under their own privacy policy. We do not
                 store your financial or credit information.
               </li>
               <li>
@@ -165,7 +165,7 @@ export default function PrivacyPolicyPage() {
                 Our website integrates with third-party services that have their own privacy policies:
               </p>
               <ul className="list-disc pl-6 space-y-2">
-                <li><strong>Wisetack:</strong> Financing pre-qualification — <a href="https://www.wisetack.com/privacy" className="text-brand hover:underline" target="_blank" rel="noopener noreferrer">wisetack.com/privacy</a></li>
+                <li><strong>HFS Financial:</strong> Financing pre-qualification — <a href="https://www.hfsfinancial.net/privacy-policy/" className="text-brand hover:underline" target="_blank" rel="noopener noreferrer">hfsfinancial.net/privacy-policy</a></li>
                 <li><strong>Google Maps:</strong> Embedded maps for service area display</li>
                 <li><strong>OpenAI:</strong> Chatbot AI processing</li>
               </ul>

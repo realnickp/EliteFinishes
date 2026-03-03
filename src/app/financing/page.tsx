@@ -9,6 +9,9 @@ import {
   Percent,
   CalendarCheck,
   FileText,
+  Banknote,
+  Home,
+  Zap,
 } from "lucide-react";
 import { SITE } from "@/lib/constants";
 import { Section } from "@/components/shared/Section";
@@ -19,21 +22,33 @@ import { FAQPageSchema } from "@/components/shared/SchemaOrg";
 
 export const metadata: Metadata = {
   title: `Financing for Painting and Remodeling Projects | ${SITE.name}`,
-  description: `Finance your painting or remodeling project in Baltimore with flexible payment plans through Wisetack. Prequalify in minutes with no impact to your credit score. Licensed contractor ${SITE.license}.`,
+  description: `Finance your painting or remodeling project in Baltimore with flexible payment plans through HFS Financial. Inquire in minutes with no impact to your credit score. Licensed contractor ${SITE.license}.`,
   openGraph: {
     siteName: "Elite Finishes",
     title: `Financing for Painting and Remodeling | ${SITE.name}`,
-    description: `Flexible financing for Baltimore painting and remodeling. Prequalify in minutes through Wisetack — no hard credit pull. Licensed ${SITE.license}.`,
+    description: `Flexible financing for Baltimore painting and remodeling through HFS Financial. Personal loans up to $300,000, terms up to 20 years, low fixed rates. Licensed ${SITE.license}.`,
     images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/financing` },
 };
 
+const HFS_PROMO_URL = "https://www.hfsfinancial.net/promo/6706b64ac3bb21107c7cdafb/";
+const HFS_APPLY_URL = "https://apply.hfsfinancial.net/prequalification?contractor_name=Elite%20Finishes%20Inc.%20-%20Sykesville%2C%20MD&promo_code=6706b64ac3bb21107c7cdafb&intermediary_id=6706b64ac3bb21107c7cdafb";
+
+const HFS_BENEFITS = [
+  { icon: Shield, title: "No Credit Impact to Inquire", desc: "Checking your rate is a soft pull — zero risk to your credit score." },
+  { icon: CalendarCheck, title: "Terms Up to 20 Years", desc: "Lock in a fixed rate with a repayment timeline that fits your budget." },
+  { icon: Zap, title: "Same-Day Qualifications", desc: "Get prequalified for your loan options in minutes, not days." },
+  { icon: DollarSign, title: "Personal Loans", desc: "No home equity required. Your property stays untouched as collateral." },
+  { icon: Banknote, title: "Direct-to-Consumer Funded", desc: "Loan proceeds go directly to you, giving you full control over your project funds." },
+  { icon: Percent, title: "Low Fixed Rates", desc: "Rates as low as 7.8% fixed with no prepayment penalties." },
+];
+
 const PAYMENT_OPTIONS = [
   {
-    icon: Percent,
-    title: "Wisetack Financing",
-    desc: "Prequalify in minutes with no impact to your credit score. Pay over time with fixed monthly payments — rates as low as 0% APR for qualified borrowers. Loans from $500 to $25,000.",
+    icon: Home,
+    title: "HFS Financial",
+    desc: "Personal home improvement loans up to $300,000. Fixed rates as low as 7.8%, terms from 1 to 20 years. No home equity required, no appraisals, and no prepayment penalties. Funds available within 48 hours of approval.",
     highlight: true,
   },
   {
@@ -71,44 +86,54 @@ const PRICE_RANGES = [
 
 const FINANCING_FAQS = [
   {
-    question: "How does Wisetack financing work for home improvement projects?",
+    question: "How does HFS Financial financing work for home improvement projects?",
     answer:
-      "Wisetack offers fixed-rate installment loans for home improvement projects. You prequalify in minutes with a soft credit check that does not affect your score. If approved, you choose a payment plan (typically 3 to 60 months), and Elite Finishes gets paid directly so your project starts immediately. You make fixed monthly payments to Wisetack with no balloon payments and no prepayment penalties.",
+      "HFS Financial connects homeowners with personal loans for home improvement projects. You inquire online in minutes with no impact to your credit score. If you prequalify, you can view loan options instantly or speak with a loan consultant. Once you choose a loan, you securely upload some basic documents for verification, and funds are typically available within 48 hours of approval.",
   },
   {
-    question: "What credit score do I need to qualify for Wisetack financing?",
+    question: "What credit score do I need to qualify?",
     answer:
-      "Wisetack considers multiple factors beyond just your credit score, including income and debt-to-income ratio. There is no minimum score published, but the soft prequalification check takes about 30 seconds and tells you your options without any impact to your credit. If you prequalify, a hard credit check only happens when you formally accept a loan offer.",
+      "HFS Financial works with multiple lending partners and considers a range of credit profiles. The initial inquiry is a soft pull with no impact to your credit score, so there is no risk in checking your options. You will see what you qualify for before committing to anything.",
   },
   {
-    question: "Does prequalifying affect my credit score?",
+    question: "Does inquiring affect my credit score?",
     answer:
-      "No. Wisetack uses a soft credit check for prequalification, which does not appear on your credit report and has zero impact on your score. A hard inquiry only occurs if you decide to accept a loan offer and move forward.",
+      "No. The initial inquiry is a soft credit check that has zero impact on your credit score. A hard inquiry only occurs if you decide to formally accept and proceed with a loan offer.",
   },
   {
     question: "What are the interest rates and loan terms?",
     answer:
-      "Wisetack offers rates as low as 0% APR for qualified borrowers. Terms range from 3 to 60 months depending on the loan amount and your credit profile. Loan amounts range from $500 to $25,000. You will see your exact rate, monthly payment, and total cost before you commit to anything.",
+      "HFS Financial offers fixed rates as low as 7.8% with terms from 1 to 20 years. Loan amounts go up to $300,000. There are no prepayment penalties, so you can pay off your loan early at any time without additional fees.",
   },
   {
-    question: "Can I finance painting or remodeling projects in the Baltimore area?",
+    question: "Do I need home equity to qualify?",
     answer:
-      "Yes. Every painting and remodeling service we offer is eligible for Wisetack financing. That includes interior painting, exterior painting, kitchen and bathroom remodeling, basement finishing, flooring, siding, roofing, decks, and commercial services. There is no restriction on project type.",
+      "No. Loans through HFS Financial are personal loans, which means there are no home equity requirements, no need to refinance or mortgage your home, no appraisals, and no lengthy loan processes.",
+  },
+  {
+    question: "Can I finance any type of project?",
+    answer:
+      "Yes. HFS Financial can help finance almost any residential home improvement project. That includes interior and exterior painting, kitchen and bathroom remodeling, basement finishing, flooring, siding, roofing, decks, and more.",
   },
   {
     question: "How much does Elite Finishes require upfront?",
     answer:
-      "For projects paid in full or by card, we never ask for more than 50% upfront. The balance is due at completion. With Wisetack financing, the lender pays us directly, so you may have zero out-of-pocket upfront depending on your loan terms. We discuss payment structure during your free estimate.",
+      "For projects paid in full or by card, we never ask for more than 50% upfront. The balance is due at completion. With HFS financing, the lender funds you directly, so you have full control over how and when you pay us. We discuss payment structure during your free estimate.",
   },
   {
     question: "Is there a penalty for paying off the loan early?",
     answer:
-      "No. Wisetack loans have no prepayment penalties. You can pay off your balance early at any time without additional fees.",
+      "No. HFS Financial loans have no prepayment penalties. You can pay off your balance early at any time without additional fees.",
   },
   {
-    question: "Do you offer financing for projects over $25,000?",
+    question: "How quickly can I get funded?",
     answer:
-      "Wisetack loans go up to $25,000, which covers the majority of our projects. For larger projects like whole-home renovations or major multi-phase work, we can structure milestone-based payment schedules and discuss additional options. Ask us during your estimate and we will find a solution that works for your budget.",
+      "HFS Financial offers same-day prequalifications. Once you accept a loan offer and complete verification, funds are typically available within 48 hours of approval.",
+  },
+  {
+    question: "What states does HFS Financial cover?",
+    answer:
+      "HFS Financial operates nationwide and can assist homeowners in all 50 states with securing loans for home improvement projects.",
   },
 ];
 
@@ -124,19 +149,20 @@ export default function FinancingPage() {
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-green/15 border border-brand-green/40 text-brand-green text-xs font-semibold mb-6">
                 <Percent className="h-3.5 w-3.5" />
-                Rates as low as 0% APR
+                120% Financing Available
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
                 Finance Your Home Project{" "}
                 <span className="text-brand-green">With Flexible Payments</span>
               </h1>
               <p className="text-white/70 text-lg md:text-xl mb-8 leading-relaxed">
-                Do not wait to get the home you deserve. Prequalify
-                for financing in minutes through Wisetack with no impact to your credit
-                score and start your project now with fixed monthly payments.
+                Do not let budget hold you back from the home you deserve. Through our
+                partnership with HFS Financial, you can get prequalified in minutes with
+                no impact to your credit score — personal loans up to $300,000 with fixed
+                rates and terms up to 20 years.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <CTAButton href="#prequalify" size="lg">
+                <CTAButton href={HFS_APPLY_URL} size="lg" target="_blank" rel="noopener noreferrer">
                   Check Your Rate
                   <ArrowRight className="h-5 w-5" />
                 </CTAButton>
@@ -154,30 +180,34 @@ export default function FinancingPage() {
         <Section>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl mb-4">
-              How Contractor Financing Works
+              How It Works
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Elite Finishes partners with Wisetack to offer simple, transparent
+              Elite Finishes partners with HFS Financial to offer simple, transparent
               financing for painting and remodeling projects in the Baltimore area.
-              Here is how the process works.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
+          <div className="grid gap-6 md:grid-cols-4 max-w-5xl mx-auto">
             {[
               {
                 step: "1",
-                title: "Prequalify in Minutes",
-                desc: "Enter basic info in the Wisetack form below. A soft credit check shows your loan options instantly with no impact to your credit score.",
+                title: "Inquire for a Loan",
+                desc: "Fill out a quick form — it does NOT affect your credit. Get same-day answers on your options.",
               },
               {
                 step: "2",
-                title: "Choose Your Plan",
-                desc: "Pick the monthly payment and term that fits your budget. See your exact rate, total cost, and payment amount before you commit.",
+                title: "Get Prequalified",
+                desc: "View instant loan options or speak with an HFS loan consultant to find the best fit.",
               },
               {
                 step: "3",
-                title: "Start Your Project",
-                desc: "Once approved, Wisetack pays Elite Finishes directly. Your project starts on schedule and you make fixed monthly payments.",
+                title: "Verify",
+                desc: "Securely upload some basic documents for loan verification. Quick and straightforward.",
+              },
+              {
+                step: "4",
+                title: "Get Your Funds",
+                desc: "Loan proceeds available within 48 hours of approval. Funds go directly to you.",
               },
             ].map((item) => (
               <div key={item.step} className="text-center">
@@ -193,24 +223,47 @@ export default function FinancingPage() {
           </div>
         </Section>
 
-        {/* Wisetack Embed */}
-        <Section variant="warm" id="prequalify">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl mb-4">
-              Prequalify Now — No Credit Impact
-            </h2>
+        {/* HFS Financial Benefits */}
+        <Section variant="warm">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl mb-4">Why Homeowners Choose HFS Financial</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Check your rate in under 60 seconds. This is a soft credit check and
-              will not affect your credit score.
+              Over 100,000 contractors and 20,000+ homeowners trust HFS Financial for home improvement financing.
             </p>
           </div>
-          <div className="max-w-2xl mx-auto">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+            {HFS_BENEFITS.map((benefit) => (
+              <div key={benefit.title} className="flex gap-4 items-start">
+                <div className="flex-shrink-0 h-11 w-11 rounded-xl bg-brand-green/10 flex items-center justify-center">
+                  <benefit.icon className="h-5 w-5 text-brand-green" />
+                </div>
+                <div>
+                  <h3 className="font-bold mb-1">{benefit.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{benefit.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        {/* HFS Embed */}
+        <Section id="apply">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl mb-4">
+              Apply Now — No Credit Impact
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Use the calculator below to estimate your monthly payment, or click
+              &ldquo;Inquire Now&rdquo; to check your rate with no impact to your credit score.
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
             <div className="rounded-2xl overflow-hidden border border-border/50 shadow-lg bg-white">
               <iframe
-                src="https://wisetack.us/#/m39n9j4/prequalify"
-                title="Wisetack Financing Prequalification for Elite Finishes"
+                src={HFS_PROMO_URL}
+                title="HFS Financial Home Improvement Loan — Elite Finishes"
                 className="w-full border-0"
-                style={{ height: "700px", minHeight: "600px" }}
+                style={{ height: "1800px", minHeight: "1200px" }}
                 loading="lazy"
                 allow="payment"
               />
@@ -223,14 +276,14 @@ export default function FinancingPage() {
                 <FileText className="h-3.5 w-3.5" /> No hard credit pull
               </span>
               <span className="flex items-center gap-1">
-                <Clock className="h-3.5 w-3.5" /> Takes about 60 seconds
+                <Clock className="h-3.5 w-3.5" /> Same-day qualifications
               </span>
             </div>
           </div>
         </Section>
 
         {/* Payment Options */}
-        <Section>
+        <Section variant="warm">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl mb-4">All Payment Options</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -243,18 +296,18 @@ export default function FinancingPage() {
                 key={option.title}
                 className={`rounded-2xl p-6 border ${
                   option.highlight
-                    ? "border-brand/40 bg-brand/5 ring-1 ring-brand/20"
+                    ? "border-brand-green/40 bg-brand-green/5 ring-1 ring-brand-green/20"
                     : "border-border/40 bg-white"
                 }`}
               >
                 {option.highlight && (
-                  <span className="inline-block mb-3 px-2.5 py-0.5 bg-gradient-to-r from-brand to-brand-dark text-white text-xs font-bold rounded-full">
+                  <span className="inline-block mb-3 px-2.5 py-0.5 bg-gradient-to-r from-brand-green to-brand-green-dark text-white text-xs font-bold rounded-full">
                     RECOMMENDED
                   </span>
                 )}
                 <div className="flex gap-4 items-start">
-                  <div className="flex-shrink-0 h-11 w-11 rounded-xl bg-brand/10 flex items-center justify-center">
-                    <option.icon className="h-5 w-5 text-brand" />
+                  <div className="flex-shrink-0 h-11 w-11 rounded-xl bg-brand-green/10 flex items-center justify-center">
+                    <option.icon className="h-5 w-5 text-brand-green" />
                   </div>
                   <div>
                     <h3 className="font-bold text-lg mb-2">{option.title}</h3>
@@ -265,49 +318,6 @@ export default function FinancingPage() {
                 </div>
               </div>
             ))}
-          </div>
-        </Section>
-
-        {/* Comparison Table */}
-        <Section variant="warm">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl mb-4">
-              Comparing Your Payment Options
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Which payment method makes the most sense depends on your project
-              size and financial goals.
-            </p>
-          </div>
-          <div className="max-w-4xl mx-auto overflow-x-auto rounded-2xl border border-border/50 shadow-sm">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-white">
-                  <th className="px-5 py-4 text-left font-bold text-foreground border-b border-border/40">Feature</th>
-                  <th className="px-5 py-4 text-left font-bold text-brand border-b border-border/40">Wisetack Financing</th>
-                  <th className="px-5 py-4 text-left font-bold text-foreground border-b border-border/40">Credit Card</th>
-                  <th className="px-5 py-4 text-left font-bold text-foreground border-b border-border/40">Pay in Full</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ["Upfront cost", "As low as $0", "Full amount charged", "Up to 50% deposit"],
-                  ["Interest rate", "As low as 0% APR", "15 to 25% APR (typical)", "None"],
-                  ["Credit impact to check", "None (soft pull)", "Hard inquiry", "N/A"],
-                  ["Monthly payments", "Fixed, predictable", "Variable minimum", "N/A"],
-                  ["Prepayment penalty", "None", "None", "N/A"],
-                  ["Best for", "Projects $1,000 to $25,000", "Smaller projects", "Any size"],
-                  ["Approval time", "About 60 seconds", "Existing card limit", "Immediate"],
-                ].map((row, i) => (
-                  <tr key={i} className={i % 2 === 0 ? "bg-warm-bg/50" : "bg-white"}>
-                    <td className="px-5 py-3 font-medium text-foreground border-b border-border/20">{row[0]}</td>
-                    <td className="px-5 py-3 text-muted-foreground border-b border-border/20">{row[1]}</td>
-                    <td className="px-5 py-3 text-muted-foreground border-b border-border/20">{row[2]}</td>
-                    <td className="px-5 py-3 text-muted-foreground border-b border-border/20">{row[3]}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
           </div>
         </Section>
 
@@ -384,7 +394,7 @@ export default function FinancingPage() {
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                 Get a free on-site estimate first. We will come to your property,
                 assess the project, and give you a clear written price. Then you
-                can decide how to pay.
+                can decide how to pay — including financing through HFS Financial.
               </p>
               <div className="space-y-3">
                 <CTAButton href="/contact" className="w-full">
@@ -423,11 +433,11 @@ export default function FinancingPage() {
               Ready to Get Started?
             </h2>
             <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
-              Prequalify for financing in under 60 seconds, or request a free
+              Check your rate in minutes with no credit impact, or request a free
               estimate to find out exactly what your project will cost.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
-              <CTAButton href="#prequalify" size="lg">
+              <CTAButton href={HFS_APPLY_URL} size="lg" target="_blank" rel="noopener noreferrer">
                 Check Your Rate <ArrowRight className="h-5 w-5" />
               </CTAButton>
               <CTAButton href="/contact" variant="outline-light" size="lg">
@@ -436,8 +446,8 @@ export default function FinancingPage() {
             </div>
             <p className="text-sm text-muted-foreground/80 mt-6 max-w-lg mx-auto">
               {SITE.name} is a licensed painting and remodeling contractor
-              ({SITE.license}) serving 28 communities across the Baltimore area,
-              Maryland. Financing provided by Wisetack, a third-party lender.
+              ({SITE.license}) serving 28 communities across the Baltimore area.
+              Financing provided by HFS Financial, a third-party lender.
               Loan terms and rates subject to credit approval.
             </p>
           </div>
