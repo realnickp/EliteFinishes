@@ -306,6 +306,26 @@ export async function POST(request: NextRequest) {
           `${scoreLabel} NEW LEAD (${score}pts): ${name} · ${service} · ${phone} · ${cityOrZip}`
         ).catch(console.error);
       }
+
+      // Notify team via email
+      const TEAM_EMAILS = ["realnickpatrick@gmail.com", "elitefinishedmd@gmail.com"];
+      const leadNotifHtml = `
+        <h2>New Lead Received</h2>
+        <table style="border-collapse:collapse;width:100%;max-width:500px;">
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Name</td><td style="padding:8px;border-bottom:1px solid #eee;">${name}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Phone</td><td style="padding:8px;border-bottom:1px solid #eee;"><a href="tel:${phone}">${phone}</a></td></tr>
+          ${email ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Email</td><td style="padding:8px;border-bottom:1px solid #eee;"><a href="mailto:${email}">${email}</a></td></tr>` : ""}
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Service</td><td style="padding:8px;border-bottom:1px solid #eee;">${service}</td></tr>
+          ${cityOrZip ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Location</td><td style="padding:8px;border-bottom:1px solid #eee;">${cityOrZip}</td></tr>` : ""}
+          ${description ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Details</td><td style="padding:8px;border-bottom:1px solid #eee;">${description}</td></tr>` : ""}
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Score</td><td style="padding:8px;border-bottom:1px solid #eee;">${score} pts (${priority})</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;">Source</td><td style="padding:8px;">${bodySource || source || "website"}</td></tr>
+        </table>
+      `;
+      const scoreEmoji = priority === "hot" ? "🔥" : priority === "warm" ? "⚡" : "📋";
+      for (const teamEmail of TEAM_EMAILS) {
+        sendEmail(teamEmail, `${scoreEmoji} New Lead: ${name} — ${service}`, leadNotifHtml).catch(console.error);
+      }
     }
 
     return NextResponse.json({
