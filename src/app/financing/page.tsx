@@ -162,10 +162,10 @@ export default function FinancingPage() {
                 rates and terms up to 20 years.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <CTAButton href={HFS_APPLY_URL} size="lg" target="_blank" rel="noopener noreferrer">
+                <a href={HFS_APPLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-bold rounded-xl bg-gradient-to-r from-brand to-brand-dark text-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
                   Check Your Rate
                   <ArrowRight className="h-5 w-5" />
-                </CTAButton>
+                </a>
                 <CTAButton href="/contact" variant="outline-light" size="lg">
                   Get a Free Estimate First
                 </CTAButton>
@@ -437,9 +437,9 @@ export default function FinancingPage() {
               estimate to find out exactly what your project will cost.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
-              <CTAButton href={HFS_APPLY_URL} size="lg" target="_blank" rel="noopener noreferrer">
+              <a href={HFS_APPLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-bold rounded-xl bg-gradient-to-r from-brand to-brand-dark text-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
                 Check Your Rate <ArrowRight className="h-5 w-5" />
-              </CTAButton>
+              </a>
               <CTAButton href="/contact" variant="outline-light" size="lg">
                 Get a Free Estimate
               </CTAButton>
