@@ -115,6 +115,7 @@ export function Footer() {
               <li><Link href="/about" className="text-sm text-primary-foreground/60 hover:text-brand-green transition-colors py-2 block min-h-[44px] flex items-center lg:min-h-0 lg:py-0 lg:block">About Us</Link></li>
               <li><Link href="/services" className="text-sm text-primary-foreground/60 hover:text-brand-green transition-colors py-2 block min-h-[44px] flex items-center lg:min-h-0 lg:py-0 lg:block">All Services</Link></li>
               <li><Link href="/areas" className="text-sm text-primary-foreground/60 hover:text-brand-green transition-colors py-2 block min-h-[44px] flex items-center lg:min-h-0 lg:py-0 lg:block">Service Areas</Link></li>
+              <li><Link href="/financing" className="text-sm text-primary-foreground/60 hover:text-brand-green transition-colors py-2 block min-h-[44px] flex items-center lg:min-h-0 lg:py-0 lg:block">Financing</Link></li>
               <li><Link href="/gallery" className="text-sm text-primary-foreground/60 hover:text-brand-green transition-colors py-2 block min-h-[44px] flex items-center lg:min-h-0 lg:py-0 lg:block">Project Gallery</Link></li>
               <li><Link href="/testimonials" className="text-sm text-primary-foreground/60 hover:text-brand-green transition-colors py-2 block min-h-[44px] flex items-center lg:min-h-0 lg:py-0 lg:block">Reviews</Link></li>
               <li><Link href="/blog" className="text-sm text-primary-foreground/60 hover:text-brand-green transition-colors py-2 block min-h-[44px] flex items-center lg:min-h-0 lg:py-0 lg:block">Blog</Link></li>
