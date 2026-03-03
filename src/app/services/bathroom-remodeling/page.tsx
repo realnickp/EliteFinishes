@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/bathroom-remodeling`,
     images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Bathroom Remodeling in Baltimore, MD | ${SITE.name}`,
+    description:
+      "Full bathroom remodeling in Baltimore and surrounding Maryland counties. Tile, vanities, fixtures, and painting all by one licensed contractor. Free estimates.",
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+  },
+  keywords: ["bathroom remodeling Baltimore", "bathroom renovation Maryland", "bathroom contractor Baltimore MD", "bathroom remodel Baltimore County", "tile shower installation Baltimore", "bathroom renovation contractor Maryland", "master bathroom remodel Baltimore", "Elite Finishes bathroom remodeling"],
   alternates: { canonical: `${SITE.url}/services/bathroom-remodeling` },
 };
 

@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/roofing`,
     images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Roofing Services in Baltimore, MD | ${SITE.name}`,
+    description:
+      "Expert roof repairs and replacements for Baltimore area homeowners. Licensed Maryland roofing contractor with warranty-backed installations. Free estimates.",
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+  },
+  keywords: ["roofing Baltimore", "roof replacement Baltimore MD", "roofing contractor Maryland", "roof repair Baltimore", "shingle roof Baltimore County", "storm damage roof repair Baltimore", "roofing company Maryland", "Elite Finishes roofing"],
   alternates: { canonical: `${SITE.url}/services/roofing` },
 };
 

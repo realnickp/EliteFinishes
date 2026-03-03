@@ -8,7 +8,7 @@ export const SITE = {
   license: "MHIC 153498",
   license2: "WBME 22380085",
   domain: "elitefinishesmaryland.com",
-  url: "https://www.elitefinishesmaryland.com",
+  url: "https://elitefinishesmaryland.com",
   address: {
     street: "1601 Cuba Street",
     city: "Baltimore",

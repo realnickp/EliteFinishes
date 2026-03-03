@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/interior-painting`,
     images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Interior Painting in Baltimore, MD | ${SITE.name}`,
+    description:
+      "Professional interior painting in Baltimore and surrounding Maryland counties. Meticulous prep, premium paints, clean results that last. Licensed contractor with free estimates.",
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+  },
+  keywords: ["interior painting Baltimore", "house painters Baltimore MD", "interior painting contractor Maryland", "room painting Baltimore", "wall painting service Baltimore", "interior paint Baltimore County", "residential painting Baltimore", "Elite Finishes interior painting"],
   alternates: { canonical: `${SITE.url}/services/interior-painting` },
 };
 

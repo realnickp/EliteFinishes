@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/concrete-and-masonry`,
     images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Concrete and Masonry in Baltimore, MD | ${SITE.name}`,
+    description:
+      "Concrete slabs, steps, patios, and masonry repair in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+  },
+  keywords: ["concrete contractor Baltimore", "masonry repair Baltimore MD", "concrete steps Baltimore", "tuck pointing Baltimore County", "concrete patio Maryland", "masonry contractor Baltimore", "concrete and masonry company Maryland", "Elite Finishes concrete and masonry"],
   alternates: { canonical: `${SITE.url}/services/concrete-and-masonry` },
 };
 

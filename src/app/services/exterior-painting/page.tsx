@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/exterior-painting`,
     images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Exterior Painting in Baltimore, MD | ${SITE.name}`,
+    description:
+      "Expert exterior painting for Baltimore area homes. Power washing, caulking, priming, and premium coatings that stand up to Maryland weather. Licensed contractor with free estimates.",
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+  },
+  keywords: ["exterior painting Baltimore", "exterior house painters Baltimore MD", "exterior painting contractor Maryland", "house painting Baltimore", "exterior paint Baltimore County", "power washing and painting Baltimore", "residential exterior painting Maryland", "Elite Finishes exterior painting"],
   alternates: { canonical: `${SITE.url}/services/exterior-painting` },
 };
 

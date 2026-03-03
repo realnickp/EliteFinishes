@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/basement-remodeling`,
     images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Basement Remodeling in Baltimore, MD | ${SITE.name}`,
+    description:
+      "Basement finishing and remodeling in Baltimore and surrounding Maryland counties. Turn unfinished space into livable square footage. Licensed contractor with free estimates.",
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+  },
+  keywords: ["basement remodeling Baltimore", "basement finishing Baltimore MD", "basement contractor Maryland", "basement renovation Baltimore County", "finished basement Baltimore", "basement remodel contractor Maryland", "basement conversion Baltimore", "Elite Finishes basement remodeling"],
   alternates: { canonical: `${SITE.url}/services/basement-remodeling` },
 };
 

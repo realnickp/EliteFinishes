@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/flooring`,
     images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Flooring Installation in Baltimore, MD | ${SITE.name}`,
+    description:
+      "Hardwood, LVP, tile, and carpet flooring installation in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+  },
+  keywords: ["flooring installation Baltimore", "hardwood flooring Baltimore MD", "flooring contractor Maryland", "LVP flooring Baltimore", "hardwood refinishing Baltimore County", "tile flooring installation Baltimore", "flooring company Maryland", "Elite Finishes flooring"],
   alternates: { canonical: `${SITE.url}/services/flooring` },
 };
 

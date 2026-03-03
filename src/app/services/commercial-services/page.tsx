@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/commercial-services`,
     images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Commercial Painting and Renovation in Baltimore, MD | ${SITE.name}`,
+    description:
+      "Commercial painting and renovation services in Baltimore and surrounding Maryland counties. Offices, retail, and multi-unit properties. Licensed contractor with free estimates.",
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+  },
+  keywords: ["commercial painting Baltimore", "commercial renovation Baltimore MD", "commercial painter Maryland", "office painting Baltimore", "commercial contractor Baltimore County", "multi-unit painting Baltimore", "commercial painting company Maryland", "Elite Finishes commercial services"],
   alternates: { canonical: `${SITE.url}/services/commercial-services` },
 };
 

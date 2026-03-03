@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/siding`,
     images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Siding Installation in Baltimore, MD | ${SITE.name}`,
+    description:
+      "Vinyl, fiber cement, and composite siding installation in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+  },
+  keywords: ["siding installation Baltimore", "siding contractor Baltimore MD", "vinyl siding Maryland", "fiber cement siding Baltimore", "James Hardie siding Baltimore County", "siding replacement Baltimore", "siding company Maryland", "Elite Finishes siding"],
   alternates: { canonical: `${SITE.url}/services/siding` },
 };
 

@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/kitchen-remodeling`,
     images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Kitchen Remodeling in Baltimore, MD | ${SITE.name}`,
+    description:
+      "Full kitchen remodeling in Baltimore and surrounding Maryland counties. Cabinets, countertops, tile, and painting all handled by one licensed contractor. Free estimates.",
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+  },
+  keywords: ["kitchen remodeling Baltimore", "kitchen renovation Maryland", "kitchen contractor Baltimore MD", "custom kitchen Baltimore", "kitchen remodel Baltimore County", "kitchen cabinet painting Baltimore", "kitchen renovation contractor Maryland", "Elite Finishes kitchen remodeling"],
   alternates: { canonical: `${SITE.url}/services/kitchen-remodeling` },
 };
 

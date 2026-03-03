@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/home-remodeling`,
     images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Home Remodeling in Baltimore, MD | ${SITE.name}`,
+    description:
+      "Whole-home and multi-room remodeling in Baltimore and surrounding Maryland counties. One licensed contractor for every phase. Free estimates.",
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+  },
+  keywords: ["home remodeling Baltimore", "home renovation Baltimore MD", "remodeling contractor Maryland", "whole home renovation Baltimore", "home remodel Baltimore County", "general contractor Baltimore", "home renovation company Maryland", "Elite Finishes home remodeling"],
   alternates: { canonical: `${SITE.url}/services/home-remodeling` },
 };
 

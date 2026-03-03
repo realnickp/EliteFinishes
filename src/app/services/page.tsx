@@ -17,6 +17,13 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services`,
     images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Our Services | Painting and Home Remodeling`,
+    description: `${SITE.name} offers premium painting and home remodeling services in Baltimore, MD: interior painting, exterior painting, kitchen remodeling, bathroom remodeling, basement finishing, flooring, siding, roofing, decks, concrete, and commercial services. Get a free estimate.`,
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+  },
+  keywords: ["painting services Baltimore", "home remodeling Baltimore", "house painters Baltimore MD", "remodeling contractor Maryland", "painting and remodeling Baltimore County", "home improvement Baltimore", "residential contractor Baltimore", "Elite Finishes painting and remodeling"],
   alternates: { canonical: `${SITE.url}/services` },
 };
 

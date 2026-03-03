@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     url: `${SITE.url}/services/decks`,
     images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Deck Building in Baltimore, MD | ${SITE.name}`,
+    description:
+      "Custom composite and wood deck building in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates. Expand your outdoor living space today.",
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+  },
+  keywords: ["deck building Baltimore", "deck contractor Baltimore MD", "composite deck Maryland", "deck installation Baltimore County", "Trex deck Baltimore", "custom deck builder Baltimore", "deck company Maryland", "Elite Finishes decks"],
   alternates: { canonical: `${SITE.url}/services/decks` },
 };
 
