@@ -111,7 +111,7 @@ export default function HomePage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 mb-8">
-                <CTAButton href="/contact" size="lg" variant="primaryGreen">
+                <CTAButton href="/quote/quiz" size="lg" variant="primaryGreen">
                   Get a Free Estimate
                   <ArrowRight className="h-5 w-5" />
                 </CTAButton>
@@ -357,6 +357,34 @@ export default function HomePage() {
         </ScrollReveal>
       </Section>
 
+      {/* ===== Quiz CTA ===== */}
+      <Section variant="warm">
+        <ScrollReveal>
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary to-primary/90 p-8 md:p-12 text-white text-center">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-brand" />
+            <div className="absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-brand-green" />
+          </div>
+          <div className="relative">
+            <h2 className="text-2xl md:text-4xl font-bold mb-3">
+              Get Your Free Estimate in 2 Minutes
+            </h2>
+            <p className="text-white/70 max-w-xl mx-auto mb-6 text-lg">
+              Answer a few quick questions about your project and our team will prepare a personalized, no-obligation estimate.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-3">
+              <CTAButton href="/quote/quiz" size="lg">
+                Start the Quick Quiz <ArrowRight className="h-5 w-5" />
+              </CTAButton>
+              <CTAButton variant="phone" size="lg">
+                Or Call {SITE.phone}
+              </CTAButton>
+            </div>
+          </div>
+        </div>
+        </ScrollReveal>
+      </Section>
+
       {/* ===== Process ===== */}
       <Section>
         <ScrollReveal>
@@ -527,8 +555,8 @@ export default function HomePage() {
             Get a free, no-pressure estimate from a licensed contractor who shows up on time, communicates clearly, and delivers work you will be proud to show off.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">
-            <CTAButton href="/contact" size="lg">
-              Get Your Free Estimate
+            <CTAButton href="/quote/quiz" size="lg">
+              Start Your Free Estimate
               <ArrowRight className="h-5 w-5" />
             </CTAButton>
             <CTAButton variant="phone" size="lg">

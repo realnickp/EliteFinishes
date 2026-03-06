@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Star, ClipboardList } from "lucide-react";
 import { Section } from "./Section";
 import { CTAButton } from "./CTAButton";
 import { TrustBar } from "./TrustBar";
@@ -101,7 +101,7 @@ export function ServicePageTemplate({
               </ScrollReveal>
               <ScrollReveal direction="up" delay={0.3}>
               <div className="flex flex-col sm:flex-row gap-3">
-                <CTAButton href="/contact" size="lg">
+                <CTAButton href={`/quote/quiz?service=${slug}`} size="lg">
                   Get a Free {title} Estimate
                   <ArrowRight className="h-5 w-5" />
                 </CTAButton>
@@ -212,6 +212,37 @@ export function ServicePageTemplate({
         </ScrollReveal>
       </Section>
 
+      {/* ===== Quiz CTA ===== */}
+      <Section variant="warm">
+        <ScrollReveal>
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary to-primary/90 p-8 md:p-12 text-white text-center">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-brand" />
+            <div className="absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-brand-green" />
+          </div>
+          <div className="relative">
+            <div className="inline-flex items-center justify-center h-14 w-14 rounded-full bg-brand/20 border border-brand/30 mb-5">
+              <ClipboardList className="h-7 w-7 text-brand" />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">
+              Get Your Free {title} Estimate in 2 Minutes
+            </h2>
+            <p className="text-white/70 max-w-xl mx-auto mb-6">
+              Answer a few quick questions about your project and our team will prepare a personalized estimate — no obligation, no pressure.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-3">
+              <CTAButton href={`/quote/quiz?service=${slug}`} size="lg">
+                Start the Quick Quiz <ArrowRight className="h-5 w-5" />
+              </CTAButton>
+              <CTAButton variant="phone" size="lg">
+                Or Call {SITE.phone}
+              </CTAButton>
+            </div>
+          </div>
+        </div>
+        </ScrollReveal>
+      </Section>
+
       {/* ===== Gallery ===== */}
       {galleryItems.length > 0 && (
         <Section variant="warm">
@@ -295,15 +326,15 @@ export function ServicePageTemplate({
             Get a free, no-obligation estimate from a licensed contractor. We respond within one business day.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">
-            <CTAButton href="/contact" size="lg">
-              Get Your Free Estimate <ArrowRight className="h-5 w-5" />
+            <CTAButton href={`/quote/quiz?service=${slug}`} size="lg">
+              Start Your Free Estimate <ArrowRight className="h-5 w-5" />
             </CTAButton>
             <CTAButton variant="phone" size="lg">
               Call {SITE.phone}
             </CTAButton>
           </div>
           <p className="mt-5 text-sm text-white/50">
-            Estimates are always free.
+            Takes 2 minutes · No obligation · Completely free
           </p>
           </ScrollReveal>
         </div>
