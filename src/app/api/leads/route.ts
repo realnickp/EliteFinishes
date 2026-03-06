@@ -310,20 +310,92 @@ export async function POST(request: NextRequest) {
 
       // Team notification emails
       const TEAM_EMAILS = ["realnickpatrick@gmail.com", "Elitefinishesmd@gmail.com"];
-      const leadNotifHtml = `
-        <h2>New Lead Received</h2>
-        <table style="border-collapse:collapse;width:100%;max-width:500px;">
-          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Name</td><td style="padding:8px;border-bottom:1px solid #eee;">${name}</td></tr>
-          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Phone</td><td style="padding:8px;border-bottom:1px solid #eee;"><a href="tel:${phone}">${phone}</a></td></tr>
-          ${email ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Email</td><td style="padding:8px;border-bottom:1px solid #eee;"><a href="mailto:${email}">${email}</a></td></tr>` : ""}
-          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Service</td><td style="padding:8px;border-bottom:1px solid #eee;">${service}</td></tr>
-          ${cityOrZip ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Location</td><td style="padding:8px;border-bottom:1px solid #eee;">${cityOrZip}</td></tr>` : ""}
-          ${description ? `<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Details</td><td style="padding:8px;border-bottom:1px solid #eee;">${description}</td></tr>` : ""}
-          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Score</td><td style="padding:8px;border-bottom:1px solid #eee;">${score} pts (${priority})</td></tr>
-          <tr><td style="padding:8px;font-weight:bold;">Source</td><td style="padding:8px;">${bodySource || source || "website"}</td></tr>
-        </table>
-      `;
       const scoreEmoji = priority === "hot" ? "🔥" : priority === "warm" ? "⚡" : "📋";
+      const priorityColor = priority === "hot" ? "#dc2626" : priority === "warm" ? "#f59e0b" : "#6b7280";
+      const priorityLabel = priority === "hot" ? "HOT" : priority === "warm" ? "WARM" : "NORMAL";
+      const dashboardUrl = `https://elitefinishesmaryland.com/dashboard/leads/${leadId}`;
+      const formattedDesc = description
+        ? description
+            .replace(/\n/g, "<br>")
+            .replace(/([A-Z][^:?]+[?:])\s*/g, '<br><strong>$1</strong> ')
+            .replace(/^<br>/, "")
+        : "";
+
+      const leadNotifHtml = `
+        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:600px;margin:0 auto;background:#ffffff;">
+          <!-- Priority Banner -->
+          <div style="background:${priorityColor};padding:16px 24px;border-radius:8px 8px 0 0;">
+            <h2 style="margin:0;color:#fff;font-size:20px;">${scoreEmoji} New ${priorityLabel} Lead — ${score} pts</h2>
+          </div>
+
+          <div style="border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;padding:24px;">
+            <!-- Contact Info -->
+            <h3 style="margin:0 0 12px;font-size:16px;color:#111;">Contact Information</h3>
+            <table style="border-collapse:collapse;width:100%;margin-bottom:20px;">
+              <tr>
+                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;width:120px;">Name</td>
+                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:15px;">${name}</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;">Phone</td>
+                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;"><a href="tel:${phone}" style="color:#2563eb;text-decoration:none;font-size:15px;">${phone}</a></td>
+              </tr>
+              ${email ? `<tr>
+                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;">Email</td>
+                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;"><a href="mailto:${email}" style="color:#2563eb;text-decoration:none;font-size:15px;">${email}</a></td>
+              </tr>` : ""}
+              ${cityOrZip ? `<tr>
+                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;">Location</td>
+                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:15px;">${cityOrZip}</td>
+              </tr>` : ""}
+            </table>
+
+            <!-- Project Details -->
+            <h3 style="margin:0 0 12px;font-size:16px;color:#111;">Project Details</h3>
+            <table style="border-collapse:collapse;width:100%;margin-bottom:20px;">
+              <tr>
+                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;width:120px;">Service</td>
+                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:15px;">${service}</td>
+              </tr>
+              ${timeframe ? `<tr>
+                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;">Timeframe</td>
+                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:15px;">${timeframe}</td>
+              </tr>` : ""}
+              ${budget ? `<tr>
+                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;">Budget</td>
+                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:15px;">${budget}</td>
+              </tr>` : ""}
+              <tr>
+                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;">Source</td>
+                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:15px;">${bodySource || source || "website"}</td>
+              </tr>
+              ${landingPage ? `<tr>
+                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;">Page</td>
+                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:13px;word-break:break-all;color:#6b7280;">${landingPage}</td>
+              </tr>` : ""}
+            </table>
+
+            ${formattedDesc ? `
+            <!-- Description -->
+            <h3 style="margin:0 0 12px;font-size:16px;color:#111;">Description</h3>
+            <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:14px 16px;margin-bottom:24px;font-size:14px;line-height:1.6;color:#374151;">
+              ${formattedDesc}
+            </div>
+            ` : ""}
+
+            <!-- Dashboard Button -->
+            <div style="text-align:center;margin:24px 0 8px;">
+              <a href="${dashboardUrl}" style="display:inline-block;background:#16a34a;color:#ffffff;font-weight:600;font-size:16px;padding:14px 32px;border-radius:8px;text-decoration:none;">
+                Open in Dashboard →
+              </a>
+            </div>
+            <p style="text-align:center;margin:8px 0 0;font-size:12px;color:#9ca3af;">
+              Or call them now: <a href="tel:${phone}" style="color:#2563eb;text-decoration:none;">${phone}</a>
+            </p>
+          </div>
+        </div>
+      `;
+
       for (const teamEmail of TEAM_EMAILS) {
         emailPromises.push(
           sendEmail(teamEmail, `${scoreEmoji} New Lead: ${name} — ${service}`, leadNotifHtml)
