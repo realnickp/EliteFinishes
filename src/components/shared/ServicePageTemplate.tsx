@@ -8,7 +8,7 @@ import { ProcessSteps, type ProcessStep } from "./ProcessSteps";
 import { FAQAccordion, type FAQItem } from "./FAQAccordion";
 import { TestimonialCard } from "./TestimonialCard";
 import { GalleryGrid } from "./GalleryGrid";
-import { LeadForm } from "./LeadForm";
+import { EstimateSidebar } from "./EstimateSidebar";
 import { ServiceSchema, HowToSchema, FAQPageSchema } from "./SchemaOrg";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { ScrollReveal, StaggerChildren, StaggerItem, StickyStack, StackOver, ParallaxImage } from "./animations";
@@ -149,10 +149,7 @@ export function ServicePageTemplate({
             )}
           </ScrollReveal>
           <ScrollReveal direction="right" delay={0.2} className="lg:col-span-2">
-            <div className="bg-warm-bg rounded-2xl p-6 border border-border/50 shadow-sm">
-              <h3 className="font-bold text-lg mb-4">Get Your Free Estimate</h3>
-              <LeadForm preselectedService={title} compact />
-            </div>
+            <EstimateSidebar serviceTitle={title} serviceSlug={slug} />
           </ScrollReveal>
         </div>
 

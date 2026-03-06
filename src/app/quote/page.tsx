@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Phone, Clock, Shield, Star, CheckCircle, MessageSquare } from "lucide-react";
+import Link from "next/link";
+import { Phone, Clock, Shield, Star, CheckCircle, MessageSquare, ClipboardList, ArrowRight } from "lucide-react";
 import { SITE, TESTIMONIALS } from "@/lib/constants";
 import { LeadForm } from "@/components/shared/LeadForm";
 
@@ -65,12 +66,32 @@ export default function QuotePage() {
 
           {/* Form — takes more space */}
           <div className="lg:col-span-3">
+            {/* Quiz CTA */}
+            <div className="rounded-2xl border border-brand/20 bg-gradient-to-br from-brand/5 to-brand/10 p-6 md:p-8 mb-6">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="flex items-center justify-center h-10 w-10 rounded-xl bg-brand/15">
+                  <ClipboardList className="h-5 w-5 text-brand" />
+                </div>
+                <h2 className="font-bold text-xl">Try Our Project Builder</h2>
+              </div>
+              <p className="text-muted-foreground mb-4 leading-relaxed">
+                Not sure where to start? Answer a few quick, guided questions about your project and we&apos;ll prepare a personalized estimate. Takes about 2 minutes.
+              </p>
+              <Link
+                href="/quote/quiz"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-br from-brand to-brand-dark text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg hover:shadow-brand/25 transition-all text-sm"
+              >
+                Start Project Builder
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            {/* Traditional form */}
             <div className="bg-white rounded-2xl border border-border/40 shadow-lg p-6 md:p-8">
               <div className="mb-6 pb-6 border-b border-border/30">
-                <h2 className="text-xl font-bold mb-1">Project Request Form</h2>
+                <h2 className="text-xl font-bold mb-1">Or Fill Out the Form</h2>
                 <p className="text-sm text-muted-foreground">
-                  Fill in as much detail as you can. The more we know, the more
-                  accurate your estimate.
+                  Prefer to type it out? Fill in as much detail as you can. The more we know, the more accurate your estimate.
                 </p>
               </div>
               <LeadForm />
