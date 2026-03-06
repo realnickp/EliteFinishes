@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Clock, Shield, Star, CheckCircle, MessageSquare, ClipboardList, ArrowRight } from "lucide-react";
+import { Phone, Clock, Shield, Star, CheckCircle, MessageSquare, Sparkles, ArrowRight } from "lucide-react";
 import { SITE, TESTIMONIALS } from "@/lib/constants";
 import { LeadForm } from "@/components/shared/LeadForm";
 
@@ -67,23 +67,25 @@ export default function QuotePage() {
           {/* Form — takes more space */}
           <div className="lg:col-span-3">
             {/* Quiz CTA */}
-            <div className="rounded-2xl border border-brand/20 bg-gradient-to-br from-brand/5 to-brand/10 p-6 md:p-8 mb-6">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="flex items-center justify-center h-10 w-10 rounded-xl bg-brand/15">
-                  <ClipboardList className="h-5 w-5 text-brand" />
-                </div>
-                <h2 className="font-bold text-xl">Try Our Project Builder</h2>
+            <div className="rounded-2xl bg-primary p-6 md:p-8 mb-6 shadow-lg">
+              <div className="flex items-center gap-2.5 mb-4">
+                <Sparkles className="h-5 w-5 text-white/70" />
+                <h2 className="font-bold text-xl text-white">Try Our Project Builder</h2>
               </div>
-              <p className="text-muted-foreground mb-4 leading-relaxed">
+              <p className="text-white/60 mb-5 leading-relaxed">
                 Not sure where to start? Answer a few quick, guided questions about your project and we&apos;ll prepare a personalized estimate. Takes about 2 minutes.
               </p>
               <Link
                 href="/quote/quiz"
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-br from-brand to-brand-dark text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg hover:shadow-brand/25 transition-all text-sm"
+                className="inline-flex items-center justify-center gap-2 bg-white text-primary font-semibold py-3 px-6 rounded-xl hover:bg-white/90 transition-all text-sm"
               >
                 Start Project Builder
                 <ArrowRight className="h-4 w-4" />
               </Link>
+              <div className="flex items-center gap-4 mt-4 text-xs text-white/40">
+                <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> 2 min</span>
+                <span className="flex items-center gap-1"><Shield className="h-3 w-3" /> No obligation</span>
+              </div>
             </div>
 
             {/* Traditional form */}
@@ -91,7 +93,7 @@ export default function QuotePage() {
               <div className="mb-6 pb-6 border-b border-border/30">
                 <h2 className="text-xl font-bold mb-1">Or Fill Out the Form</h2>
                 <p className="text-sm text-muted-foreground">
-                  Prefer to type it out? Fill in as much detail as you can. The more we know, the more accurate your estimate.
+                  Prefer to type it out? Fill in as much detail as you can — the more we know, the more accurate your estimate.
                 </p>
               </div>
               <LeadForm />
