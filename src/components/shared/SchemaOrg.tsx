@@ -176,12 +176,6 @@ export function ServiceSchema({
     },
     url: `${SITE.url}/services/${slug}`,
     ...(image && { image: `${SITE.url}${image}` }),
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5",
-      reviewCount: "63",
-      bestRating: "5",
-    },
     ...(offers && {
       hasOfferCatalog: {
         "@type": "OfferCatalog",
