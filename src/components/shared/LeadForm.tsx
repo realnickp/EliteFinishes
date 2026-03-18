@@ -12,6 +12,7 @@ import { CheckCircle, Phone, Loader2 } from "lucide-react";
 import { leadSchema, type LeadFormData, TIMEFRAME_OPTIONS, BUDGET_OPTIONS } from "@/lib/lead-schema";
 import { ALL_SERVICES_FOR_FORM, SITE } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
+import { useSpamProtection } from "@/hooks/useSpamProtection";
 
 function detectPageSource(pathname: string, searchParams: URLSearchParams): string {
   const utmSource = searchParams.get("utm_source") || "";
@@ -57,6 +58,7 @@ function LeadFormInner({ preselectedService, compact, preferredStyle }: LeadForm
   const searchParams = useSearchParams();
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const { spamFields, HoneypotField } = useSpamProtection();
 
   const {
     register,
@@ -79,6 +81,7 @@ function LeadFormInner({ preselectedService, compact, preferredStyle }: LeadForm
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...data,
+          ...spamFields(),
           source,
           utmSource: searchParams.get("utm_source") || undefined,
           utmMedium: searchParams.get("utm_medium") || undefined,
@@ -116,6 +119,7 @@ function LeadFormInner({ preselectedService, compact, preferredStyle }: LeadForm
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <HoneypotField />
       <div className={compact ? "space-y-4" : "grid gap-4 sm:grid-cols-2"}>
         <div className="space-y-1.5">
           <Label htmlFor="name">Name *</Label>

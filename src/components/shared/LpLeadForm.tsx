@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, Phone, Loader2, Shield } from "lucide-react";
 import { SITE } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
+import { useSpamProtection } from "@/hooks/useSpamProtection";
 
 interface LpLeadFormProps {
   service: string;
@@ -26,6 +27,7 @@ function LpLeadFormInner({ service }: LpLeadFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const { spamFields, HoneypotField } = useSpamProtection();
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -78,6 +80,7 @@ function LpLeadFormInner({ service }: LpLeadFormProps) {
           utmMedium,
           utmCampaign,
           landingPage: typeof window !== "undefined" ? window.location.href : "",
+          ...spamFields(),
         }),
       });
 
@@ -116,6 +119,7 @@ function LpLeadFormInner({ service }: LpLeadFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      <HoneypotField />
       <div className="space-y-1.5">
         <Label htmlFor="lp-name">Your Name *</Label>
         <Input

@@ -15,6 +15,7 @@ import {
 import { QUIZ_DATA, extractTimeframe, extractBudget } from "@/lib/quiz-data";
 import { PRIMARY_SERVICES, SITE } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
+import { useSpamProtection } from "@/hooks/useSpamProtection";
 
 type Step = "service" | "quiz" | "contact" | "thanks";
 
@@ -54,6 +55,7 @@ export function EstimateQuiz({ preselectedService }: EstimateQuizProps) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [firstName, setFirstName] = useState("");
+  const { spamFields, HoneypotField } = useSpamProtection();
 
   const questions = QUIZ_DATA[serviceSlug] ?? [];
   const svc = PRIMARY_SERVICES.find((s) => s.slug === serviceSlug);
@@ -168,6 +170,7 @@ export function EstimateQuiz({ preselectedService }: EstimateQuizProps) {
           budget,
           source: `website_quiz:${serviceSlug}`,
           landingPage: typeof window !== "undefined" ? window.location.href : "/quote/quiz",
+          ...spamFields(),
         }),
       });
       if (!res.ok) {
@@ -396,6 +399,7 @@ export function EstimateQuiz({ preselectedService }: EstimateQuizProps) {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
+            <HoneypotField />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <label htmlFor="eq-name" className="text-sm font-medium">Your Name <span className="text-destructive">*</span></label>

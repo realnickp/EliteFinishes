@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Loader2, ChevronRight } from "lucide-react";
 import { SITE, CHATBOT_NAME } from "@/lib/constants";
+import { useSpamProtection } from "@/hooks/useSpamProtection";
 
 type Phase = "idle" | "form" | "chat";
 
@@ -63,6 +64,7 @@ export function Chatbot() {
   const inputRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
+  const { spamFields, HoneypotField } = useSpamProtection();
 
   useEffect(() => {
     if (phase === "form") setTimeout(() => nameRef.current?.focus(), 100);
@@ -101,6 +103,7 @@ export function Chatbot() {
           description: `Chatbot lead — interested in: ${service}`,
           timeframe: "To be discussed",
           landingPage: typeof window !== "undefined" ? window.location.href : "",
+          ...spamFields(),
         }),
       });
 
@@ -213,6 +216,7 @@ export function Chatbot() {
           {/* PRE-CHAT FORM */}
           {phase === "form" && (
             <form onSubmit={handleFormSubmit} className="p-4 sm:p-4 space-y-4 overflow-y-auto flex-1 min-h-0">
+              <HoneypotField />
               <p className="text-sm text-gray-600">
                 Quick intro before we chat — our team will reach out to confirm your estimate.
               </p>

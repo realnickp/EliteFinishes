@@ -1,9 +1,49 @@
 import { NextRequest, NextResponse } from "next/server";
+import crypto from "crypto";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { calculateLeadScore } from "@/lib/lead-scoring";
 import { sendSMS, sendEmail, SMS_TEMPLATES, EMAIL_TEMPLATES } from "@/lib/automations";
 import { requireAuth } from "@/lib/auth";
 import { env, hasRecaptcha } from "@/lib/env";
+
+// ── Spam prevention helpers ──────────────────────────────
+
+function getTokenSecret(): string {
+  if (process.env.FORM_TOKEN_SECRET) return process.env.FORM_TOKEN_SECRET;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+  return crypto.createHash("sha256").update(`${url}:${key}:form-token-salt`).digest("hex");
+}
+
+/** Verify HMAC-signed timing token. Returns null if valid, or a rejection reason. */
+function verifyTimingToken(token: unknown): string | null {
+  if (typeof token !== "string" || !token) return "missing_token";
+  const parts = token.split(".");
+  if (parts.length !== 2) return "malformed_token";
+  const [ts, sig] = parts;
+  const expected = crypto.createHmac("sha256", getTokenSecret()).update(ts).digest("hex");
+  // Constant-time comparison
+  if (sig.length !== expected.length) return "invalid_signature";
+  const sigBuf = Buffer.from(sig, "utf8");
+  const expBuf = Buffer.from(expected, "utf8");
+  if (!crypto.timingSafeEqual(sigBuf, expBuf)) return "invalid_signature";
+  const elapsed = Date.now() - parseInt(ts, 10);
+  if (isNaN(elapsed)) return "invalid_timestamp";
+  if (elapsed < 3000) return "too_fast";        // < 3 seconds = bot
+  if (elapsed > 1800000) return "token_expired"; // > 30 minutes = stale
+  return null; // valid
+}
+
+/** Normalize phone to digits only, strip leading US country code */
+function normalizePhone(phone: string): string {
+  const digits = phone.replace(/\D/g, "");
+  if (digits.length === 11 && digits.startsWith("1")) return digits.slice(1);
+  return digits;
+}
+
+function getClientIp(request: NextRequest): string {
+  return request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+}
 
 // ── GET /api/leads — list with filters (dashboard only) ───
 
@@ -161,8 +201,42 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    const clientIp = getClientIp(request);
 
-    // Optional reCAPTCHA: when RECAPTCHA_SECRET_KEY is set and token is sent, verify it
+    // ── 1. Honeypot check — bots fill hidden fields, humans don't ──
+    if (typeof body.website_url === "string" && body.website_url.trim()) {
+      console.warn("[SPAM] Honeypot triggered", { ip: clientIp, name: body.name, phone: body.phone });
+      return NextResponse.json({ success: true }); // silent reject
+    }
+
+    // ── 2. Timing token check — reject instant/forged/expired submissions ──
+    const tokenRejection = verifyTimingToken(body._t);
+    if (tokenRejection) {
+      console.warn("[SPAM] Timing token rejected", { reason: tokenRejection, ip: clientIp, name: body.name, phone: body.phone });
+      return NextResponse.json({ success: true }); // silent reject
+    }
+
+    // ── 3. IP rate limit — max 5 submissions per IP per hour (via Supabase) ──
+    if (clientIp !== "unknown") {
+      try {
+        const supabaseRL = getSupabaseAdmin();
+        const oneHourAgo = new Date(Date.now() - 3600000).toISOString();
+        const { count } = await supabaseRL
+          .from("leads")
+          .select("id", { count: "exact", head: true })
+          .eq("ip", clientIp)
+          .gte("created_at", oneHourAgo);
+        if (count !== null && count >= 5) {
+          console.warn("[SPAM] Rate limit exceeded", { ip: clientIp, count });
+          return NextResponse.json({ error: "Too many requests. Please try again later." }, { status: 429 });
+        }
+      } catch (err) {
+        // Don't block legitimate leads if rate-limit query fails
+        console.error("[SPAM] Rate limit check error:", err);
+      }
+    }
+
+    // ── 4. Optional reCAPTCHA (unchanged — runs when env var is set) ──
     const recaptchaToken = typeof body.recaptchaToken === "string" ? body.recaptchaToken.trim() : null;
     if (hasRecaptcha() && recaptchaToken) {
       const valid = await verifyRecaptcha(recaptchaToken);
@@ -207,6 +281,30 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
+    // ── 5. Duplicate detection — same phone within 24 hours ──
+    if (phone.length >= 7) {
+      try {
+        const supabaseDup = getSupabaseAdmin();
+        const oneDayAgo = new Date(Date.now() - 86400000).toISOString();
+        const { data: dupLead } = await supabaseDup
+          .from("leads")
+          .select("id")
+          .eq("phone", phone)
+          .gte("created_at", oneDayAgo)
+          .limit(1)
+          .maybeSingle();
+        if (dupLead) {
+          console.log("[SPAM] Duplicate phone detected", { phone, ip: clientIp });
+          return NextResponse.json({
+            success: true,
+            message: "We already have your request and will be in touch soon!",
+          });
+        }
+      } catch {
+        // Don't block legitimate leads if duplicate check fails
+      }
+    }
+
     // Detect source — prefer the specific label the client sends (e.g. "quote_page", "lp_quiz:interior-painting")
     const source = bodySource || utmSource || (landingPage?.includes("google") ? "google_ads" : "website:unknown");
 
@@ -245,6 +343,7 @@ export async function POST(request: NextRequest) {
       chat_transcript: chatTranscript,
       chatbot_qualified: isChatbot || false,
       status_history: [{ status: "new", timestamp: new Date().toISOString() }],
+      ip: clientIp !== "unknown" ? clientIp : null,
     };
     if (preferredStyle) leadData.preferred_style = preferredStyle;
 
