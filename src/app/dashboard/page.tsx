@@ -147,7 +147,7 @@ export default function DashboardPage() {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
         {[
           { label: "Pipeline", href: "/dashboard/pipeline", desc: "Kanban board" },
-          { label: "Add Note", href: "/dashboard/leads", desc: "On any lead" },
+          { label: "Add Lead", href: "/dashboard/leads?add=1", desc: "Manual entry" },
           { label: "Automations", href: "/dashboard/automations", desc: "Workflows" },
           { label: "View Site", href: "/", desc: "Public website" },
         ].map((action) => (

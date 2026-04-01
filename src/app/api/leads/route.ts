@@ -408,7 +408,7 @@ export async function POST(request: NextRequest) {
       }
 
       // Team notification emails
-      const TEAM_EMAILS = ["realnickpatrick@gmail.com", "Elitefinishesmd@gmail.com"];
+      const TEAM_EMAILS = (process.env.EMAIL_NOTIFY_TO || "").split(",").map(e => e.trim()).filter(Boolean);
       const scoreEmoji = priority === "hot" ? "🔥" : priority === "warm" ? "⚡" : "📋";
       const priorityColor = priority === "hot" ? "#dc2626" : priority === "warm" ? "#f59e0b" : "#6b7280";
       const priorityLabel = priority === "hot" ? "HOT" : priority === "warm" ? "WARM" : "NORMAL";

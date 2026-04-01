@@ -4,10 +4,11 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import {
   Search, Filter, ArrowUpDown, Phone, Mail, ChevronRight,
-  Loader2, Trash2, CheckSquare, X, AlertTriangle,
+  Loader2, Trash2, CheckSquare, X, AlertTriangle, Plus,
 } from "lucide-react";
 import { StatusBadge } from "@/components/dashboard/StatusBadge";
 import { LeadScoreBadge } from "@/components/dashboard/LeadScoreBadge";
+import { AddLeadModal } from "@/components/dashboard/AddLeadModal";
 import type { Lead, LeadStatus } from "@/lib/dashboard-types";
 import { STATUS_LABELS } from "@/lib/dashboard-types";
 
@@ -27,6 +28,14 @@ export default function LeadsPage() {
   const [bulkLoading, setBulkLoading] = useState(false);
   const [bulkError, setBulkError] = useState("");
   const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
+
+  // Auto-open modal when ?add=1 is in URL (from dashboard quick action)
+  useEffect(() => {
+    if (typeof window !== "undefined" && new URLSearchParams(window.location.search).get("add") === "1") {
+      setShowAddModal(true);
+    }
+  }, []);
 
   const fetchLeads = useCallback(async () => {
     setLoading(true);
@@ -132,9 +141,18 @@ export default function LeadsPage() {
   return (
     <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-4">
       {/* Header */}
-      <div>
-        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Leads</h1>
-        <p className="text-sm text-gray-500">{total} total leads</p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Leads</h1>
+          <p className="text-sm text-gray-500">{total} total leads</p>
+        </div>
+        <button
+          onClick={() => setShowAddModal(true)}
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors"
+        >
+          <Plus className="w-4 h-4" />
+          Add Lead
+        </button>
       </div>
 
       {/* Filters */}
@@ -414,6 +432,17 @@ export default function LeadsPage() {
           </table>
         </div>
       </div>
+
+      {/* Add Lead Modal */}
+      {showAddModal && (
+        <AddLeadModal
+          onClose={() => setShowAddModal(false)}
+          onSuccess={() => {
+            setShowAddModal(false);
+            fetchLeads();
+          }}
+        />
+      )}
     </div>
   );
 }
