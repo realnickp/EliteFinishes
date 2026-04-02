@@ -251,6 +251,7 @@ export function ServicePageTemplate({
           <ScrollReveal delay={0.1}>
           <GalleryGrid items={galleryItems} />
           </ScrollReveal>
+          {/* View Full Gallery link hidden until gallery is populated
           <ScrollReveal delay={0.2}>
           <div className="text-center mt-8">
             <CTAButton href="/gallery" variant="outline">
@@ -258,6 +259,7 @@ export function ServicePageTemplate({
             </CTAButton>
           </div>
           </ScrollReveal>
+          */}
         </Section>
       )}
 

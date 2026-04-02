@@ -63,8 +63,8 @@ export default function HomePage() {
         {/* Mobile: image background visible */}
         <div className="absolute inset-0 lg:hidden">
           <Image
-            src="/images/pexels-binyaminmellish-106399.jpg"
-            alt="Beautiful home exterior remodeled by Elite Finishes in Baltimore"
+            src="/images/hero-bathroom-tile.jpg"
+            alt="Custom bathroom tile work by Elite Finishes in Baltimore"
             fill
             className="object-cover object-[center_60%]"
             priority
@@ -139,8 +139,8 @@ export default function HomePage() {
                 {/* Main large image */}
                 <div className="col-span-8 row-span-4 relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/pexels-artbovich-7031616.jpg"
-                    alt="Interior painting in progress in a Baltimore home by Elite Finishes"
+                    src="/images/hero-entertainment-center.jpg"
+                    alt="Custom built-in entertainment center with fireplace by Elite Finishes"
                     fill
                     className="object-cover"
                     priority
@@ -150,8 +150,8 @@ export default function HomePage() {
                 {/* Top right small image */}
                 <div className="col-span-4 row-span-3 relative rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="/images/pexels-artbovich-6301185.jpg"
-                    alt="Kitchen remodeling by Elite Finishes in Baltimore"
+                    src="/images/hero-bathroom-tile.jpg"
+                    alt="Bathroom remodel with custom tile work by Elite Finishes in Baltimore"
                     fill
                     className="object-cover"
                     sizes="20vw"
@@ -160,8 +160,8 @@ export default function HomePage() {
                 {/* Bottom right small image */}
                 <div className="col-span-4 row-span-3 relative rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="/images/house-exterior.jpg"
-                    alt="Exterior painting by Elite Finishes in Baltimore County"
+                    src="/images/hero-staircase.jpg"
+                    alt="Staircase railing painting and refinishing by Elite Finishes"
                     fill
                     className="object-cover"
                     sizes="20vw"
@@ -170,8 +170,8 @@ export default function HomePage() {
                 {/* Bottom left image */}
                 <div className="col-span-8 row-span-2 relative rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="/images/pexels-artbovich-8146335.jpg"
-                    alt="Professional painting crew completing a project in the Baltimore area"
+                    src="/images/hero-basement-remodel.jpg"
+                    alt="Basement remodel with fireplace and flooring by Elite Finishes"
                     fill
                     className="object-cover"
                     sizes="30vw"
@@ -334,7 +334,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ===== Featured Gallery Strip ===== */}
+      {/* ===== Featured Gallery Strip (hidden until populated with real project photos) =====
       <Section variant="warm">
         <ScrollReveal>
         <div className="text-center mb-10">
@@ -356,6 +356,7 @@ export default function HomePage() {
         </div>
         </ScrollReveal>
       </Section>
+      ===== */}
 
       {/* ===== Quiz CTA ===== */}
       <Section variant="warm">

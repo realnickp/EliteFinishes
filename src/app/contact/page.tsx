@@ -254,12 +254,14 @@ export default function ContactPage() {
             </div>
           ))}
         </div>
+        {/* View Full Gallery link hidden until gallery is populated
         <div className="text-center mt-8">
           <CTAButton variant="outline-light" href="/gallery">
             View Full Gallery
             <ArrowRight className="h-4 w-4" />
           </CTAButton>
         </div>
+        */}
       </Section>
 
       {/* ─── MAP SECTION ─── */}

@@ -732,7 +732,7 @@ export const NAV_LINKS = [
   { label: "Services", href: "/services" },
   { label: "Areas", href: "/areas" },
   { label: "Financing", href: "/financing" },
-  { label: "Gallery", href: "/gallery" },
+  // { label: "Gallery", href: "/gallery" }, // Hidden until populated with real project photos
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
