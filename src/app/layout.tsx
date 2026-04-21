@@ -20,6 +20,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
+  themeColor: "#0f172a",
 };
 
 const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -77,6 +78,12 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: SITE.url,
+  },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "EF Canvasser",
   },
   keywords: [
     "painting contractor Baltimore MD",

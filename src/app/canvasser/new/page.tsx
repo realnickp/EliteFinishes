@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { ArrowLeft, Loader2, Shield, CheckCircle } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft, Loader2, Shield, CheckCircle, Home, List } from "lucide-react";
 import { PRIMARY_SERVICES, SITE } from "@/lib/constants";
 import { QUIZ_DATA } from "@/lib/quiz-data";
 import { QuizScreen } from "@/components/lp/QuizScreen";
@@ -160,6 +161,20 @@ export default function CanvasserNewLeadPage() {
           >
             Submit another lead
           </button>
+          <div className="mt-3 grid grid-cols-2 gap-3">
+            <Link
+              href="/canvasser"
+              className="inline-flex items-center justify-center gap-2 bg-gray-100 text-gray-700 font-medium py-2.5 rounded-xl hover:bg-gray-200"
+            >
+              <Home className="h-4 w-4" /> Home
+            </Link>
+            <Link
+              href="/canvasser/leads"
+              className="inline-flex items-center justify-center gap-2 bg-gray-100 text-gray-700 font-medium py-2.5 rounded-xl hover:bg-gray-200"
+            >
+              <List className="h-4 w-4" /> My leads
+            </Link>
+          </div>
         </div>
       </div>
     );

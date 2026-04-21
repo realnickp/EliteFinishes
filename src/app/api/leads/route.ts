@@ -440,6 +440,14 @@ export async function POST(request: NextRequest) {
 
       // Team notification emails via shared helper
       const TEAM_EMAILS = getTeamEmailRecipients();
+      console.log(
+        `[LEAD] leadId=${leadId} source=${source} recipients=${TEAM_EMAILS.length} resend=${process.env.RESEND_API_KEY ? "set" : "missing"}`
+      );
+      if (TEAM_EMAILS.length === 0) {
+        console.warn(
+          "[LEAD] EMAIL_NOTIFY_TO is empty — no team notification will fire. Set it in Vercel env vars."
+        );
+      }
       const teamNotif = buildTeamLeadEmail({
         channel: "website",
         leadId,

@@ -104,6 +104,14 @@ export async function POST(request: NextRequest) {
     // Send team notification emails via shared helper (no welcome email/SMS to the lead)
     if (leadId) {
       const TEAM_EMAILS = getTeamEmailRecipients();
+      console.log(
+        `[MANUAL LEAD] leadId=${leadId} source=${source} recipients=${TEAM_EMAILS.length} resend=${process.env.RESEND_API_KEY ? "set" : "missing"}`
+      );
+      if (TEAM_EMAILS.length === 0) {
+        console.warn(
+          "[MANUAL LEAD] EMAIL_NOTIFY_TO is empty — no team notification will fire. Set it in Vercel env vars."
+        );
+      }
       if (TEAM_EMAILS.length > 0) {
         const { subject, html } = buildTeamLeadEmail({
           channel: "manual",

@@ -9,7 +9,24 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function LoginChooserPage() {
+function buildHref(base: string, redirect?: string): string {
+  if (!redirect) return base;
+  return `${base}?redirect=${encodeURIComponent(redirect)}`;
+}
+
+export default async function LoginChooserPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ redirect?: string }>;
+}) {
+  const sp = await searchParams;
+  const rawRedirect = sp.redirect;
+  // Guard against open redirects — only internal paths allowed.
+  const redirect =
+    rawRedirect && rawRedirect.startsWith("/") && !rawRedirect.startsWith("//")
+      ? rawRedirect
+      : undefined;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 flex items-center justify-center p-4">
       <div className="w-full max-w-lg">
@@ -32,7 +49,7 @@ export default function LoginChooserPage() {
 
         <div className="grid gap-3 sm:grid-cols-2">
           <Link
-            href="/dashboard/login"
+            href={buildHref("/dashboard/login", redirect)}
             className="group relative flex flex-col items-start gap-3 p-5 rounded-2xl bg-gray-900/80 backdrop-blur border border-gray-800 hover:border-orange-500 hover:bg-gray-900 transition-all"
           >
             <div className="h-11 w-11 rounded-xl bg-orange-500/15 ring-1 ring-orange-500/40 flex items-center justify-center">
@@ -56,7 +73,7 @@ export default function LoginChooserPage() {
           </Link>
 
           <Link
-            href="/canvasser/login"
+            href={buildHref("/canvasser/login", redirect)}
             className="group relative flex flex-col items-start gap-3 p-5 rounded-2xl bg-gray-900/80 backdrop-blur border border-gray-800 hover:border-orange-500 hover:bg-gray-900 transition-all"
           >
             <div className="h-11 w-11 rounded-xl bg-orange-500/15 ring-1 ring-orange-500/40 flex items-center justify-center">

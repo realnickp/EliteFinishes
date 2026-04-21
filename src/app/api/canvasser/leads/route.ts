@@ -104,27 +104,10 @@ export async function POST(request: NextRequest) {
   const budget = extractBudget(body.answers);
   const supabase = getSupabaseAdmin();
 
-  // Duplicate-phone silent accept (last 24h) — prevents accidental double-submit
-  // when canvasser taps Submit twice on their tablet.
-  if (normalizedPhone.length >= 7) {
-    const oneDayAgo = new Date(Date.now() - 86400000).toISOString();
-    const { data: dup } = await supabase
-      .from("leads")
-      .select("id")
-      .eq("phone", normalizedPhone)
-      .gte("created_at", oneDayAgo)
-      .limit(1)
-      .maybeSingle();
-    if (dup) {
-      console.log("[CANVASSER DUP]", { phone: normalizedPhone, canvasserId: canvasser.id });
-      return NextResponse.json({
-        success: true,
-        leadId: dup.id,
-        duplicate: true,
-        message: "A lead with this phone was already submitted in the last 24 hours.",
-      });
-    }
-  }
+  // Note: no duplicate-phone suppression here. Canvassers are authenticated
+  // and rate-limited, and two canvassers can legitimately pitch the same
+  // household on the same day — each submission deserves its own lead +
+  // notification so attribution is correct.
 
   const { score, factors, priority } = calculateLeadScore({
     phone: normalizedPhone,
@@ -190,6 +173,14 @@ export async function POST(request: NextRequest) {
   const leadId = data.id as string;
 
   const teamEmails = getTeamEmailRecipients();
+  console.log(
+    `[CANVASSER LEAD] leadId=${leadId} canvasser=${canvasser.name} recipients=${teamEmails.length} resend=${process.env.RESEND_API_KEY ? "set" : "missing"}`
+  );
+  if (teamEmails.length === 0) {
+    console.warn(
+      "[CANVASSER LEAD] EMAIL_NOTIFY_TO is empty — no team notification will fire. Set it in Vercel env vars."
+    );
+  }
   if (teamEmails.length > 0) {
     const { subject, html } = buildTeamLeadEmail({
       channel: "canvasser",

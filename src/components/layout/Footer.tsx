@@ -129,9 +129,18 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-primary-foreground/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-primary-foreground/40">
           <p>&copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
-          <div className="flex items-center gap-2">
-            <MapPin className="h-3.5 w-3.5" />
-            <p>Licensed Maryland Home Improvement Contractor &middot; MHIC {SITE.license}</p>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/login"
+              className="text-primary-foreground/40 hover:text-brand-green transition-colors"
+            >
+              Team login
+            </Link>
+            <span className="text-primary-foreground/20">·</span>
+            <div className="flex items-center gap-2">
+              <MapPin className="h-3.5 w-3.5" />
+              <p>Licensed MHIC {SITE.license}</p>
+            </div>
           </div>
         </div>
       </div>

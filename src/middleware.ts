@@ -52,11 +52,11 @@ export async function middleware(request: NextRequest) {
       : false;
 
     if (!valid) {
-      const loginUrl = new URL("/dashboard/login", request.url);
-      // Only set redirect param for internal paths (prevents open redirect)
-      if (pathname !== "/dashboard/login") {
-        loginUrl.searchParams.set("redirect", pathname);
-      }
+      // Send to the role chooser so the user picks admin vs canvasser;
+      // the chooser forwards to /dashboard/login with the same redirect.
+      const loginUrl = new URL("/login", request.url);
+      loginUrl.searchParams.set("redirect", pathname);
+      loginUrl.searchParams.set("role", "admin");
       return NextResponse.redirect(loginUrl);
     }
   }
@@ -72,6 +72,9 @@ export async function middleware(request: NextRequest) {
     const valid = !!cookie && /^[0-9a-f-]{36}\.[0-9a-f]{64}$/.test(cookie);
 
     if (!valid) {
+      // Canvassers go straight to their login (they're on a phone, at the door
+      // — no time for a chooser). Admin lands on the chooser via the dashboard
+      // branch above.
       const loginUrl = new URL("/canvasser/login", request.url);
       if (pathname !== "/canvasser/login") {
         loginUrl.searchParams.set("redirect", pathname);
