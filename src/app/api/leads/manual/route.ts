@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { calculateLeadScore } from "@/lib/lead-scoring";
-import { sendEmail } from "@/lib/automations";
+import { sendEmail, EMAIL_TEMPLATES } from "@/lib/automations";
 import { requireAuth } from "@/lib/auth";
 import { SITE } from "@/lib/constants";
 
@@ -101,7 +101,22 @@ export async function POST(request: NextRequest) {
 
     const leadId = data?.id;
 
-    // Send team notification emails (no welcome email/SMS to the lead)
+    // Welcome email to the prospect (if they gave one).
+    if (leadId && email) {
+      const ctx = {
+        leadId,
+        leadName: name,
+        leadPhone: phone,
+        leadEmail: email,
+        leadService: service,
+      };
+      const tmpl = EMAIL_TEMPLATES.welcome_email(ctx);
+      await sendEmail(email, tmpl.subject, tmpl.html)
+        .then((r) => console.log("[MANUAL WELCOME EMAIL]", email, JSON.stringify(r)))
+        .catch((err) => console.error("[MANUAL WELCOME EMAIL]", email, err));
+    }
+
+    // Send team notification emails
     if (leadId) {
       const TEAM_EMAILS = (process.env.EMAIL_NOTIFY_TO || "").split(",").map(e => e.trim()).filter(Boolean);
 

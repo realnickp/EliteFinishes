@@ -9,11 +9,11 @@ function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const rawRedirect = searchParams.get("redirect") || "/canvasser/new";
+  const rawRedirect = searchParams.get("redirect") || "/canvasser";
   const redirect =
     rawRedirect.startsWith("/") && !rawRedirect.startsWith("//")
       ? rawRedirect
-      : "/canvasser/new";
+      : "/canvasser";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

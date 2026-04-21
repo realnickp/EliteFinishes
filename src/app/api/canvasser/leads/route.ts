@@ -4,7 +4,7 @@ import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { requireCanvasser } from "@/lib/canvasser-auth";
 import { consume } from "@/lib/rate-limit";
 import { calculateLeadScore } from "@/lib/lead-scoring";
-import { sendEmail } from "@/lib/automations";
+import { sendEmail, EMAIL_TEMPLATES } from "@/lib/automations";
 import { QUIZ_DATA, extractTimeframe, extractBudget } from "@/lib/quiz-data";
 import { PRIMARY_SERVICES } from "@/lib/constants";
 import {
@@ -171,6 +171,21 @@ export async function POST(request: NextRequest) {
   }
 
   const leadId = data.id as string;
+
+  // Welcome email to the prospect (if they gave one).
+  if (email) {
+    const ctx = {
+      leadId,
+      leadName: body.name.trim(),
+      leadPhone: normalizedPhone,
+      leadEmail: email,
+      leadService: serviceTitle,
+    };
+    const tmpl = EMAIL_TEMPLATES.welcome_email(ctx);
+    await sendEmail(email, tmpl.subject, tmpl.html)
+      .then((r) => console.log("[CANVASSER WELCOME EMAIL]", email, JSON.stringify(r)))
+      .catch((err) => console.error("[CANVASSER WELCOME EMAIL]", email, err));
+  }
 
   const teamEmails = getTeamEmailRecipients();
   console.log(
