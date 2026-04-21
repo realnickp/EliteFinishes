@@ -6,6 +6,7 @@ import { CheckCircle, Phone, Shield, Star, Loader2, ArrowLeft } from "lucide-rea
 import { QUIZ_DATA, extractTimeframe, extractBudget } from "@/lib/quiz-data";
 import { PRIMARY_SERVICES, SITE } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
+import { useSpamProtection } from "@/hooks/useSpamProtection";
 
 interface StoredQuiz {
   answers: string[];
@@ -47,6 +48,7 @@ export default function ContactPage() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const { spamFields, HoneypotField } = useSpamProtection();
 
   useEffect(() => {
     try {
@@ -114,6 +116,7 @@ export default function ContactPage() {
           utmMedium: utm.utm_medium,
           utmCampaign: utm.utm_campaign,
           landingPage: typeof window !== "undefined" ? window.location.href : `/lp/${service}/contact`,
+          ...spamFields(),
         }),
       });
 
@@ -217,6 +220,7 @@ export default function ContactPage() {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
+            <HoneypotField />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <label htmlFor="c-name" className="text-sm font-medium">
