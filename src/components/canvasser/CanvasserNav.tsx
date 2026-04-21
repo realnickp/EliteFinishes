@@ -4,26 +4,29 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { LayoutDashboard, Users, GitBranch, Zap, LogOut, Phone, Menu, X, ExternalLink, CalendarDays, UserCog } from "lucide-react";
+import { ClipboardPlus, List, Trophy, LogOut, Menu, X, Phone } from "lucide-react";
 import { SITE } from "@/lib/constants";
 
 const NAV = [
-  { label: "Overview", href: "/dashboard", icon: LayoutDashboard },
-  { label: "Leads", href: "/dashboard/leads", icon: Users },
-  { label: "Pipeline", href: "/dashboard/pipeline", icon: GitBranch },
-  { label: "Calendar", href: "/dashboard/calendar", icon: CalendarDays },
-  { label: "Canvassers", href: "/dashboard/canvassers", icon: UserCog },
-  { label: "Automations", href: "/dashboard/automations", icon: Zap },
+  { label: "New Lead", href: "/canvasser/new", icon: ClipboardPlus },
+  { label: "My Leads", href: "/canvasser/leads", icon: List },
+  { label: "Leaderboard", href: "/canvasser/leaderboard", icon: Trophy },
 ];
 
-export function DashboardNav() {
+interface CanvasserNavProps {
+  canvasserName: string | null;
+}
+
+export function CanvasserNav({ canvasserName }: CanvasserNavProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   function isActive(href: string) {
-    if (href === "/dashboard") return pathname === "/dashboard";
     return pathname.startsWith(href);
   }
+
+  // Hide nav on the login page itself — user isn't authenticated yet.
+  if (pathname === "/canvasser/login") return null;
 
   const navLinks = (
     <nav className="flex-1 p-3 space-y-1">
@@ -57,15 +60,7 @@ export function DashboardNav() {
         <Phone className="h-5 w-5 flex-shrink-0" />
         {SITE.phone}
       </a>
-      <Link
-        href="/"
-        onClick={() => setOpen(false)}
-        className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors min-h-[48px]"
-      >
-        <ExternalLink className="h-5 w-5 flex-shrink-0" />
-        View Website
-      </Link>
-      <form action="/api/auth/logout" method="POST">
+      <form action="/api/canvasser/auth/logout" method="POST">
         <button
           type="submit"
           className="flex items-center gap-3 px-4 py-3 w-full rounded-xl text-sm text-gray-400 hover:text-red-400 hover:bg-gray-800 transition-colors min-h-[48px]"
@@ -77,6 +72,13 @@ export function DashboardNav() {
     </div>
   );
 
+  const userBlock = canvasserName ? (
+    <div className="px-4 py-3 border-b border-gray-800">
+      <p className="text-xs text-gray-500 uppercase tracking-wide">Signed in as</p>
+      <p className="text-sm font-semibold text-white mt-0.5 truncate">{canvasserName}</p>
+    </div>
+  ) : null;
+
   return (
     <>
       {/* Mobile top bar */}
@@ -85,6 +87,7 @@ export function DashboardNav() {
           <button
             onClick={() => setOpen(!open)}
             className="p-2 -ml-2 rounded-xl hover:bg-gray-800 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+            aria-label="Toggle menu"
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -93,14 +96,17 @@ export function DashboardNav() {
         <a
           href={SITE.phoneTel}
           className="p-2 rounded-xl hover:bg-gray-800 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center text-green-400"
+          aria-label="Call"
         >
           <Phone className="h-5 w-5" />
         </a>
       </div>
 
-      {/* Mobile backdrop */}
       {open && (
-        <div className="md:hidden fixed inset-0 z-30 bg-black/60 backdrop-blur-sm" onClick={() => setOpen(false)} />
+        <div
+          className="md:hidden fixed inset-0 z-30 bg-black/60 backdrop-blur-sm"
+          onClick={() => setOpen(false)}
+        />
       )}
 
       {/* Mobile sidebar */}
@@ -109,6 +115,7 @@ export function DashboardNav() {
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
+        {userBlock}
         {navLinks}
         {bottomLinks}
       </aside>
@@ -117,8 +124,9 @@ export function DashboardNav() {
       <aside className="hidden md:flex w-56 bg-gray-900 text-white flex-col flex-shrink-0 min-h-screen">
         <div className="p-4 border-b border-gray-800">
           <Image src="/images/logo.png" alt="Elite Finishes" width={140} height={52} className="h-10 w-auto brightness-110" />
-          <p className="text-xs text-gray-400 mt-1.5">Lead Command Center</p>
+          <p className="text-xs text-gray-400 mt-1.5">Canvasser Portal</p>
         </div>
+        {userBlock}
         {navLinks}
         {bottomLinks}
       </aside>

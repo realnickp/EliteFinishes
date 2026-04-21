@@ -53,6 +53,9 @@ export interface Lead {
   communication_count?: number;
   first_contact_at?: string;
   last_contact_at?: string;
+  canvasser_id?: string;
+  canvasser?: { id: string; name: string };
+  photos?: string[];
   created_at: string;
   updated_at: string;
 }

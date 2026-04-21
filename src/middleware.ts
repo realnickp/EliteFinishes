@@ -61,9 +61,28 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  if (
+    pathname.startsWith("/canvasser") &&
+    !pathname.startsWith("/canvasser/login")
+  ) {
+    // Edge runtime can't hit the DB or run bcrypt on every request. Middleware
+    // does a cheap shape-check; real auth happens inside route handlers via
+    // requireCanvasser() in src/lib/canvasser-auth.ts.
+    const cookie = request.cookies.get("canvasser_session")?.value;
+    const valid = !!cookie && /^[0-9a-f-]{36}\.[0-9a-f]{64}$/.test(cookie);
+
+    if (!valid) {
+      const loginUrl = new URL("/canvasser/login", request.url);
+      if (pathname !== "/canvasser/login") {
+        loginUrl.searchParams.set("redirect", pathname);
+      }
+      return NextResponse.redirect(loginUrl);
+    }
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*"],
+  matcher: ["/dashboard/:path*", "/canvasser/:path*"],
 };

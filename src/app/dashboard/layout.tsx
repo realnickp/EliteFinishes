@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
 import { DashboardNav } from "@/components/dashboard/DashboardNav";
 
 export const metadata: Metadata = {
@@ -15,6 +16,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <main className="flex-1 overflow-auto pt-14 md:pt-0">
         {children}
       </main>
+
+      <Toaster position="top-right" toastOptions={{ duration: 3500 }} />
     </div>
   );
 }

@@ -14,12 +14,17 @@ import { STATUS_LABELS } from "@/lib/dashboard-types";
 
 const STATUSES: LeadStatus[] = ["new", "contacted", "qualified", "quoted", "scheduled", "completed", "lost", "re_engaged"];
 
+type CanvasserOption = { id: string; name: string; active: boolean };
+
 export default function LeadsPage() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
+  const [sourceFilter, setSourceFilter] = useState("");
+  const [canvasserFilter, setCanvasserFilter] = useState("");
+  const [canvasserOptions, setCanvasserOptions] = useState<CanvasserOption[]>([]);
   const [sortBy, setSortBy] = useState("created_at");
   const [sortDir, setSortDir] = useState("desc");
 
@@ -43,6 +48,8 @@ export default function LeadsPage() {
       const params = new URLSearchParams({ sortBy, sortDir, limit: "100" });
       if (search) params.set("search", search);
       if (statusFilter) params.set("status", statusFilter);
+      if (sourceFilter) params.set("source", sourceFilter);
+      if (canvasserFilter) params.set("canvasser_id", canvasserFilter);
       const res = await fetch(`/api/leads?${params}`);
       const data = await res.json();
       setLeads(data.leads || []);
@@ -52,7 +59,7 @@ export default function LeadsPage() {
     } finally {
       setLoading(false);
     }
-  }, [search, statusFilter, sortBy, sortDir]);
+  }, [search, statusFilter, sourceFilter, canvasserFilter, sortBy, sortDir]);
 
   useEffect(() => {
     const t = setTimeout(fetchLeads, search ? 400 : 0);
@@ -63,7 +70,27 @@ export default function LeadsPage() {
     setSelectedIds(new Set());
     setDeleteConfirm(false);
     setBulkError("");
-  }, [search, statusFilter, sortBy, sortDir]);
+  }, [search, statusFilter, sourceFilter, canvasserFilter, sortBy, sortDir]);
+
+  // Load canvasser roster for the filter dropdown.
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/api/admin/canvassers");
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!cancelled) setCanvasserOptions(data.canvassers ?? []);
+      } catch {
+        // filter just won't populate
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const anyCanvasserLeads = leads.some((l) => !!l.canvasser);
 
   function toggleSort(col: string) {
     if (sortBy === col) setSortDir(d => d === "asc" ? "desc" : "asc");
@@ -178,6 +205,41 @@ export default function LeadsPage() {
             {STATUSES.map(s => <option key={s} value={s}>{STATUS_LABELS[s]}</option>)}
           </select>
         </div>
+        <div>
+          <select
+            value={sourceFilter}
+            onChange={e => setSourceFilter(e.target.value)}
+            className="w-full sm:w-auto px-3 py-2.5 text-base sm:text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 bg-white min-h-[44px]"
+            aria-label="Filter by source"
+          >
+            <option value="">All sources</option>
+            <option value="canvasser">🚪 Canvasser</option>
+            <option value="website">Website</option>
+            <option value="chatbot">Chatbot</option>
+            <option value="google_ads">Google Ads</option>
+            <option value="facebook_ads">Facebook Ads</option>
+            <option value="manual:phone_call">Phone Call</option>
+            <option value="manual:referral">Referral</option>
+            <option value="manual:walk_in">Walk-in</option>
+          </select>
+        </div>
+        {canvasserOptions.length > 0 && (
+          <div>
+            <select
+              value={canvasserFilter}
+              onChange={e => setCanvasserFilter(e.target.value)}
+              className="w-full sm:w-auto px-3 py-2.5 text-base sm:text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 bg-white min-h-[44px]"
+              aria-label="Filter by canvasser"
+            >
+              <option value="">All canvassers</option>
+              {canvasserOptions.map(c => (
+                <option key={c.id} value={c.id}>
+                  {c.name}{c.active ? "" : " (inactive)"}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
       </div>
 
       {/* Bulk Action Bar */}
@@ -361,6 +423,11 @@ export default function LeadsPage() {
                     </button>
                   </th>
                 ))}
+                {anyCanvasserLeads && (
+                  <th className="px-4 py-3 text-left font-semibold text-gray-600 text-xs uppercase tracking-wide whitespace-nowrap">
+                    Canvasser
+                  </th>
+                )}
                 <th className="px-4 py-3 text-left font-semibold text-gray-600 text-xs uppercase tracking-wide">Contact</th>
                 <th className="w-8" />
               </tr>
@@ -368,14 +435,14 @@ export default function LeadsPage() {
             <tbody className="divide-y divide-gray-100">
               {loading ? (
                 <tr>
-                  <td colSpan={10} className="px-4 py-12 text-center text-gray-400">
+                  <td colSpan={anyCanvasserLeads ? 11 : 10} className="px-4 py-12 text-center text-gray-400">
                     <Loader2 className="h-6 w-6 animate-spin mx-auto mb-2" />
                     Loading leads...
                   </td>
                 </tr>
               ) : leads.length === 0 ? (
                 <tr>
-                  <td colSpan={10} className="px-4 py-12 text-center text-gray-400">
+                  <td colSpan={anyCanvasserLeads ? 11 : 10} className="px-4 py-12 text-center text-gray-400">
                     No leads found. {search && "Try a different search."}
                   </td>
                 </tr>
@@ -406,6 +473,17 @@ export default function LeadsPage() {
                     <td className="px-4 py-3 text-gray-400 text-xs whitespace-nowrap">
                       {new Date(lead.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "2-digit" })}
                     </td>
+                    {anyCanvasserLeads && (
+                      <td className="px-4 py-3 text-xs whitespace-nowrap">
+                        {lead.canvasser ? (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 font-medium">
+                            🚪 {lead.canvasser.name}
+                          </span>
+                        ) : (
+                          <span className="text-gray-300">—</span>
+                        )}
+                      </td>
+                    )}
                     <td className="px-4 py-3">
                       <div className="flex gap-2">
                         {lead.phone && (

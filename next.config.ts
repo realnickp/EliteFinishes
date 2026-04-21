@@ -27,8 +27,22 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      { source: "/admin", destination: "/login", permanent: false },
+      { source: "/admin/:path*", destination: "/dashboard/:path*", permanent: false },
+      { source: "/signin", destination: "/login", permanent: false },
+    ];
+  },
   images: {
     formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*.supabase.co",
+        pathname: "/storage/v1/object/public/**",
+      },
+    ],
   },
 };
 

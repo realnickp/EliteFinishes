@@ -3,6 +3,7 @@
 import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { Lock, Eye, EyeOff, Loader2 } from "lucide-react";
 
 function LoginForm() {
@@ -108,6 +109,12 @@ export default function LoginPage() {
           <Suspense fallback={<div className="h-32 flex items-center justify-center"><Loader2 className="h-5 w-5 animate-spin text-gray-400" /></div>}>
             <LoginForm />
           </Suspense>
+        </div>
+
+        <div className="mt-6 text-center">
+          <Link href="/login" className="text-xs text-gray-500 hover:text-gray-700 underline underline-offset-2">
+            ← Not the admin? Pick a different login
+          </Link>
         </div>
       </div>
     </div>

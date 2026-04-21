@@ -62,6 +62,7 @@ Copy `.env.local.example` to `.env.local` and fill in your values. The example f
 | `SUPABASE_SERVICE_ROLE_KEY` | Yes | Supabase service role key (leads + chat transcripts) |
 | `OPENAI_API_KEY` | Yes | OpenAI API key (for chatbot) |
 | `DASHBOARD_PASSWORD` | Yes | Password for `/dashboard` |
+| `CANVASSER_SESSION_SECRET` | Yes | Secret used to sign canvasser portal (`/canvasser`) session cookies |
 | `CRON_SECRET` | Yes | Secret for cron-triggered automations |
 | `ADMIN_PHONE` | No | Admin phone for lead notifications |
 | `NEXT_PUBLIC_POSTHOG_KEY` | No | PostHog project API key |

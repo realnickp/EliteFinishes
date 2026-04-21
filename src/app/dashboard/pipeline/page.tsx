@@ -94,6 +94,11 @@ export default function PipelinePage() {
                   <p className="text-sm font-semibold text-gray-900 truncate">{lead.name}</p>
                   <p className="text-xs text-gray-500 truncate mt-0.5">{lead.service}</p>
                   {lead.city_or_zip && <p className="text-xs text-gray-400 truncate">{lead.city_or_zip}</p>}
+                  {lead.canvasser?.name && (
+                    <p className="mt-1 text-[11px] text-orange-600 font-medium truncate">
+                      🚪 via {lead.canvasser.name.split(" ")[0]}
+                    </p>
+                  )}
                   <div className="mt-2.5 flex items-center justify-between">
                     <LeadScoreBadge score={lead.score || 0} />
                     {lead.quote_amount && (

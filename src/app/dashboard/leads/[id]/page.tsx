@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { StatusBadge } from "@/components/dashboard/StatusBadge";
 import { LeadScoreBadge } from "@/components/dashboard/LeadScoreBadge";
+import { LeadPhotoGallery } from "@/components/dashboard/LeadPhotoGallery";
 import type { Lead, LeadNote, LeadCommunication, LeadStatus } from "@/lib/dashboard-types";
 import { STATUS_LABELS, PIPELINE_STAGES } from "@/lib/dashboard-types";
 
@@ -151,6 +152,19 @@ export default function LeadDetailPage({ params }: { params: Promise<{ id: strin
         </div>
       </div>
 
+      {lead.canvasser?.name && (
+        <div className="bg-orange-50 border border-orange-200 rounded-xl p-3 sm:p-4 flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-wide text-orange-600">
+              Door-to-door lead
+            </p>
+            <p className="text-sm text-gray-800 mt-0.5">
+              Submitted by <span className="font-semibold">🚪 {lead.canvasser.name}</span>
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Contact info card */}
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-5">
         <h2 className="font-semibold text-gray-900 mb-3">Contact & Project Info</h2>
@@ -198,6 +212,10 @@ export default function LeadDetailPage({ params }: { params: Promise<{ id: strin
               })}
           </div>
         </div>
+      )}
+
+      {lead.photos && lead.photos.length > 0 && (
+        <LeadPhotoGallery photos={lead.photos} />
       )}
 
       {/* Status update */}
