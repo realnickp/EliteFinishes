@@ -6,6 +6,7 @@ import {
   Trophy,
   ArrowRight,
   DoorOpen,
+  GraduationCap,
 } from "lucide-react";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import {
@@ -65,6 +66,24 @@ export default async function CanvasserHomePage() {
             </p>
           </div>
           <ArrowRight className="h-6 w-6 text-white/80 transition-transform group-hover:translate-x-1" />
+        </div>
+      </Link>
+
+      <Link
+        href="/canvasser/training"
+        className="group block bg-white rounded-2xl border border-gray-200 shadow-sm p-5 hover:border-orange-300 hover:shadow-md transition-all mb-3"
+      >
+        <div className="flex items-start gap-4">
+          <div className="h-11 w-11 rounded-xl bg-violet-100 flex items-center justify-center flex-shrink-0">
+            <GraduationCap className="h-5 w-5 text-violet-600" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h3 className="font-semibold text-gray-900">Training & playbook</h3>
+            <p className="text-sm text-gray-500 mt-1">
+              Door openers, objection scripts, pricing cheat sheet, and safety rules.
+            </p>
+          </div>
+          <ArrowRight className="h-5 w-5 text-gray-400 transition-transform group-hover:translate-x-0.5 mt-1.5" />
         </div>
       </Link>
 

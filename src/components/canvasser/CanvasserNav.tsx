@@ -4,11 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { ClipboardPlus, List, Trophy, LogOut, Menu, X, Phone } from "lucide-react";
+import { ClipboardPlus, List, Trophy, LogOut, Menu, X, Phone, GraduationCap } from "lucide-react";
 import { SITE } from "@/lib/constants";
 
 const NAV = [
   { label: "New Lead", href: "/canvasser/new", icon: ClipboardPlus },
+  { label: "Training", href: "/canvasser/training", icon: GraduationCap },
   { label: "My Leads", href: "/canvasser/leads", icon: List },
   { label: "Leaderboard", href: "/canvasser/leaderboard", icon: Trophy },
 ];

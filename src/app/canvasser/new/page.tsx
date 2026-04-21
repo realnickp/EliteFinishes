@@ -9,7 +9,6 @@ import { QUIZ_DATA } from "@/lib/quiz-data";
 import { QuizScreen } from "@/components/lp/QuizScreen";
 import { ServicePicker } from "@/components/canvasser/ServicePicker";
 import { PhotoUploader } from "@/components/canvasser/PhotoUploader";
-import { TalkingPointsPanel } from "@/components/canvasser/TalkingPointsPanel";
 
 type Stage = "service" | "quiz" | "contact" | "submitting" | "done";
 
@@ -119,11 +118,7 @@ export default function CanvasserNewLeadPage() {
 
   // ── Stage: service picker ────────────────────────────────────────
   if (stage === "service") {
-    return (
-      <WithTalkingPoints>
-        <ServicePicker selected={serviceSlug} onSelect={handleServicePick} />
-      </WithTalkingPoints>
-    );
+    return <ServicePicker selected={serviceSlug} onSelect={handleServicePick} />;
   }
 
   // ── Stage: quiz ──────────────────────────────────────────────────
@@ -184,7 +179,6 @@ export default function CanvasserNewLeadPage() {
   const submitting = stage === "submitting";
 
   return (
-    <WithTalkingPoints>
     <div className="p-4 md:p-8 max-w-2xl mx-auto">
       <button
         onClick={() => setStage("quiz")}
@@ -342,20 +336,6 @@ export default function CanvasserNewLeadPage() {
           Licensed {SITE.license}
         </p>
       </form>
-    </div>
-    </WithTalkingPoints>
-  );
-}
-
-function WithTalkingPoints({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="lg:grid lg:grid-cols-[1fr_320px] lg:gap-6 lg:p-6">
-      <div className="min-w-0">{children}</div>
-      <aside className="hidden lg:block">
-        <div className="sticky top-6">
-          <TalkingPointsPanel />
-        </div>
-      </aside>
     </div>
   );
 }
