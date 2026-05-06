@@ -22,17 +22,17 @@ export interface BuildTeamLeadEmailOptions {
   photos?: string[];
 }
 
-const PRIORITY_META: Record<LeadPriority, { emoji: string; color: string; label: string }> = {
-  hot: { emoji: "🔥", color: "#dc2626", label: "HOT" },
-  warm: { emoji: "⚡", color: "#f59e0b", label: "WARM" },
-  normal: { emoji: "📋", color: "#6b7280", label: "NORMAL" },
-  cold: { emoji: "🧊", color: "#64748b", label: "COLD" },
+const PRIORITY_META: Record<LeadPriority, { label: string }> = {
+  hot: { label: "HOT" },
+  warm: { label: "WARM" },
+  normal: { label: "NORMAL" },
+  cold: { label: "COLD" },
 };
 
 const CHANNEL_SUBJECT_PREFIX: Record<LeadChannel, string> = {
-  website: "New Lead",
-  manual: "New Lead (Manual)",
-  canvasser: "🚪 Canvasser Lead",
+  website: "New lead",
+  manual: "New lead (manual)",
+  canvasser: "New lead (canvasser)",
 };
 
 function formatDescription(description: string | null | undefined): string {
@@ -68,41 +68,35 @@ function photosBlock(photos: string[] | undefined): string {
 
 export function buildTeamLeadEmail(
   opts: BuildTeamLeadEmailOptions
-): { subject: string; html: string } {
+): { subject: string; html: string; text: string } {
   const meta = PRIORITY_META[opts.priority];
   const prefix = CHANNEL_SUBJECT_PREFIX[opts.channel];
 
-  const subject =
-    opts.channel === "canvasser"
-      ? `${prefix}: ${opts.name} — ${opts.service}`
-      : `${meta.emoji} ${prefix}: ${opts.name} — ${opts.service}`;
+  const subject = `${prefix}: ${opts.name} (${opts.service})`;
 
   const dashboardUrl = `https://${SITE.domain}/dashboard/leads/${opts.leadId}`;
   const descHtml = formatDescription(opts.description ?? "");
 
-  const bannerLabel =
+  const headline =
     opts.channel === "canvasser"
-      ? `${meta.emoji} New ${meta.label} Canvasser Lead — ${opts.score} pts`
+      ? `New ${meta.label} canvasser lead (${opts.score} pts)`
       : opts.channel === "manual"
-        ? `${meta.emoji} New ${meta.label} Lead (Manual) — ${opts.score} pts`
-        : `${meta.emoji} New ${meta.label} Lead — ${opts.score} pts`;
+        ? `New ${meta.label} lead, manual entry (${opts.score} pts)`
+        : `New ${meta.label} lead (${opts.score} pts)`;
 
   const contactRows: string[] = [];
   if (opts.canvasser) {
     contactRows.push(
-      row(
-        "Submitted by",
-        `<span style="color:#111;font-weight:600;">🚪 ${opts.canvasser.name}</span>`
-      )
+      row("Submitted by", `<span style="color:#111;">${opts.canvasser.name}</span>`)
     );
   }
   contactRows.push(row("Name", opts.name));
   contactRows.push(
-    row("Phone", `<a href="tel:${opts.phone}" style="color:#2563eb;text-decoration:none;">${opts.phone}</a>`)
+    row("Phone", `<a href="tel:${opts.phone}" style="color:#1f2937;">${opts.phone}</a>`)
   );
   if (opts.email) {
     contactRows.push(
-      row("Email", `<a href="mailto:${opts.email}" style="color:#2563eb;text-decoration:none;">${opts.email}</a>`)
+      row("Email", `<a href="mailto:${opts.email}" style="color:#1f2937;">${opts.email}</a>`)
     );
   }
   if (opts.cityOrZip) contactRows.push(row("Location", opts.cityOrZip));
@@ -114,52 +108,82 @@ export function buildTeamLeadEmail(
   if (opts.source) projectRows.push(row("Source", opts.source));
   if (opts.landingPage) {
     projectRows.push(
-      row(
-        "Page",
-        `<span style="font-size:13px;word-break:break-all;color:#6b7280;">${opts.landingPage}</span>`
-      )
+      row("Page", `<span style="font-size:13px;word-break:break-all;color:#6b7280;">${opts.landingPage}</span>`)
     );
   }
 
   const html = `
-    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:600px;margin:0 auto;background:#ffffff;">
-      <div style="background:${meta.color};padding:16px 24px;border-radius:8px 8px 0 0;">
-        <h2 style="margin:0;color:#fff;font-size:20px;">${bannerLabel}</h2>
+    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:600px;margin:0 auto;color:#1f2937;">
+      <p style="margin:0 0 16px;font-size:15px;">${headline}.</p>
+
+      <p style="margin:0 0 8px;font-weight:600;">Contact</p>
+      <table style="border-collapse:collapse;width:100%;margin-bottom:20px;">
+        ${contactRows.join("")}
+      </table>
+
+      <p style="margin:0 0 8px;font-weight:600;">Project</p>
+      <table style="border-collapse:collapse;width:100%;margin-bottom:20px;">
+        ${projectRows.join("")}
+      </table>
+
+      ${descHtml ? `
+      <p style="margin:0 0 8px;font-weight:600;">Description</p>
+      <div style="font-size:14px;line-height:1.6;color:#374151;margin-bottom:20px;">
+        ${descHtml}
       </div>
+      ` : ""}
 
-      <div style="border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;padding:24px;">
-        <h3 style="margin:0 0 12px;font-size:16px;color:#111;">Contact Information</h3>
-        <table style="border-collapse:collapse;width:100%;margin-bottom:20px;">
-          ${contactRows.join("")}
-        </table>
+      ${photosBlock(opts.photos)}
 
-        <h3 style="margin:0 0 12px;font-size:16px;color:#111;">Project Details</h3>
-        <table style="border-collapse:collapse;width:100%;margin-bottom:20px;">
-          ${projectRows.join("")}
-        </table>
-
-        ${descHtml ? `
-        <h3 style="margin:0 0 12px;font-size:16px;color:#111;">Description</h3>
-        <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:14px 16px;margin-bottom:24px;font-size:14px;line-height:1.6;color:#374151;">
-          ${descHtml}
-        </div>
-        ` : ""}
-
-        ${photosBlock(opts.photos)}
-
-        <div style="text-align:center;margin:24px 0 8px;">
-          <a href="${dashboardUrl}" style="display:inline-block;background:#16a34a;color:#ffffff;font-weight:600;font-size:16px;padding:14px 32px;border-radius:8px;text-decoration:none;">
-            Open in Dashboard →
-          </a>
-        </div>
-        <p style="text-align:center;margin:8px 0 0;font-size:12px;color:#9ca3af;">
-          Or call them now: <a href="tel:${opts.phone}" style="color:#2563eb;text-decoration:none;">${opts.phone}</a>
-        </p>
-      </div>
+      <p style="margin:16px 0 0;font-size:14px;">
+        View in dashboard: <a href="${dashboardUrl}" style="color:#1f2937;">${dashboardUrl}</a>
+      </p>
+      <p style="margin:8px 0 0;font-size:14px;">
+        Call: <a href="tel:${opts.phone}" style="color:#1f2937;">${opts.phone}</a>
+      </p>
     </div>
   `;
 
-  return { subject, html };
+  const text = buildTeamLeadEmailText(opts, headline, dashboardUrl);
+
+  return { subject, html, text };
+}
+
+function buildTeamLeadEmailText(
+  opts: BuildTeamLeadEmailOptions,
+  headline: string,
+  dashboardUrl: string
+): string {
+  const lines: string[] = [];
+  lines.push(`${headline}.`);
+  lines.push("");
+  lines.push("Contact");
+  if (opts.canvasser) lines.push(`  Submitted by: ${opts.canvasser.name}`);
+  lines.push(`  Name: ${opts.name}`);
+  lines.push(`  Phone: ${opts.phone}`);
+  if (opts.email) lines.push(`  Email: ${opts.email}`);
+  if (opts.cityOrZip) lines.push(`  Location: ${opts.cityOrZip}`);
+  lines.push("");
+  lines.push("Project");
+  lines.push(`  Service: ${opts.service}`);
+  if (opts.timeframe) lines.push(`  Timeframe: ${opts.timeframe}`);
+  if (opts.budget) lines.push(`  Budget: ${opts.budget}`);
+  if (opts.source) lines.push(`  Source: ${opts.source}`);
+  if (opts.landingPage) lines.push(`  Page: ${opts.landingPage}`);
+  if (opts.description) {
+    lines.push("");
+    lines.push("Description");
+    lines.push(opts.description);
+  }
+  if (opts.photos && opts.photos.length > 0) {
+    lines.push("");
+    lines.push(`Photos (${opts.photos.length}):`);
+    for (const url of opts.photos) lines.push(`  ${url}`);
+  }
+  lines.push("");
+  lines.push(`View in dashboard: ${dashboardUrl}`);
+  lines.push(`Call: ${opts.phone}`);
+  return lines.join("\n");
 }
 
 export function getTeamEmailRecipients(): string[] {

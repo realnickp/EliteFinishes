@@ -182,7 +182,13 @@ export async function POST(request: NextRequest) {
       leadService: serviceTitle,
     };
     const tmpl = EMAIL_TEMPLATES.welcome_email(ctx);
-    await sendEmail(email, tmpl.subject, tmpl.html)
+    await sendEmail(email, tmpl.subject, tmpl.html, {
+      text: tmpl.text,
+      headers: {
+        "Auto-Submitted": "auto-generated",
+        "X-Entity-Ref-ID": leadId,
+      },
+    })
       .then((r) => console.log("[CANVASSER WELCOME EMAIL]", email, JSON.stringify(r)))
       .catch((err) => console.error("[CANVASSER WELCOME EMAIL]", email, err));
   }
@@ -197,7 +203,7 @@ export async function POST(request: NextRequest) {
     );
   }
   if (teamEmails.length > 0) {
-    const { subject, html } = buildTeamLeadEmail({
+    const { subject, html, text } = buildTeamLeadEmail({
       channel: "canvasser",
       leadId,
       name: body.name.trim(),
@@ -217,7 +223,13 @@ export async function POST(request: NextRequest) {
 
     await Promise.allSettled(
       teamEmails.map((to) =>
-        sendEmail(to, subject, html)
+        sendEmail(to, subject, html, {
+          text,
+          headers: {
+            "Auto-Submitted": "auto-generated",
+            "X-Entity-Ref-ID": leadId,
+          },
+        })
           .then((r) => console.log("[CANVASSER TEAM EMAIL]", to, JSON.stringify(r)))
           .catch((err) => console.error("[CANVASSER TEAM EMAIL]", to, err))
       )

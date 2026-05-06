@@ -43,28 +43,48 @@ export const SMS_TEMPLATES: Record<string, (ctx: AutomationContext) => string> =
 
 export const EMAIL_TEMPLATES: Record<
   string,
-  (ctx: AutomationContext) => { subject: string; html: string }
+  (ctx: AutomationContext) => { subject: string; html: string; text?: string }
 > = {
-  welcome_email: (ctx) => ({
-    subject: `Thanks for reaching out, ${ctx.leadName.split(" ")[0]}! — Elite Finishes`,
-    html: `
-      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2>We Got Your Request!</h2>
-        <p>Hi ${ctx.leadName.split(" ")[0]},</p>
-        <p>Thanks for reaching out to Elite Finishes about your <strong>${ctx.leadService || "project"}</strong>. We have received your request and will be in touch within <strong>one business day</strong>.</p>
-        <h3>What Happens Next:</h3>
-        <ol>
-          <li>We will call you to discuss your project in more detail.</li>
-          <li>We will schedule a free on-site visit at your property.</li>
-          <li>You will receive a clear, written estimate with no surprises.</li>
-        </ol>
-        <p>In the meantime, if you have any questions, give us a call: <a href="tel:+1${SITE.phone.replace(/\D/g, "")}">${SITE.phone}</a></p>
-        <p>— The Elite Finishes Team</p>
-        <hr>
-        <p style="color: #666; font-size: 12px;">${SITE.license} · Licensed and Insured · Baltimore, MD</p>
-      </div>
-    `,
-  }),
+  welcome_email: (ctx) => {
+    const firstName = ctx.leadName.split(" ")[0];
+    const service = ctx.leadService || "project";
+    return {
+      subject: `Your ${service} request, ${firstName}`,
+      html: `
+        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:600px;margin:0 auto;color:#1f2937;">
+          <p style="margin:0 0 16px;font-size:15px;">Hi ${firstName},</p>
+          <p style="margin:0 0 16px;font-size:15px;">Thanks for reaching out to Elite Finishes about your ${service}. We received your request and will be in touch within one business day.</p>
+          <p style="margin:0 0 8px;font-size:15px;">What happens next:</p>
+          <ol style="margin:0 0 16px 20px;padding:0;font-size:15px;line-height:1.6;">
+            <li>We call you to discuss the project in more detail.</li>
+            <li>We schedule a free on-site visit at your property.</li>
+            <li>You receive a clear, written estimate with no surprises.</li>
+          </ol>
+          <p style="margin:0 0 16px;font-size:15px;">If you have any questions in the meantime, call us at <a href="tel:+1${SITE.phone.replace(/\D/g, "")}" style="color:#1f2937;">${SITE.phone}</a>.</p>
+          <p style="margin:0 0 4px;font-size:15px;">Thanks,</p>
+          <p style="margin:0 0 16px;font-size:15px;">The Elite Finishes Team</p>
+          <p style="margin:16px 0 0;color:#6b7280;font-size:12px;">${SITE.license}, Licensed and Insured, Baltimore, MD</p>
+        </div>
+      `,
+      text: [
+        `Hi ${firstName},`,
+        ``,
+        `Thanks for reaching out to Elite Finishes about your ${service}. We received your request and will be in touch within one business day.`,
+        ``,
+        `What happens next:`,
+        `  1. We call you to discuss the project in more detail.`,
+        `  2. We schedule a free on-site visit at your property.`,
+        `  3. You receive a clear, written estimate with no surprises.`,
+        ``,
+        `If you have any questions in the meantime, call us at ${SITE.phone}.`,
+        ``,
+        `Thanks,`,
+        `The Elite Finishes Team`,
+        ``,
+        `${SITE.license}, Licensed and Insured, Baltimore, MD`,
+      ].join("\n"),
+    };
+  },
 
   quote_followup_email: (ctx) => ({
     subject: `Questions about your estimate? — Elite Finishes`,
@@ -168,18 +188,36 @@ export async function sendSMS(to: string, body: string): Promise<{ success: bool
 
 // ── Email Sender (Resend) ─────────────────────────────────
 
+export interface SendEmailOptions {
+  text?: string;
+  headers?: Record<string, string>;
+  fromName?: string;
+}
+
 export async function sendEmail(
   to: string,
   subject: string,
-  html: string
+  html: string,
+  options: SendEmailOptions = {}
 ): Promise<{ success: boolean; id?: string; error?: string }> {
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.EMAIL_FROM || `info@${SITE.domain}`;
+  const fromName = options.fromName || SITE.name;
 
   if (!apiKey) {
     console.warn("[EMAIL] Resend not configured. Would have sent to:", to, "Subject:", subject);
     return { success: false, error: "Resend not configured" };
   }
+
+  const payload: Record<string, unknown> = {
+    from: `${fromName} <${fromEmail}>`,
+    reply_to: SITE.email,
+    to,
+    subject,
+    html,
+  };
+  if (options.text) payload.text = options.text;
+  if (options.headers) payload.headers = options.headers;
 
   try {
     const response = await fetch("https://api.resend.com/emails", {
@@ -188,7 +226,7 @@ export async function sendEmail(
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ from: `${SITE.name} <${fromEmail}>`, reply_to: SITE.email, to, subject, html }),
+      body: JSON.stringify(payload),
     });
 
     const data = await response.json();

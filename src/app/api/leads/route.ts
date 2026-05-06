@@ -3,6 +3,7 @@ import crypto from "crypto";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { calculateLeadScore } from "@/lib/lead-scoring";
 import { sendSMS, sendEmail, SMS_TEMPLATES, EMAIL_TEMPLATES } from "@/lib/automations";
+import { buildTeamLeadEmail } from "@/lib/team-notification";
 import { requireAuth } from "@/lib/auth";
 import { env, hasRecaptcha } from "@/lib/env";
 
@@ -399,7 +400,13 @@ export async function POST(request: NextRequest) {
         console.log("[WELCOME EMAIL] Sending to:", email);
         const tmpl = EMAIL_TEMPLATES.welcome_email(ctx);
         emailPromises.push(
-          sendEmail(email, tmpl.subject, tmpl.html)
+          sendEmail(email, tmpl.subject, tmpl.html, {
+            text: tmpl.text,
+            headers: {
+              "Auto-Submitted": "auto-generated",
+              "X-Entity-Ref-ID": leadId,
+            },
+          })
             .then((r) => console.log("[WELCOME EMAIL] Result:", JSON.stringify(r)))
             .catch((err) => console.error("[WELCOME EMAIL] Error:", err))
         );
@@ -409,95 +416,32 @@ export async function POST(request: NextRequest) {
 
       // Team notification emails
       const TEAM_EMAILS = (process.env.EMAIL_NOTIFY_TO || "").split(",").map(e => e.trim()).filter(Boolean);
-      const scoreEmoji = priority === "hot" ? "🔥" : priority === "warm" ? "⚡" : "📋";
-      const priorityColor = priority === "hot" ? "#dc2626" : priority === "warm" ? "#f59e0b" : "#6b7280";
-      const priorityLabel = priority === "hot" ? "HOT" : priority === "warm" ? "WARM" : "NORMAL";
-      const dashboardUrl = `https://elitefinishesmaryland.com/dashboard/leads/${leadId}`;
-      const formattedDesc = description
-        ? description
-            .replace(/\n/g, "<br>")
-            .replace(/([A-Z][^:?]+[?:])\s*/g, '<br><strong>$1</strong> ')
-            .replace(/^<br>/, "")
-        : "";
-
-      const leadNotifHtml = `
-        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:600px;margin:0 auto;background:#ffffff;">
-          <!-- Priority Banner -->
-          <div style="background:${priorityColor};padding:16px 24px;border-radius:8px 8px 0 0;">
-            <h2 style="margin:0;color:#fff;font-size:20px;">${scoreEmoji} New ${priorityLabel} Lead — ${score} pts</h2>
-          </div>
-
-          <div style="border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;padding:24px;">
-            <!-- Contact Info -->
-            <h3 style="margin:0 0 12px;font-size:16px;color:#111;">Contact Information</h3>
-            <table style="border-collapse:collapse;width:100%;margin-bottom:20px;">
-              <tr>
-                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;width:120px;">Name</td>
-                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:15px;">${name}</td>
-              </tr>
-              <tr>
-                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;">Phone</td>
-                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;"><a href="tel:${phone}" style="color:#2563eb;text-decoration:none;font-size:15px;">${phone}</a></td>
-              </tr>
-              ${email ? `<tr>
-                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;">Email</td>
-                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;"><a href="mailto:${email}" style="color:#2563eb;text-decoration:none;font-size:15px;">${email}</a></td>
-              </tr>` : ""}
-              ${cityOrZip ? `<tr>
-                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;">Location</td>
-                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:15px;">${cityOrZip}</td>
-              </tr>` : ""}
-            </table>
-
-            <!-- Project Details -->
-            <h3 style="margin:0 0 12px;font-size:16px;color:#111;">Project Details</h3>
-            <table style="border-collapse:collapse;width:100%;margin-bottom:20px;">
-              <tr>
-                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;width:120px;">Service</td>
-                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:15px;">${service}</td>
-              </tr>
-              ${timeframe ? `<tr>
-                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;">Timeframe</td>
-                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:15px;">${timeframe}</td>
-              </tr>` : ""}
-              ${budget ? `<tr>
-                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;">Budget</td>
-                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:15px;">${budget}</td>
-              </tr>` : ""}
-              <tr>
-                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;">Source</td>
-                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:15px;">${bodySource || source || "website"}</td>
-              </tr>
-              ${landingPage ? `<tr>
-                <td style="padding:10px 12px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6;">Page</td>
-                <td style="padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:13px;word-break:break-all;color:#6b7280;">${landingPage}</td>
-              </tr>` : ""}
-            </table>
-
-            ${formattedDesc ? `
-            <!-- Description -->
-            <h3 style="margin:0 0 12px;font-size:16px;color:#111;">Description</h3>
-            <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:14px 16px;margin-bottom:24px;font-size:14px;line-height:1.6;color:#374151;">
-              ${formattedDesc}
-            </div>
-            ` : ""}
-
-            <!-- Dashboard Button -->
-            <div style="text-align:center;margin:24px 0 8px;">
-              <a href="${dashboardUrl}" style="display:inline-block;background:#16a34a;color:#ffffff;font-weight:600;font-size:16px;padding:14px 32px;border-radius:8px;text-decoration:none;">
-                Open in Dashboard →
-              </a>
-            </div>
-            <p style="text-align:center;margin:8px 0 0;font-size:12px;color:#9ca3af;">
-              Or call them now: <a href="tel:${phone}" style="color:#2563eb;text-decoration:none;">${phone}</a>
-            </p>
-          </div>
-        </div>
-      `;
+      const teamMail = buildTeamLeadEmail({
+        channel: "website",
+        leadId,
+        name,
+        phone,
+        email: email || null,
+        service,
+        cityOrZip: cityOrZip || null,
+        timeframe: timeframe || null,
+        budget,
+        description: description || null,
+        source: bodySource || source || "website",
+        landingPage,
+        score,
+        priority,
+      });
 
       for (const teamEmail of TEAM_EMAILS) {
         emailPromises.push(
-          sendEmail(teamEmail, `${scoreEmoji} New Lead: ${name} — ${service}`, leadNotifHtml)
+          sendEmail(teamEmail, teamMail.subject, teamMail.html, {
+            text: teamMail.text,
+            headers: {
+              "Auto-Submitted": "auto-generated",
+              "X-Entity-Ref-ID": leadId,
+            },
+          })
             .then((r) => console.log("[TEAM EMAIL]", teamEmail, "Result:", JSON.stringify(r)))
             .catch((err) => console.error("[TEAM EMAIL]", teamEmail, "Error:", err))
         );
