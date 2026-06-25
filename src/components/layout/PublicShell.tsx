@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { Chatbot } from "@/components/shared/Chatbot";
+import { SummerSpecialPopup } from "@/components/shared/SummerSpecialPopup";
 
 export function PublicShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -21,6 +22,7 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
       <Footer />
       <StickyMobileCTA />
       <Chatbot />
+      <SummerSpecialPopup />
     </>
   );
 }
