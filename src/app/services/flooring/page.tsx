@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import { ServicePageTemplate } from "@/components/shared/ServicePageTemplate";
 import { SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Flooring Installation in Baltimore, MD | ${SITE.name}`,
-  description:
-    "Hardwood, LVP, tile, and carpet flooring installation in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
+  title: "Flooring Installation in Baltimore, MD",
+  description: clampDescription(
+    "Hardwood, LVP, tile, and carpet flooring installation in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates."
+  ),
   openGraph: {
     siteName: "Elite Finishes",
     title: `Flooring Installation in Baltimore, MD | ${SITE.name}`,
     description:
       "Hardwood, LVP, tile, and carpet flooring installation in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/flooring`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Flooring Installation in Baltimore, MD | ${SITE.name}`,
     description:
       "Hardwood, LVP, tile, and carpet flooring installation in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   keywords: ["flooring installation Baltimore", "hardwood flooring Baltimore MD", "flooring contractor Maryland", "LVP flooring Baltimore", "hardwood refinishing Baltimore County", "tile flooring installation Baltimore", "flooring company Maryland", "Elite Finishes flooring"],
   alternates: { canonical: `${SITE.url}/services/flooring` },
@@ -31,7 +33,7 @@ export default function FlooringPage() {
       title="Flooring"
       slug="flooring"
       heroImage="/images/pexels-clickerhappy-1388944.jpg"
-      heroAlt="Professional flooring installation in a Baltimore home by Elite Finishes"
+      heroAlt="Newly installed wood look flooring in a bright room"
       headline="Flooring Installation and Refinishing for Baltimore Area Homes"
       subheadline="Hardwood, luxury vinyl plank, tile, and carpet installation throughout your home with precise installation and minimal disruption to your daily life."
       factNugget={`${SITE.name} is a licensed flooring contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. New flooring is one of the most impactful cosmetic upgrades you can make to a home, dramatically changing how a space looks and feels. We install all major flooring types and also refinish existing hardwood floors, which is often more cost-effective than replacement.`}

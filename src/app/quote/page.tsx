@@ -5,14 +5,14 @@ import { SITE, TESTIMONIALS } from "@/lib/constants";
 import { LeadForm } from "@/components/shared/LeadForm";
 
 export const metadata: Metadata = {
-  title: `Get a Free Estimate | ${SITE.name}`,
+  title: "Get a Free Estimate",
   description: `Request a free painting or remodeling estimate in Baltimore, MD. No commitment. ${SITE.name} responds within one business day. Call ${SITE.phone}.`,
   alternates: { canonical: `${SITE.url}/quote` },
   openGraph: {
     siteName: "Elite Finishes",
     title: `Get a Free Estimate | ${SITE.name}`,
     description: `Free, no-pressure estimates for painting and remodeling in Maryland. Licensed ${SITE.license}.`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
 };
 
@@ -20,7 +20,7 @@ const TRUST_POINTS = [
   { icon: Clock, title: "Fast Response", desc: "We call or text you back within one business day — usually much sooner." },
   { icon: Shield, title: "Licensed & Insured", desc: `Maryland Home Improvement Contractor ${SITE.license} with full liability coverage.` },
   { icon: CheckCircle, title: "Free, No Pressure", desc: "Your estimate costs nothing and comes with zero obligation to proceed." },
-  { icon: Star, title: "5-Star Rated", desc: "Trusted by homeowners across Baltimore and greater Maryland." },
+  { icon: Star, title: "Real Google Reviews", desc: "Read what Baltimore area homeowners say about working with us." },
 ];
 
 export default function QuotePage() {

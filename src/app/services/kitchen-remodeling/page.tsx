@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import { ServicePageTemplate } from "@/components/shared/ServicePageTemplate";
 import { SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Kitchen Remodeling in Baltimore, MD | ${SITE.name}`,
-  description:
-    "Full kitchen remodeling in Baltimore and surrounding Maryland counties. Cabinets, countertops, tile, and painting all handled by one licensed contractor. Free estimates.",
+  title: "Kitchen Remodeling in Baltimore, MD",
+  description: clampDescription(
+    "Full kitchen remodeling in Baltimore and surrounding Maryland counties. Cabinets, countertops, tile, and painting all handled by one licensed contractor. Free estimates."
+  ),
   openGraph: {
     siteName: "Elite Finishes",
     title: `Kitchen Remodeling in Baltimore, MD | ${SITE.name}`,
     description:
       "Full kitchen remodeling in Baltimore and surrounding Maryland counties. Cabinets, countertops, tile, and painting all handled by one licensed contractor. Free estimates.",
     url: `${SITE.url}/services/kitchen-remodeling`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Kitchen Remodeling in Baltimore, MD | ${SITE.name}`,
     description:
       "Full kitchen remodeling in Baltimore and surrounding Maryland counties. Cabinets, countertops, tile, and painting all handled by one licensed contractor. Free estimates.",
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   keywords: ["kitchen remodeling Baltimore", "kitchen renovation Maryland", "kitchen contractor Baltimore MD", "custom kitchen Baltimore", "kitchen remodel Baltimore County", "kitchen cabinet painting Baltimore", "kitchen renovation contractor Maryland", "Elite Finishes kitchen remodeling"],
   alternates: { canonical: `${SITE.url}/services/kitchen-remodeling` },
@@ -31,7 +33,7 @@ export default function KitchenRemodelingPage() {
       title="Kitchen Remodeling"
       slug="kitchen-remodeling"
       heroImage="/images/pexels-artbovich-6301185.jpg"
-      heroAlt="Beautifully remodeled kitchen completed by Elite Finishes in Baltimore area home"
+      heroAlt="Modern remodeled kitchen with a center island"
       headline="Kitchen Remodeling That Makes Your Home Feel Brand New"
       subheadline="Complete kitchen transformations from cabinet painting and countertop replacement to full gut renovations, handled by one licensed local crew from start to finish."
       factNugget={`${SITE.name} is a licensed kitchen remodeling contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. Kitchen remodels consistently rank among the highest-return home improvements, recouping 60 to 80 percent of cost at resale. We handle all phases of your kitchen project including demolition, carpentry, tile work, painting, and finishing, which reduces schedule overlap and communication gaps compared to hiring separate contractors for each trade.`}

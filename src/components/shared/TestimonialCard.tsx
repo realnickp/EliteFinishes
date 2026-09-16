@@ -6,7 +6,8 @@ interface TestimonialCardProps {
   location: string;
   text: string;
   service: string;
-  rating: number;
+  /** Only pass a rating that comes from the real review. */
+  rating?: number;
   featured?: boolean;
 }
 
@@ -18,11 +19,13 @@ export function TestimonialCard({ name, location, text, service, rating, feature
           &ldquo;
         </div>
         <div className="relative">
-          <div className="flex gap-0.5 mb-6">
-            {Array.from({ length: rating }).map((_, i) => (
-              <Star key={i} className="h-5 w-5 fill-brand text-brand" />
-            ))}
-          </div>
+          {rating ? (
+            <div className="flex gap-0.5 mb-6">
+              {Array.from({ length: rating }).map((_, i) => (
+                <Star key={i} className="h-5 w-5 fill-brand text-brand" />
+              ))}
+            </div>
+          ) : null}
           <blockquote className="font-display text-2xl md:text-3xl leading-snug mb-6 text-primary-foreground/90">
             &ldquo;{text}&rdquo;
           </blockquote>
@@ -39,11 +42,13 @@ export function TestimonialCard({ name, location, text, service, rating, feature
 
   return (
     <div className={cn("flex flex-col rounded-2xl bg-white p-6 shadow-md border border-border/30")}>
-      <div className="flex gap-0.5 mb-3">
-        {Array.from({ length: rating }).map((_, i) => (
-          <Star key={i} className="h-4 w-4 fill-brand text-brand" />
-        ))}
-      </div>
+      {rating ? (
+        <div className="flex gap-0.5 mb-3">
+          {Array.from({ length: rating }).map((_, i) => (
+            <Star key={i} className="h-4 w-4 fill-brand text-brand" />
+          ))}
+        </div>
+      ) : null}
       <blockquote className="flex-1 text-muted-foreground mb-4 leading-relaxed text-sm">
         &ldquo;{text}&rdquo;
       </blockquote>

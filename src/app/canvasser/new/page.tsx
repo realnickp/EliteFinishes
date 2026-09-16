@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useZipCityAutofill } from "@/hooks/useZipCityAutofill";
+import { formatLocation, isValidCity, isValidZip } from "@/lib/location";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import { ArrowLeft, Loader2, Shield, CheckCircle, Home, List } from "lucide-react";
@@ -21,10 +23,12 @@ export default function CanvasserNewLeadPage() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [zip, setZip] = useState("");
+  const [city, setCity] = useState("");
   const [email, setEmail] = useState("");
   const [notes, setNotes] = useState("");
   const [photos, setPhotos] = useState<string[]>([]);
   const [error, setError] = useState("");
+  const { state: zipState } = useZipCityAutofill(zip, city, setCity);
 
   const [lastLeadName, setLastLeadName] = useState("");
 
@@ -39,6 +43,7 @@ export default function CanvasserNewLeadPage() {
     setName("");
     setPhone("");
     setZip("");
+    setCity("");
     setEmail("");
     setNotes("");
     setPhotos([]);
@@ -79,8 +84,8 @@ export default function CanvasserNewLeadPage() {
     e.preventDefault();
     setError("");
 
-    if (!name.trim() || !phone.trim() || !zip.trim()) {
-      setError("Please fill in the prospect's name, phone, and zip.");
+    if (!name.trim() || !phone.trim() || !isValidZip(zip) || !isValidCity(city)) {
+      setError("Please fill in the prospect's name, phone, zip and city.");
       return;
     }
 
@@ -92,7 +97,7 @@ export default function CanvasserNewLeadPage() {
         body: JSON.stringify({
           name: name.trim(),
           phone: phone.trim(),
-          cityOrZip: zip.trim(),
+          cityOrZip: formatLocation(city, zip, zipState),
           email: email.trim() || undefined,
           service: serviceSlug,
           answers,
@@ -263,6 +268,8 @@ export default function CanvasserNewLeadPage() {
               id="c-zip"
               type="text"
               inputMode="numeric"
+              autoComplete="postal-code"
+              maxLength={10}
               placeholder="21230"
               value={zip}
               onChange={(e) => setZip(e.target.value)}
@@ -270,6 +277,23 @@ export default function CanvasserNewLeadPage() {
               className="w-full h-11 rounded-lg border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
             />
           </div>
+          <div className="space-y-1.5">
+            <label htmlFor="c-city" className="text-sm font-medium text-gray-700">
+              City *
+            </label>
+            <input
+              id="c-city"
+              type="text"
+              placeholder="Baltimore"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+              className="w-full h-11 rounded-lg border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4">
           <div className="space-y-1.5">
             <label htmlFor="c-email" className="text-sm font-medium text-gray-700">
               Email <span className="text-gray-400 font-normal text-xs">(optional)</span>

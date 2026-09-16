@@ -9,13 +9,15 @@ import { GALLERY_ITEMS, SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Project Gallery | See Our Work",
+  // Stock imagery for now; do not index until real project photos replace it
+  robots: { index: false, follow: true },
   description: `Browse completed projects by ${SITE.name}: interior and exterior painting, kitchen and bathroom remodeling, flooring, decks, and more across ${SITE.address.region}, MD. See the quality before you hire.`,
   openGraph: {
     siteName: "Elite Finishes",
     title: "Project Gallery | See Our Work",
     description: `Browse completed projects by ${SITE.name}: interior and exterior painting, kitchen and bathroom remodeling, flooring, decks, and more across ${SITE.address.region}, MD. See the quality before you hire.`,
     url: `${SITE.url}/gallery`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/gallery` },
 };

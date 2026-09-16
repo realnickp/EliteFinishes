@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import { ServicePageTemplate } from "@/components/shared/ServicePageTemplate";
 import { SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Bathroom Remodeling in Baltimore, MD | ${SITE.name}`,
-  description:
-    "Full bathroom remodeling in Baltimore and surrounding Maryland counties. Tile, vanities, fixtures, and painting all by one licensed contractor. Free estimates.",
+  title: "Bathroom Remodeling in Baltimore, MD",
+  description: clampDescription(
+    "Full bathroom remodeling in Baltimore and surrounding Maryland counties. Tile, vanities, fixtures, and painting all by one licensed contractor. Free estimates."
+  ),
   openGraph: {
     siteName: "Elite Finishes",
     title: `Bathroom Remodeling in Baltimore, MD | ${SITE.name}`,
     description:
       "Full bathroom remodeling in Baltimore and surrounding Maryland counties. Tile, vanities, fixtures, and painting all by one licensed contractor. Free estimates.",
     url: `${SITE.url}/services/bathroom-remodeling`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Bathroom Remodeling in Baltimore, MD | ${SITE.name}`,
     description:
       "Full bathroom remodeling in Baltimore and surrounding Maryland counties. Tile, vanities, fixtures, and painting all by one licensed contractor. Free estimates.",
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   keywords: ["bathroom remodeling Baltimore", "bathroom renovation Maryland", "bathroom contractor Baltimore MD", "bathroom remodel Baltimore County", "tile shower installation Baltimore", "bathroom renovation contractor Maryland", "master bathroom remodel Baltimore", "Elite Finishes bathroom remodeling"],
   alternates: { canonical: `${SITE.url}/services/bathroom-remodeling` },
@@ -30,8 +32,8 @@ export default function BathroomRemodelingPage() {
     <ServicePageTemplate
       title="Bathroom Remodeling"
       slug="bathroom-remodeling"
-      heroImage="/images/pexels-artbovich-8143696.jpg"
-      heroAlt="Beautifully remodeled bathroom with tile and new fixtures by Elite Finishes in Baltimore"
+      heroImage="/images/lp/work/bathroom-primary-double-vanity.jpg"
+      heroAlt="Primary bathroom remodel by Elite Finishes with a marble look walk-in shower, tiled niche and double vanity"
       headline="Bathroom Remodeling That Turns a Chore Into a Retreat"
       subheadline="Complete bathroom renovations including tile, vanities, fixtures, and painting, all handled by one licensed local contractor from demolition to final caulk."
       factNugget={`${SITE.name} is a licensed bathroom remodeling contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. Bathroom remodels deliver some of the best returns of any home improvement project. A mid-range master bathroom remodel in the Baltimore market typically recoups 60 to 70 percent of its cost at resale and significantly improves your daily quality of life in the meantime.`}

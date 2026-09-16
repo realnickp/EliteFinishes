@@ -57,11 +57,8 @@ export interface LandingConfig {
     title: string;
     questions: BuilderQuestion[];
   };
-  work: {
-    heading: string;
-    subheading: string;
-    photos: WorkPhoto[];
-  };
+  /** Kept low key on the page: a small strip of real job photos. */
+  workPhotos: WorkPhoto[];
   why: {
     heading: string;
     items: { icon: WhyIcon; title: string; text: string }[];
@@ -71,7 +68,7 @@ export interface LandingConfig {
 
 // ── Real Elite Finishes project photos ───────────────────────────────────────
 // Only real Elite Finishes work belongs in these. Add new job photos to
-// /public/images/lp/work/ and list them in the page's work.photos below.
+// /public/images/lp/work/ and list them in the page's workPhotos below.
 
 const PHOTO_STAIRCASE: WorkPhoto = {
   src: "/images/hero-staircase.jpg",
@@ -101,12 +98,6 @@ const PHOTO_PRIMARY_BATH: WorkPhoto = {
   src: "/images/lp/work/bathroom-primary-double-vanity.jpg",
   alt: "Primary bathroom remodel with a marble look walk-in shower, tiled niche and double vanity by Elite Finishes",
   caption: "Primary bathroom with a walk-in shower, tiled niche and double vanity",
-};
-
-const PHOTO_BLUE_SHOWER: WorkPhoto = {
-  src: "/images/lp/work/bathroom-blue-tile-shower.jpg",
-  alt: "Walk-in shower with blue vertical tile and marble ledges by Elite Finishes",
-  caption: "Walk-in shower with blue vertical tile and marble ledges",
 };
 
 const PHOTO_TUB_SURROUND: WorkPhoto = {
@@ -221,11 +212,7 @@ const PAINTING: LandingConfig = {
       },
     ],
   },
-  work: {
-    heading: "Real work from our crews",
-    subheading: "Every photo here is an actual Elite Finishes project.",
-    photos: [PHOTO_STAIRCASE, PHOTO_BASEMENT, PHOTO_BUILT_IN, PHOTO_BATHROOM],
-  },
+  workPhotos: [PHOTO_STAIRCASE, PHOTO_BASEMENT, PHOTO_BUILT_IN],
   why: {
     heading: "Why homeowners pick Elite Finishes",
     items: [
@@ -382,11 +369,7 @@ const BATHROOM: LandingConfig = {
       },
     ],
   },
-  work: {
-    heading: "Real work from our crews",
-    subheading: "Every photo here is an actual Elite Finishes project.",
-    photos: [PHOTO_PRIMARY_BATH, PHOTO_BLUE_SHOWER, PHOTO_TUB_SURROUND, PHOTO_BATHROOM],
-  },
+  workPhotos: [PHOTO_PRIMARY_BATH, PHOTO_BATHROOM, PHOTO_TUB_SURROUND],
   why: {
     heading: "Why homeowners pick Elite Finishes",
     items: [

@@ -251,40 +251,8 @@ export function ConversionLanding({ config }: { config: LandingConfig }) {
         </div>
       </section>
 
-      {/* ── Our work ─────────────────────────────────────────────────────── */}
-      <section className="bg-warm-bg py-14 sm:py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <SectionHeading eyebrow="Our Work" title={config.work.heading} subtitle={config.work.subheading} />
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-            {config.work.photos.map((photo) => (
-              <figure key={photo.src} className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-muted shadow-md">
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  sizes="(max-width: 1024px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-3 pb-3 pt-10 text-xs font-medium leading-snug text-white sm:text-sm">
-                  {photo.caption}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <EstimateButton
-              placement="work"
-              className={`${btnBase} bg-gradient-to-br from-brand-green to-brand-green-dark text-white shadow-lg shadow-brand-green/25`}
-            >
-              Start My Free Estimate
-              <ArrowRight className="h-5 w-5" />
-            </EstimateButton>
-          </div>
-        </div>
-      </section>
-
       {/* ── Google reviews ───────────────────────────────────────────────── */}
-      <section className="bg-white py-14 sm:py-20">
+      <section className="bg-warm-bg py-14 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Google Reviews"
@@ -293,7 +261,7 @@ export function ConversionLanding({ config }: { config: LandingConfig }) {
           />
           <div className="grid gap-4 md:grid-cols-2">
             {GOOGLE_REVIEWS.map((review) => (
-              <article key={review.name} className="flex flex-col rounded-2xl border border-border/60 bg-warm-bg p-6 shadow-sm">
+              <article key={review.name} className="flex flex-col rounded-2xl border border-border/60 bg-white p-6 shadow-sm">
                 <p className="flex-1 leading-relaxed text-foreground/85">&ldquo;{review.text}&rdquo;</p>
                 <div className="mt-5 flex items-center justify-between gap-3 border-t border-border/60 pt-4">
                   <div className="flex items-center gap-3">
@@ -305,7 +273,7 @@ export function ConversionLanding({ config }: { config: LandingConfig }) {
                       <p className="text-xs text-muted-foreground">{review.project}</p>
                     </div>
                   </div>
-                  <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-xs font-medium text-muted-foreground ring-1 ring-border">
+                  <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-warm-bg px-2.5 py-1 text-xs font-medium text-muted-foreground ring-1 ring-border">
                     <GoogleG className="h-3.5 w-3.5" />
                     Google
                   </span>
@@ -333,6 +301,25 @@ export function ConversionLanding({ config }: { config: LandingConfig }) {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Recent projects (kept low key) ──────────────────────────────── */}
+      <section className="bg-white py-12 sm:py-16">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+          <h2 className="text-center text-2xl sm:text-3xl">A few recent projects</h2>
+          <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-4">
+            {config.workPhotos.map((photo) => (
+              <figure key={photo.src}>
+                <div className="relative aspect-square overflow-hidden rounded-xl bg-muted">
+                  <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 896px) 33vw, 290px" className="object-cover" />
+                </div>
+                <figcaption className="mt-2 hidden text-xs leading-snug text-muted-foreground sm:block">
+                  {photo.caption}
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
@@ -469,7 +456,7 @@ export function ConversionLanding({ config }: { config: LandingConfig }) {
 
           <div className="rounded-2xl border border-border/60 bg-white p-6 shadow-xl sm:p-8">
             <h2 className="text-3xl leading-tight">Or send a quick request</h2>
-            <p className="mb-6 mt-2 text-muted-foreground">Just your name, number and zip. We&apos;ll take it from there.</p>
+            <p className="mb-6 mt-2 text-muted-foreground">Just your name, number, zip and city. We&apos;ll take it from there.</p>
             <QuickEstimateForm slug={slug} serviceTitle={serviceTitle} />
           </div>
         </div>

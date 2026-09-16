@@ -19,10 +19,11 @@ import { CTAButton } from "@/components/shared/CTAButton";
 import { TrustBar } from "@/components/shared/TrustBar";
 import { FAQAccordion } from "@/components/shared/FAQAccordion";
 import { FAQPageSchema } from "@/components/shared/SchemaOrg";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Financing for Painting and Remodeling Projects | ${SITE.name}`,
-  description: `Finance your painting or remodeling project in Baltimore with flexible payment plans through HFS Financial. Inquire in minutes with no impact to your credit score. Personal loans up to $300,000, fixed rates as low as 7.8%, terms up to 20 years. Licensed contractor ${SITE.license}.`,
+  title: "Financing for Painting and Remodeling Projects",
+  description: clampDescription(`Finance your painting or remodeling project in Baltimore with flexible payment plans through HFS Financial. Inquire in minutes with no impact to your credit score. Personal loans up to $300,000, fixed rates as low as 7.8%, terms up to 20 years. Licensed contractor ${SITE.license}.`),
   keywords: [
     "home improvement financing Baltimore",
     "painting financing Maryland",
@@ -40,13 +41,13 @@ export const metadata: Metadata = {
     title: `Financing for Painting and Remodeling | ${SITE.name}`,
     description: `Flexible financing for Baltimore painting and remodeling through HFS Financial. Personal loans up to $300,000, terms up to 20 years, low fixed rates. Licensed ${SITE.license}.`,
     url: `${SITE.url}/financing`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Financing for Painting and Remodeling | ${SITE.name}`,
     description: `Personal home improvement loans up to $300,000 through HFS Financial. Fixed rates, terms up to 20 years, no home equity required. Licensed ${SITE.license}.`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/financing` },
 };
@@ -174,56 +175,12 @@ function BreadcrumbSchema() {
   );
 }
 
-function FinancingHowToSchema() {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "HowTo",
-          name: "How to Finance a Home Improvement Project with Elite Finishes",
-          description: "Step-by-step guide to financing your painting or remodeling project in Baltimore through HFS Financial with no impact to your credit score.",
-          totalTime: "PT5M",
-          step: [
-            {
-              "@type": "HowToStep",
-              position: 1,
-              name: "Inquire for a Loan",
-              text: "Fill out a quick online form through HFS Financial. This does NOT affect your credit score. Get same-day answers on your loan options.",
-              url: `${SITE.url}/financing#apply`,
-            },
-            {
-              "@type": "HowToStep",
-              position: 2,
-              name: "Get Prequalified",
-              text: "View instant loan options or speak with an HFS loan consultant to find the best fit for your budget and project.",
-            },
-            {
-              "@type": "HowToStep",
-              position: 3,
-              name: "Verify Your Information",
-              text: "Securely upload basic documents for loan verification. The process is quick and straightforward.",
-            },
-            {
-              "@type": "HowToStep",
-              position: 4,
-              name: "Get Your Funds",
-              text: "Loan proceeds are available within 48 hours of approval. Funds go directly to you, giving you full control over your project.",
-            },
-          ],
-        }),
-      }}
-    />
-  );
-}
 
 export default function FinancingPage() {
   return (
     <>
       <FAQPageSchema faqs={FINANCING_FAQS} />
       <BreadcrumbSchema />
-      <FinancingHowToSchema />
 
       <article>
         {/* Hero */}

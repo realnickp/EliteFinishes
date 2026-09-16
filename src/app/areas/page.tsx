@@ -5,16 +5,17 @@ import { CITY_DATA, SITE } from "@/lib/constants";
 import { Section } from "@/components/shared/Section";
 import { CTAButton } from "@/components/shared/CTAButton";
 import { TrustBar } from "@/components/shared/TrustBar";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Service Areas in Baltimore, MD | ${SITE.name}`,
-  description: `${SITE.name} serves Baltimore City neighborhoods and communities across Baltimore County, Anne Arundel County, and Howard County. Licensed painting and remodeling contractor ${SITE.license}. Free estimates. Call ${SITE.phone}.`,
+  title: "Service Areas in Baltimore, MD",
+  description: clampDescription(`${SITE.name} serves Baltimore City neighborhoods and communities across Baltimore County, Anne Arundel County, and Howard County. Licensed painting and remodeling contractor ${SITE.license}. Free estimates. Call ${SITE.phone}.`),
   alternates: { canonical: `${SITE.url}/areas` },
   openGraph: {
     siteName: "Elite Finishes",
     title: `Service Areas | ${SITE.name}`,
     description: `Professional painting and remodeling in Baltimore City neighborhoods and Baltimore area communities. Free estimates. Call ${SITE.phone}.`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
 };
 
@@ -90,7 +91,6 @@ export default function AreasPage() {
             <ul className="space-y-3">
               {[
                 "Licensed Maryland Home Improvement Contractor " + SITE.license,
-                "Women's Business Enterprise " + SITE.license2,
                 "Fully insured with general liability and workers' compensation coverage",
                 "Familiar with local permit, HOA, and county requirements",
                 "We return calls quickly, usually the same business day",

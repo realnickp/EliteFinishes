@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import { ServicePageTemplate } from "@/components/shared/ServicePageTemplate";
 import { SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Exterior Painting in Baltimore, MD | ${SITE.name}`,
-  description:
-    "Expert exterior painting for Baltimore area homes. Power washing, caulking, priming, and premium coatings that stand up to Maryland weather. Licensed contractor with free estimates.",
+  title: "Exterior Painting in Baltimore, MD",
+  description: clampDescription(
+    "Expert exterior painting for Baltimore area homes. Power washing, caulking, priming, and premium coatings that stand up to Maryland weather. Licensed contractor with free estimates."
+  ),
   openGraph: {
     siteName: "Elite Finishes",
     title: `Exterior Painting in Baltimore, MD | ${SITE.name}`,
     description:
       "Expert exterior painting for Baltimore area homes. Power washing, caulking, priming, and premium coatings that stand up to Maryland weather. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/exterior-painting`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Exterior Painting in Baltimore, MD | ${SITE.name}`,
     description:
       "Expert exterior painting for Baltimore area homes. Power washing, caulking, priming, and premium coatings that stand up to Maryland weather. Licensed contractor with free estimates.",
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   keywords: ["exterior painting Baltimore", "exterior house painters Baltimore MD", "exterior painting contractor Maryland", "house painting Baltimore", "exterior paint Baltimore County", "power washing and painting Baltimore", "residential exterior painting Maryland", "Elite Finishes exterior painting"],
   alternates: { canonical: `${SITE.url}/services/exterior-painting` },
@@ -31,7 +33,7 @@ export default function ExteriorPaintingPage() {
       title="Exterior Painting"
       slug="exterior-painting"
       heroImage="/images/exterior-painting-crew.jpg"
-      heroAlt="Professional exterior painting crew working on a Baltimore area home"
+      heroAlt="Painting crew working on a home exterior"
       headline="Exterior Painting That Protects and Transforms Your Home"
       subheadline="Complete exterior painting with thorough pressure washing, caulking, priming, and premium coatings rated for Maryland's humidity, heat, and freezing winters."
       factNugget={`${SITE.name} is a licensed exterior painting contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. We use exterior-grade Sherwin-Williams and Benjamin Moore paints with 15 to 25 year fade and peel resistance. All projects include pressure washing, full caulking of gaps and cracks, spot priming of bare wood, and two full finish coats on all painted surfaces.`}

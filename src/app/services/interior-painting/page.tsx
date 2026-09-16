@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import { ServicePageTemplate } from "@/components/shared/ServicePageTemplate";
 import { SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Interior Painting in Baltimore, MD | ${SITE.name}`,
-  description:
-    "Professional interior painting in Baltimore and surrounding Maryland counties. Meticulous prep, premium paints, clean results that last. Licensed contractor with free estimates.",
+  title: "Interior Painting in Baltimore, MD",
+  description: clampDescription(
+    "Professional interior painting in Baltimore and surrounding Maryland counties. Meticulous prep, premium paints, clean results that last. Licensed contractor with free estimates."
+  ),
   openGraph: {
     siteName: "Elite Finishes",
     title: `Interior Painting in Baltimore, MD | ${SITE.name}`,
     description:
       "Professional interior painting in Baltimore and surrounding Maryland counties. Meticulous prep, premium paints, clean results that last. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/interior-painting`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Interior Painting in Baltimore, MD | ${SITE.name}`,
     description:
       "Professional interior painting in Baltimore and surrounding Maryland counties. Meticulous prep, premium paints, clean results that last. Licensed contractor with free estimates.",
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   keywords: ["interior painting Baltimore", "house painters Baltimore MD", "interior painting contractor Maryland", "room painting Baltimore", "wall painting service Baltimore", "interior paint Baltimore County", "residential painting Baltimore", "Elite Finishes interior painting"],
   alternates: { canonical: `${SITE.url}/services/interior-painting` },
@@ -30,8 +32,8 @@ export default function InteriorPaintingPage() {
     <ServicePageTemplate
       title="Interior Painting"
       slug="interior-painting"
-      heroImage="/images/pexels-artbovich-7031616.jpg"
-      heroAlt="Professional interior painting in a Baltimore home by Elite Finishes"
+      heroImage="/images/hero-staircase.jpg"
+      heroAlt="Staircase railings and spindles refinished in charcoal by Elite Finishes"
       headline="Interior Painting Done Right, From Prep to Final Coat"
       subheadline="Premium interior painting for Baltimore area homes with thorough surface preparation, clean lines, and a finished result that holds up beautifully for years."
       factNugget={`${SITE.name} is a licensed interior painting contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. We use premium Benjamin Moore and Sherwin-Williams paints selected for each surface type and exposure. Most single-room paint jobs are completed in one to two days. We move furniture, protect floors and fixtures, and clean up fully before we leave.`}

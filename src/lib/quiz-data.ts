@@ -968,7 +968,7 @@ export const QUIZ_DATA: Record<string, QuizQuestion[]> = {
     {
       question: "Do you have specific certification or documentation requirements?",
       subtext:
-        "We hold an MHIC contractor license and Women's Business Enterprise registration, and we can provide certificates of insurance and additional insured endorsements.",
+        "We hold an MHIC contractor license, and we can provide certificates of insurance and additional insured endorsements.",
       options: [
         { label: "Standard COI and insurance docs", emoji: "📋" },
         { label: "WBE or minority contractor required", emoji: "✅" },

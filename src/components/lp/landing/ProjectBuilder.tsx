@@ -8,6 +8,8 @@ import { extractBudget, extractTimeframe } from "@/lib/quiz-data";
 import { submitLpLead } from "@/lib/lp-lead";
 import { trackEvent } from "@/lib/analytics";
 import { useSpamProtection } from "@/hooks/useSpamProtection";
+import { useZipCityAutofill } from "@/hooks/useZipCityAutofill";
+import { formatLocation, isValidCity, isValidZip } from "@/lib/location";
 import { LeadField, isValidPhone, thanksUrl } from "./LeadField";
 
 /** Questions whose showIf condition matches the answers so far. */
@@ -36,9 +38,11 @@ export function ProjectBuilder({ slug, serviceTitle, title, questions }: Project
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [zip, setZip] = useState("");
+  const [city, setCity] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const { state: zipState } = useZipCityAutofill(zip, city, setCity);
 
   const visible = useMemo(() => visibleQuestions(questions, answers), [questions, answers]);
 
@@ -86,8 +90,8 @@ export function ProjectBuilder({ slug, serviceTitle, title, questions }: Project
     e.preventDefault();
     setError("");
 
-    if (!name.trim() || !isValidPhone(phone) || zip.trim().length < 5) {
-      setError("Please add your name, a 10 digit phone number and your zip code.");
+    if (!name.trim() || !isValidPhone(phone) || !isValidZip(zip) || !isValidCity(city)) {
+      setError("Please add your name, a 10 digit phone number, your zip code and your city.");
       return;
     }
 
@@ -100,7 +104,7 @@ export function ProjectBuilder({ slug, serviceTitle, title, questions }: Project
         method: "builder",
         name,
         phone,
-        cityOrZip: zip,
+        cityOrZip: formatLocation(city, zip, zipState),
         email,
         description:
           answered.map((q) => `${q.question.replace("?", "")}: ${answers[q.id]}`).join(" | ") ||
@@ -210,17 +214,17 @@ export function ProjectBuilder({ slug, serviceTitle, title, questions }: Project
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-              <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
-                <LeadField
-                  id="pb-phone"
-                  label="Phone"
-                  type="tel"
-                  inputMode="tel"
-                  autoComplete="tel"
-                  placeholder="(443) 555-0123"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
+              <LeadField
+                id="pb-phone"
+                label="Phone"
+                type="tel"
+                inputMode="tel"
+                autoComplete="tel"
+                placeholder="(443) 555-0123"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+              <div className="grid grid-cols-2 gap-3">
                 <LeadField
                   id="pb-zip"
                   label="Zip code"
@@ -230,6 +234,14 @@ export function ProjectBuilder({ slug, serviceTitle, title, questions }: Project
                   placeholder="21230"
                   value={zip}
                   onChange={(e) => setZip(e.target.value)}
+                />
+                <LeadField
+                  id="pb-city"
+                  label="City"
+                  autoComplete="address-level2"
+                  placeholder="Baltimore"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
                 />
               </div>
               <LeadField

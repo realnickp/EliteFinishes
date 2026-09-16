@@ -32,6 +32,18 @@ const nextConfig: NextConfig = {
       { source: "/admin", destination: "/login", permanent: false },
       { source: "/admin/:path*", destination: "/dashboard/:path*", permanent: false },
       { source: "/signin", destination: "/login", permanent: false },
+      // Testimonials page removed (it held placeholder reviews); real reviews live on the homepage
+      { source: "/testimonials", destination: "/", permanent: true },
+      // Retired service pages from the previous business on this domain
+      ...[
+        "fencing",
+        "hardscaping",
+        "stamped-concrete",
+        "driveway-installation",
+        "gravel-pads-and-concrete-foundations",
+        "accessory-dwelling-units",
+        "excavation-and-demolition",
+      ].map((slug) => ({ source: `/services/${slug}`, destination: "/services", permanent: true })),
       // Interior and exterior painting ads now share one landing page (query strings carry over)
       { source: "/lp/interior-painting/:path*", destination: "/lp/painting", permanent: false },
       { source: "/lp/exterior-painting/:path*", destination: "/lp/painting", permanent: false },

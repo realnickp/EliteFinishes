@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import { ServicePageTemplate } from "@/components/shared/ServicePageTemplate";
 import { SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Siding Installation in Baltimore, MD | ${SITE.name}`,
-  description:
-    "Vinyl, fiber cement, and composite siding installation in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
+  title: "Siding Installation in Baltimore, MD",
+  description: clampDescription(
+    "Vinyl, fiber cement, and composite siding installation in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates."
+  ),
   openGraph: {
     siteName: "Elite Finishes",
     title: `Siding Installation in Baltimore, MD | ${SITE.name}`,
     description:
       "Vinyl, fiber cement, and composite siding installation in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/siding`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Siding Installation in Baltimore, MD | ${SITE.name}`,
     description:
       "Vinyl, fiber cement, and composite siding installation in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   keywords: ["siding installation Baltimore", "siding contractor Baltimore MD", "vinyl siding Maryland", "fiber cement siding Baltimore", "James Hardie siding Baltimore County", "siding replacement Baltimore", "siding company Maryland", "Elite Finishes siding"],
   alternates: { canonical: `${SITE.url}/services/siding` },
@@ -31,7 +33,7 @@ export default function SidingPage() {
       title="Siding"
       slug="siding"
       heroImage="/images/pexels-binyaminmellish-1396122.jpg"
-      heroAlt="Craftsman home with new fiber cement board-and-batten siding in Maryland"
+      heroAlt="Craftsman home with fiber cement board and batten siding"
       headline="Siding Installation That Protects Your Home for Decades"
       subheadline="Vinyl, fiber cement, and composite siding installation for Baltimore area homes with full removal of old siding, proper housewrap, and precision installation."
       factNugget={`${SITE.name} is a licensed siding contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. New siding consistently ranks among the top return-on-investment home improvement projects nationally, recovering 75 to 90 percent of cost at resale. Fiber cement siding like James Hardie is particularly well-suited for Maryland's climate, offering resistance to moisture, insects, rot, and the UV exposure that degrades cheaper vinyl.`}

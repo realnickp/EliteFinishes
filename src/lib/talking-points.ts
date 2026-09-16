@@ -26,7 +26,7 @@ export const TALKING_POINTS: TalkingPointSection[] = [
     icon: "shield",
     items: [
       {
-        body: `${SITE.license} · WBME 22380085 · Based in Baltimore at ${SITE.address.street}, ${SITE.address.city} ${SITE.address.zip}.`,
+        body: `${SITE.license} · Based in Baltimore at ${SITE.address.street}, ${SITE.address.city} ${SITE.address.zip}.`,
       },
       { body: "Fully insured — certificate of insurance available before any work starts." },
       { body: "Nick is on every estimate. No sales middleman, no offshore call center." },

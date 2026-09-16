@@ -388,7 +388,7 @@ export function Chatbot() {
       {/* Floating button — compact label on mobile, full text on desktop */}
       <button
         onClick={() => setPhase((p) => (p === "idle" ? "form" : "idle"))}
-        className="fixed bottom-20 sm:bottom-6 right-4 z-50 flex items-center justify-center gap-1.5 bg-brand hover:bg-brand-dark text-brand-foreground font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 active:scale-95 text-xs px-3 py-2.5 sm:text-sm sm:px-4 sm:py-3"
+        className="fixed bottom-[5.5rem] sm:bottom-6 right-4 z-50 flex min-h-[48px] items-center justify-center gap-1.5 bg-brand hover:bg-brand-dark text-brand-foreground font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 active:scale-95 text-xs px-4 sm:text-sm sm:px-4"
         aria-label={panelOpen ? "Close chat" : "Chat with us"}
       >
         {panelOpen ? (

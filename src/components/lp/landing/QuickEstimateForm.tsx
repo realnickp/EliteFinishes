@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { ArrowRight, Loader2, Lock } from "lucide-react";
 import { submitLpLead } from "@/lib/lp-lead";
 import { useSpamProtection } from "@/hooks/useSpamProtection";
+import { useZipCityAutofill } from "@/hooks/useZipCityAutofill";
+import { formatLocation, isValidCity, isValidZip } from "@/lib/location";
 import { LeadField, isValidPhone, thanksUrl } from "./LeadField";
 
 interface QuickEstimateFormProps {
@@ -12,7 +14,7 @@ interface QuickEstimateFormProps {
   serviceTitle: string;
 }
 
-/** Short name, phone and zip form for visitors who skip the Project Builder. */
+/** Short name, phone, zip and city form for visitors who skip the Project Builder. */
 export function QuickEstimateForm({ slug, serviceTitle }: QuickEstimateFormProps) {
   const router = useRouter();
   const { spamFields, HoneypotField } = useSpamProtection();
@@ -20,16 +22,18 @@ export function QuickEstimateForm({ slug, serviceTitle }: QuickEstimateFormProps
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [zip, setZip] = useState("");
+  const [city, setCity] = useState("");
   const [note, setNote] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const { state: zipState } = useZipCityAutofill(zip, city, setCity);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
 
-    if (!name.trim() || !isValidPhone(phone) || zip.trim().length < 5) {
-      setError("Please add your name, a 10 digit phone number and your zip code.");
+    if (!name.trim() || !isValidPhone(phone) || !isValidZip(zip) || !isValidCity(city)) {
+      setError("Please add your name, a 10 digit phone number, your zip code and your city.");
       return;
     }
 
@@ -41,7 +45,7 @@ export function QuickEstimateForm({ slug, serviceTitle }: QuickEstimateFormProps
         method: "form",
         name,
         phone,
-        cityOrZip: zip,
+        cityOrZip: formatLocation(city, zip, zipState),
         email: "",
         description: note.trim()
           ? `Quick form: ${note.trim()}`
@@ -67,17 +71,17 @@ export function QuickEstimateForm({ slug, serviceTitle }: QuickEstimateFormProps
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
-        <LeadField
-          id="qf-phone"
-          label="Phone"
-          type="tel"
-          inputMode="tel"
-          autoComplete="tel"
-          placeholder="(443) 555-0123"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
+      <LeadField
+        id="qf-phone"
+        label="Phone"
+        type="tel"
+        inputMode="tel"
+        autoComplete="tel"
+        placeholder="(443) 555-0123"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+      />
+      <div className="grid grid-cols-2 gap-3">
         <LeadField
           id="qf-zip"
           label="Zip code"
@@ -87,6 +91,14 @@ export function QuickEstimateForm({ slug, serviceTitle }: QuickEstimateFormProps
           placeholder="21230"
           value={zip}
           onChange={(e) => setZip(e.target.value)}
+        />
+        <LeadField
+          id="qf-city"
+          label="City"
+          autoComplete="address-level2"
+          placeholder="Baltimore"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
         />
       </div>
       <div className="space-y-1.5">

@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import { ServicePageTemplate } from "@/components/shared/ServicePageTemplate";
 import { SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Concrete and Masonry in Baltimore, MD | ${SITE.name}`,
-  description:
-    "Concrete slabs, steps, patios, and masonry repair in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
+  title: "Concrete and Masonry in Baltimore, MD",
+  description: clampDescription(
+    "Concrete slabs, steps, patios, and masonry repair in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates."
+  ),
   openGraph: {
     siteName: "Elite Finishes",
     title: `Concrete and Masonry in Baltimore, MD | ${SITE.name}`,
     description:
       "Concrete slabs, steps, patios, and masonry repair in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/concrete-and-masonry`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Concrete and Masonry in Baltimore, MD | ${SITE.name}`,
     description:
       "Concrete slabs, steps, patios, and masonry repair in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates.",
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   keywords: ["concrete contractor Baltimore", "masonry repair Baltimore MD", "concrete steps Baltimore", "tuck pointing Baltimore County", "concrete patio Maryland", "masonry contractor Baltimore", "concrete and masonry company Maryland", "Elite Finishes concrete and masonry"],
   alternates: { canonical: `${SITE.url}/services/concrete-and-masonry` },
@@ -30,8 +32,8 @@ export default function ConcreteAndMasonryPage() {
     <ServicePageTemplate
       title="Concrete and Masonry"
       slug="concrete-and-masonry"
-      heroImage="/images/roofing-shingles.jpg"
-      heroAlt="Concrete and masonry work on a Baltimore area home by Elite Finishes"
+      heroImage="/images/concrete-walkway.jpg"
+      heroAlt="Poured concrete walkway leading to a home"
       headline="Concrete and Masonry Work Built to Last"
       subheadline="Concrete slabs, steps, walkways, patios, and masonry repair and tuck-pointing for Baltimore area homes, done right the first time."
       factNugget={`${SITE.name} is a licensed concrete and masonry contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. Baltimore's freeze-thaw climate is particularly hard on concrete and masonry. Proper mix design, installation technique, and curing are essential for longevity. Cutting corners on concrete work creates surfaces that scale, crack, and deteriorate rapidly in Maryland winters.`}

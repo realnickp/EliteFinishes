@@ -6,9 +6,9 @@ export const SITE = {
   phoneSms: "sms:+14438250206",
   email: "Elitefinishesmd@gmail.com",
   license: "MHIC 153498",
-  license2: "WBME 22380085",
+  owner: "Victor Cataldi",
   domain: "elitefinishesmaryland.com",
-  url: "https://elitefinishesmaryland.com",
+  url: "https://www.elitefinishesmaryland.com",
   address: {
     street: "1601 Cuba Street",
     city: "Baltimore",
@@ -839,82 +839,38 @@ export const ALL_SERVICES_FOR_FORM = [
   ...ADDITIONAL_SERVICES,
 ] as const;
 
-export const TESTIMONIALS = [
-  {
-    name: "Maria S.",
-    location: "Baltimore, MD",
-    text: "The crew was professional, on time every day, and the finished walls look incredible. They prepped everything properly and the paint has been holding up perfectly for over a year. I would hire them again in a heartbeat.",
-    service: "Interior Painting",
-    rating: 5,
-  },
-  {
-    name: "David C.",
-    location: "Towson, MD",
-    text: "Our kitchen went from 1990s oak cabinets to a clean, modern look without spending a fortune on replacements. The cabinet painting and new countertops made the whole space feel brand new. They communicated clearly from start to finish.",
-    service: "Kitchen Remodeling",
-    rating: 5,
-  },
-  {
-    name: "Jennifer and Mark P.",
-    location: "Annapolis, MD",
-    text: "They repainted our entire exterior including trim and shutters. The prep work alone was impressive. Pressure washed everything, caulked every gap, primed all the bare wood. The result looks as good as new construction.",
-    service: "Exterior Painting",
-    rating: 5,
-  },
-  {
-    name: "Robert L.",
-    location: "Catonsville, MD",
-    text: "Our master bathroom is completely transformed. New tile, new vanity, fresh paint on the walls and ceiling. Everything was done in three weeks and the work is clean and precise. Worth every penny.",
-    service: "Bathroom Remodeling",
-    rating: 5,
-  },
-  {
-    name: "Angela W.",
-    location: "Glen Burnie, MD",
-    text: "We had them install hardwood floors and repaint the entire main level. The way they sequenced the work so the floors were protected during painting was smart and professional. The house looks like a different home.",
-    service: "Flooring",
-    rating: 5,
-  },
-  {
-    name: "Steve M.",
-    location: "Ellicott City, MD",
-    text: "Our basement remodel was done on time and on budget, which never happens. They built the room, painted it, installed the flooring, and trimmed everything out perfectly. My kids use that space every single day now.",
-    service: "Basement Remodeling",
-    rating: 5,
-  },
-] as const;
 
 export const GALLERY_ITEMS = [
   // Interior Painting (finished rooms + painting in progress)
-  { src: "/images/pexels-artbovich-7031616.jpg", alt: "Fresh interior painting in Baltimore home with clean lines and premium finish", category: "Interior Painting", width: 1200, height: 800 },
-  { src: "/images/pexels-artbovich-7031619.jpg", alt: "Professional interior painting in Maryland living room", category: "Interior Painting", width: 1200, height: 800 },
-  { src: "/images/pexels-artbovich-8146335.jpg", alt: "Interior painting completed in Baltimore home", category: "Interior Painting", width: 1200, height: 800 },
+  { src: "/images/pexels-artbovich-7031616.jpg", alt: "Fresh interior painting in a home with clean lines and premium finish", category: "Interior Painting", width: 1200, height: 800 },
+  { src: "/images/pexels-artbovich-7031619.jpg", alt: "Professional interior painting", category: "Interior Painting", width: 1200, height: 800 },
+  { src: "/images/pexels-artbovich-8146335.jpg", alt: "Interior painting completed in a home", category: "Interior Painting", width: 1200, height: 800 },
   { src: "/images/pexels-artbovich-7005296.jpg", alt: "Painting contractor detail work on baseboards and trim", category: "Interior Painting", width: 1200, height: 800 },
-  { src: "/images/pexels-tima-miroshnichenko-6474199.jpg", alt: "Professional spray painting interior in Maryland home", category: "Interior Painting", width: 1200, height: 800 },
+  { src: "/images/pexels-tima-miroshnichenko-6474199.jpg", alt: "Professional spray painting interior", category: "Interior Painting", width: 1200, height: 800 },
   { src: "/images/pexels-tima-miroshnichenko-6474302.jpg", alt: "Interior spray painting with full prep and protection", category: "Interior Painting", width: 1200, height: 800 },
-  { src: "/images/pexels-kseniachernaya-5691597.jpg", alt: "Painter rolling walls in Baltimore area home", category: "Interior Painting", width: 1200, height: 800 },
+  { src: "/images/pexels-kseniachernaya-5691597.jpg", alt: "Painter rolling walls home", category: "Interior Painting", width: 1200, height: 800 },
   { src: "/images/exterior-painting-worker.jpg", alt: "Professional interior painting with roller and ladder", category: "Interior Painting", width: 1200, height: 800 },
 
   // Exterior Painting (house exteriors)
-  { src: "/images/exterior-painting-crew.jpg", alt: "Professional painting crew working on exterior of a Baltimore area home", category: "Exterior Painting", width: 1200, height: 800 },
-  { src: "/images/exterior-painting-sprayer.jpg", alt: "Painter spray-painting exterior siding on a Maryland residential home", category: "Exterior Painting", width: 1200, height: 800 },
-  { src: "/images/pexels-binyaminmellish-106399.jpg", alt: "Baltimore area home exterior with fresh paint and siding", category: "Exterior Painting", width: 1200, height: 800 },
-  { src: "/images/pexels-tima-miroshnichenko-6474131.jpg", alt: "Exterior preparation and renovation work on Maryland home", category: "Exterior Painting", width: 1200, height: 800 },
-  { src: "/images/house-exterior.jpg", alt: "Freshly painted two-story home exterior in Baltimore County", category: "Exterior Painting", width: 1200, height: 800 },
+  { src: "/images/exterior-painting-crew.jpg", alt: "Professional painting crew working on exterior of a home", category: "Exterior Painting", width: 1200, height: 800 },
+  { src: "/images/exterior-painting-sprayer.jpg", alt: "Painter spray-painting exterior siding on a home", category: "Exterior Painting", width: 1200, height: 800 },
+  { src: "/images/pexels-binyaminmellish-106399.jpg", alt: "Home exterior with fresh paint and siding", category: "Exterior Painting", width: 1200, height: 800 },
+  { src: "/images/pexels-tima-miroshnichenko-6474131.jpg", alt: "Exterior preparation and renovation work on a home", category: "Exterior Painting", width: 1200, height: 800 },
+  { src: "/images/house-exterior.jpg", alt: "Freshly painted two-story home exterior", category: "Exterior Painting", width: 1200, height: 800 },
 
   // Kitchen Remodeling
-  { src: "/images/pexels-artbovich-6301185.jpg", alt: "Modern kitchen with island completed by Elite Finishes", category: "Kitchen Remodeling", width: 1200, height: 800 },
-  { src: "/images/pexels-curtis-adams-1694007-3958953.jpg", alt: "Open-concept kitchen renovation with island in Maryland home", category: "Kitchen Remodeling", width: 1200, height: 800 },
-  { src: "/images/pexels-curtis-adams-1694007-4092029.jpg", alt: "Bright renovated kitchen with white shaker cabinets in Ellicott City", category: "Kitchen Remodeling", width: 1200, height: 800 },
-  { src: "/images/pexels-falling4utah-1080721.jpg", alt: "White kitchen with island and pendant lighting in Baltimore area", category: "Kitchen Remodeling", width: 1200, height: 800 },
+  { src: "/images/pexels-artbovich-6301185.jpg", alt: "Modern kitchen with island completed", category: "Kitchen Remodeling", width: 1200, height: 800 },
+  { src: "/images/pexels-curtis-adams-1694007-3958953.jpg", alt: "Open-concept kitchen renovation with island", category: "Kitchen Remodeling", width: 1200, height: 800 },
+  { src: "/images/pexels-curtis-adams-1694007-4092029.jpg", alt: "Bright renovated kitchen with white shaker cabinets", category: "Kitchen Remodeling", width: 1200, height: 800 },
+  { src: "/images/pexels-falling4utah-1080721.jpg", alt: "White kitchen with island and pendant lighting", category: "Kitchen Remodeling", width: 1200, height: 800 },
   { src: "/images/pexels-falling4utah-2724749.jpg", alt: "Kitchen remodel with island and modern cabinets", category: "Kitchen Remodeling", width: 1200, height: 800 },
   { src: "/images/pexels-pixabay-534151.jpg", alt: "Kitchen with hardwood floors and granite counters", category: "Kitchen Remodeling", width: 1200, height: 800 },
-  { src: "/images/pexels-clickerhappy-349749.jpg", alt: "Modern kitchen with white cabinets in Maryland home", category: "Kitchen Remodeling", width: 1200, height: 800 },
+  { src: "/images/pexels-clickerhappy-349749.jpg", alt: "Modern kitchen with white cabinets", category: "Kitchen Remodeling", width: 1200, height: 800 },
 
   // Bathroom Remodeling
-  { src: "/images/pexels-artbovich-8143696.jpg", alt: "Modern bathroom with tile and glass shower in Baltimore", category: "Bathroom Remodeling", width: 1200, height: 800 },
-  { src: "/images/pexels-artbovich-8143714.jpg", alt: "Bathroom vanity and tile backsplash by Elite Finishes", category: "Bathroom Remodeling", width: 1200, height: 800 },
-  { src: "/images/pexels-artbovich-8146201.jpg", alt: "Marble bathroom with tub and skylight in Maryland", category: "Bathroom Remodeling", width: 1200, height: 800 },
+  { src: "/images/pexels-artbovich-8143696.jpg", alt: "Modern bathroom with tile and glass shower", category: "Bathroom Remodeling", width: 1200, height: 800 },
+  { src: "/images/pexels-artbovich-8143714.jpg", alt: "Bathroom vanity and tile backsplash", category: "Bathroom Remodeling", width: 1200, height: 800 },
+  { src: "/images/pexels-artbovich-8146201.jpg", alt: "Marble bathroom with tub and skylight", category: "Bathroom Remodeling", width: 1200, height: 800 },
   { src: "/images/pexels-andrew-5860600.jpg", alt: "Bathroom remodel with tile and vessel sink", category: "Bathroom Remodeling", width: 1200, height: 800 },
   { src: "/images/pexels-perqued-10919436.jpg", alt: "Luxury bathroom with backlit mirror and modern fixtures", category: "Bathroom Remodeling", width: 1200, height: 800 },
   { src: "/images/pexels-kseniachernaya-5691610.jpg", alt: "Hall bathroom renovation with new tile and fixtures", category: "Bathroom Remodeling", width: 1200, height: 800 },
@@ -922,46 +878,46 @@ export const GALLERY_ITEMS = [
   { src: "/images/pexels-pixabay-279607.jpg", alt: "Clean modern bathroom after remodel", category: "Bathroom Remodeling", width: 1200, height: 800 },
 
   // Home Remodeling
-  { src: "/images/pexels-curtis-adams-1694007-3935321.jpg", alt: "Living room transformation as part of whole-home remodel in Baltimore", category: "Home Remodeling", width: 1200, height: 800 },
-  { src: "/images/pexels-curtis-adams-1694007-3935352.jpg", alt: "Renovated bedroom with fresh paint and new flooring in Maryland", category: "Home Remodeling", width: 1200, height: 800 },
+  { src: "/images/pexels-curtis-adams-1694007-3935321.jpg", alt: "Living room transformation as part of whole-home remodel", category: "Home Remodeling", width: 1200, height: 800 },
+  { src: "/images/pexels-curtis-adams-1694007-3935352.jpg", alt: "Renovated bedroom with fresh paint and new flooring", category: "Home Remodeling", width: 1200, height: 800 },
   { src: "/images/pexels-curtis-adams-1694007-6835115.jpg", alt: "Home office renovation with custom built-ins and premium paint", category: "Home Remodeling", width: 1200, height: 800 },
   { src: "/images/pexels-artbovich-7533755.jpg", alt: "Living room with fireplace and built-in after remodel", category: "Home Remodeling", width: 1200, height: 800 },
   { src: "/images/pexels-artbovich-7147282.jpg", alt: "Open-concept living and kitchen after whole-home remodel", category: "Home Remodeling", width: 1200, height: 800 },
   { src: "/images/pexels-pixabay-271624.jpg", alt: "Bedroom with hardwood floors and fresh paint", category: "Home Remodeling", width: 1200, height: 800 },
 
   // Basement Remodeling
-  { src: "/images/pexels-introspectivedsgn-9899847.jpg", alt: "Finished basement with LVP flooring and fresh paint in Baltimore County", category: "Basement Remodeling", width: 1200, height: 800 },
-  { src: "/images/smart-renovations-YBxrveqHAFU-unsplash.jpg", alt: "Finished basement living space with fireplace in Maryland", category: "Basement Remodeling", width: 1200, height: 800 },
-  { src: "/images/point3d-commercial-imaging-ltd-qVIDQ-jCMFw-unsplash.jpg", alt: "Basement home office renovation by Elite Finishes", category: "Basement Remodeling", width: 1200, height: 800 },
+  { src: "/images/pexels-introspectivedsgn-9899847.jpg", alt: "Finished basement with LVP flooring and fresh paint", category: "Basement Remodeling", width: 1200, height: 800 },
+  { src: "/images/smart-renovations-YBxrveqHAFU-unsplash.jpg", alt: "Finished basement living space with fireplace", category: "Basement Remodeling", width: 1200, height: 800 },
+  { src: "/images/point3d-commercial-imaging-ltd-qVIDQ-jCMFw-unsplash.jpg", alt: "Basement home office renovation", category: "Basement Remodeling", width: 1200, height: 800 },
   { src: "/images/point3d-commercial-imaging-ltd-rgfbZBhnxqQ-unsplash.jpg", alt: "Finished basement with built-in shelving and lighting", category: "Basement Remodeling", width: 1200, height: 800 },
 
   // Decks
-  { src: "/images/pexels-curtis-adams-7601167.jpg", alt: "Newly built screened deck with composite decking and railings on a Maryland home", category: "Decks", width: 1200, height: 800 },
+  { src: "/images/pexels-curtis-adams-7601167.jpg", alt: "Newly built screened deck with composite decking and railings", category: "Decks", width: 1200, height: 800 },
   { src: "/images/pexels-artbovich-7587879.jpg", alt: "Modern composite deck with pergola and outdoor dining area", category: "Decks", width: 1200, height: 800 },
 
   // Flooring
-  { src: "/images/pexels-clickerhappy-1388944.jpg", alt: "Professional flooring installation in Baltimore home", category: "Flooring", width: 1200, height: 800 },
-  { src: "/images/pexels-lamiko-3616757.jpg", alt: "Hardwood floor refinishing in Catonsville home", category: "Flooring", width: 1200, height: 800 },
+  { src: "/images/pexels-clickerhappy-1388944.jpg", alt: "Professional flooring installation in a home", category: "Flooring", width: 1200, height: 800 },
+  { src: "/images/pexels-lamiko-3616757.jpg", alt: "Hardwood floor refinishing in a home", category: "Flooring", width: 1200, height: 800 },
   { src: "/images/pexels-pixabay-534151.jpg", alt: "Hardwood flooring in kitchen remodel", category: "Flooring", width: 1200, height: 800 },
 
   // Siding
   { src: "/images/pexels-binyaminmellish-1396122.jpg", alt: "Craftsman home with new fiber cement board-and-batten siding", category: "Siding", width: 1200, height: 800 },
-  { src: "/images/house-exterior.jpg", alt: "Two-story home with fiber cement siding in Maryland", category: "Siding", width: 1200, height: 800 },
+  { src: "/images/house-exterior.jpg", alt: "Two-story home with fiber cement siding", category: "Siding", width: 1200, height: 800 },
   { src: "/images/pexels-binyaminmellish-106399.jpg", alt: "Suburban home with mixed siding materials and clean trim work", category: "Siding", width: 1200, height: 800 },
 
   // Roofing
   { src: "/images/roofing-crew-shingles.jpg", alt: "Roofing crew installing architectural shingles on a residential home", category: "Roofing", width: 1200, height: 800 },
-  { src: "/images/roofing-worker-closeup.jpg", alt: "Roofer nailing down shingles during a roof replacement in Maryland", category: "Roofing", width: 1200, height: 800 },
+  { src: "/images/roofing-worker-closeup.jpg", alt: "Roofer nailing down shingles during a roof replacement", category: "Roofing", width: 1200, height: 800 },
 
   // Commercial Services
-  { src: "/images/point3d-commercial-imaging-ltd-qVIDQ-jCMFw-unsplash.jpg", alt: "Commercial interior renovation in Baltimore", category: "Commercial Services", width: 1200, height: 800 },
-  { src: "/images/point3d-commercial-imaging-ltd-rgfbZBhnxqQ-unsplash.jpg", alt: "Commercial painting and renovation by Elite Finishes in Maryland", category: "Commercial Services", width: 1200, height: 800 },
+  { src: "/images/point3d-commercial-imaging-ltd-qVIDQ-jCMFw-unsplash.jpg", alt: "Commercial interior renovation", category: "Commercial Services", width: 1200, height: 800 },
+  { src: "/images/point3d-commercial-imaging-ltd-rgfbZBhnxqQ-unsplash.jpg", alt: "Commercial painting and renovation", category: "Commercial Services", width: 1200, height: 800 },
   { src: "/images/point3d-commercial-imaging-ltd-Tb4bUf6z9gI-unsplash.jpg", alt: "Office or retail interior renovation", category: "Commercial Services", width: 1200, height: 800 },
 
   // Concrete and Masonry
-  { src: "/images/roofing-shingles.jpg", alt: "Concrete slab and foundation work in Baltimore area", category: "Concrete and Masonry", width: 1200, height: 800 },
-  { src: "/images/roofing-house.jpg", alt: "Concrete pour and finishing by Elite Finishes", category: "Concrete and Masonry", width: 1200, height: 800 },
-  { src: "/images/concrete-driveway.jpg", alt: "Concrete driveway or walkway installation in Maryland", category: "Concrete and Masonry", width: 1200, height: 800 },
+  { src: "/images/roofing-shingles.jpg", alt: "Concrete slab and foundation work", category: "Concrete and Masonry", width: 1200, height: 800 },
+  { src: "/images/roofing-house.jpg", alt: "Concrete pour and finishing", category: "Concrete and Masonry", width: 1200, height: 800 },
+  { src: "/images/concrete-driveway.jpg", alt: "Concrete driveway or walkway installation", category: "Concrete and Masonry", width: 1200, height: 800 },
 ] as const;
 
 export type GalleryItem = (typeof GALLERY_ITEMS)[number];
@@ -993,6 +949,14 @@ export const GOOGLE_REVIEWS = [
   },
 ] as const;
 
+/** Customer quotes used across the site. Built only from the real Google reviews above. */
+export const TESTIMONIALS = GOOGLE_REVIEWS.map((review) => ({
+  name: review.name,
+  location: "Google review",
+  text: review.text,
+  service: review.project,
+}));
+
 /** Ad landing pages that render as standalone one pagers (no site header, footer or popup). */
 export const CONVERSION_LP_SLUGS = ["painting", "bathroom-remodeling"] as const;
 
@@ -1007,7 +971,7 @@ export const AD_TRACKING: {
   googleAdsContactLabel: string;
 } = {
   metaPixelId: "",
-  googleAdsId: "",
+  googleAdsId: "AW-18451341957",
   googleAdsLeadLabel: "",
   googleAdsContactLabel: "",
 };

@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import { ServicePageTemplate } from "@/components/shared/ServicePageTemplate";
 import { SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Roofing Services in Baltimore, MD | ${SITE.name}`,
-  description:
-    "Expert roof repairs and replacements for Baltimore area homeowners. Licensed Maryland roofing contractor with warranty-backed installations. Free estimates.",
+  title: "Roofing Services in Baltimore, MD",
+  description: clampDescription(
+    "Expert roof repairs and replacements for Baltimore area homeowners. Licensed Maryland roofing contractor with warranty-backed installations. Free estimates."
+  ),
   openGraph: {
     siteName: "Elite Finishes",
     title: `Roofing Services in Baltimore, MD | ${SITE.name}`,
     description:
       "Expert roof repairs and replacements for Baltimore area homeowners. Licensed Maryland roofing contractor with warranty-backed installations. Free estimates.",
     url: `${SITE.url}/services/roofing`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Roofing Services in Baltimore, MD | ${SITE.name}`,
     description:
       "Expert roof repairs and replacements for Baltimore area homeowners. Licensed Maryland roofing contractor with warranty-backed installations. Free estimates.",
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   keywords: ["roofing Baltimore", "roof replacement Baltimore MD", "roofing contractor Maryland", "roof repair Baltimore", "shingle roof Baltimore County", "storm damage roof repair Baltimore", "roofing company Maryland", "Elite Finishes roofing"],
   alternates: { canonical: `${SITE.url}/services/roofing` },
@@ -31,7 +33,7 @@ export default function RoofingPage() {
       title="Roofing"
       slug="roofing"
       heroImage="/images/roofing-crew-shingles.jpg"
-      heroAlt="Roofing crew installing shingles on a residential home in the Baltimore area"
+      heroAlt="Roofing crew installing shingles on a house"
       headline="Reliable Roof Repairs and Replacements for Baltimore Area Homes"
       subheadline="From storm damage repairs to full roof replacements, we protect your biggest investment with quality materials, expert installation, and warranties you can count on."
       factNugget={`${SITE.name} is a licensed roofing contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. We install GAF, CertainTeed, and Owens Corning shingle systems with ice and water shield, proper ridge ventilation, and manufacturer warranties up to 50 years. Most replacements are completed in one to three days, and we handle insurance claim documentation for storm damage.`}

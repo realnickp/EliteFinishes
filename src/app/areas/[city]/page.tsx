@@ -22,6 +22,7 @@ import { FAQAccordion } from "@/components/shared/FAQAccordion";
 import { TrustBar } from "@/components/shared/TrustBar";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { ScrollReveal, StaggerChildren, StaggerItem } from "@/components/shared/animations";
+import { clampDescription } from "@/lib/seo";
 
 export async function generateStaticParams() {
   return CITY_DATA.map((city) => ({ city: city.slug }));
@@ -36,18 +37,18 @@ export async function generateMetadata({
   const city = CITY_DATA.find((c) => c.slug === citySlug);
   if (!city) return {};
 
-  const title = `${city.headline} | ${SITE.name}`;
-  const description = `${city.subheadline} Licensed ${SITE.license}. Free estimates — call ${SITE.phone}.`;
+  const title = city.headline;
+  const description = clampDescription(`${city.subheadline} Licensed ${SITE.license}. Free estimates: ${SITE.phone}.`);
 
   return {
     title,
     description,
     openGraph: {
       siteName: "Elite Finishes",
-      title,
+      title: `${title} | ${SITE.name}`,
       description,
       url: `${SITE.url}/areas/${city.slug}`,
-      images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+      images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: `${SITE.name}, painting and remodeling in ${city.name}, MD` }],
     },
     alternates: { canonical: `${SITE.url}/areas/${city.slug}` },
   };
@@ -103,15 +104,17 @@ export default async function CityPage({
       ? cityTestimonials
       : TESTIMONIALS.slice(0, 3);
 
+  // References the sitewide business entity instead of declaring a second one
   const schema = {
     "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    name: SITE.name,
-    description: city.subheadline,
-    telephone: SITE.phone,
-    email: SITE.email,
+    "@type": "WebPage",
+    "@id": `${SITE.url}/areas/${city.slug}#webpage`,
     url: `${SITE.url}/areas/${city.slug}`,
-    areaServed: {
+    name: city.headline,
+    description: city.subheadline,
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    about: { "@id": `${SITE.url}/#business` },
+    mentions: {
       "@type": "City",
       name: city.name,
       containedInPlace: {
@@ -119,20 +122,6 @@ export default async function CityPage({
         name: city.county,
         containedInPlace: { "@type": "State", name: "Maryland" },
       },
-    },
-    hasCredential: {
-      "@type": "EducationalOccupationalCredential",
-      credentialCategory: "license",
-      name: SITE.license,
-      recognizedBy: {
-        "@type": "Organization",
-        name: "Maryland Home Improvement Commission",
-      },
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5",
-      reviewCount: "47",
     },
   };
 
@@ -164,11 +153,13 @@ export default async function CityPage({
 
       <article>
       {/* ===== HERO ===== */}
-      <section className="bg-primary text-white py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-primary text-white py-16 md:py-24">
+        <Image src="/images/lp/painting-offer.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/70" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <ScrollReveal direction="up" delay={0.1}>
+              <div>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-green/15 border border-brand-green/40 text-brand-green text-xs font-semibold mb-6">
                 <MapPin className="h-3.5 w-3.5" />
                 {city.name}, {city.county}
@@ -179,19 +170,12 @@ export default async function CityPage({
               <p className="text-white/70 text-lg md:text-xl mb-8 leading-relaxed">
                 {city.subheadline}
               </p>
-              </ScrollReveal>
-              <ScrollReveal direction="up" delay={0.2}>
+              </div>
+              <div>
               <div className="flex flex-wrap gap-4 mb-8 pb-8 border-b border-white/10">
                 <div className="flex items-center gap-2">
-                  <div className="flex gap-0.5">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 fill-white text-white"
-                      />
-                    ))}
-                  </div>
-                  <span className="text-sm text-white/60">5-Star Rated</span>
+                  <FileText className="h-4 w-4 text-white" />
+                  <span className="text-sm text-white/60">Free written estimates</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4 text-white" />
@@ -206,8 +190,8 @@ export default async function CityPage({
                   </span>
                 </div>
               </div>
-              </ScrollReveal>
-              <ScrollReveal direction="up" delay={0.3}>
+              </div>
+              <div>
               <div className="flex flex-col sm:flex-row gap-3">
                 <CTAButton href="/contact" size="lg">
                   Get a Free Estimate
@@ -215,10 +199,10 @@ export default async function CityPage({
                 </CTAButton>
                 <CTAButton variant="phone" size="lg" />
               </div>
-              </ScrollReveal>
+              </div>
             </div>
 
-            <ScrollReveal direction="right" delay={0.2}>
+            <div>
             <div className="bg-white rounded-2xl p-6 md:p-8 shadow-2xl text-foreground">
               <div className="mb-6">
                 <h2 className="text-xl font-bold mb-1">
@@ -230,7 +214,7 @@ export default async function CityPage({
               </div>
               <LeadForm compact />
             </div>
-            </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
@@ -272,7 +256,7 @@ export default async function CityPage({
             <StaggerChildren className="grid grid-cols-2 gap-4 mb-6" stagger={0.08}>
               {[
                 { stat: "MHIC", label: "Licensed & Insured" },
-                { stat: "5.0", label: "Star Google Rating" },
+                { stat: "4", label: "Counties Served" },
                 { stat: "2–4 wks", label: "Average Start Time" },
                 { stat: "Fast", label: "Response Time" },
               ].map((item) => (

@@ -7,16 +7,17 @@ import { LeadForm } from "@/components/shared/LeadForm";
 import { CTAButton } from "@/components/shared/CTAButton";
 import { SITE, GALLERY_ITEMS } from "@/lib/constants";
 import { env, hasCalendly } from "@/lib/env";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact Us | Get a Free Estimate",
-  description: `Contact ${SITE.name} for a free estimate on interior painting, exterior painting, kitchen and bathroom remodeling, flooring, siding, roofing, and more in Baltimore, MD. Call ${SITE.phone} or fill out our quick form.`,
+  description: clampDescription(`Contact ${SITE.name} for a free estimate on interior painting, exterior painting, kitchen and bathroom remodeling, flooring, siding, roofing, and more in Baltimore, MD. Call ${SITE.phone} or fill out our quick form.`),
   openGraph: {
     siteName: "Elite Finishes",
     title: "Contact Us | Get a Free Estimate",
     description: `Contact ${SITE.name} for a free estimate on interior painting, exterior painting, kitchen and bathroom remodeling, flooring, siding, roofing, and more in Baltimore, MD. Call ${SITE.phone} or fill out our quick form.`,
     url: `${SITE.url}/contact`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/contact` },
 };
@@ -59,7 +60,7 @@ export default function ContactPage() {
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/60 to-transparent z-10" />
               <Image
                 src="/images/pexels-artbovich-7031616.jpg"
-                alt="Elite Finishes painter working on a beautiful interior room in Baltimore"
+                alt="Painter working on an interior room"
                 fill
                 priority
                 className="object-cover"
@@ -105,7 +106,7 @@ export default function ContactPage() {
               ))}
             </div>
             <p className="text-sm sm:text-base text-foreground/80 font-medium text-center sm:text-left max-w-xs">
-              5-star rated service for homeowners throughout the Baltimore area
+              Licensed, insured service for homeowners throughout the Baltimore area
             </p>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Hammer, Users, Clock, ThumbsUp, ShieldCheck, MessageSquare, Star, Award, MapPin, DollarSign, Shield } from "lucide-react";
+import { ArrowRight, Hammer, Users, Clock, ThumbsUp, ShieldCheck, MessageSquare, Award, MapPin, DollarSign, Shield } from "lucide-react";
 import { Section } from "@/components/shared/Section";
 import { TrustBar } from "@/components/shared/TrustBar";
 import { ServiceCard } from "@/components/shared/ServiceCard";
@@ -14,16 +14,17 @@ import { GalleryGrid } from "@/components/shared/GalleryGrid";
 import { ScrollReveal, StaggerChildren, StaggerItem, StickyStack, StackOver, ParallaxImage, CountUp } from "@/components/shared/animations";
 import type { Metadata } from "next";
 import { PRIMARY_SERVICES, TESTIMONIALS, GALLERY_ITEMS, SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `${SITE.name} | Painting and Remodeling Contractor in Baltimore, MD`,
-  description: `${SITE.name} is a licensed Baltimore painting and home remodeling contractor serving 28 communities across Baltimore City, Baltimore County, Anne Arundel County, and Howard County. Interior and exterior painting, kitchen and bathroom remodeling, flooring, siding, decks, roofing, and more. ${SITE.license}. Free estimates — call ${SITE.phone}.`,
+  title: { absolute: `Baltimore Painting and Remodeling Contractor | ${SITE.name}` },
+  description: `Licensed Baltimore painting and remodeling contractor (${SITE.license}). Interior and exterior painting, kitchens, bathrooms, basements and more. Free estimates.`,
   openGraph: {
     siteName: "Elite Finishes",
-    title: `${SITE.name} | Painting and Remodeling Contractor in Baltimore, MD`,
+    title: { absolute: `Baltimore Painting and Remodeling Contractor | ${SITE.name}` },
     description: `Licensed Baltimore painting and home remodeling contractor. Interior and exterior painting, kitchens, bathrooms, flooring, siding, decks, roofing. ${SITE.license}. Free estimates.`,
     url: SITE.url,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: SITE.url },
 };
@@ -38,7 +39,7 @@ const PROCESS = [
 ];
 
 const WHY_US = [
-  { icon: ShieldCheck, title: "Licensed and Insured", desc: `${SITE.license} and ${SITE.license2} — fully licensed with the Maryland Home Improvement Commission. Documentation available on request.` },
+  { icon: ShieldCheck, title: "Licensed and Insured", desc: `${SITE.license}, fully licensed with the Maryland Home Improvement Commission. Documentation available on request.` },
   { icon: Hammer, title: "Quality You Can See", desc: "Thorough prep work, premium materials, and clean execution. Every surface we touch is treated with the same care as if it were our own home." },
   { icon: MessageSquare, title: "Clear Communication", desc: "You will always know what is happening, what is next, and what it costs. No surprises, no vague estimates, no disappearing act mid-project." },
   { icon: Users, title: "Family Owned and Local", desc: "We live and work in the Baltimore area. Our reputation in this community is everything, and we treat every project like it reflects our name." },
@@ -50,7 +51,7 @@ const HOME_FAQS = [
   { question: "How quickly can you start my project?", answer: "Most projects can be scheduled within one to three weeks of estimate approval. Smaller jobs like single-room painting or drywall repair can sometimes be fit in sooner. We will always give you a realistic start date during your consultation so you can plan accordingly." },
   { question: "Do you offer free estimates?", answer: "Yes, always. We visit your property, assess the project, and provide a detailed written estimate at no charge and no obligation. There is no pressure to book and no fee for the visit." },
   { question: "What areas do you serve?", answer: "We serve Baltimore City, Baltimore County, Anne Arundel County, and Howard County. That includes Baltimore, Towson, Catonsville, Ellicott City, Columbia, Annapolis, Glen Burnie, Dundalk, Pikesville, Owings Mills, and many more communities throughout the region." },
-  { question: "Are you licensed and insured?", answer: `Absolutely. We are a licensed Maryland Home Improvement Contractor (${SITE.license}) and a registered Women's Business Enterprise (${SITE.license2}). We carry full liability insurance and are happy to provide documentation before any work begins.` },
+  { question: "Are you licensed and insured?", answer: `Absolutely. We are a licensed Maryland Home Improvement Contractor (${SITE.license}). We carry full liability insurance and are happy to provide documentation before any work begins.` },
   { question: "Can you handle multiple projects at once?", answer: "Yes. Many homeowners bundle services such as interior painting with flooring or a kitchen remodel with a bathroom refresh. Bundling often saves time and reduces the disruption to your home since we are already on site and working." },
   { question: "What if I am not sure exactly what I need?", answer: "No problem at all. Give us a call or submit a request describing what you want to accomplish. We will assess your space and recommend the best approach. We are painters and remodelers, not salespeople, so our advice is always based on what actually makes sense for your home." },
 ];
@@ -68,7 +69,7 @@ export default function HomePage() {
             fill
             className="object-cover object-[center_60%]"
             priority
-            sizes="100vw"
+            sizes="(min-width: 1024px) 1px, 100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/80 to-primary/95" />
         </div>
@@ -99,10 +100,8 @@ export default function HomePage() {
               {/* Social proof stats */}
               <div className="flex flex-wrap gap-6 mb-8 pb-8 border-b border-white/10">
                 <div>
-                  <div className="flex gap-0.5">
-                    {[1,2,3,4,5].map(i => <Star key={i} className="h-5 w-5 fill-white text-white" />)}
-                  </div>
-                  <p className="text-xs text-white/50 mt-1">5-Star Rated</p>
+                  <p className="text-3xl font-display text-white">Free</p>
+                  <p className="text-xs text-white/50 mt-0.5">On-Site Estimates</p>
                 </div>
                 <div>
                   <p className="text-3xl font-display text-white">28</p>
@@ -144,7 +143,7 @@ export default function HomePage() {
                     fill
                     className="object-cover"
                     priority
-                    sizes="40vw"
+                    sizes="(max-width: 1023px) 1px, 40vw"
                   />
                 </div>
                 {/* Top right small image */}
@@ -191,7 +190,7 @@ export default function HomePage() {
         <div className="absolute inset-0">
           <Image
             src="/images/pexels-artbovich-8146335.jpg"
-            alt="Elite Finishes painting crew at work on a Maryland home"
+            alt="Freshly painted empty room with gray walls and light wood floors"
             fill
             className="object-cover"
             sizes="100vw"
@@ -214,8 +213,8 @@ export default function HomePage() {
             </StaggerItem>
             <StaggerItem>
             <div>
-              <p className="text-4xl md:text-5xl font-display text-brand-green mb-1">5.0</p>
-              <p className="text-sm text-white/60">Average Star Rating</p>
+              <p className="text-4xl md:text-5xl font-display text-brand-green mb-1">4</p>
+              <p className="text-sm text-white/60">Counties Served</p>
             </div>
             </StaggerItem>
             <StaggerItem>
@@ -260,7 +259,7 @@ export default function HomePage() {
       <section className="relative h-[300px] md:h-[400px] overflow-hidden">
         <ParallaxImage
           src="/images/pexels-artbovich-7533755.jpg"
-          alt="Freshly painted interior room in a Baltimore home by Elite Finishes"
+          alt="Freshly painted living room with a fireplace and built-in shelving"
           className="absolute inset-0"
           speed={0.12}
         />
@@ -270,10 +269,10 @@ export default function HomePage() {
             <ScrollReveal direction="left">
             <blockquote className="max-w-lg text-white">
               <p className="font-display text-2xl md:text-3xl leading-snug mb-3">
-                &ldquo;They treated our home like it was their own. Incredible work from start to finish.&rdquo;
+                &ldquo;Everything was completely cleaned up and the house looked great when we returned home.&rdquo;
               </p>
               <cite className="text-brand-green text-sm font-semibold not-italic">
-                &mdash; Maria S., Baltimore MD
+                Shane E., Google review
               </cite>
             </blockquote>
             </ScrollReveal>
@@ -291,17 +290,15 @@ export default function HomePage() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
               <Image
                 src="/images/pexels-artbovich-7147282.jpg"
-                alt="Elite Finishes painter delivering meticulous interior work in a Baltimore home"
+                alt="Open kitchen and entryway with warm neutral walls and wood cabinets"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
             </div>
             <div className="absolute -bottom-4 -right-4 bg-gradient-to-br from-brand-green to-brand-green-dark text-white rounded-xl px-5 py-3 shadow-lg">
-              <div className="flex items-center gap-1">
-                {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-white" />)}
-              </div>
-              <p className="text-xs mt-1 font-medium">5-Star Rated</p>
+              <p className="text-xs font-medium">Licensed and Insured</p>
+              <p className="text-sm font-bold">{SITE.license}</p>
             </div>
           </div>
 
@@ -483,7 +480,7 @@ export default function HomePage() {
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-5xl mb-4">What Our Customers Say</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Real feedback from real homeowners throughout the Baltimore area.
+            Reviews our customers left on Google, quoted as written.
           </p>
         </div>
         </ScrollReveal>
@@ -540,7 +537,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden py-20 md:py-28">
         <ParallaxImage
           src="/images/pexels-artbovich-8146201.jpg"
-          alt="Elite Finishes painting and remodeling in Baltimore Maryland"
+          alt="Bathroom with marble look tile walls, a built-in tub and skylight"
           className="absolute inset-0"
           speed={0.1}
         />

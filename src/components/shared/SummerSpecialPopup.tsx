@@ -11,8 +11,11 @@ import { SITE } from "@/lib/constants";
 const STORAGE_KEY = "ef_summer_special_dismissed";
 /** Re-show the offer after this many days once dismissed. */
 const SUPPRESS_DAYS = 7;
-/** Delay before the popup appears, so it doesn't fight the page load. */
-const SHOW_DELAY_MS = 4500;
+/**
+ * Show only after the visitor scrolls halfway down a page. Popups that cover the
+ * screen right after landing (especially on mobile) hurt Google rankings.
+ */
+const SCROLL_DEPTH = 0.5;
 
 export function SummerSpecialPopup() {
   const [open, setOpen] = useState(false);
@@ -30,8 +33,15 @@ export function SummerSpecialPopup() {
       /* localStorage unavailable — show anyway */
     }
 
-    const timer = setTimeout(() => setOpen(true), SHOW_DELAY_MS);
-    return () => clearTimeout(timer);
+    const onScroll = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollable > 0 && window.scrollY / scrollable >= SCROLL_DEPTH) {
+        setOpen(true);
+        window.removeEventListener("scroll", onScroll);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   function dismiss() {
@@ -200,7 +210,7 @@ export function SummerSpecialPopup() {
                     <Star key={i} className="h-3 w-3 fill-brand-green text-brand-green" />
                   ))}
                 </span>
-                <span>5-star rated &middot; Licensed {SITE.license}</span>
+                <span>Real Google reviews &middot; Licensed {SITE.license}</span>
               </div>
 
               <p className="mt-3 text-center text-[10px] leading-relaxed text-muted-foreground/70">

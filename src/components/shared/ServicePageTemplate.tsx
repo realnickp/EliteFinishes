@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Star, ClipboardList } from "lucide-react";
+import { ArrowRight, ClipboardList } from "lucide-react";
 import { Section } from "./Section";
 import { CTAButton } from "./CTAButton";
 import { TrustBar } from "./TrustBar";
@@ -9,10 +9,10 @@ import { FAQAccordion, type FAQItem } from "./FAQAccordion";
 import { TestimonialCard } from "./TestimonialCard";
 import { GalleryGrid } from "./GalleryGrid";
 import { EstimateSidebar } from "./EstimateSidebar";
-import { ServiceSchema, HowToSchema, FAQPageSchema } from "./SchemaOrg";
+import { ServiceSchema, FAQPageSchema } from "./SchemaOrg";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { ScrollReveal, StaggerChildren, StaggerItem, StickyStack, StackOver, ParallaxImage } from "./animations";
-import { SITE, GALLERY_ITEMS, TESTIMONIALS } from "@/lib/constants";
+import { SITE, GALLERY_ITEMS, TESTIMONIALS, CITY_DATA } from "@/lib/constants";
 
 interface ServicePageProps {
   title: string;
@@ -57,11 +57,6 @@ export function ServicePageTemplate({
   return (
     <>
       <ServiceSchema name={title} description={subheadline} image={heroImage} slug={slug} offers={serviceOffers} />
-      <HowToSchema
-        name={`How ${SITE.name} Handles Your ${title} Project`}
-        description={`Step-by-step process for ${title.toLowerCase()} projects in ${SITE.address.region}, Maryland.`}
-        steps={process.map((s) => ({ title: s.title, description: s.description }))}
-      />
       <FAQPageSchema faqs={faqs.map((f) => ({ question: f.question, answer: f.answer }))} />
 
       <Breadcrumbs items={[
@@ -75,7 +70,7 @@ export function ServicePageTemplate({
       <section className="relative overflow-hidden">
         {/* Mobile: image visible behind gradient */}
         <div className="absolute inset-0 lg:hidden">
-          <Image src={heroImage} alt={heroAlt} fill className="object-cover" priority sizes="100vw" />
+          <Image src={heroImage} alt={heroAlt} fill className="object-cover" priority sizes="(min-width: 1024px) 1px, 100vw" />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/75 to-primary/90" />
         </div>
 
@@ -88,7 +83,6 @@ export function ServicePageTemplate({
           <div className="grid lg:grid-cols-12 items-center gap-8 lg:gap-12 py-16 md:py-20 lg:py-24">
             {/* Text */}
             <div className="lg:col-span-6 text-white">
-              <ScrollReveal direction="up" delay={0.1}>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand/15 border border-brand/30 text-brand text-xs font-semibold mb-5">
                 {SITE.name} &middot; {SITE.address.region}, MD
               </div>
@@ -98,8 +92,6 @@ export function ServicePageTemplate({
               <p className="text-lg text-white/70 mb-8 max-w-xl leading-relaxed">
                 {subheadline}
               </p>
-              </ScrollReveal>
-              <ScrollReveal direction="up" delay={0.3}>
               <div className="flex flex-col sm:flex-row gap-3">
                 <CTAButton href={`/quote/quiz?service=${slug}`} size="lg">
                   Get a Free {title} Estimate
@@ -109,7 +101,6 @@ export function ServicePageTemplate({
                   Call {SITE.phone}
                 </CTAButton>
               </div>
-              </ScrollReveal>
             </div>
 
             {/* Image (desktop) */}
@@ -121,7 +112,7 @@ export function ServicePageTemplate({
                   fill
                   className="object-cover"
                   priority
-                  sizes="50vw"
+                  sizes="(max-width: 1023px) 1px, 50vw"
                 />
               </div>
             </div>
@@ -281,6 +272,35 @@ export function ServicePageTemplate({
           <ScrollReveal delay={0.1}>
           <FAQAccordion items={faqs} />
           </ScrollReveal>
+        </div>
+      </Section>
+
+      {/* ===== Areas We Serve (links to every city page) ===== */}
+      <Section variant="warm">
+        <h2 className="text-2xl md:text-3xl font-display mb-2">{title} Across the Baltimore Area</h2>
+        <p className="text-muted-foreground mb-8 max-w-2xl">
+          {SITE.name} provides {title.toLowerCase()} in Baltimore City, Baltimore County, Anne Arundel County and Howard County. Find your community:
+        </p>
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {Object.entries(
+            CITY_DATA.reduce<Record<string, { name: string; slug: string }[]>>((groups, city) => {
+              (groups[city.county] ??= []).push({ name: city.name, slug: city.slug });
+              return groups;
+            }, {})
+          ).map(([county, cities]) => (
+            <div key={county}>
+              <h3 className="text-sm font-bold uppercase tracking-wide text-brand mb-3">{county}</h3>
+              <ul className="space-y-1.5">
+                {cities.map((city) => (
+                  <li key={city.slug}>
+                    <Link href={`/areas/${city.slug}`} className="text-sm text-foreground/80 hover:text-brand hover:underline">
+                      {city.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </Section>
 

@@ -107,7 +107,7 @@ export const TRAINING_CATEGORIES: TrainingCategory[] = [
       {
         title: '"Are you guys legit?"',
         tag: "Trust",
-        body: `"Good question. MHIC ${SITE.license}, WBME 22380085, fully insured. Shop is at ${SITE.address.street} in ${SITE.address.zip}. Google us — check the reviews. I'll leave the card either way."\n\nConfident, specific, verifiable. Don't get defensive.`,
+        body: `"Good question. ${SITE.license}, fully insured. Shop is at ${SITE.address.street} in ${SITE.address.zip}. Google us — check the reviews. I'll leave the card either way."\n\nConfident, specific, verifiable. Don't get defensive.`,
         keywords: ["legit", "scam", "real", "licensed", "insurance"],
       },
       {
@@ -227,7 +227,7 @@ export const TRAINING_CATEGORIES: TrainingCategory[] = [
       },
       {
         title: "How quotes work",
-        body: `Free on-site estimate. Nick walks every job personally. Itemized quote emailed within 48 hours. No deposit until the job is scheduled. Licensed MHIC ${SITE.license}.`,
+        body: `Free on-site estimate. Nick walks every job personally. Itemized quote emailed within 48 hours. No deposit until the job is scheduled. Licensed ${SITE.license}.`,
       },
     ],
   },

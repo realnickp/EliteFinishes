@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import { ServicePageTemplate } from "@/components/shared/ServicePageTemplate";
 import { SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Commercial Painting and Renovation in Baltimore, MD | ${SITE.name}`,
-  description:
-    "Commercial painting and renovation services in Baltimore and surrounding Maryland counties. Offices, retail, and multi-unit properties. Licensed contractor with free estimates.",
+  title: "Commercial Painting in Baltimore, MD",
+  description: clampDescription(
+    "Commercial painting and renovation services in Baltimore and surrounding Maryland counties. Offices, retail, and multi-unit properties. Licensed contractor with free estimates."
+  ),
   openGraph: {
     siteName: "Elite Finishes",
     title: `Commercial Painting and Renovation in Baltimore, MD | ${SITE.name}`,
     description:
       "Commercial painting and renovation services in Baltimore and surrounding Maryland counties. Offices, retail, and multi-unit properties. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/commercial-services`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Commercial Painting and Renovation in Baltimore, MD | ${SITE.name}`,
     description:
       "Commercial painting and renovation services in Baltimore and surrounding Maryland counties. Offices, retail, and multi-unit properties. Licensed contractor with free estimates.",
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   keywords: ["commercial painting Baltimore", "commercial renovation Baltimore MD", "commercial painter Maryland", "office painting Baltimore", "commercial contractor Baltimore County", "multi-unit painting Baltimore", "commercial painting company Maryland", "Elite Finishes commercial services"],
   alternates: { canonical: `${SITE.url}/services/commercial-services` },
@@ -31,10 +33,10 @@ export default function CommercialServicesPage() {
       title="Commercial Services"
       slug="commercial-services"
       heroImage="/images/point3d-commercial-imaging-ltd-qVIDQ-jCMFw-unsplash.jpg"
-      heroAlt="Commercial painting and renovation in a Baltimore office space by Elite Finishes"
+      heroAlt="Renovated commercial office interior"
       headline="Commercial Painting and Renovation for Baltimore Businesses"
       subheadline="Professional commercial painting and renovation for offices, retail spaces, restaurants, and multi-unit residential properties in the Baltimore area."
-      factNugget={`${SITE.name} is a licensed commercial painting and renovation contractor (${SITE.license} and ${SITE.license2}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. We schedule commercial work around your business hours to minimize disruption, and we have experience with the documentation, compliance, and coordination requirements that commercial projects demand.`}
+      factNugget={`${SITE.name} is a licensed commercial painting and renovation contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. We schedule commercial work around your business hours to minimize disruption, and we have experience with the documentation, compliance, and coordination requirements that commercial projects demand.`}
       serviceOffers={[
         { name: "Commercial Interior Painting", description: "Professional interior painting for offices, retail spaces, restaurants, and commercial buildings" },
         { name: "Commercial Exterior Painting", description: "Exterior painting for commercial properties, storefronts, and multi-unit buildings" },
@@ -46,7 +48,6 @@ export default function CommercialServicesPage() {
       intro={[
         "Commercial painting and renovation is different from residential work. The standards are higher, the stakes are different, and the scheduling requirements are more demanding. Your customers and employees judge your business by the state of your space. A clean, well-maintained commercial interior signals competence and attention to detail. A scuffed, dingy space with peeling paint says the opposite.",
         "At Elite Finishes, we have the licensing, insurance, and operational capacity to handle commercial painting and renovation projects of all sizes. We are experienced in scheduling work around business hours, weekends, and off-peak periods to minimize disruption to your operations. We understand that a restaurant that cannot serve customers during a renovation or an office that cannot function during painting is losing money, so we plan and execute with that in mind.",
-        "We are a licensed Women's Business Enterprise (WBME 22380085) and Maryland Home Improvement Contractor. This dual licensing makes us a qualified vendor for government and institutional projects that require WBE certification as part of their procurement process.",
       ]}
       benefits={[
         {
@@ -57,7 +58,7 @@ export default function CommercialServicesPage() {
         {
           title: "Licensed for Commercial Work",
           description:
-            `We hold both an MHIC contractor license (${SITE.license}) and Women's Business Enterprise registration (${SITE.license2}). We can satisfy the licensing and certification requirements for commercial, government, and institutional projects.`,
+            `We hold Maryland Home Improvement Commission license ${SITE.license} and carry commercial general liability insurance. We provide certificates of insurance and additional insured endorsements when your property manager requires them.`,
         },
         {
           title: "Experience with Multi-Unit Properties",
@@ -115,7 +116,7 @@ export default function CommercialServicesPage() {
         {
           question: "Are you licensed for commercial painting in Maryland?",
           answer:
-            `Yes. We hold MHIC license ${SITE.license} for home improvement contracting and WBME registration ${SITE.license2} as a Women's Business Enterprise. We carry full commercial general liability insurance and can provide certificates of insurance and additional insured endorsements as required by commercial property owners and managers.`,
+            `Yes. We hold Maryland Home Improvement Commission license ${SITE.license}. We carry full commercial general liability insurance and can provide certificates of insurance and additional insured endorsements as required by commercial property owners and managers.`,
         },
         {
           question: "What types of commercial properties do you work in?",

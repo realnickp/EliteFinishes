@@ -7,6 +7,8 @@ import { QUIZ_DATA, extractTimeframe, extractBudget } from "@/lib/quiz-data";
 import { PRIMARY_SERVICES, SITE } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
 import { useSpamProtection } from "@/hooks/useSpamProtection";
+import { useZipCityAutofill } from "@/hooks/useZipCityAutofill";
+import { formatLocation, isValidCity, isValidZip } from "@/lib/location";
 
 interface StoredQuiz {
   answers: string[];
@@ -44,11 +46,13 @@ export default function ContactPage() {
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [cityOrZip, setCityOrZip] = useState("");
+  const [zip, setZip] = useState("");
+  const [city, setCity] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { spamFields, HoneypotField } = useSpamProtection();
+  const { state: zipState } = useZipCityAutofill(zip, city, setCity);
 
   useEffect(() => {
     try {
@@ -82,8 +86,8 @@ export default function ContactPage() {
     e.preventDefault();
     setError("");
 
-    if (!name.trim() || !phone.trim() || !cityOrZip.trim()) {
-      setError("Please fill in your name, phone number, and zip code.");
+    if (!name.trim() || !phone.trim() || !isValidZip(zip) || !isValidCity(city)) {
+      setError("Please fill in your name, phone number, zip code and city.");
       return;
     }
 
@@ -106,7 +110,7 @@ export default function ContactPage() {
           phone: phone.trim(),
           email: email.trim() || "",
           service: svc?.title ?? service,
-          cityOrZip: cityOrZip.trim(),
+          cityOrZip: formatLocation(city, zip, zipState),
           description: buildDescription(),
           timeframe,
           budget,
@@ -215,7 +219,7 @@ export default function ContactPage() {
             <div className="flex gap-0.5">
               {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-brand text-brand" />)}
             </div>
-            <span>Trusted by 500+ Maryland homeowners</span>
+            <span>Licensed and insured Maryland contractor</span>
           </div>
 
           {/* Form */}
@@ -260,13 +264,34 @@ export default function ContactPage() {
                 <input
                   id="c-zip"
                   type="text"
+                  inputMode="numeric"
+                  autoComplete="postal-code"
+                  maxLength={10}
                   placeholder="21401"
-                  value={cityOrZip}
-                  onChange={(e) => setCityOrZip(e.target.value)}
+                  value={zip}
+                  onChange={(e) => setZip(e.target.value)}
                   required
                   className="w-full h-11 min-h-[44px] rounded-lg border border-input bg-white px-3 py-2.5 text-sm shadow-xs outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 placeholder:text-muted-foreground sm:h-auto"
                 />
               </div>
+              <div className="space-y-1.5">
+                <label htmlFor="c-city" className="text-sm font-medium">
+                  City <span className="text-destructive">*</span>
+                </label>
+                <input
+                  id="c-city"
+                  type="text"
+                  autoComplete="address-level2"
+                  placeholder="Annapolis"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  required
+                  className="w-full h-11 min-h-[44px] rounded-lg border border-input bg-white px-3 py-2.5 text-sm shadow-xs outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 placeholder:text-muted-foreground sm:h-auto"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4">
               <div className="space-y-1.5">
                 <label htmlFor="c-email" className="text-sm font-medium">
                   Email{" "}

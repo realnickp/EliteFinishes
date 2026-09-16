@@ -13,6 +13,8 @@ import { leadSchema, type LeadFormData, TIMEFRAME_OPTIONS, BUDGET_OPTIONS } from
 import { ALL_SERVICES_FOR_FORM, SITE } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
 import { useSpamProtection } from "@/hooks/useSpamProtection";
+import { useZipCityAutofill } from "@/hooks/useZipCityAutofill";
+import { formatLocation } from "@/lib/location";
 
 function detectPageSource(pathname: string, searchParams: URLSearchParams): string {
   const utmSource = searchParams.get("utm_source") || "";
@@ -63,6 +65,8 @@ function LeadFormInner({ preselectedService, compact, preferredStyle }: LeadForm
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<LeadFormData>({
     resolver: zodResolver(leadSchema),
@@ -72,7 +76,11 @@ function LeadFormInner({ preselectedService, compact, preferredStyle }: LeadForm
     },
   });
 
-  async function onSubmit(data: LeadFormData) {
+  const { state: zipState } = useZipCityAutofill(watch("zip") ?? "", watch("city") ?? "", (city) =>
+    setValue("city", city, { shouldValidate: true })
+  );
+
+  async function onSubmit({ zip, city, ...data }: LeadFormData) {
     try {
       setSubmitError("");
       const source = detectPageSource(pathname, searchParams);
@@ -81,6 +89,7 @@ function LeadFormInner({ preselectedService, compact, preferredStyle }: LeadForm
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...data,
+          cityOrZip: formatLocation(city, zip, zipState),
           ...spamFields(),
           source,
           utmSource: searchParams.get("utm_source") || undefined,
@@ -153,11 +162,14 @@ function LeadFormInner({ preselectedService, compact, preferredStyle }: LeadForm
           {errors.service && <p className="text-xs text-destructive">{errors.service.message}</p>}
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="cityOrZip">City or Zip *</Label>
-          <Input id="cityOrZip" placeholder="e.g. Annapolis or 21401" {...register("cityOrZip")} className="h-11 md:h-10" />
-          {errors.cityOrZip && (
-            <p className="text-xs text-destructive">{errors.cityOrZip.message}</p>
-          )}
+          <Label htmlFor="zip">Zip Code *</Label>
+          <Input id="zip" inputMode="numeric" autoComplete="postal-code" maxLength={10} placeholder="21401" {...register("zip")} className="h-11 md:h-10" />
+          {errors.zip && <p className="text-xs text-destructive">{errors.zip.message}</p>}
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="city">City *</Label>
+          <Input id="city" autoComplete="address-level2" placeholder="e.g. Annapolis" {...register("city")} className="h-11 md:h-10" />
+          {errors.city && <p className="text-xs text-destructive">{errors.city.message}</p>}
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="timeframe">Desired Timeframe *</Label>

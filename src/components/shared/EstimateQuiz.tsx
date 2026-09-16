@@ -16,6 +16,8 @@ import { QUIZ_DATA, extractTimeframe, extractBudget } from "@/lib/quiz-data";
 import { PRIMARY_SERVICES, SITE } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
 import { useSpamProtection } from "@/hooks/useSpamProtection";
+import { useZipCityAutofill } from "@/hooks/useZipCityAutofill";
+import { formatLocation, isValidCity, isValidZip } from "@/lib/location";
 
 type Step = "service" | "quiz" | "contact" | "thanks";
 
@@ -51,11 +53,13 @@ export function EstimateQuiz({ preselectedService }: EstimateQuizProps) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [cityOrZip, setCityOrZip] = useState("");
+  const [zip, setZip] = useState("");
+  const [city, setCity] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [firstName, setFirstName] = useState("");
   const { spamFields, HoneypotField } = useSpamProtection();
+  const { state: zipState } = useZipCityAutofill(zip, city, setCity);
 
   const questions = QUIZ_DATA[serviceSlug] ?? [];
   const svc = PRIMARY_SERVICES.find((s) => s.slug === serviceSlug);
@@ -146,8 +150,8 @@ export function EstimateQuiz({ preselectedService }: EstimateQuizProps) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
-    if (!name.trim() || !phone.trim() || !cityOrZip.trim()) {
-      setError("Please fill in your name, phone number, and zip code.");
+    if (!name.trim() || !phone.trim() || !isValidZip(zip) || !isValidCity(city)) {
+      setError("Please fill in your name, phone number, zip code and city.");
       return;
     }
     setLoading(true);
@@ -164,7 +168,7 @@ export function EstimateQuiz({ preselectedService }: EstimateQuizProps) {
           phone: phone.trim(),
           email: email.trim() || "",
           service: serviceTitle,
-          cityOrZip: cityOrZip.trim(),
+          cityOrZip: formatLocation(city, zip, zipState),
           description: buildDescription(),
           timeframe,
           budget,
@@ -395,7 +399,7 @@ export function EstimateQuiz({ preselectedService }: EstimateQuizProps) {
                 <Star key={i} className="h-4 w-4 fill-brand text-brand" />
               ))}
             </div>
-            <span>Trusted by 500+ Maryland homeowners</span>
+            <span>Licensed and insured Maryland contractor</span>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -415,9 +419,16 @@ export function EstimateQuiz({ preselectedService }: EstimateQuizProps) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <label htmlFor="eq-zip" className="text-sm font-medium">Zip Code <span className="text-destructive">*</span></label>
-                <input id="eq-zip" type="text" placeholder="21401" value={cityOrZip} onChange={(e) => setCityOrZip(e.target.value)} required
+                <input id="eq-zip" type="text" inputMode="numeric" autoComplete="postal-code" maxLength={10} placeholder="21401" value={zip} onChange={(e) => setZip(e.target.value)} required
                   className="w-full h-11 min-h-[44px] rounded-lg border border-input bg-white px-3 py-2.5 text-sm shadow-xs outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 placeholder:text-muted-foreground" />
               </div>
+              <div className="space-y-1.5">
+                <label htmlFor="eq-city" className="text-sm font-medium">City <span className="text-destructive">*</span></label>
+                <input id="eq-city" type="text" autoComplete="address-level2" placeholder="Annapolis" value={city} onChange={(e) => setCity(e.target.value)} required
+                  className="w-full h-11 min-h-[44px] rounded-lg border border-input bg-white px-3 py-2.5 text-sm shadow-xs outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 placeholder:text-muted-foreground" />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 gap-4">
               <div className="space-y-1.5">
                 <label htmlFor="eq-email" className="text-sm font-medium">
                   Email <span className="text-muted-foreground font-normal text-xs">(optional)</span>

@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import { ServicePageTemplate } from "@/components/shared/ServicePageTemplate";
 import { SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Home Remodeling in Baltimore, MD | ${SITE.name}`,
-  description:
-    "Whole-home and multi-room remodeling in Baltimore and surrounding Maryland counties. One licensed contractor for every phase. Free estimates.",
+  title: "Home Remodeling in Baltimore, MD",
+  description: clampDescription(
+    "Whole-home and multi-room remodeling in Baltimore and surrounding Maryland counties. One licensed contractor for every phase. Free estimates."
+  ),
   openGraph: {
     siteName: "Elite Finishes",
     title: `Home Remodeling in Baltimore, MD | ${SITE.name}`,
     description:
       "Whole-home and multi-room remodeling in Baltimore and surrounding Maryland counties. One licensed contractor for every phase. Free estimates.",
     url: `${SITE.url}/services/home-remodeling`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Home Remodeling in Baltimore, MD | ${SITE.name}`,
     description:
       "Whole-home and multi-room remodeling in Baltimore and surrounding Maryland counties. One licensed contractor for every phase. Free estimates.",
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   keywords: ["home remodeling Baltimore", "home renovation Baltimore MD", "remodeling contractor Maryland", "whole home renovation Baltimore", "home remodel Baltimore County", "general contractor Baltimore", "home renovation company Maryland", "Elite Finishes home remodeling"],
   alternates: { canonical: `${SITE.url}/services/home-remodeling` },
@@ -30,8 +32,8 @@ export default function HomeRemodelingPage() {
     <ServicePageTemplate
       title="Home Remodeling"
       slug="home-remodeling"
-      heroImage="/images/pexels-curtis-adams-1694007-3935321.jpg"
-      heroAlt="Beautifully remodeled home interior completed by Elite Finishes in Baltimore Maryland"
+      heroImage="/images/hero-entertainment-center.jpg"
+      heroAlt="Custom built-in entertainment wall with fireplace by Elite Finishes"
       headline="Home Remodeling That Transforms How You Live"
       subheadline="Whole-home and multi-room renovations for Baltimore area homeowners who are ready to stop settling for a house that does not fit their life."
       factNugget={`${SITE.name} is a licensed home remodeling contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. We coordinate all phases of larger home renovation projects, including demolition, carpentry, tile, painting, flooring, and trade work, under a single contract. Most of our whole-home remodel clients report that having one contractor manage the entire project rather than coordinating multiple separate trades saved them significant time, stress, and money.`}

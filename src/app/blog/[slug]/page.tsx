@@ -9,6 +9,7 @@ import { BlogPostSchema } from "@/components/shared/SchemaOrg";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { BLOG_POSTS, getBlogPost } from "@/lib/blog-data";
 import { SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -23,8 +24,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getBlogPost(slug);
   if (!post) return {};
   return {
-    title: post.title,
-    description: post.description,
+    title: { absolute: post.title },
+    description: clampDescription(post.description),
     alternates: { canonical: `${SITE.url}/blog/${slug}` },
     openGraph: {
       siteName: "Elite Finishes",
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       publishedTime: post.date,
       url: `${SITE.url}/blog/${slug}`,
-      images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+      images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
     },
   };
 }

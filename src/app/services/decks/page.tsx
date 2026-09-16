@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import { ServicePageTemplate } from "@/components/shared/ServicePageTemplate";
 import { SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Deck Building in Baltimore, MD | ${SITE.name}`,
-  description:
-    "Custom composite and wood deck building in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates. Expand your outdoor living space today.",
+  title: "Deck Building in Baltimore, MD",
+  description: clampDescription(
+    "Custom composite and wood deck building in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates. Expand your outdoor living space today."
+  ),
   openGraph: {
     siteName: "Elite Finishes",
     title: `Deck Building in Baltimore, MD | ${SITE.name}`,
     description:
       "Custom composite and wood deck building in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates. Expand your outdoor living space today.",
     url: `${SITE.url}/services/decks`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Deck Building in Baltimore, MD | ${SITE.name}`,
     description:
       "Custom composite and wood deck building in Baltimore and surrounding Maryland counties. Licensed contractor with free estimates. Expand your outdoor living space today.",
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   keywords: ["deck building Baltimore", "deck contractor Baltimore MD", "composite deck Maryland", "deck installation Baltimore County", "Trex deck Baltimore", "custom deck builder Baltimore", "deck company Maryland", "Elite Finishes decks"],
   alternates: { canonical: `${SITE.url}/services/decks` },
@@ -31,7 +33,7 @@ export default function DecksPage() {
       title="Decks"
       slug="decks"
       heroImage="/images/pexels-curtis-adams-7601167.jpg"
-      heroAlt="Newly built screened deck with composite decking and railings on a Maryland home"
+      heroAlt="Screened deck with composite decking and railings"
       headline="Custom Decks That Turn Your Backyard Into a Destination"
       subheadline="From intimate elevated platforms to full outdoor living spaces with built-in seating, we design and build decks that stand up to Maryland's humidity, rain, and snow."
       factNugget={`${SITE.name} is a licensed deck contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. We build custom decks using pressure-treated framing rated for ground contact and stainless steel fasteners selected specifically for the Chesapeake Bay region's humidity and salt air. All permits and inspections are handled in-house. A typical 350 square foot deck takes one to two weeks to build.`}

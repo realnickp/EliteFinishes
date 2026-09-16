@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import { ServicePageTemplate } from "@/components/shared/ServicePageTemplate";
 import { SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Basement Remodeling in Baltimore, MD | ${SITE.name}`,
-  description:
-    "Basement finishing and remodeling in Baltimore and surrounding Maryland counties. Turn unfinished space into livable square footage. Licensed contractor with free estimates.",
+  title: "Basement Remodeling in Baltimore, MD",
+  description: clampDescription(
+    "Basement finishing and remodeling in Baltimore and surrounding Maryland counties. Turn unfinished space into livable square footage. Licensed contractor with free estimates."
+  ),
   openGraph: {
     siteName: "Elite Finishes",
     title: `Basement Remodeling in Baltimore, MD | ${SITE.name}`,
     description:
       "Basement finishing and remodeling in Baltimore and surrounding Maryland counties. Turn unfinished space into livable square footage. Licensed contractor with free estimates.",
     url: `${SITE.url}/services/basement-remodeling`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Basement Remodeling in Baltimore, MD | ${SITE.name}`,
     description:
       "Basement finishing and remodeling in Baltimore and surrounding Maryland counties. Turn unfinished space into livable square footage. Licensed contractor with free estimates.",
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   keywords: ["basement remodeling Baltimore", "basement finishing Baltimore MD", "basement contractor Maryland", "basement renovation Baltimore County", "finished basement Baltimore", "basement remodel contractor Maryland", "basement conversion Baltimore", "Elite Finishes basement remodeling"],
   alternates: { canonical: `${SITE.url}/services/basement-remodeling` },
@@ -30,8 +32,8 @@ export default function BasementRemodelingPage() {
     <ServicePageTemplate
       title="Basement Remodeling"
       slug="basement-remodeling"
-      heroImage="/images/pexels-introspectivedsgn-9899847.jpg"
-      heroAlt="Finished basement living space completed by Elite Finishes in Baltimore Maryland"
+      heroImage="/images/hero-basement-remodel.jpg"
+      heroAlt="Basement finished by Elite Finishes with new flooring, fresh paint and a slat wall fireplace"
       headline="Turn Your Unfinished Basement Into Livable Space"
       subheadline="Basement finishing and remodeling for Baltimore area homeowners ready to unlock the potential hiding beneath their feet."
       factNugget={`${SITE.name} is a licensed basement remodeling contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. A finished basement adds functional square footage at a fraction of the cost per square foot of a home addition. Most basement finishing projects in the Baltimore area range from $25 to $60 per square foot for a complete finished space including framing, drywall, electrical coordination, flooring, and painting.`}

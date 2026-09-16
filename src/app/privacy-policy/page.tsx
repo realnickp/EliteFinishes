@@ -3,7 +3,7 @@ import { Section } from "@/components/shared/Section";
 import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `Privacy Policy | ${SITE.name}`,
+  title: "Privacy Policy",
   description: `Privacy Policy for ${SITE.name}. Learn how we collect, use, store, and protect your personal information.`,
   alternates: { canonical: `${SITE.url}/privacy-policy` },
 };
@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
 
           <p className="text-muted-foreground leading-relaxed">
             {SITE.name} (&ldquo;Company,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;),
-            a Maryland-licensed Home Improvement Contractor (MHIC {SITE.license}), is committed to protecting your
+            a Maryland-licensed Home Improvement Contractor ({SITE.license}), is committed to protecting your
             privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information
             when you visit our website ({SITE.domain}), use our chatbot, submit forms, or otherwise engage
             with our services. By using our website or services, you consent to the practices described below.

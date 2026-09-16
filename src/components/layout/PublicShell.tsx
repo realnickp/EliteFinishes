@@ -4,8 +4,14 @@ import { usePathname } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
-import { Chatbot } from "@/components/shared/Chatbot";
-import { SummerSpecialPopup } from "@/components/shared/SummerSpecialPopup";
+import dynamic from "next/dynamic";
+
+// Loaded after hydration so they don't add to the initial page JS
+const Chatbot = dynamic(() => import("@/components/shared/Chatbot").then((m) => m.Chatbot), { ssr: false });
+const SummerSpecialPopup = dynamic(
+  () => import("@/components/shared/SummerSpecialPopup").then((m) => m.SummerSpecialPopup),
+  { ssr: false }
+);
 import { CONVERSION_LP_SLUGS } from "@/lib/constants";
 
 export function PublicShell({ children }: { children: React.ReactNode }) {

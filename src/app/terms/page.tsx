@@ -3,7 +3,7 @@ import { Section } from "@/components/shared/Section";
 import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `Terms and Conditions | ${SITE.name}`,
+  title: "Terms and Conditions",
   description: `Terms and Conditions for all services provided by ${SITE.name}, a Maryland-licensed Home Improvement Contractor (${SITE.license}).`,
   alternates: { canonical: `${SITE.url}/terms` },
 };
@@ -24,7 +24,7 @@ export default function TermsPage() {
           <p className="text-muted-foreground leading-relaxed">
             These Terms and Conditions (&ldquo;Terms&rdquo;) govern all services provided by {SITE.name}
             (&ldquo;Company,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;), a Maryland-licensed
-            Home Improvement Contractor (MHIC {SITE.license}). By engaging our services, requesting an estimate, or
+            Home Improvement Contractor ({SITE.license}). By engaging our services, requesting an estimate, or
             making a payment, you (&ldquo;Client,&rdquo; &ldquo;you,&rdquo; or &ldquo;your&rdquo;) agree to these
             Terms. We reserve the right to update these Terms at any time, with notice provided via email or our
             website ({SITE.domain}). Continued use of our services constitutes acceptance of changes.

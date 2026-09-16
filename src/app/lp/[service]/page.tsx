@@ -156,7 +156,7 @@ const LP_CONTENT: Record<
       "Offices, retail spaces, multi-unit buildings, and restaurants — scheduled around your business hours with full compliance documentation available.",
     bullets: [
       "After-hours and weekend scheduling available at no premium",
-      "Licensed MHIC contractor and Women's Business Enterprise",
+      "Licensed and insured Maryland contractor, MHIC 153498",
       "COI, additional insured endorsements, and compliance docs provided",
     ],
     testimonialIndex: 0,
@@ -300,7 +300,7 @@ export default async function LpServicePage({
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Star className="h-4 w-4 fill-brand-green text-brand-green" />
-                <span>5-Star Rated</span>
+                <span>Real Google Reviews</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Clock className="h-4 w-4 text-brand-green" />
@@ -360,14 +360,12 @@ export default async function LpServicePage({
               {/* Stats */}
               <div className="mt-6 grid grid-cols-3 gap-2 text-center border-t border-border/30 pt-5">
                 <div>
-                  <p className="text-lg font-bold">500+</p>
-                  <p className="text-xs text-muted-foreground">Projects done</p>
+                  <p className="text-lg font-bold">Free</p>
+                  <p className="text-xs text-muted-foreground">Estimates</p>
                 </div>
                 <div>
-                  <div className="flex justify-center gap-0.5 mb-0.5">
-                    {[1,2,3,4,5].map(i => <Star key={i} className="h-3 w-3 fill-brand-green text-brand-green" />)}
-                  </div>
-                  <p className="text-xs text-muted-foreground">5-star rated</p>
+                  <p className="text-lg font-bold">MHIC</p>
+                  <p className="text-xs text-muted-foreground">Licensed</p>
                 </div>
                 <div>
                   <p className="text-lg font-bold">Fast</p>

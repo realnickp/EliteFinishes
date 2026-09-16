@@ -6,16 +6,17 @@ import { TrustBar } from "@/components/shared/TrustBar";
 import { CTAButton } from "@/components/shared/CTAButton";
 import { TestimonialCard } from "@/components/shared/TestimonialCard";
 import { SITE, TESTIMONIALS } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "About Us | Baltimore Painting and Remodeling Contractor",
-  description: `${SITE.name} is a family-owned, licensed painting and home remodeling contractor serving Baltimore and surrounding Maryland counties. Learn about our story, values, and commitment to quality.`,
+  title: "About Us: Baltimore Painters and Remodelers",
+  description: clampDescription(`${SITE.name} is a family-owned, licensed painting and home remodeling contractor serving Baltimore and surrounding Maryland counties. Learn about our story, values, and commitment to quality.`),
   openGraph: {
     siteName: "Elite Finishes",
-    title: "About Us | Baltimore Painting and Remodeling Contractor",
+    title: "About Us: Baltimore Painters and Remodelers",
     description: `${SITE.name} is a family-owned, licensed painting and home remodeling contractor serving Baltimore and surrounding Maryland counties. Learn about our story, values, and commitment to quality.`,
     url: `${SITE.url}/about`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/about` },
 };
@@ -52,22 +53,22 @@ const VALUES = [
   {
     icon: Shield,
     title: "Licensed and Accountable",
-    description: `We carry ${SITE.license} and ${SITE.license2} because we believe in accountability. Licensed, insured, and standing behind every project we complete.`,
+    description: `We carry Maryland Home Improvement Commission license ${SITE.license} because we believe in accountability. Licensed, insured, and standing behind every project we complete.`,
     accent: "from-violet-500/15 to-violet-500/5",
   },
   {
     icon: Award,
     title: "Results You Can See",
     description:
-      "Our gallery is real work done for real homeowners throughout the Baltimore area. We are proud of every project and happy to provide references on request.",
+      "We are proud of every project and happy to provide references from past customers on request.",
     accent: "from-amber-500/15 to-amber-500/5",
   },
 ];
 
 const HERO_IMAGES = [
-  { src: "/images/pexels-artbovich-7031616.jpg", alt: "Elite Finishes painter working on an interior room" },
-  { src: "/images/house-exterior.jpg", alt: "Exterior painting on a Baltimore area home" },
-  { src: "/images/pexels-artbovich-6301185.jpg", alt: "Kitchen remodeling completed by Elite Finishes" },
+  { src: "/images/pexels-artbovich-7031616.jpg", alt: "Painter working on an interior room" },
+  { src: "/images/house-exterior.jpg", alt: "Freshly painted two-story home exterior" },
+  { src: "/images/pexels-artbovich-6301185.jpg", alt: "Remodeled kitchen with a center island" },
 ];
 
 export default function AboutPage() {
@@ -142,8 +143,9 @@ export default function AboutPage() {
               </p>
               <p>
                 We are not a franchise. We are not a national chain. We are a
-                family owned crew that lives and works in this community and
-                takes pride in making Baltimore homes look and feel their best.
+                family owned company led by owner {SITE.owner}, with a crew that
+                lives and works in this community and takes pride in making
+                Baltimore homes look and feel their best.
               </p>
             </div>
             <div className="mt-8">
@@ -158,7 +160,7 @@ export default function AboutPage() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/images/pexels-artbovich-8146201.jpg"
-                alt="Elite Finishes crew delivering quality painting work in a Baltimore home"
+                alt="Painter working on an interior wall"
                 width={600}
                 height={450}
                 className="w-full object-cover"
@@ -168,7 +170,7 @@ export default function AboutPage() {
             <div className="absolute -bottom-8 -left-4 md:-left-10 w-[55%] rounded-xl overflow-hidden shadow-xl border-4 border-white">
               <Image
                 src="/images/pexels-artbovich-7147282.jpg"
-                alt="Detail of professional painting work by Elite Finishes"
+                alt="Detail of fresh interior paint and trim"
                 width={400}
                 height={300}
                 className="w-full object-cover"
@@ -190,7 +192,7 @@ export default function AboutPage() {
       <section className="relative h-64 md:h-80 lg:h-96 overflow-hidden">
         <Image
           src="/images/pexels-artbovich-8143696.jpg"
-          alt="Elite Finishes painting crew completing a project in the Baltimore area"
+          alt="Painting crew at work"
           fill
           className="object-cover"
           sizes="100vw"
@@ -216,7 +218,7 @@ export default function AboutPage() {
             <div className="hidden lg:block mt-8 relative rounded-2xl overflow-hidden shadow-lg">
               <Image
                 src="/images/pexels-artbovich-7005296.jpg"
-                alt="Elite Finishes exterior painting project on a Baltimore area home"
+                alt="Freshly painted home exterior"
                 width={500}
                 height={380}
                 className="w-full object-cover"
@@ -274,7 +276,7 @@ export default function AboutPage() {
       <section className="relative overflow-hidden py-20 md:py-28">
         <Image
           src="/images/pexels-artbovich-8146335.jpg"
-          alt="Professional painting work in a Baltimore area home by Elite Finishes"
+          alt="Freshly painted interior room"
           fill
           className="object-cover"
           sizes="100vw"

@@ -29,11 +29,7 @@ export function Footer() {
             <div className="flex flex-col gap-1 mb-4">
               <div className="flex items-center gap-2 text-sm text-brand-green">
                 <Shield className="h-4 w-4 flex-shrink-0" />
-                <span className="font-medium">MHIC {SITE.license}</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-primary-foreground/50">
-                <Shield className="h-4 w-4 flex-shrink-0 opacity-60" />
-                <span>WBME {SITE.license2}</span>
+                <span className="font-medium">{SITE.license}</span>
               </div>
             </div>
             <div className="flex flex-col gap-1">
@@ -117,7 +113,6 @@ export function Footer() {
               <li><Link href="/areas" className="text-sm text-primary-foreground/60 hover:text-brand-green transition-colors py-2 block min-h-[44px] flex items-center lg:min-h-0 lg:py-0 lg:block">Service Areas</Link></li>
               <li><Link href="/financing" className="text-sm text-primary-foreground/60 hover:text-brand-green transition-colors py-2 block min-h-[44px] flex items-center lg:min-h-0 lg:py-0 lg:block">Financing</Link></li>
               {/* <li><Link href="/gallery" className="text-sm text-primary-foreground/60 hover:text-brand-green transition-colors py-2 block min-h-[44px] flex items-center lg:min-h-0 lg:py-0 lg:block">Project Gallery</Link></li> */}
-              <li><Link href="/testimonials" className="text-sm text-primary-foreground/60 hover:text-brand-green transition-colors py-2 block min-h-[44px] flex items-center lg:min-h-0 lg:py-0 lg:block">Reviews</Link></li>
               <li><Link href="/blog" className="text-sm text-primary-foreground/60 hover:text-brand-green transition-colors py-2 block min-h-[44px] flex items-center lg:min-h-0 lg:py-0 lg:block">Blog</Link></li>
               <li><Link href="/quote" className="text-sm text-primary-foreground/60 hover:text-brand-green transition-colors py-2 block min-h-[44px] flex items-center lg:min-h-0 lg:py-0 lg:block">Free Estimate</Link></li>
               <li><Link href="/contact" className="text-sm text-primary-foreground/60 hover:text-brand-green transition-colors py-2 block min-h-[44px] flex items-center lg:min-h-0 lg:py-0 lg:block">Contact</Link></li>
@@ -139,7 +134,7 @@ export function Footer() {
             <span className="text-primary-foreground/20">·</span>
             <div className="flex items-center gap-2">
               <MapPin className="h-3.5 w-3.5" />
-              <p>Licensed MHIC {SITE.license}</p>
+              <p>Licensed {SITE.license}</p>
             </div>
           </div>
         </div>

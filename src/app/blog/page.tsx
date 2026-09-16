@@ -6,16 +6,17 @@ import { Section } from "@/components/shared/Section";
 import { CTAButton } from "@/components/shared/CTAButton";
 import { BLOG_POSTS } from "@/lib/blog-data";
 import { SITE } from "@/lib/constants";
+import { clampDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Blog | Tips, Guides & Outdoor Living Ideas",
-  description: `Expert advice on interior painting, exterior painting, kitchen remodeling, flooring, and more from ${SITE.name}. Practical guides for homeowners in Baltimore, Maryland.`,
+  title: "Home Painting and Remodeling Tips",
+  description: clampDescription(`Expert advice on interior painting, exterior painting, kitchen remodeling, flooring, and more from ${SITE.name}. Practical guides for homeowners in Baltimore, Maryland.`),
   openGraph: {
     siteName: "Elite Finishes",
-    title: "Blog | Tips, Guides & Outdoor Living Ideas",
+    title: "Home Painting and Remodeling Tips",
     description: `Expert advice on interior painting, exterior painting, kitchen remodeling, flooring, and more from ${SITE.name}. Practical guides for homeowners in Baltimore, Maryland.`,
     url: `${SITE.url}/blog`,
-    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes — Painting and Remodeling in Baltimore, MD" }],
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Elite Finishes, painting and remodeling in Baltimore, MD" }],
   },
   alternates: { canonical: `${SITE.url}/blog` },
 };
@@ -27,7 +28,7 @@ export default function BlogPage() {
       <section className="relative min-h-[380px] md:min-h-[440px] flex items-center overflow-hidden">
         <Image
           src="/images/pexels-artbovich-7031616.jpg"
-          alt="Painting and remodeling project by Elite Finishes"
+          alt="Freshly painted home interior"
           fill
           priority
           className="object-cover"
@@ -104,7 +105,7 @@ export default function BlogPage() {
       <section className="relative overflow-hidden">
         <Image
           src="/images/pexels-artbovich-8146201.jpg"
-          alt="Beautiful home renovation by Elite Finishes"
+          alt="Renovated home interior"
           fill
           className="object-cover"
           sizes="100vw"

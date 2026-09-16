@@ -24,11 +24,8 @@ export const viewport: Viewport = {
   themeColor: "#0f172a",
 };
 
-const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : SITE.url;
+// Canonical host for absolute metadata URLs (OG images, canonicals)
+const baseUrl = SITE.url;
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

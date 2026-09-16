@@ -4,6 +4,8 @@ import { useState } from "react";
 import { X, Loader2, Plus } from "lucide-react";
 import { ALL_SERVICES_FOR_FORM } from "@/lib/constants";
 import { TIMEFRAME_OPTIONS, BUDGET_OPTIONS } from "@/lib/lead-schema";
+import { useZipCityAutofill } from "@/hooks/useZipCityAutofill";
+import { formatLocation, isValidCity, isValidZip } from "@/lib/location";
 
 const SOURCE_OPTIONS = ["Phone Call", "Referral", "Walk-in", "Other"] as const;
 
@@ -15,10 +17,17 @@ interface AddLeadModalProps {
 export function AddLeadModal({ onClose, onSuccess }: AddLeadModalProps) {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [zip, setZip] = useState("");
+  const [city, setCity] = useState("");
+  const { state: zipState } = useZipCityAutofill(zip, city, setCity);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
+    if (!isValidZip(zip) || !isValidCity(city)) {
+      setError("Please enter a 5 digit zip code and the city.");
+      return;
+    }
     setSubmitting(true);
 
     const fd = new FormData(e.currentTarget);
@@ -27,7 +36,7 @@ export function AddLeadModal({ onClose, onSuccess }: AddLeadModalProps) {
       phone: fd.get("phone"),
       email: fd.get("email") || "",
       service: fd.get("service"),
-      cityOrZip: fd.get("cityOrZip"),
+      cityOrZip: formatLocation(city, zip, zipState),
       timeframe: fd.get("timeframe"),
       budget: fd.get("budget") || "",
       description: fd.get("description"),
@@ -110,10 +119,16 @@ export function AddLeadModal({ onClose, onSuccess }: AddLeadModalProps) {
             </div>
           </div>
 
-          {/* City/Zip */}
-          <div>
-            <label htmlFor="ml-city" className={labelClass}>City or Zip *</label>
-            <input id="ml-city" name="cityOrZip" required minLength={2} className={inputClass} placeholder="Baltimore" />
+          {/* Zip & City */}
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="ml-zip" className={labelClass}>Zip *</label>
+              <input id="ml-zip" inputMode="numeric" maxLength={10} required value={zip} onChange={(e) => setZip(e.target.value)} className={inputClass} placeholder="21230" />
+            </div>
+            <div>
+              <label htmlFor="ml-city" className={labelClass}>City *</label>
+              <input id="ml-city" required minLength={2} value={city} onChange={(e) => setCity(e.target.value)} className={inputClass} placeholder="Baltimore" />
+            </div>
           </div>
 
           {/* Timeframe & Budget */}
