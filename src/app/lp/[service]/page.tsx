@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import { PRIMARY_SERVICES, SITE, TESTIMONIALS } from "@/lib/constants";
 import { UtmSaver } from "@/components/lp/UtmSaver";
+import { ConversionLanding } from "@/components/lp/landing/ConversionLanding";
+import { LANDING_PAGES } from "@/lib/lp-landing";
 
 // ── Service-specific LP content ─────────────────────────────────────────────
 
@@ -164,7 +166,8 @@ const LP_CONTENT: Record<
 // ── Static params ────────────────────────────────────────────────────────────
 
 export function generateStaticParams() {
-  return PRIMARY_SERVICES.map((s) => ({ service: s.slug }));
+  const slugs = new Set<string>([...PRIMARY_SERVICES.map((s) => s.slug), ...Object.keys(LANDING_PAGES)]);
+  return [...slugs].map((service) => ({ service }));
 }
 
 // ── Metadata ─────────────────────────────────────────────────────────────────
@@ -175,6 +178,14 @@ export async function generateMetadata({
   params: Promise<{ service: string }>;
 }): Promise<Metadata> {
   const { service } = await params;
+  const landing = LANDING_PAGES[service];
+  if (landing) {
+    return {
+      title: { absolute: landing.metaTitle },
+      description: landing.metaDescription,
+      robots: { index: false, follow: false },
+    };
+  }
   const svc = PRIMARY_SERVICES.find((s) => s.slug === service);
   if (!svc) return {};
   return {
@@ -192,6 +203,11 @@ export default async function LpServicePage({
   params: Promise<{ service: string }>;
 }) {
   const { service } = await params;
+
+  // Full conversion one pagers (painting, bathroom remodeling)
+  const landing = LANDING_PAGES[service];
+  if (landing) return <ConversionLanding config={landing} />;
+
   const svc = PRIMARY_SERVICES.find((s) => s.slug === service);
   const content = LP_CONTENT[service];
 

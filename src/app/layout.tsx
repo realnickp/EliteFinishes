@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import { PublicShell } from "@/components/layout/PublicShell";
 import { AnalyticsProvider } from "@/components/layout/AnalyticsProvider";
+import { AdTrackingScripts } from "@/components/layout/AdTrackingScripts";
 import { LocalBusinessSchema } from "@/components/shared/SchemaOrg";
 import { SITE } from "@/lib/constants";
 
@@ -109,6 +110,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`${geistSans.variable} ${geistMono.variable} ${dmSerif.variable} font-sans antialiased`}
       >
         <AnalyticsProvider>
+          <AdTrackingScripts />
           <LocalBusinessSchema />
           <PublicShell>{children}</PublicShell>
         </AnalyticsProvider>

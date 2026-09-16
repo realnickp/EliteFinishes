@@ -13,10 +13,16 @@ export function useSpamProtection() {
   const honeypotRef = useRef("");
 
   useEffect(() => {
-    fetch("/api/form-token")
-      .then((r) => r.json())
-      .then((d) => { if (d.token) setToken(d.token); })
-      .catch(() => {});
+    const load = () =>
+      fetch("/api/form-token")
+        .then((r) => r.json())
+        .then((d) => { if (d.token) setToken(d.token); })
+        .catch(() => {});
+    load();
+    // The server silently drops tokens older than 30 minutes, so refresh
+    // before then for visitors who leave the page open a while.
+    const interval = setInterval(load, 20 * 60 * 1000);
+    return () => clearInterval(interval);
   }, []);
 
   /** Returns the extra fields to merge into the POST JSON body */

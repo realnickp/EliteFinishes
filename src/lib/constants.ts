@@ -965,3 +965,49 @@ export const GALLERY_ITEMS = [
 ] as const;
 
 export type GalleryItem = (typeof GALLERY_ITEMS)[number];
+
+/**
+ * Real Google reviews, quoted from the Elite Finishes Google Business Profile.
+ * Only light punctuation edits. Never add reviews here that are not real.
+ */
+export const GOOGLE_REVIEWS = [
+  {
+    name: "Lillian A.",
+    project: "Living room painting",
+    text: "I hired Elite Finishes to repaint the walls in my living room as I prepared to move out of my apartment. I almost chose to hire someone through TaskRabbit, but Victor the owner called and asked my reason for choosing someone else. He asked in a way which was not at all intimidating or made me feel pressured in any way. I decided during that call to cancel the TaskRabbit service and go with his company. He was personable as well as Jeff who prepared my estimate. They were professional and customer service oriented. It was a lovely experience and I would work with them again.",
+  },
+  {
+    name: "Aln J.",
+    project: "Interior painting",
+    text: "Had my house painted as part of house upgrades. I contacted Elite Finishes and the owner Vick responded and came out quickly to give me an estimate. He was very professional and gave me a reasonable estimate which beat the quotes received from other paint companies. He was able to provide the exact paint match of what I had in other areas in my house. We settled on the estimate and his painters were at my door early the next morning. The two guys, Charles and Jeff, were very professional and did an excellent job. They were very meticulous and used care when moving things in my house. It was an overall excellent experience from start to finish.",
+  },
+  {
+    name: "Shane E.",
+    project: "Whole interior, Baltimore City rowhome",
+    text: "Victor and his crew did an amazing job painting the entire interior of our Baltimore City rowhome. I would highly recommend him! Victor's estimate was extremely reasonable and in line with what other local painters proposed. They did the work while we were out of town, and it was very easy coordinating everything with Victor, including house access and making sure they paid attention to some specific areas. Everything was completely cleaned up and the house looked great when we returned home.",
+  },
+  {
+    name: "Debbi",
+    project: "Whole home painting and wallpaper removal",
+    text: "Elite Finishes Painting is a professional, reasonably priced, top quality company that provides excellent customer service. They painted my home, removed wallpaper, prepped the walls and painted the wallpapered walls flawlessly. Victor, Charles and Jeff are knowledgeable, experienced and detail oriented. I highly recommend them for all your painting needs and will definitely be using them again for future projects.",
+  },
+] as const;
+
+/** Ad landing pages that render as standalone one pagers (no site header, footer or popup). */
+export const CONVERSION_LP_SLUGS = ["painting", "bathroom-remodeling"] as const;
+
+/**
+ * Ad platform IDs. Tracking stays switched off while these are blank.
+ * googleAdsId looks like "AW-123456789"; labels come from the Google Ads conversion action.
+ */
+export const AD_TRACKING: {
+  metaPixelId: string;
+  googleAdsId: string;
+  googleAdsLeadLabel: string;
+  googleAdsContactLabel: string;
+} = {
+  metaPixelId: "",
+  googleAdsId: "",
+  googleAdsLeadLabel: "",
+  googleAdsContactLabel: "",
+};

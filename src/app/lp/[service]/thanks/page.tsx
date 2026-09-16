@@ -1,10 +1,13 @@
 "use client";
 
 import { useParams, useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import Link from "next/link";
-import { Phone, MessageSquare, CheckCircle, Clock, Star } from "lucide-react";
+import { Phone, MessageSquare, CheckCircle, Clock } from "lucide-react";
 import { PRIMARY_SERVICES, SITE } from "@/lib/constants";
+import { LANDING_PAGES } from "@/lib/lp-landing";
+import { consumePendingConversion } from "@/lib/lp-lead";
+import { trackAdLead } from "@/lib/ad-tracking";
 
 const NEXT_STEPS = [
   {
@@ -15,7 +18,7 @@ const NEXT_STEPS = [
   {
     emoji: "📞",
     title: "Our team calls you",
-    desc: "Most customers hear back within one business day — often much sooner.",
+    desc: "Most customers hear back within one business day, often much sooner.",
   },
   {
     emoji: "🏡",
@@ -31,6 +34,13 @@ function ThanksContent() {
   const firstName = searchParams.get("name") || "there";
 
   const svc = PRIMARY_SERVICES.find((s) => s.slug === service);
+  const serviceTitle = svc?.title ?? LANDING_PAGES[service]?.serviceTitle ?? service;
+
+  // Count the ad conversion once, only when arriving from a real submission
+  useEffect(() => {
+    const pending = consumePendingConversion();
+    if (pending) trackAdLead(pending);
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -71,19 +81,11 @@ function ThanksContent() {
           </h1>
           <p className="text-muted-foreground text-lg mb-2">
             Our team received your{" "}
-            <span className="font-semibold text-foreground">{svc?.title ?? service}</span> request.
+            <span className="font-semibold text-foreground">{serviceTitle}</span> request.
           </p>
           <p className="text-muted-foreground mb-8">
-            We built our reputation one project at a time — and yours is next on our list.
+            We built our reputation one project at a time, and yours is next on our list.
           </p>
-
-          {/* Stars */}
-          <div className="flex items-center justify-center gap-1 mb-8">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <Star key={i} className="h-5 w-5 fill-brand-green text-brand-green" />
-            ))}
-            <span className="ml-2 text-sm text-muted-foreground">5.0 · 500+ Maryland homeowners served</span>
-          </div>
 
           {/* What happens next */}
           <div className="bg-warm-bg rounded-2xl border border-border/30 p-6 mb-8 text-left">

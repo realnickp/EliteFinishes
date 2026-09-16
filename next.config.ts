@@ -32,6 +32,9 @@ const nextConfig: NextConfig = {
       { source: "/admin", destination: "/login", permanent: false },
       { source: "/admin/:path*", destination: "/dashboard/:path*", permanent: false },
       { source: "/signin", destination: "/login", permanent: false },
+      // Interior and exterior painting ads now share one landing page (query strings carry over)
+      { source: "/lp/interior-painting/:path*", destination: "/lp/painting", permanent: false },
+      { source: "/lp/exterior-painting/:path*", destination: "/lp/painting", permanent: false },
     ];
   },
   images: {

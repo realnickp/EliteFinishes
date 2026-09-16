@@ -12,6 +12,7 @@ export function UtmSaver() {
       utm_medium: searchParams.get("utm_medium") || "",
       utm_campaign: searchParams.get("utm_campaign") || "",
       fbclid: searchParams.get("fbclid") || "",
+      gclid: searchParams.get("gclid") || searchParams.get("gbraid") || searchParams.get("wbraid") || "",
     };
     try {
       sessionStorage.setItem("bb_utm", JSON.stringify(utms));

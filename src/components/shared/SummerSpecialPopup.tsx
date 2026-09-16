@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Sun, UtensilsCrossed, PaintRoller, ArrowRight, Phone, Star } from "lucide-react";
+import { X, Tag, UtensilsCrossed, PaintRoller, ArrowRight, Phone, Star } from "lucide-react";
 import { FlagStripe } from "@/components/shared/FlagStripe";
 import { SITE } from "@/lib/constants";
 
@@ -121,14 +121,14 @@ export function SummerSpecialPopup() {
               {/* Headline block */}
               <div className="absolute inset-x-0 bottom-0 px-6 pb-5 text-white">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-green/20 border border-brand-green/50 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-brand-green backdrop-blur-sm">
-                  <Sun className="h-3.5 w-3.5" />
-                  Summer Special
+                  <Tag className="h-3.5 w-3.5" />
+                  Limited-Time Offers
                 </span>
                 <h2
                   id="summer-special-title"
                   className="mt-2.5 font-display text-[1.9rem] leading-[1.05] sm:text-[2.1rem]"
                 >
-                  Save Big This Summer
+                  Save on Your Next Project
                 </h2>
               </div>
             </div>
@@ -136,7 +136,7 @@ export function SummerSpecialPopup() {
             {/* ===== Offers ===== */}
             <div className="px-5 pb-6 pt-5 sm:px-7">
               <p className="mb-4 text-sm text-muted-foreground">
-                Two limited-time offers from {SITE.name} — book your free estimate before summer ends.
+                Two limited-time offers from {SITE.name}. Book your free estimate to claim yours.
               </p>
 
               {/* Offer 1 — painting + drywall */}
@@ -204,7 +204,7 @@ export function SummerSpecialPopup() {
               </div>
 
               <p className="mt-3 text-center text-[10px] leading-relaxed text-muted-foreground/70">
-                Limited-time summer offer. Cannot be combined with other discounts.
+                Limited-time offer. Cannot be combined with other discounts.
                 Mention this offer at your free estimate.
               </p>
             </div>
