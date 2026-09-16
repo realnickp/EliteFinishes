@@ -1,13 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { ArrowRight, Loader2, Lock } from "lucide-react";
 import { submitLpLead } from "@/lib/lp-lead";
 import { useSpamProtection } from "@/hooks/useSpamProtection";
 import { useZipCityAutofill } from "@/hooks/useZipCityAutofill";
 import { formatLocation, isValidCity, isValidZip } from "@/lib/location";
-import { LeadField, isValidPhone, thanksUrl } from "./LeadField";
+import { LeadField, isValidPhone, goToThanks } from "./LeadField";
 
 interface QuickEstimateFormProps {
   slug: string;
@@ -16,7 +15,6 @@ interface QuickEstimateFormProps {
 
 /** Short name, phone, zip and city form for visitors who skip the Project Builder. */
 export function QuickEstimateForm({ slug, serviceTitle }: QuickEstimateFormProps) {
-  const router = useRouter();
   const { spamFields, HoneypotField } = useSpamProtection();
 
   const [name, setName] = useState("");
@@ -53,7 +51,7 @@ export function QuickEstimateForm({ slug, serviceTitle }: QuickEstimateFormProps
         timeframe: "To be discussed",
         spamFields: spamFields(),
       });
-      router.push(thanksUrl(slug, name));
+      goToThanks(slug, name);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please call or text us instead.");
       setLoading(false);

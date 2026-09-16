@@ -34,3 +34,12 @@ export function isValidPhone(phone: string): boolean {
 export function thanksUrl(slug: string, name: string): string {
   return `/lp/${slug}/thanks?name=${encodeURIComponent(name.trim().split(" ")[0])}`;
 }
+
+/**
+ * Full page load (not client-side routing) so the Google tag records a real
+ * page view of the thank-you URL, which is what the Google Ads "Submit lead
+ * form" conversion counts.
+ */
+export function goToThanks(slug: string, name: string) {
+  window.location.assign(thanksUrl(slug, name));
+}

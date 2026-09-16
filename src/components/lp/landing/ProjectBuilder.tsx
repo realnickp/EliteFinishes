@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check, Clock, Loader2, Lock, Sparkles } from "lucide-react";
 import type { BuilderQuestion } from "@/lib/lp-landing";
 import { extractBudget, extractTimeframe } from "@/lib/quiz-data";
@@ -10,7 +9,7 @@ import { trackEvent } from "@/lib/analytics";
 import { useSpamProtection } from "@/hooks/useSpamProtection";
 import { useZipCityAutofill } from "@/hooks/useZipCityAutofill";
 import { formatLocation, isValidCity, isValidZip } from "@/lib/location";
-import { LeadField, isValidPhone, thanksUrl } from "./LeadField";
+import { LeadField, isValidPhone, goToThanks } from "./LeadField";
 
 /** Questions whose showIf condition matches the answers so far. */
 function visibleQuestions(questions: BuilderQuestion[], answers: Record<string, string>) {
@@ -26,7 +25,6 @@ interface ProjectBuilderProps {
 
 /** Tap-through estimate builder that runs inline on the landing page. */
 export function ProjectBuilder({ slug, serviceTitle, title, questions }: ProjectBuilderProps) {
-  const router = useRouter();
   const cardRef = useRef<HTMLDivElement>(null);
   const advancing = useRef(false);
   const { spamFields, HoneypotField } = useSpamProtection();
@@ -113,7 +111,7 @@ export function ProjectBuilder({ slug, serviceTitle, title, questions }: Project
         budget: extractBudget(answered.map((q) => answers[q.id])),
         spamFields: spamFields(),
       });
-      router.push(thanksUrl(slug, name));
+      goToThanks(slug, name);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please call or text us instead.");
       setLoading(false);
