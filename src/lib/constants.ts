@@ -968,10 +968,16 @@ export const AD_TRACKING: {
   metaPixelId: string;
   googleAdsId: string;
   googleAdsLeadLabel: string;
+  /** Lead conversion labels for specific /lp/[slug] pages, used instead of googleAdsLeadLabel there. */
+  googleAdsLeadLabelsBySlug: Record<string, string>;
   googleAdsContactLabel: string;
 } = {
   metaPixelId: "",
   googleAdsId: "AW-18451341957",
   googleAdsLeadLabel: "",
+  googleAdsLeadLabelsBySlug: {
+    // "Submit lead form (1)" conversion action
+    "bathroom-remodeling": "f-V6COWljPscEIXFpN5E",
+  },
   googleAdsContactLabel: "",
 };

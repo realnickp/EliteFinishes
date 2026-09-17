@@ -39,8 +39,8 @@ function ThanksContent() {
   // Count the ad conversion once, only when arriving from a real submission
   useEffect(() => {
     const pending = consumePendingConversion();
-    if (pending) trackAdLead(pending);
-  }, []);
+    if (pending) trackAdLead({ ...pending, slug: service });
+  }, [service]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">

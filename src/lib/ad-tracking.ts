@@ -75,12 +75,14 @@ export function trackAdPageView() {
   getFbq()?.("track", "PageView");
 }
 
-/** A form or Project Builder lead was submitted. */
-export function trackAdLead(details: { service: string; method: string }) {
+/** A form or Project Builder lead was submitted. `slug` selects a page specific Google Ads label. */
+export function trackAdLead(details: { service: string; method: string; slug?: string }) {
   getFbq()?.("track", "Lead", { content_name: details.service, content_category: details.method });
-  if (AD_TRACKING.googleAdsLeadLabel) {
+  const googleLabel =
+    (details.slug && AD_TRACKING.googleAdsLeadLabelsBySlug[details.slug]) || AD_TRACKING.googleAdsLeadLabel;
+  if (googleLabel) {
     getGtag()?.("event", "conversion", {
-      send_to: `${AD_TRACKING.googleAdsId}/${AD_TRACKING.googleAdsLeadLabel}`,
+      send_to: `${AD_TRACKING.googleAdsId}/${googleLabel}`,
     });
   }
 }
