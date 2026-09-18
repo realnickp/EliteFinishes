@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, Clock, Loader2, Lock, Sparkles } from "lucide-react";
+import { ArrowLeft, Check, Clock, Loader2, Lock } from "lucide-react";
 import type { BuilderQuestion } from "@/lib/lp-landing";
 import { extractBudget, extractTimeframe } from "@/lib/quiz-data";
 import { submitLpLead } from "@/lib/lp-lead";
@@ -122,20 +122,17 @@ export function ProjectBuilder({ slug, serviceTitle, title, questions }: Project
     <div
       ref={cardRef}
       id="estimate"
-      className="scroll-mt-24 overflow-hidden rounded-2xl bg-white text-foreground shadow-2xl ring-1 ring-black/5"
+      className="scroll-mt-24 overflow-hidden rounded-2xl bg-white text-foreground shadow-[0_20px_60px_-15px_rgba(0,0,0,0.35)] ring-1 ring-black/10"
     >
       {/* Header + progress */}
-      <div className="bg-primary px-5 py-4 text-white sm:px-6">
-        <div className="flex items-center justify-between gap-3">
-          <p className="flex items-center gap-2 text-sm font-semibold">
-            <Sparkles className="h-4 w-4 text-brand-green" />
-            {title}
-          </p>
-          <p className="shrink-0 text-xs text-white/60">
+      <div className="px-5 pt-5 sm:px-6 sm:pt-6">
+        <div className="flex items-baseline justify-between gap-3">
+          <p className="font-display text-xl leading-tight sm:text-2xl">{title}</p>
+          <p className="shrink-0 text-xs font-medium text-muted-foreground">
             {onContact ? "Last step" : `Step ${step + 1} of ${totalSteps}`}
           </p>
         </div>
-        <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/15">
+        <div className="mt-3 h-1 overflow-hidden rounded-full bg-muted">
           <div
             className="h-full rounded-full bg-brand-green transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
@@ -146,8 +143,8 @@ export function ProjectBuilder({ slug, serviceTitle, title, questions }: Project
       <div className="p-5 sm:p-6">
         {!onContact && current ? (
           <div key={current.id} className="animate-in fade-in slide-in-from-right-2 duration-200">
-            <h2 className="font-sans text-xl font-bold leading-snug sm:text-2xl">{current.question}</h2>
-            <div className="mt-4 grid grid-cols-2 gap-2.5">
+            <h2 className="font-sans text-lg font-bold leading-snug sm:text-xl">{current.question}</h2>
+            <div className="mt-3.5 space-y-2">
               {current.options.map((option) => {
                 const selected = chosen ? chosen === option.label : answers[current.id] === option.label;
                 return (
@@ -155,21 +152,21 @@ export function ProjectBuilder({ slug, serviceTitle, title, questions }: Project
                     key={option.label}
                     type="button"
                     onClick={() => handleAnswer(option.label)}
-                    className={`relative flex min-h-[92px] cursor-pointer flex-col items-center justify-center gap-1.5 rounded-xl border-2 px-2 py-3 text-center text-sm font-semibold leading-tight transition-all active:scale-[0.98] ${
+                    className={`flex min-h-[52px] w-full cursor-pointer items-center gap-3 rounded-lg border px-4 py-2.5 text-left text-[15px] font-semibold leading-tight transition-colors active:scale-[0.99] ${
                       selected
-                        ? "border-brand bg-brand/5 text-brand shadow-md shadow-brand/10"
-                        : "border-border bg-white hover:border-brand/50 hover:shadow-sm"
+                        ? "border-brand-green bg-brand-green/[0.07] text-brand-green-dark"
+                        : "border-border bg-white hover:border-foreground/40"
                     }`}
                   >
-                    <span className="text-2xl leading-none" aria-hidden>
-                      {option.emoji}
+                    <span
+                      className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
+                        selected ? "border-brand-green bg-brand-green" : "border-foreground/25"
+                      }`}
+                      aria-hidden
+                    >
+                      {selected && <Check className="h-3 w-3 text-white" strokeWidth={3} />}
                     </span>
-                    <span>{option.label}</span>
-                    {selected && (
-                      <span className="absolute right-1.5 top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-brand">
-                        <Check className="h-3 w-3 text-white" strokeWidth={3} />
-                      </span>
-                    )}
+                    <span className="flex-1">{option.label}</span>
                   </button>
                 );
               })}
@@ -263,7 +260,7 @@ export function ProjectBuilder({ slug, serviceTitle, title, questions }: Project
             <button
               type="submit"
               disabled={loading}
-              className="mt-5 flex min-h-[56px] w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-brand-green to-brand-green-dark text-base font-bold text-white shadow-lg shadow-brand-green/25 transition-all hover:shadow-xl active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-5 flex min-h-[56px] w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-brand-green text-base font-bold text-white transition-colors hover:bg-brand-green-dark active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {loading ? (
                 <>
@@ -272,8 +269,7 @@ export function ProjectBuilder({ slug, serviceTitle, title, questions }: Project
                 </>
               ) : (
                 <>
-                  Get My Free Estimate
-                  <ArrowRight className="h-5 w-5" />
+                  Get my free estimate
                 </>
               )}
             </button>

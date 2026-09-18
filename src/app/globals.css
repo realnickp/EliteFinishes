@@ -164,6 +164,62 @@
   }
 }
 
+/* ── Ad landing pages (/lp/painting, /lp/bathroom-remodeling) ─────────────── */
+
+/* Serif display headings. Kept in the base layer so font-sans can still override. */
+@layer base {
+  .lp-page h1,
+  .lp-page h2 {
+    font-family: var(--font-dm-serif), Georgia, serif;
+  }
+}
+
+@layer utilities {
+  .lp-page .font-display {
+    font-family: var(--font-dm-serif), Georgia, serif;
+  }
+}
+
+.lp-kenburns {
+  animation: lpKenBurns 9s ease-out forwards;
+}
+
+.lp-marquee-track {
+  animation: lpMarquee 80s linear infinite;
+}
+
+.lp-marquee-reverse {
+  animation-direction: reverse;
+}
+
+.lp-marquee:hover .lp-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-kenburns {
+    animation: none;
+  }
+  .lp-marquee {
+    overflow-x: auto;
+  }
+  .lp-marquee-track {
+    animation: none;
+  }
+  .lp-marquee-track[aria-hidden="true"] {
+    display: none;
+  }
+}
+
+@keyframes lpKenBurns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+@keyframes lpMarquee {
+  to { transform: translateX(-100%); }
+}
+
 @keyframes fadeIn {
   to { opacity: 1; }
 }

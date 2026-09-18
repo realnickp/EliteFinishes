@@ -4,7 +4,6 @@ import type { FAQItem } from "@/components/shared/FAQAccordion";
 
 export interface BuilderOption {
   label: string;
-  emoji: string;
 }
 
 export interface BuilderQuestion {
@@ -15,21 +14,16 @@ export interface BuilderQuestion {
   showIf?: { questionId: string; anyOf: string[] };
 }
 
-export type WhyIcon =
-  | "prep"
-  | "palette"
-  | "shield"
-  | "sparkles"
-  | "clock"
-  | "price"
-  | "bath"
-  | "team"
-  | "wallet";
-
 export interface WorkPhoto {
   src: string;
   alt: string;
   caption: string;
+}
+
+/** Style idea photo for the scrolling inspiration strip. Stock imagery, never credited as our work. */
+export interface IdeaPhoto {
+  src: string;
+  label: string;
 }
 
 export interface LandingConfig {
@@ -38,30 +32,44 @@ export interface LandingConfig {
   serviceTitle: string;
   metaTitle: string;
   metaDescription: string;
-  heroImage: string;
-  offerImage: string;
+  /** Background photos that slowly rotate behind the headline. The first one loads right away. */
+  heroSlides: string[];
+  /** Decorative photo beside the "Why" list. */
+  whyImage: string;
   eyebrow: string;
   headline: string;
   subheadline: string;
   heroBullets: string[];
   offer: {
+    /** "dinner" shows the steakhouse gift cards, "paint" shows the paint chips. */
+    variant: "dinner" | "paint";
     badge: string;
+    /** One line version for the bar at the top of the page. */
+    short: string;
     title: string;
     details: string;
     finePrint: string;
   };
   showFinancing: boolean;
+  /** Only switch on when our Google reviews talk about this service. */
+  showReviews: boolean;
+  /** Scrolling strip of style ideas (stock photos, labeled as inspiration). */
+  ideas: {
+    heading: string;
+    subheading: string;
+    photos: IdeaPhoto[];
+  };
   /** Prefilled message when a visitor taps Text. */
   smsBody: string;
   builder: {
     title: string;
     questions: BuilderQuestion[];
   };
-  /** Kept low key on the page: a small strip of real job photos. */
+  /** Real Elite Finishes job photos only. */
   workPhotos: WorkPhoto[];
   why: {
     heading: string;
-    items: { icon: WhyIcon; title: string; text: string }[];
+    items: { title: string; text: string }[];
   };
   faq: FAQItem[];
 }
@@ -107,10 +115,10 @@ const PHOTO_TUB_SURROUND: WorkPhoto = {
 };
 
 const TIMELINE_OPTIONS: BuilderOption[] = [
-  { label: "ASAP", emoji: "⚡" },
-  { label: "Within 1 month", emoji: "📅" },
-  { label: "Within 3 months", emoji: "🗓️" },
-  { label: "Just exploring prices", emoji: "🔍" },
+  { label: "ASAP" },
+  { label: "Within 1 month" },
+  { label: "Within 3 months" },
+  { label: "Just exploring prices" },
 ];
 
 const OFFER_FINE_PRINT =
@@ -130,9 +138,14 @@ const PAINTING: LandingConfig = {
   metaTitle: "Interior and Exterior Painting | 10% Off | Elite Finishes",
   metaDescription:
     "Interior and exterior painting across the Baltimore area. Careful prep, premium paint, clean crews. Save 10% and get a free estimate from Elite Finishes.",
-  heroImage: "/images/lp/painting-hero.jpg",
-  offerImage: "/images/lp/painting-offer.jpg",
-  eyebrow: "Interior and Exterior Painting · Baltimore Area",
+  heroSlides: [
+    "/images/lp/painting-hero.jpg",
+    "/images/lp/ideas/paint-6903157.jpg",
+    "/images/lp/ideas/paint-7601163.jpg",
+    "/images/lp/ideas/paint-18038116.jpg",
+  ],
+  whyImage: "/images/lp/painting-offer.jpg",
+  eyebrow: "Interior and exterior painting in the Baltimore area",
   headline: "A paint job you'll be proud of, inside and out.",
   subheadline:
     "Careful prep, premium paint and a clean, respectful crew. Elite Finishes paints homes across the Baltimore area, and every estimate is free.",
@@ -142,25 +155,47 @@ const PAINTING: LandingConfig = {
     "Floors and furniture protected, and everything cleaned up when we leave",
   ],
   offer: {
+    variant: "paint",
     badge: "10% off painting and drywall",
+    short: "Save 10% on painting and drywall when you book a free estimate",
     title: "Take 10% off your painting project",
     details:
       "Save 10% on interior painting, exterior painting and drywall work. Book your free estimate and mention this offer when we come out.",
     finePrint: OFFER_FINE_PRINT,
   },
   showFinancing: false,
+  showReviews: true,
+  ideas: {
+    heading: "Picture your home in a fresh coat",
+    subheading:
+      "A few looks to get you thinking. Bring your own colors, or we'll help you choose and match them.",
+    photos: [
+      { src: "/images/lp/ideas/paint-6903157.jpg", label: "Deep teal bedroom with panel molding" },
+      { src: "/images/lp/ideas/paint-7601163.jpg", label: "Crisp white exterior with black shutters" },
+      { src: "/images/lp/ideas/paint-8583595.jpg", label: "Two tone green with white trim" },
+      { src: "/images/lp/ideas/paint-18038116.jpg", label: "Soft gray living room" },
+      { src: "/images/lp/ideas/paint-271816.jpg", label: "Bold blue accent wall" },
+      { src: "/images/lp/ideas/paint-3958954.jpg", label: "Fresh siding and trim" },
+      { src: "/images/lp/ideas/paint-35419462.jpg", label: "Cool gray family room" },
+      { src: "/images/lp/ideas/paint-20296321.jpg", label: "Coastal blue shingle siding" },
+      { src: "/images/lp/ideas/paint-19899076.jpg", label: "Blue gray paneled walls" },
+      { src: "/images/lp/ideas/paint-10628470.jpg", label: "Townhome exteriors" },
+      { src: "/images/lp/ideas/paint-8031973.jpg", label: "Bright white and gray living room" },
+      { src: "/images/lp/ideas/paint-8583638.jpg", label: "Sage green exterior" },
+    ],
+  },
   smsBody: "Hi Elite Finishes, I'd like a free painting estimate.",
   builder: {
-    title: "Build your painting estimate",
+    title: "Free painting estimate",
     questions: [
       {
         id: "scope",
         question: "What do you need painted?",
         options: [
-          { label: "Interior", emoji: "🛋️" },
-          { label: "Exterior", emoji: "🏡" },
-          { label: "Both inside and out", emoji: "🏠" },
-          { label: "Cabinets, trim or doors", emoji: "🚪" },
+          { label: "Interior" },
+          { label: "Exterior" },
+          { label: "Both inside and out" },
+          { label: "Cabinets, trim or doors" },
         ],
       },
       {
@@ -168,10 +203,10 @@ const PAINTING: LandingConfig = {
         question: "How much of the inside?",
         showIf: { questionId: "scope", anyOf: ["Interior", "Both inside and out"] },
         options: [
-          { label: "1 or 2 rooms", emoji: "🎨" },
-          { label: "3 to 5 rooms", emoji: "🖌️" },
-          { label: "The whole interior", emoji: "🏠" },
-          { label: "Not sure yet", emoji: "🤔" },
+          { label: "1 or 2 rooms" },
+          { label: "3 to 5 rooms" },
+          { label: "The whole interior" },
+          { label: "Not sure yet" },
         ],
       },
       {
@@ -179,30 +214,10 @@ const PAINTING: LandingConfig = {
         question: "What's on the outside of your home?",
         showIf: { questionId: "scope", anyOf: ["Exterior", "Both inside and out"] },
         options: [
-          { label: "Wood or fiber cement siding", emoji: "🪵" },
-          { label: "Brick or stucco", emoji: "🧱" },
-          { label: "Vinyl or aluminum siding", emoji: "🏘️" },
-          { label: "Just trim, doors and shutters", emoji: "🚪" },
-        ],
-      },
-      {
-        id: "home_type",
-        question: "What kind of property is it?",
-        options: [
-          { label: "Rowhome or townhome", emoji: "🏘️" },
-          { label: "Single family home", emoji: "🏡" },
-          { label: "Condo or apartment", emoji: "🏢" },
-          { label: "Business or commercial", emoji: "🏬" },
-        ],
-      },
-      {
-        id: "condition",
-        question: "What shape are the surfaces in?",
-        options: [
-          { label: "Good, just needs a fresh look", emoji: "✨" },
-          { label: "Some peeling, cracks or patching", emoji: "🩹" },
-          { label: "Wallpaper to remove", emoji: "📜" },
-          { label: "Not sure", emoji: "🤔" },
+          { label: "Wood or fiber cement siding" },
+          { label: "Brick or stucco" },
+          { label: "Vinyl or aluminum siding" },
+          { label: "Just trim, doors and shutters" },
         ],
       },
       {
@@ -216,34 +231,22 @@ const PAINTING: LandingConfig = {
   why: {
     heading: "Why homeowners pick Elite Finishes",
     items: [
-      {
-        icon: "prep",
-        title: "Prep done right",
+      {        title: "Prep done right",
         text: "We patch, sand, caulk and prime first, so the finish looks smooth and lasts for years.",
       },
-      {
-        icon: "palette",
-        title: "Exact color matching",
+      {        title: "Exact color matching",
         text: "Painting one room? We match your existing colors so everything flows together.",
       },
-      {
-        icon: "sparkles",
-        title: "Clean, careful crews",
+      {        title: "Clean, careful crews",
         text: "Floors and furniture get covered, and your home is cleaned up before we leave.",
       },
-      {
-        icon: "price",
-        title: "Fair, upfront pricing",
+      {        title: "Fair, upfront pricing",
         text: "You get a clear written estimate before any work starts. No surprise charges.",
       },
-      {
-        icon: "clock",
-        title: "Fast estimates",
+      {        title: "Fast estimates",
         text: "We get back to you within one business day and come out to see the job in person.",
       },
-      {
-        icon: "shield",
-        title: "Licensed and insured",
+      {        title: "Licensed and insured",
         text: "Maryland Home Improvement Commission license MHIC 153498, fully insured.",
       },
     ],
@@ -289,9 +292,14 @@ const BATHROOM: LandingConfig = {
   metaTitle: "Bathroom Remodeling | $500 Gift Card | Elite Finishes",
   metaDescription:
     "Tile showers, new vanities and full bathroom remodels across the Baltimore area. Get a free estimate and a $500 dining gift card with your remodel.",
-  heroImage: "/images/lp/bathroom-hero.jpg",
-  offerImage: "/images/lp/bathroom-offer.jpg",
-  eyebrow: "Bathroom Remodeling · Baltimore Area",
+  heroSlides: [
+    "/images/lp/bathroom-hero.jpg",
+    "/images/lp/ideas/bath-15062118.jpg",
+    "/images/lp/ideas/bath-16501253.jpg",
+    "/images/lp/ideas/bath-36777898.jpg",
+  ],
+  whyImage: "/images/lp/bathroom-offer.jpg",
+  eyebrow: "Bathroom remodeling in the Baltimore area",
   headline: "Love your bathroom again.",
   subheadline:
     "Tile showers, new vanities and full remodels across the Baltimore area. One licensed contractor handles the whole job, from demo to final cleanup.",
@@ -301,65 +309,67 @@ const BATHROOM: LandingConfig = {
     "Licensed and insured, with permits handled for you",
   ],
   offer: {
+    variant: "dinner",
     badge: "$500 dining gift card with your remodel",
-    title: "Get a $500 gift card with your bathroom remodel",
+    short: "Dinner's on us: a $500 steakhouse gift card with your bathroom remodel",
+    title: "Remodel your bathroom. Dinner's on us.",
     details:
-      "Book your bathroom remodel with Elite Finishes and we'll give you a $500 gift card to The Capital Grille or Ruth's Chris. Celebrate the new bathroom with a great dinner on us.",
+      "Book your bathroom remodel with Elite Finishes and we'll hand you a $500 gift card to The Capital Grille or Ruth's Chris Steak House, your choice. Celebrate the new bathroom with a great dinner on us.",
     finePrint: OFFER_FINE_PRINT,
   },
   showFinancing: true,
+  showReviews: false,
+  ideas: {
+    heading: "What could your bathroom look like?",
+    subheading:
+      "A few styles to get you thinking. Tell us what you like and we'll price it out for your space.",
+    photos: [
+      { src: "/images/lp/ideas/bath-15062118.jpg", label: "Freestanding tub and glass shower" },
+      { src: "/images/lp/ideas/bath-16501253.jpg", label: "Double vanities in navy" },
+      { src: "/images/lp/ideas/bath-10486087.jpg", label: "Tile shower with a patterned accent" },
+      { src: "/images/lp/ideas/bath-36777942.jpg", label: "Soaking tub with subway tile" },
+      { src: "/images/lp/ideas/bath-5502253.jpg", label: "Black vanity with round mirrors" },
+      { src: "/images/lp/ideas/bath-36777898.jpg", label: "Marble look walk-in shower" },
+      { src: "/images/lp/ideas/bath-7168080.jpg", label: "Subway tile tub surround" },
+      { src: "/images/lp/ideas/bath-15062116.jpg", label: "Frameless glass shower" },
+      { src: "/images/lp/ideas/bath-36511377.jpg", label: "Long vanity with brass fixtures" },
+      { src: "/images/lp/ideas/bath-5502260.jpg", label: "Herringbone tile shower" },
+      { src: "/images/lp/ideas/bath-39383568.jpg", label: "Soaking tub and separate shower" },
+      { src: "/images/lp/ideas/bath-16342171.jpg", label: "Wood look tile and patterned floor" },
+    ],
+  },
   smsBody: "Hi Elite Finishes, I'd like a free bathroom remodel estimate.",
   builder: {
-    title: "Build your bathroom estimate",
+    title: "Free bathroom estimate",
     questions: [
       {
         id: "which",
         question: "Which bathroom are we remodeling?",
         options: [
-          { label: "Primary bathroom", emoji: "🛁" },
-          { label: "Hall or guest bathroom", emoji: "🚿" },
-          { label: "Half bath or powder room", emoji: "🚽" },
-          { label: "More than one bathroom", emoji: "✨" },
+          { label: "Primary bathroom" },
+          { label: "Hall or guest bathroom" },
+          { label: "Half bath or powder room" },
+          { label: "More than one bathroom" },
         ],
       },
       {
         id: "scope",
         question: "How big of a remodel?",
         options: [
-          { label: "Refresh: vanity, fixtures and paint", emoji: "🎨" },
-          { label: "New tile and shower", emoji: "🔧" },
-          { label: "Full gut renovation", emoji: "🏗️" },
-          { label: "Tub to walk-in shower", emoji: "🚿" },
-        ],
-      },
-      {
-        id: "priority",
-        question: "What matters most to you?",
-        options: [
-          { label: "A beautiful tile shower", emoji: "⬜" },
-          { label: "New vanity and more storage", emoji: "🪥" },
-          { label: "Safety and easier access", emoji: "♿" },
-          { label: "The whole room, top to bottom", emoji: "🏠" },
-        ],
-      },
-      {
-        id: "owner",
-        question: "Do you own the home?",
-        options: [
-          { label: "Yes, I live there", emoji: "🏡" },
-          { label: "Yes, it's a rental I own", emoji: "🔑" },
-          { label: "Buying or selling soon", emoji: "📝" },
-          { label: "No, I rent", emoji: "🏢" },
+          { label: "Refresh: vanity, fixtures and paint" },
+          { label: "New tile and shower" },
+          { label: "Full gut renovation" },
+          { label: "Tub to walk-in shower" },
         ],
       },
       {
         id: "budget",
         question: "Do you have a budget in mind?",
         options: [
-          { label: "Under $8,000", emoji: "💵" },
-          { label: "$8,000 to $20,000", emoji: "💰" },
-          { label: "$20,000 to $40,000", emoji: "💎" },
-          { label: "Still figuring it out", emoji: "🤔" },
+          { label: "Under $8,000" },
+          { label: "$8,000 to $20,000" },
+          { label: "$20,000 to $40,000" },
+          { label: "Still figuring it out" },
         ],
       },
       {
@@ -373,34 +383,22 @@ const BATHROOM: LandingConfig = {
   why: {
     heading: "Why homeowners pick Elite Finishes",
     items: [
-      {
-        icon: "bath",
-        title: "The complete bathroom",
+      {        title: "The complete bathroom",
         text: "Showers, tubs, tile, vanities, lighting and paint, all handled by one team.",
       },
-      {
-        icon: "team",
-        title: "One point of contact",
+      {        title: "One point of contact",
         text: "No juggling separate tile setters, plumbers and painters. We coordinate it all.",
       },
-      {
-        icon: "shield",
-        title: "Licensed, insured, permitted",
+      {        title: "Licensed, insured, permitted",
         text: "MHIC 153498, fully insured, and we pull the permits when your project needs them.",
       },
-      {
-        icon: "sparkles",
-        title: "Clean, careful crews",
+      {        title: "Clean, careful crews",
         text: "We protect the rest of your home and clean up so you can live comfortably during the job.",
       },
-      {
-        icon: "wallet",
-        title: "Financing available",
+      {        title: "Financing available",
         text: "Spread the cost into monthly payments. Checking your rate won't affect your credit score.",
       },
-      {
-        icon: "clock",
-        title: "Fast estimates",
+      {        title: "Fast estimates",
         text: "We get back to you within one business day and come out to see the space in person.",
       },
     ],
