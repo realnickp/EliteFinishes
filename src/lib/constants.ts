@@ -744,35 +744,35 @@ export const PRIMARY_SERVICES = [
     slug: "interior-painting",
     shortDesc: "Premium interior painting with meticulous prep and clean, lasting results.",
     icon: "Paintbrush",
-    image: "/images/pexels-artbovich-7031616.jpg",
+    image: "/images/work/navy-bedroom-finished.jpg",
   },
   {
     title: "Exterior Painting",
     slug: "exterior-painting",
     shortDesc: "Full exterior painting with power washing, caulking, and premium coatings.",
     icon: "Home",
-    image: "/images/exterior-painting-crew.jpg",
+    image: "/images/work/exterior-brick-rowhouse-dusk.jpg",
   },
   {
     title: "Kitchen Remodeling",
     slug: "kitchen-remodeling",
     shortDesc: "Complete kitchen transformations from cabinets and countertops to tile and paint.",
     icon: "UtensilsCrossed",
-    image: "/images/pexels-artbovich-6301185.jpg",
+    image: "/images/work/kitchen-wood-cabinets-granite.jpg",
   },
   {
     title: "Bathroom Remodeling",
     slug: "bathroom-remodeling",
     shortDesc: "Full bathroom renovations including tile, fixtures, vanities, and painting.",
     icon: "Bath",
-    image: "/images/pexels-artbovich-8143696.jpg",
+    image: "/images/work/primary-bath-red-vanity.jpg",
   },
   {
     title: "Home Remodeling",
     slug: "home-remodeling",
     shortDesc: "Whole-home and multi-room renovations that transform how you live.",
     icon: "House",
-    image: "/images/pexels-curtis-adams-1694007-3935321.jpg",
+    image: "/images/work/living-room-cream-walls.jpg",
   },
   {
     title: "Basement Remodeling",
@@ -841,6 +841,24 @@ export const ALL_SERVICES_FOR_FORM = [
 
 
 export const GALLERY_ITEMS = [
+  // Real Elite Finishes job photos (September 2026). Keep these first so they lead every gallery.
+  { src: "/images/work/exterior-brick-rowhouse-dusk.jpg", alt: "Baltimore brick rowhouse with trim, cornice and window frames painted black by Elite Finishes", category: "Exterior Painting", width: 1350, height: 1800 },
+  { src: "/images/work/primary-bath-red-vanity.jpg", alt: "Primary bathroom with deep red walls, marble tub deck and glass shower by Elite Finishes", category: "Bathroom Remodeling", width: 1800, height: 1350 },
+  { src: "/images/work/navy-bedroom-finished.jpg", alt: "Bedroom painted deep navy with white crown molding by Elite Finishes", category: "Interior Painting", width: 1800, height: 1350 },
+  { src: "/images/work/exterior-stucco-crew-ladders.jpg", alt: "Elite Finishes crew on ladders painting a stucco rowhouse exterior charcoal", category: "Exterior Painting", width: 1350, height: 1800 },
+  { src: "/images/work/green-bedroom-window.jpg", alt: "Bedroom painted forest green with white baseboards by Elite Finishes", category: "Interior Painting", width: 1800, height: 1350 },
+  { src: "/images/work/primary-bath-red-shower.jpg", alt: "Primary bathroom with red walls, soaking tub and marble walk-in shower by Elite Finishes", category: "Bathroom Remodeling", width: 1800, height: 1350 },
+  { src: "/images/work/kitchen-wood-cabinets-granite.jpg", alt: "Kitchen with wood cabinets, granite counters and stainless appliances, an Elite Finishes job", category: "Kitchen Remodeling", width: 1800, height: 1350 },
+  { src: "/images/work/interior-painter-brushing-wall.jpg", alt: "Elite Finishes painter cutting in a freshly painted wall", category: "Interior Painting", width: 1800, height: 1350 },
+  { src: "/images/work/living-room-cream-walls.jpg", alt: "Open living room with fresh cream walls and white crown molding by Elite Finishes", category: "Interior Painting", width: 1800, height: 1350 },
+  { src: "/images/work/powder-room-vessel-sink.jpg", alt: "Powder room with a glass vessel sink and floating vanity by Elite Finishes", category: "Bathroom Remodeling", width: 1350, height: 1800 },
+  { src: "/images/work/navy-bedroom-in-progress.jpg", alt: "Navy bedroom mid job with carpet covered and trim taped by Elite Finishes", category: "Interior Painting", width: 1350, height: 1800 },
+  { src: "/images/work/red-water-closet.jpg", alt: "Water closet with deep red walls and marble tile floor by Elite Finishes", category: "Bathroom Remodeling", width: 1350, height: 1800 },
+  { src: "/images/work/green-bedroom-closet.jpg", alt: "Forest green bedroom walls with white trim and closet doors by Elite Finishes", category: "Interior Painting", width: 1800, height: 1350 },
+  { src: "/images/work/primary-bath-gray-tub.jpg", alt: "Primary bathroom with gray walls, marble tub deck and double vanity by Elite Finishes", category: "Bathroom Remodeling", width: 1800, height: 1350 },
+  { src: "/images/work/wet-bar-hallway.jpg", alt: "Hallway wet bar with fresh walls and white trim by Elite Finishes", category: "Interior Painting", width: 1800, height: 1350 },
+  { src: "/images/work/primary-bath-gray-crew.jpg", alt: "Elite Finishes crew member working in a primary bathroom with marble tub and glass shower", category: "Bathroom Remodeling", width: 1800, height: 1350 },
+
   // Interior Painting (finished rooms + painting in progress)
   { src: "/images/pexels-artbovich-7031616.jpg", alt: "Fresh interior painting in a home with clean lines and premium finish", category: "Interior Painting", width: 1200, height: 800 },
   { src: "/images/pexels-artbovich-7031619.jpg", alt: "Professional interior painting", category: "Interior Painting", width: 1200, height: 800 },

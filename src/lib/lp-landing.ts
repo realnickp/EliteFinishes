@@ -114,6 +114,61 @@ const PHOTO_TUB_SURROUND: WorkPhoto = {
   caption: "Hall bath with a new tile tub surround and matte black fixtures",
 };
 
+// September 2026 job photos (full set lives in /public/images/work/)
+const PHOTO_EXTERIOR_BRICK: WorkPhoto = {
+  src: "/images/work/exterior-brick-rowhouse-dusk.jpg",
+  alt: "Baltimore brick rowhouse with freshly painted black trim, cornice and window frames by Elite Finishes",
+  caption: "Baltimore rowhouse trim, cornice and window frames painted black",
+};
+
+const PHOTO_EXTERIOR_STUCCO: WorkPhoto = {
+  src: "/images/work/exterior-stucco-crew-ladders.jpg",
+  alt: "Elite Finishes crew on ladders painting a stucco rowhouse exterior charcoal",
+  caption: "Our crew painting a stucco exterior charcoal",
+};
+
+const PHOTO_NAVY_BEDROOM: WorkPhoto = {
+  src: "/images/work/navy-bedroom-finished.jpg",
+  alt: "Bedroom painted deep navy with crisp white crown molding and trim by Elite Finishes",
+  caption: "Bedroom in deep navy with crisp white crown and trim",
+};
+
+const PHOTO_GREEN_BEDROOM: WorkPhoto = {
+  src: "/images/work/green-bedroom-window.jpg",
+  alt: "Bedroom painted forest green with white baseboards by Elite Finishes",
+  caption: "Bedroom in forest green with clean white baseboards",
+};
+
+const PHOTO_LIVING_ROOM: WorkPhoto = {
+  src: "/images/work/living-room-cream-walls.jpg",
+  alt: "Open living room with fresh cream walls and white crown molding by Elite Finishes",
+  caption: "Living room walls, crown and trim refreshed",
+};
+
+const PHOTO_RED_PRIMARY_BATH: WorkPhoto = {
+  src: "/images/work/primary-bath-red-vanity.jpg",
+  alt: "Primary bathroom with deep red walls, marble tub deck and glass shower by Elite Finishes",
+  caption: "Primary bath in deep red with a marble tub deck and glass shower",
+};
+
+const PHOTO_RED_BATH_SHOWER: WorkPhoto = {
+  src: "/images/work/primary-bath-red-shower.jpg",
+  alt: "Primary bathroom with red walls, soaking tub and marble walk-in shower by Elite Finishes",
+  caption: "Soaking tub and marble walk-in shower",
+};
+
+const PHOTO_RED_WATER_CLOSET: WorkPhoto = {
+  src: "/images/work/red-water-closet.jpg",
+  alt: "Water closet with deep red walls and marble tile floor by Elite Finishes",
+  caption: "Water closet finished to match the primary bath",
+};
+
+const PHOTO_POWDER_ROOM: WorkPhoto = {
+  src: "/images/work/powder-room-vessel-sink.jpg",
+  alt: "Powder room with a glass vessel sink, floating vanity and wall sconces by Elite Finishes",
+  caption: "Powder room with a glass vessel sink and floating vanity",
+};
+
 const TIMELINE_OPTIONS: BuilderOption[] = [
   { label: "ASAP" },
   { label: "Within 1 month" },
@@ -139,12 +194,13 @@ const PAINTING: LandingConfig = {
   metaDescription:
     "Interior and exterior painting across the Baltimore area. Careful prep, premium paint, clean crews. Save 10% and get a free estimate from Elite Finishes.",
   heroSlides: [
-    "/images/lp/painting-hero.jpg",
-    "/images/lp/ideas/paint-6903157.jpg",
-    "/images/lp/ideas/paint-7601163.jpg",
-    "/images/lp/ideas/paint-18038116.jpg",
+    "/images/work/navy-bedroom-finished.jpg",
+    "/images/work/exterior-brick-rowhouse-dusk.jpg",
+    "/images/work/green-bedroom-window.jpg",
+    "/images/work/exterior-stucco-crew-ladders.jpg",
+    "/images/work/primary-bath-red-vanity.jpg",
   ],
-  whyImage: "/images/lp/painting-offer.jpg",
+  whyImage: "/images/work/interior-painter-brushing-wall.jpg",
   eyebrow: "Interior and exterior painting in the Baltimore area",
   headline: "A paint job you'll be proud of, inside and out.",
   subheadline:
@@ -227,26 +283,42 @@ const PAINTING: LandingConfig = {
       },
     ],
   },
-  workPhotos: [PHOTO_STAIRCASE, PHOTO_BASEMENT, PHOTO_BUILT_IN],
+  workPhotos: [
+    PHOTO_EXTERIOR_BRICK,
+    PHOTO_NAVY_BEDROOM,
+    PHOTO_EXTERIOR_STUCCO,
+    PHOTO_GREEN_BEDROOM,
+    PHOTO_RED_PRIMARY_BATH,
+    PHOTO_LIVING_ROOM,
+    PHOTO_STAIRCASE,
+    PHOTO_BASEMENT,
+    PHOTO_BUILT_IN,
+  ],
   why: {
     heading: "Why homeowners pick Elite Finishes",
     items: [
-      {        title: "Prep done right",
+      {
+        title: "Prep done right",
         text: "We patch, sand, caulk and prime first, so the finish looks smooth and lasts for years.",
       },
-      {        title: "Exact color matching",
+      {
+        title: "Exact color matching",
         text: "Painting one room? We match your existing colors so everything flows together.",
       },
-      {        title: "Clean, careful crews",
+      {
+        title: "Clean, careful crews",
         text: "Floors and furniture get covered, and your home is cleaned up before we leave.",
       },
-      {        title: "Fair, upfront pricing",
+      {
+        title: "Fair, upfront pricing",
         text: "You get a clear written estimate before any work starts. No surprise charges.",
       },
-      {        title: "Fast estimates",
+      {
+        title: "Fast estimates",
         text: "We get back to you within one business day and come out to see the job in person.",
       },
-      {        title: "Licensed and insured",
+      {
+        title: "Licensed and insured",
         text: "Maryland Home Improvement Commission license MHIC 153498, fully insured.",
       },
     ],
@@ -293,12 +365,12 @@ const BATHROOM: LandingConfig = {
   metaDescription:
     "Tile showers, new vanities and full bathroom remodels across the Baltimore area. Get a free estimate and a $500 dining gift card with your remodel.",
   heroSlides: [
-    "/images/lp/bathroom-hero.jpg",
-    "/images/lp/ideas/bath-15062118.jpg",
-    "/images/lp/ideas/bath-16501253.jpg",
-    "/images/lp/ideas/bath-36777898.jpg",
+    "/images/work/primary-bath-red-shower.jpg",
+    "/images/work/primary-bath-red-vanity.jpg",
+    "/images/work/primary-bath-gray-tub.jpg",
+    "/images/lp/work/bathroom-primary-double-vanity.jpg",
   ],
-  whyImage: "/images/lp/bathroom-offer.jpg",
+  whyImage: "/images/work/primary-bath-gray-crew.jpg",
   eyebrow: "Bathroom remodeling in the Baltimore area",
   headline: "Love your bathroom again.",
   subheadline:
@@ -379,26 +451,39 @@ const BATHROOM: LandingConfig = {
       },
     ],
   },
-  workPhotos: [PHOTO_PRIMARY_BATH, PHOTO_BATHROOM, PHOTO_TUB_SURROUND],
+  workPhotos: [
+    PHOTO_RED_PRIMARY_BATH,
+    PHOTO_RED_BATH_SHOWER,
+    PHOTO_PRIMARY_BATH,
+    PHOTO_POWDER_ROOM,
+    PHOTO_RED_WATER_CLOSET,
+    PHOTO_TUB_SURROUND,
+  ],
   why: {
     heading: "Why homeowners pick Elite Finishes",
     items: [
-      {        title: "The complete bathroom",
+      {
+        title: "The complete bathroom",
         text: "Showers, tubs, tile, vanities, lighting and paint, all handled by one team.",
       },
-      {        title: "One point of contact",
+      {
+        title: "One point of contact",
         text: "No juggling separate tile setters, plumbers and painters. We coordinate it all.",
       },
-      {        title: "Licensed, insured, permitted",
+      {
+        title: "Licensed, insured, permitted",
         text: "MHIC 153498, fully insured, and we pull the permits when your project needs them.",
       },
-      {        title: "Clean, careful crews",
+      {
+        title: "Clean, careful crews",
         text: "We protect the rest of your home and clean up so you can live comfortably during the job.",
       },
-      {        title: "Financing available",
+      {
+        title: "Financing available",
         text: "Spread the cost into monthly payments. Checking your rate won't affect your credit score.",
       },
-      {        title: "Fast estimates",
+      {
+        title: "Fast estimates",
         text: "We get back to you within one business day and come out to see the space in person.",
       },
     ],

@@ -32,8 +32,8 @@ export default function KitchenRemodelingPage() {
     <ServicePageTemplate
       title="Kitchen Remodeling"
       slug="kitchen-remodeling"
-      heroImage="/images/pexels-artbovich-6301185.jpg"
-      heroAlt="Modern remodeled kitchen with a center island"
+      heroImage="/images/work/kitchen-wood-cabinets-granite.jpg"
+      heroAlt="Kitchen with wood cabinets, granite counters and stainless appliances, an Elite Finishes job"
       headline="Kitchen Remodeling That Makes Your Home Feel Brand New"
       subheadline="Complete kitchen transformations from cabinet painting and countertop replacement to full gut renovations, handled by one licensed local crew from start to finish."
       factNugget={`${SITE.name} is a licensed kitchen remodeling contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. Kitchen remodels consistently rank among the highest-return home improvements, recouping 60 to 80 percent of cost at resale. We handle all phases of your kitchen project including demolition, carpentry, tile work, painting, and finishing, which reduces schedule overlap and communication gaps compared to hiring separate contractors for each trade.`}

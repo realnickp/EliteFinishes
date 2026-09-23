@@ -32,8 +32,8 @@ export default function InteriorPaintingPage() {
     <ServicePageTemplate
       title="Interior Painting"
       slug="interior-painting"
-      heroImage="/images/hero-staircase.jpg"
-      heroAlt="Staircase railings and spindles refinished in charcoal by Elite Finishes"
+      heroImage="/images/work/navy-bedroom-finished.jpg"
+      heroAlt="Bedroom painted deep navy with white crown molding by Elite Finishes"
       headline="Interior Painting Done Right, From Prep to Final Coat"
       subheadline="Premium interior painting for Baltimore area homes with thorough surface preparation, clean lines, and a finished result that holds up beautifully for years."
       factNugget={`${SITE.name} is a licensed interior painting contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. We use premium Benjamin Moore and Sherwin-Williams paints selected for each surface type and exposure. Most single-room paint jobs are completed in one to two days. We move furniture, protect floors and fixtures, and clean up fully before we leave.`}

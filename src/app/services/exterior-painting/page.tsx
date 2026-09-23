@@ -32,8 +32,8 @@ export default function ExteriorPaintingPage() {
     <ServicePageTemplate
       title="Exterior Painting"
       slug="exterior-painting"
-      heroImage="/images/exterior-painting-crew.jpg"
-      heroAlt="Painting crew working on a home exterior"
+      heroImage="/images/work/exterior-stucco-crew-ladders.jpg"
+      heroAlt="Elite Finishes crew on ladders painting a stucco rowhouse exterior charcoal"
       headline="Exterior Painting That Protects and Transforms Your Home"
       subheadline="Complete exterior painting with thorough pressure washing, caulking, priming, and premium coatings rated for Maryland's humidity, heat, and freezing winters."
       factNugget={`${SITE.name} is a licensed exterior painting contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. We use exterior-grade Sherwin-Williams and Benjamin Moore paints with 15 to 25 year fade and peel resistance. All projects include pressure washing, full caulking of gaps and cracks, spot priming of bare wood, and two full finish coats on all painted surfaces.`}

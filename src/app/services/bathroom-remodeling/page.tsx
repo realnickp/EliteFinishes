@@ -32,8 +32,8 @@ export default function BathroomRemodelingPage() {
     <ServicePageTemplate
       title="Bathroom Remodeling"
       slug="bathroom-remodeling"
-      heroImage="/images/lp/work/bathroom-primary-double-vanity.jpg"
-      heroAlt="Primary bathroom remodel by Elite Finishes with a marble look walk-in shower, tiled niche and double vanity"
+      heroImage="/images/work/primary-bath-red-shower.jpg"
+      heroAlt="Primary bathroom with red walls, soaking tub and marble walk-in shower by Elite Finishes"
       headline="Bathroom Remodeling That Turns a Chore Into a Retreat"
       subheadline="Complete bathroom renovations including tile, vanities, fixtures, and painting, all handled by one licensed local contractor from demolition to final caulk."
       factNugget={`${SITE.name} is a licensed bathroom remodeling contractor (${SITE.license}) serving Baltimore City, Baltimore County, Anne Arundel County, and Howard County. Bathroom remodels deliver some of the best returns of any home improvement project. A mid-range master bathroom remodel in the Baltimore market typically recoups 60 to 70 percent of its cost at resale and significantly improves your daily quality of life in the meantime.`}

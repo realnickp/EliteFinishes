@@ -64,8 +64,8 @@ export default function HomePage() {
         {/* Mobile: image background visible */}
         <div className="absolute inset-0 lg:hidden">
           <Image
-            src="/images/hero-bathroom-tile.jpg"
-            alt="Custom bathroom tile work by Elite Finishes in Baltimore"
+            src="/images/work/exterior-brick-rowhouse-dusk.jpg"
+            alt="Baltimore brick rowhouse with trim and cornice painted black by Elite Finishes"
             fill
             className="object-cover object-[center_60%]"
             priority
@@ -138,8 +138,8 @@ export default function HomePage() {
                 {/* Main large image */}
                 <div className="col-span-8 row-span-4 relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/hero-entertainment-center.jpg"
-                    alt="Custom built-in entertainment center with fireplace by Elite Finishes"
+                    src="/images/work/primary-bath-red-vanity.jpg"
+                    alt="Primary bathroom with deep red walls, marble tub deck and glass shower by Elite Finishes"
                     fill
                     className="object-cover"
                     priority
@@ -149,8 +149,8 @@ export default function HomePage() {
                 {/* Top right small image */}
                 <div className="col-span-4 row-span-3 relative rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="/images/hero-bathroom-tile.jpg"
-                    alt="Bathroom remodel with custom tile work by Elite Finishes in Baltimore"
+                    src="/images/work/exterior-brick-rowhouse-dusk.jpg"
+                    alt="Baltimore brick rowhouse with trim and cornice painted black by Elite Finishes"
                     fill
                     className="object-cover"
                     sizes="20vw"
@@ -159,8 +159,8 @@ export default function HomePage() {
                 {/* Bottom right small image */}
                 <div className="col-span-4 row-span-3 relative rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="/images/hero-staircase.jpg"
-                    alt="Staircase railing painting and refinishing by Elite Finishes"
+                    src="/images/work/exterior-stucco-crew-ladders.jpg"
+                    alt="Elite Finishes crew on ladders painting a stucco rowhouse exterior"
                     fill
                     className="object-cover"
                     sizes="20vw"
@@ -169,8 +169,8 @@ export default function HomePage() {
                 {/* Bottom left image */}
                 <div className="col-span-8 row-span-2 relative rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="/images/hero-basement-remodel.jpg"
-                    alt="Basement remodel with fireplace and flooring by Elite Finishes"
+                    src="/images/work/navy-bedroom-finished.jpg"
+                    alt="Bedroom painted deep navy with white crown molding by Elite Finishes"
                     fill
                     className="object-cover"
                     sizes="30vw"
