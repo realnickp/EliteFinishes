@@ -971,6 +971,8 @@ export const AD_TRACKING: {
   /** Lead conversion labels for specific /lp/[slug] pages, used instead of googleAdsLeadLabel there. */
   googleAdsLeadLabelsBySlug: Record<string, string>;
   googleAdsContactLabel: string;
+  /** Website call conversion label; Google swaps SITE.phone text for a forwarding number. */
+  googleAdsCallLabel: string;
 } = {
   metaPixelId: "",
   googleAdsId: "AW-18451341957",
@@ -980,4 +982,5 @@ export const AD_TRACKING: {
     "bathroom-remodeling": "f-V6COWljPscEIXFpN5E",
   },
   googleAdsContactLabel: "",
+  googleAdsCallLabel: "LSmJCKDJyYIdEIXFpN5E",
 };
