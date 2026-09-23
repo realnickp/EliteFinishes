@@ -8,8 +8,8 @@ import dynamic from "next/dynamic";
 
 // Loaded after hydration so they don't add to the initial page JS
 const Chatbot = dynamic(() => import("@/components/shared/Chatbot").then((m) => m.Chatbot), { ssr: false });
-const SummerSpecialPopup = dynamic(
-  () => import("@/components/shared/SummerSpecialPopup").then((m) => m.SummerSpecialPopup),
+const FallSpecialPopup = dynamic(
+  () => import("@/components/shared/FallSpecialPopup").then((m) => m.FallSpecialPopup),
   { ssr: false }
 );
 import { CONVERSION_LP_SLUGS } from "@/lib/constants";
@@ -33,7 +33,7 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
       <Footer />
       <StickyMobileCTA />
       <Chatbot />
-      <SummerSpecialPopup />
+      <FallSpecialPopup />
     </>
   );
 }

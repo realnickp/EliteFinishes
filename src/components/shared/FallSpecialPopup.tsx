@@ -8,16 +8,19 @@ import { X, Tag, UtensilsCrossed, PaintRoller, ArrowRight, Phone, Star } from "l
 import { FlagStripe } from "@/components/shared/FlagStripe";
 import { SITE } from "@/lib/constants";
 
-const STORAGE_KEY = "ef_summer_special_dismissed";
+// New key so visitors who closed the summer popup still see the fall one
+const STORAGE_KEY = "ef_fall_special_dismissed";
 /** Re-show the offer after this many days once dismissed. */
 const SUPPRESS_DAYS = 7;
+/** Desktop: show after this delay. */
+const DESKTOP_DELAY_MS = 6000;
 /**
- * Show only after the visitor scrolls halfway down a page. Popups that cover the
- * screen right after landing (especially on mobile) hurt Google rankings.
+ * Mobile: show after the visitor scrolls this far down a page. Popups that cover the
+ * screen right after landing on a phone hurt Google rankings, so mobile never uses a timer.
  */
-const SCROLL_DEPTH = 0.5;
+const SCROLL_DEPTH = 0.35;
 
-export function SummerSpecialPopup() {
+export function FallSpecialPopup() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -31,6 +34,11 @@ export function SummerSpecialPopup() {
       }
     } catch {
       /* localStorage unavailable — show anyway */
+    }
+
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+      const timer = setTimeout(() => setOpen(true), DESKTOP_DELAY_MS);
+      return () => clearTimeout(timer);
     }
 
     const onScroll = () => {
@@ -71,7 +79,7 @@ export function SummerSpecialPopup() {
           exit={{ opacity: 0 }}
           role="dialog"
           aria-modal="true"
-          aria-labelledby="summer-special-title"
+          aria-labelledby="fall-special-title"
         >
           {/* Backdrop */}
           <div
@@ -92,8 +100,8 @@ export function SummerSpecialPopup() {
             {/* ===== Image hero header ===== */}
             <div className="relative h-48 sm:h-56 overflow-hidden">
               <Image
-                src="/images/hero-bathroom-tile.jpg"
-                alt="Elite Finishes kitchen and bathroom remodeling in Baltimore, MD"
+                src="/images/work/primary-bath-red-vanity.jpg"
+                alt="Primary bathroom with deep red walls and a marble tub deck by Elite Finishes"
                 fill
                 className="object-cover object-[center_55%]"
                 sizes="(max-width: 640px) 100vw, 28rem"
@@ -132,13 +140,13 @@ export function SummerSpecialPopup() {
               <div className="absolute inset-x-0 bottom-0 px-6 pb-5 text-white">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-green/20 border border-brand-green/50 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-brand-green backdrop-blur-sm">
                   <Tag className="h-3.5 w-3.5" />
-                  Limited-Time Offers
+                  Fall Special
                 </span>
                 <h2
-                  id="summer-special-title"
+                  id="fall-special-title"
                   className="mt-2.5 font-display text-[1.9rem] leading-[1.05] sm:text-[2.1rem]"
                 >
-                  Save on Your Next Project
+                  Save Big This Fall
                 </h2>
               </div>
             </div>
@@ -146,7 +154,7 @@ export function SummerSpecialPopup() {
             {/* ===== Offers ===== */}
             <div className="px-5 pb-6 pt-5 sm:px-7">
               <p className="mb-4 text-sm text-muted-foreground">
-                Two limited-time offers from {SITE.name}. Book your free estimate to claim yours.
+                Two fall offers from {SITE.name}. Book your free estimate to claim yours.
               </p>
 
               {/* Offer 1 — painting + drywall */}
@@ -214,7 +222,7 @@ export function SummerSpecialPopup() {
               </div>
 
               <p className="mt-3 text-center text-[10px] leading-relaxed text-muted-foreground/70">
-                Limited-time offer. Cannot be combined with other discounts.
+                Fall Special. Cannot be combined with other discounts.
                 Mention this offer at your free estimate.
               </p>
             </div>
