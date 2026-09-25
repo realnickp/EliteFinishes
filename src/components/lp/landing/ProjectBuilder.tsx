@@ -9,7 +9,7 @@ import { trackEvent } from "@/lib/analytics";
 import { useSpamProtection } from "@/hooks/useSpamProtection";
 import { useZipCityAutofill } from "@/hooks/useZipCityAutofill";
 import { formatLocation, isValidCity, isValidZip } from "@/lib/location";
-import { LeadField, isValidPhone, goToThanks } from "./LeadField";
+import { LeadField, isValidEmail, isValidPhone, goToThanks } from "./LeadField";
 
 /** Questions whose showIf condition matches the answers so far. */
 function visibleQuestions(questions: BuilderQuestion[], answers: Record<string, string>) {
@@ -88,8 +88,8 @@ export function ProjectBuilder({ slug, serviceTitle, title, questions }: Project
     e.preventDefault();
     setError("");
 
-    if (!name.trim() || !isValidPhone(phone) || !isValidZip(zip) || !isValidCity(city)) {
-      setError("Please add your name, a 10 digit phone number, your zip code and your city.");
+    if (!name.trim() || !isValidPhone(phone) || !isValidEmail(email) || !isValidZip(zip) || !isValidCity(city)) {
+      setError("Please add your name, a 10 digit phone number, your email, your zip code and your city.");
       return;
     }
 
@@ -242,7 +242,6 @@ export function ProjectBuilder({ slug, serviceTitle, title, questions }: Project
               <LeadField
                 id="pb-email"
                 label="Email"
-                optional
                 type="email"
                 autoComplete="email"
                 placeholder="you@email.com"

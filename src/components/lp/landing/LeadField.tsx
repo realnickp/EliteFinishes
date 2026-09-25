@@ -31,6 +31,10 @@ export function isValidPhone(phone: string): boolean {
   return phone.replace(/\D/g, "").length >= 10;
 }
 
+export function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
+}
+
 export function thanksUrl(slug: string, name: string): string {
   return `/lp/${slug}/thanks?name=${encodeURIComponent(name.trim().split(" ")[0])}`;
 }

@@ -6,6 +6,7 @@ import { sendSMS, sendEmail, SMS_TEMPLATES, EMAIL_TEMPLATES } from "@/lib/automa
 import { buildTeamLeadEmail } from "@/lib/team-notification";
 import { requireAuth } from "@/lib/auth";
 import { env, hasRecaptcha } from "@/lib/env";
+import { hasGhl, syncLeadToGhl } from "@/lib/ghl";
 
 // ── Spam prevention helpers ──────────────────────────────
 
@@ -444,6 +445,31 @@ export async function POST(request: NextRequest) {
           })
             .then((r) => console.log("[TEAM EMAIL]", teamEmail, "Result:", JSON.stringify(r)))
             .catch((err) => console.error("[TEAM EMAIL]", teamEmail, "Error:", err))
+        );
+      }
+
+      // Mirror into GoHighLevel: tagged contact + New Lead opportunity.
+      // Extra step only: capped at 8s so a slow GHL never delays the emails or SMS.
+      if (hasGhl()) {
+        const ghlTimeout = new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error("timed out after 8s")), 8000)
+        );
+        emailPromises.push(
+          Promise.race([syncLeadToGhl({
+            name,
+            phone,
+            email,
+            service,
+            cityOrZip: cityOrZip || "Not specified",
+            description: description || `Interested in: ${service}`,
+            timeframe: timeframe || "To be discussed",
+            budget,
+            source,
+            landingPage,
+            utmCampaign,
+          }), ghlTimeout])
+            .then(() => console.log("[GHL] Synced lead", leadId))
+            .catch((err) => console.error("[GHL] Sync error:", err))
         );
       }
 

@@ -86,8 +86,8 @@ export default function ContactPage() {
     e.preventDefault();
     setError("");
 
-    if (!name.trim() || !phone.trim() || !isValidZip(zip) || !isValidCity(city)) {
-      setError("Please fill in your name, phone number, zip code and city.");
+    if (!name.trim() || !phone.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim()) || !isValidZip(zip) || !isValidCity(city)) {
+      setError("Please fill in your name, phone number, email, zip code and city.");
       return;
     }
 
@@ -294,8 +294,7 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 gap-4">
               <div className="space-y-1.5">
                 <label htmlFor="c-email" className="text-sm font-medium">
-                  Email{" "}
-                  <span className="text-muted-foreground font-normal text-xs">(optional)</span>
+                  Email
                 </label>
                 <input
                   id="c-email"

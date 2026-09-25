@@ -150,8 +150,8 @@ export function EstimateQuiz({ preselectedService }: EstimateQuizProps) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
-    if (!name.trim() || !phone.trim() || !isValidZip(zip) || !isValidCity(city)) {
-      setError("Please fill in your name, phone number, zip code and city.");
+    if (!name.trim() || !phone.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim()) || !isValidZip(zip) || !isValidCity(city)) {
+      setError("Please fill in your name, phone number, email, zip code and city.");
       return;
     }
     setLoading(true);
@@ -431,7 +431,7 @@ export function EstimateQuiz({ preselectedService }: EstimateQuizProps) {
             <div className="grid grid-cols-1 gap-4">
               <div className="space-y-1.5">
                 <label htmlFor="eq-email" className="text-sm font-medium">
-                  Email <span className="text-muted-foreground font-normal text-xs">(optional)</span>
+                  Email
                 </label>
                 <input id="eq-email" type="email" placeholder="you@email.com" value={email} onChange={(e) => setEmail(e.target.value)}
                   className="w-full h-11 min-h-[44px] rounded-lg border border-input bg-white px-3 py-2.5 text-sm shadow-xs outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 placeholder:text-muted-foreground" />

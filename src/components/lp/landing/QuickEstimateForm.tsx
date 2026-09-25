@@ -6,19 +6,20 @@ import { submitLpLead } from "@/lib/lp-lead";
 import { useSpamProtection } from "@/hooks/useSpamProtection";
 import { useZipCityAutofill } from "@/hooks/useZipCityAutofill";
 import { formatLocation, isValidCity, isValidZip } from "@/lib/location";
-import { LeadField, isValidPhone, goToThanks } from "./LeadField";
+import { LeadField, isValidEmail, isValidPhone, goToThanks } from "./LeadField";
 
 interface QuickEstimateFormProps {
   slug: string;
   serviceTitle: string;
 }
 
-/** Short name, phone, zip and city form for visitors who skip the Project Builder. */
+/** Short name, phone, email, zip and city form for visitors who skip the Project Builder. */
 export function QuickEstimateForm({ slug, serviceTitle }: QuickEstimateFormProps) {
   const { spamFields, HoneypotField } = useSpamProtection();
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [zip, setZip] = useState("");
   const [city, setCity] = useState("");
   const [note, setNote] = useState("");
@@ -30,8 +31,8 @@ export function QuickEstimateForm({ slug, serviceTitle }: QuickEstimateFormProps
     e.preventDefault();
     setError("");
 
-    if (!name.trim() || !isValidPhone(phone) || !isValidZip(zip) || !isValidCity(city)) {
-      setError("Please add your name, a 10 digit phone number, your zip code and your city.");
+    if (!name.trim() || !isValidPhone(phone) || !isValidEmail(email) || !isValidZip(zip) || !isValidCity(city)) {
+      setError("Please add your name, a 10 digit phone number, your email, your zip code and your city.");
       return;
     }
 
@@ -44,7 +45,7 @@ export function QuickEstimateForm({ slug, serviceTitle }: QuickEstimateFormProps
         name,
         phone,
         cityOrZip: formatLocation(city, zip, zipState),
-        email: "",
+        email,
         description: note.trim()
           ? `Quick form: ${note.trim()}`
           : `Quick form on the ${serviceTitle} ad page. Details to be gathered on follow-up.`,
@@ -78,6 +79,15 @@ export function QuickEstimateForm({ slug, serviceTitle }: QuickEstimateFormProps
         placeholder="(443) 555-0123"
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
+      />
+      <LeadField
+        id="qf-email"
+        label="Email"
+        type="email"
+        autoComplete="email"
+        placeholder="you@email.com"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <div className="grid grid-cols-2 gap-3">
         <LeadField

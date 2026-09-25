@@ -56,8 +56,8 @@ function LpLeadFormInner({ service }: LpLeadFormProps) {
     e.preventDefault();
     setError("");
 
-    if (!name.trim() || !phone.trim() || !cityOrZip.trim()) {
-      setError("Please fill in your name, phone, and city/zip.");
+    if (!name.trim() || !phone.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim()) || !cityOrZip.trim()) {
+      setError("Please fill in your name, phone, email, and city/zip.");
       return;
     }
 
@@ -159,8 +159,7 @@ function LpLeadFormInner({ service }: LpLeadFormProps) {
 
       <div className="space-y-1.5">
         <Label htmlFor="lp-email">
-          Email{" "}
-          <span className="text-muted-foreground font-normal text-xs">(optional)</span>
+          Email
         </Label>
         <Input
           id="lp-email"
