@@ -86,6 +86,11 @@ export async function submitLpLead(input: LpLeadInput): Promise<void> {
     throw new Error(data.error || "Something went wrong. Please call or text us instead.");
   }
 
+  // Spam the server silently rejected (or a duplicate) reports accepted: false.
+  // Keep the normal thank-you flow, but never record an ad conversion for it.
+  const result = (await res.json().catch(() => ({}))) as { accepted?: boolean };
+  if (result.accepted === false) return;
+
   trackEvent("lp_lead_submitted", { service: input.slug, method: input.method, source });
 
   try {

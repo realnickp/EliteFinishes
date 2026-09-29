@@ -43,6 +43,23 @@ function normalizePhone(phone: string): string {
   return digits;
 }
 
+/**
+ * Elite only serves Maryland (Baltimore City/County, Anne Arundel, Howard). A zip or
+ * state outside Maryland is almost always spam or a click-farm fill, so it is refused
+ * before it can email the team, sync to GHL or count as a Google Ads conversion.
+ * Returns true only when the location clearly points outside Maryland.
+ */
+function isOutsideServiceArea(cityOrZip: string): boolean {
+  const zip = cityOrZip.match(/\b(\d{5})(?:-\d{4})?\b/);
+  if (zip) {
+    const n = parseInt(zip[1], 10);
+    return n < 20600 || n > 21999; // Maryland zips are 206xx-219xx
+  }
+  const state = cityOrZip.match(/,\s*([A-Za-z]{2})\b/);
+  if (state) return state[1].toUpperCase() !== "MD";
+  return false; // no zip or state given: let it through
+}
+
 function getClientIp(request: NextRequest): string {
   return request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
 }
@@ -208,14 +225,14 @@ export async function POST(request: NextRequest) {
     // ── 1. Honeypot check — bots fill hidden fields, humans don't ──
     if (typeof body.website_url === "string" && body.website_url.trim()) {
       console.warn("[SPAM] Honeypot triggered", { ip: clientIp, name: body.name, phone: body.phone });
-      return NextResponse.json({ success: true }); // silent reject
+      return NextResponse.json({ success: true, accepted: false }); // silent reject, no conversion
     }
 
     // ── 2. Timing token check — reject instant/forged/expired submissions ──
     const tokenRejection = verifyTimingToken(body._t);
     if (tokenRejection) {
       console.warn("[SPAM] Timing token rejected", { reason: tokenRejection, ip: clientIp, name: body.name, phone: body.phone });
-      return NextResponse.json({ success: true }); // silent reject
+      return NextResponse.json({ success: true, accepted: false }); // silent reject, no conversion
     }
 
     // ── 3. IP rate limit — max 5 submissions per IP per hour (via Supabase) ──
@@ -283,6 +300,18 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
+    // ── Service area — Maryland only ──
+    if (cityOrZip && isOutsideServiceArea(cityOrZip)) {
+      console.warn("[SPAM] Outside service area", { ip: clientIp, name, phone, cityOrZip, source: bodySource });
+      return NextResponse.json(
+        {
+          error:
+            "Sorry, we only serve the Baltimore area in Maryland. If your project is in Maryland, check your zip code or call us at 443-825-0206.",
+        },
+        { status: 400 }
+      );
+    }
+
     // ── 5. Duplicate detection — same phone within 24 hours ──
     if (phone.length >= 7) {
       try {
@@ -299,6 +328,7 @@ export async function POST(request: NextRequest) {
           console.log("[SPAM] Duplicate phone detected", { phone, ip: clientIp });
           return NextResponse.json({
             success: true,
+            accepted: false, // already counted once
             message: "We already have your request and will be in touch soon!",
           });
         }
