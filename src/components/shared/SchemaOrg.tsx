@@ -35,6 +35,7 @@ export function LocalBusinessSchema() {
         email: SITE.email,
         url: SITE.url,
         sameAs: [
+          "https://www.google.com/maps?cid=16653535389085768519",
           "https://www.facebook.com/elitefinishesmaryland",
           "https://www.bbb.org/us/md/baltimore/profile/painting-contractors/elite-finishes-inc-0011-90381013",
         ],

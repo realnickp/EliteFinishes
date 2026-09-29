@@ -29,6 +29,12 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Short link for review requests (texts, emails, cards): opens the Google write-a-review form
+      {
+        source: "/review",
+        destination: "https://search.google.com/local/writereview?placeid=ChIJLbJ78S462wsRR5vawDM-Hec",
+        permanent: false,
+      },
       { source: "/admin", destination: "/login", permanent: false },
       { source: "/admin/:path*", destination: "/dashboard/:path*", permanent: false },
       { source: "/signin", destination: "/login", permanent: false },
