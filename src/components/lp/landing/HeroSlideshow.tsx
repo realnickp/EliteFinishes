@@ -17,15 +17,22 @@ export function HeroSlideshow({ images }: { images: string[] }) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let timer: ReturnType<typeof setInterval> | undefined;
-    const mount = setTimeout(() => {
-      setMountAll(true);
-      timer = setInterval(() => {
-        setSlide(({ active }) => ({ active: (active + 1) % images.length, previous: active }));
-      }, SLIDE_MS);
-    }, MOUNT_DELAY_MS);
+    let mount: ReturnType<typeof setTimeout> | undefined;
+    // Count the delay from the end of the page load, so slow phones finish the first photo before the rest start downloading.
+    const start = () => {
+      mount = setTimeout(() => {
+        setMountAll(true);
+        timer = setInterval(() => {
+          setSlide(({ active }) => ({ active: (active + 1) % images.length, previous: active }));
+        }, SLIDE_MS);
+      }, MOUNT_DELAY_MS);
+    };
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
 
     return () => {
-      clearTimeout(mount);
+      window.removeEventListener("load", start);
+      if (mount) clearTimeout(mount);
       if (timer) clearInterval(timer);
     };
   }, [images.length]);
@@ -47,6 +54,7 @@ export function HeroSlideshow({ images }: { images: string[] }) {
               alt=""
               fill
               priority={i === 0}
+              fetchPriority={i === 0 ? "high" : "auto"}
               sizes="100vw"
               className={`object-cover ${shown ? "lp-kenburns" : ""}`}
             />

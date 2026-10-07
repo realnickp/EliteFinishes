@@ -26,6 +26,16 @@ export interface IdeaPhoto {
   label: string;
 }
 
+/**
+ * Headline swap for one ad group, served at /lp/<slug>/<key>. The hero repeats the
+ * words people searched, which is what Google scores as landing page relevance.
+ */
+export interface HeadlineVariant {
+  metaTitle: string;
+  eyebrow: string;
+  headline: string;
+}
+
 export interface LandingConfig {
   slug: string;
   /** Service name saved on the lead and shown in the dashboard. */
@@ -40,6 +50,8 @@ export interface LandingConfig {
   headline: string;
   subheadline: string;
   heroBullets: string[];
+  /** Keyed by URL segment, e.g. "near-me" serves /lp/painting/near-me. */
+  variants: Record<string, HeadlineVariant>;
   offer: {
     /** "dinner" shows the steakhouse gift cards, "paint" shows the paint chips. */
     variant: "dinner" | "paint";
@@ -201,8 +213,8 @@ const PAINTING: LandingConfig = {
     "/images/work/primary-bath-red-vanity.jpg",
   ],
   whyImage: "/images/work/interior-painter-brushing-wall.jpg",
-  eyebrow: "Interior and exterior painting in the Baltimore area",
-  headline: "A paint job you'll be proud of, inside and out.",
+  eyebrow: "Licensed painting contractor in the Baltimore area",
+  headline: "Baltimore house painters you'll be proud to hire.",
   subheadline:
     "Careful prep, premium paint and a clean, respectful crew. Elite Finishes paints homes across the Baltimore area, and every estimate is free.",
   heroBullets: [
@@ -210,6 +222,33 @@ const PAINTING: LandingConfig = {
     "Premium Benjamin Moore and Sherwin-Williams paints",
     "Floors and furniture protected, and everything cleaned up when we leave",
   ],
+  variants: {
+    "near-me": {
+      metaTitle: "Painters Near You | 10% Off | Elite Finishes",
+      eyebrow: "Local painters near you in the Baltimore area",
+      headline: "Trusted local painters, ready for your home.",
+    },
+    interior: {
+      metaTitle: "Interior Painters in Baltimore | 10% Off | Elite Finishes",
+      eyebrow: "Interior painters in the Baltimore area",
+      headline: "Interior painting done with care, room by room.",
+    },
+    exterior: {
+      metaTitle: "Exterior House Painters in Baltimore | 10% Off | Elite Finishes",
+      eyebrow: "Exterior house painters in the Baltimore area",
+      headline: "Exterior house painting built for Maryland weather.",
+    },
+    cabinets: {
+      metaTitle: "Kitchen Cabinet Painting in Baltimore | 10% Off | Elite Finishes",
+      eyebrow: "Kitchen cabinet painters in the Baltimore area",
+      headline: "Freshly painted cabinets without a full kitchen remodel.",
+    },
+    drywall: {
+      metaTitle: "Drywall Repair and Painting in Baltimore | 10% Off | Elite Finishes",
+      eyebrow: "Drywall repair and painting in the Baltimore area",
+      headline: "Drywall patched, smoothed and painted like new.",
+    },
+  },
   offer: {
     variant: "paint",
     badge: "10% off painting and drywall",
@@ -371,8 +410,8 @@ const BATHROOM: LandingConfig = {
     "/images/lp/work/bathroom-primary-double-vanity.jpg",
   ],
   whyImage: "/images/work/primary-bath-gray-crew.jpg",
-  eyebrow: "Bathroom remodeling in the Baltimore area",
-  headline: "Love your bathroom again.",
+  eyebrow: "Bathroom remodelers in the Baltimore area",
+  headline: "Bathroom remodeling you'll love for years.",
   subheadline:
     "Tile showers, new vanities and full remodels across the Baltimore area. One licensed contractor handles the whole job, from demo to final cleanup.",
   heroBullets: [
@@ -380,6 +419,18 @@ const BATHROOM: LandingConfig = {
     "One team coordinates every trade, start to finish",
     "Licensed and insured, with permits handled for you",
   ],
+  variants: {
+    "near-me": {
+      metaTitle: "Bathroom Remodelers Near You | $500 Gift Card | Elite Finishes",
+      eyebrow: "Local bathroom remodelers near you in the Baltimore area",
+      headline: "Bathroom remodeling near you, start to finish.",
+    },
+    shower: {
+      metaTitle: "Shower Remodels and Tub to Shower Conversions | Elite Finishes",
+      eyebrow: "Shower remodels and tub to shower conversions",
+      headline: "Trade the old tub for a walk-in shower you'll love.",
+    },
+  },
   offer: {
     variant: "dinner",
     badge: "$500 dining gift card with your remodel",

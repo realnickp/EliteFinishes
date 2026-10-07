@@ -1,8 +1,11 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import { Chatbot } from "@/components/shared/Chatbot";
 import { CONVERSION_LP_SLUGS } from "@/lib/constants";
+
+// Loaded on demand so the conversion one pagers, which never show it, don't ship its code.
+const Chatbot = dynamic(() => import("@/components/shared/Chatbot").then((m) => m.Chatbot), { ssr: false });
 
 /**
  * Chatbot for the older landing pages. The conversion one pagers skip it:
