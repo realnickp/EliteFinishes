@@ -4,7 +4,12 @@ import type { ChatCompletionMessageParam } from "openai/resources/chat/completio
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { CHATBOT_NAME } from "@/lib/constants";
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+// Created on first request, not at import, so builds without the key (CI, the blog routine) still work.
+let client: OpenAI | null = null;
+function getOpenAI(): OpenAI {
+  client ??= new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  return client;
+}
 
 // Limits to prevent API abuse
 const MAX_MESSAGES = 20;
@@ -95,7 +100,7 @@ async function extractAndSaveLead(
 
     // Run extraction in parallel with transcript save
     const [extractionResult] = await Promise.all([
-      openai.chat.completions.create({
+      getOpenAI().chat.completions.create({
         model: "gpt-4o-mini",
         messages: [
           {
@@ -197,7 +202,7 @@ export async function POST(request: NextRequest) {
 
     const systemPrompt = buildSystemPrompt(userInfo);
 
-    const response = await openai.chat.completions.create({
+    const response = await getOpenAI().chat.completions.create({
       model: "gpt-4o-mini",
       messages: [{ role: "system" as const, content: systemPrompt }, ...messages] as ChatCompletionMessageParam[],
       max_tokens: 300,
