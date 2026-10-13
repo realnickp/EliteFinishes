@@ -55,6 +55,20 @@ const nextConfig: NextConfig = {
       { source: "/lp/exterior-painting/:path*", destination: "/lp/painting", permanent: false },
     ];
   },
+  async rewrites() {
+    return {
+      // The painting ad pages are served as plain prerendered HTML (src/lp-static) for speed
+      beforeFiles: [
+        { source: "/lp/painting", destination: "/lp-static/painting" },
+        {
+          source: "/lp/painting/:variant(near-me|interior|exterior|cabinets|drywall)",
+          destination: "/lp-static/painting/:variant",
+        },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [

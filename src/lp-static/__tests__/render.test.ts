@@ -85,4 +85,9 @@ describe("renderLandingHtml", () => {
     const js = buildClientScript({ slug: "painting", serviceTitle: "x", googleAdsId: "AW-1", callLabel: "a", contactLabel: "", metaPixelId: "", phone: "1" });
     expect(js.length).toBeLessThanOrEqual(8_000);
   });
+  it("only requests image quality 75, the one Next 16 allows by default", () => {
+    const html = renderLandingHtml(painting, "near-me");
+    const qualities = new Set([...html.matchAll(/[?&]q=(\d+)/g)].map((m) => m[1]));
+    expect([...qualities]).toEqual(["75"]);
+  });
 });
