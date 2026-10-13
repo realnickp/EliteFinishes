@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import { CONVERSION_LP_SLUGS } from "@/lib/constants";
+import { CONVERSION_LP_SLUGS } from "@/lib/site-config";
 
 // Loaded on demand so the conversion one pagers, which never show it, don't ship its code.
 const Chatbot = dynamic(() => import("@/components/shared/Chatbot").then((m) => m.Chatbot), { ssr: false });

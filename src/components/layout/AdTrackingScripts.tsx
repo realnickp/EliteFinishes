@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
-import { AD_TRACKING, SITE } from "@/lib/constants";
+import { AD_TRACKING, SITE } from "@/lib/site-config";
 import { initAdTracking, isTrackablePath, trackAdPageView } from "@/lib/ad-tracking";
 
 /** Loads the Meta Pixel and Google Ads tag when their IDs are set in AD_TRACKING. */
@@ -23,6 +23,11 @@ export function AdTrackingScripts() {
 
   if (!trackable) return null;
 
+  // gtag.js costs ~400 ms of main thread on phones, so it waits until the page
+  // has loaded. Calls made before then sit in the dataLayer queue and still send.
+  // Thank-you pages load it right away so the conversion fires before people leave.
+  const gtagStrategy = pathname.endsWith("/thanks") ? "afterInteractive" : "lazyOnload";
+
   return (
     <>
       {AD_TRACKING.metaPixelId && (
@@ -32,7 +37,7 @@ export function AdTrackingScripts() {
         <Script
           id="google-ads-tag"
           src={`https://www.googletagmanager.com/gtag/js?id=${AD_TRACKING.googleAdsId}`}
-          strategy="afterInteractive"
+          strategy={gtagStrategy}
         />
       )}
       {AD_TRACKING.googleAdsId && AD_TRACKING.googleAdsCallLabel && gtagReady && (

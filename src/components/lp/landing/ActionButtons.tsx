@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { SITE } from "@/lib/constants";
+import { SITE } from "@/lib/site-config";
 import { trackAdContact } from "@/lib/ad-tracking";
 import { trackEvent } from "@/lib/analytics";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { AD_TRACKING } from "@/lib/constants";
+import { AD_TRACKING } from "@/lib/site-config";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
