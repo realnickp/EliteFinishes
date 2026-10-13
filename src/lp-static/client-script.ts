@@ -41,6 +41,11 @@ if(W.fbq)W.fbq("track","Contact",{content_name:C.serviceTitle,content_category:a
 
 var token="";function getToken(){return fetch("/api/form-token").then(function(r){return r.json()}).then(function(d){token=d.token||token;return token}).catch(function(){return token})}
 getToken();setInterval(getToken,1200000);
+function age(t){var ts=Number(String(t).split(".")[0]);return ts?Date.now()-ts:Infinity}
+function within(p,ms){return Promise.race([p,new Promise(function(r){setTimeout(r,ms)})])}
+// The server drops tokens younger than 3 s or older than 30 min, so refresh stale ones and wait out fresh ones
+function readyToken(){return(token&&age(token)<1500000?Promise.resolve(token):within(getToken(),6000)).then(function(t){
+t=t||token;var wait=t?Math.max(0,3500-age(t)):0;return new Promise(function(r){setTimeout(function(){r(t)},wait)})})}
 
 var card=$("#estimate");if(!card)return;
 var sets=$$("fieldset[data-q]",card),form=$("#estimate-form"),err=$("#pb-err"),answers={},step=0,moving=false;
@@ -57,12 +62,12 @@ if(moving)return;moving=true;var f=t.closest("fieldset");answers[f.getAttribute(
 $$(".opt",f).forEach(function(b){b.setAttribute("aria-pressed",String(b===t))});
 setTimeout(function(){step++;moving=false;render();keepInView()},260)});
 
-var el=form.elements,zipState="";
+var el=form.elements,looked={zip:"",state:""};
 function zip5(){var m=el.zip.value.match(/\\d{5}/);return m?m[0]:""}
 function lookup(){var z=zip5();if(!z)return Promise.resolve();return fetch("/api/zip-lookup?zip="+z).then(function(r){return r.json()}).then(function(d){
-if(d.state)zipState=d.state;if(d.city&&!el.city.value.trim())el.city.value=d.city}).catch(function(){})}
+if(d.state)looked={zip:z,state:d.state};if(d.city&&!el.city.value.trim())el.city.value=d.city}).catch(function(){})}
 el.zip.addEventListener("blur",lookup);
-function loc(){var c=el.city.value.trim(),z=el.zip.value.trim(),n=Number(z.slice(0,5)),s=zipState||(n>=20600&&n<=21999?"MD":"");
+function loc(){var c=el.city.value.trim(),z=el.zip.value.trim(),n=Number(z.slice(0,5)),s=(looked.zip===zip5()&&looked.state)||(n>=20600&&n<=21999?"MD":"");
 if(!c)return z;return s?c+", "+s+" "+z:c+", "+z}
 function timeframe(a){a=(a||"").toLowerCase();if(a.indexOf("asap")>-1||a.indexOf("emergency")>-1||a.indexOf("active leak")>-1||a.indexOf("urgent")>-1)return"ASAP";
 if(a.indexOf("1 month")>-1||a.indexOf("4 to 6 weeks")>-1)return"Within 1 month";if(a.indexOf("3 month")>-1)return"Within 3 months";
@@ -77,7 +82,7 @@ err.textContent="Please add your name, a 10 digit phone number, your email, your
 busy=true;btn.disabled=true;btn.textContent="Sending...";
 var answered=visible().filter(function(f){return answers[f.getAttribute("data-q")]}),picks=answered.map(function(f){return answers[f.getAttribute("data-q")]});
 var budget=picks.filter(function(a){return a.indexOf("$")>-1})[0];
-(zipState?Promise.resolve():lookup()).then(function(){return token||getToken()}).then(function(t){var u=readUtm();
+readyToken().then(function(t){var u=readUtm();
 return fetch("/api/leads",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
 name:val("name"),phone:val("phone"),email:val("email"),service:C.serviceTitle,cityOrZip:loc(),
 description:answered.map(function(f){return f.getAttribute("data-question").replace("?","")+": "+answers[f.getAttribute("data-q")]}).join(" | ")||"Interested in: "+C.serviceTitle,

@@ -18,6 +18,9 @@ type FetchCall = [string, RequestInit | undefined];
 let calls: FetchCall[];
 let leadReply: () => Promise<Response>;
 let tokenReply: () => Promise<Response>;
+let zipReply: (zip: string) => Promise<Response>;
+// A token the server accepts: signed 10 s ago (the server rejects tokens younger than 3 s)
+const okToken = (tag = "abc") => `${Date.now() - 10_000}.${tag}`;
 const navigate = vi.fn();
 
 const $ = <T extends Element = HTMLElement>(sel: string) => document.querySelector(sel) as unknown as T;
@@ -36,7 +39,7 @@ function boot(search = "") {
   (globalThis as { fetch: unknown }).fetch = vi.fn((url: string, init?: RequestInit) => {
     calls.push([url, init]);
     if (url.startsWith("/api/form-token")) return tokenReply();
-    if (url.startsWith("/api/zip-lookup")) return Promise.resolve(new Response(JSON.stringify({ city: "Towson", state: "MD" })));
+    if (url.startsWith("/api/zip-lookup")) return zipReply(url.slice(-5));
     return leadReply();
   });
   // jsdom cannot spy on location.assign, so the script navigates through this optional hook
@@ -66,7 +69,9 @@ const leadBody = () => JSON.parse(String(leadCalls()[0][1]!.body));
 
 beforeEach(() => {
   navigate.mockReset();
-  tokenReply = () => Promise.resolve(new Response(JSON.stringify({ token: "123.abc" })));
+  tokenReply = () => Promise.resolve(new Response(JSON.stringify({ token: okToken() })));
+  zipReply = (zip) =>
+    Promise.resolve(new Response(JSON.stringify(zip === "19901" ? { city: "Dover", state: "DE" } : { city: "Towson", state: "MD" })));
   leadReply = () => Promise.resolve(new Response(JSON.stringify({ success: true })));
 });
 
@@ -129,7 +134,7 @@ describe("lead submit", () => {
       description: "What do you need painted: Interior | How much of the inside: 1 or 2 rooms | When do you want it done: ASAP",
       timeframe: "ASAP",
       source: "google_ads:lp_builder:painting",
-      _t: "123.abc",
+      _t: expect.stringMatching(/\.abc$/),
       website_url: "",
     });
     expect(leadBody().budget).toBeUndefined();
@@ -217,7 +222,7 @@ describe("lead submit", () => {
         first = false;
         return Promise.reject(new Error("slow"));
       }
-      return Promise.resolve(new Response(JSON.stringify({ token: "9.z" })));
+      return Promise.resolve(new Response(JSON.stringify({ token: okToken("z") })));
     };
     boot();
     await flush();
@@ -225,7 +230,7 @@ describe("lead submit", () => {
     fill();
     submit();
     await flush();
-    expect(leadBody()._t).toBe("9.z");
+    expect(leadBody()._t).toMatch(/\.z$/);
   });
 
   it("fills the city from the zip when it is empty", async () => {
@@ -235,5 +240,62 @@ describe("lead submit", () => {
     $("#pb-zip").dispatchEvent(new Event("blur"));
     await flush();
     expect($<HTMLInputElement>("#pb-city").value).toBe("Towson");
+  });
+  it("waits until a token fetched at submit is old enough for the server's 3 s check", async () => {
+    let first = true;
+    tokenReply = () => {
+      if (first) {
+        first = false;
+        return Promise.reject(new Error("offline"));
+      }
+      return Promise.resolve(new Response(JSON.stringify({ token: `${Date.now()}.fresh` })));
+    };
+    boot();
+    await flush();
+    await reachContactStep();
+    fill();
+    submit();
+    await flush();
+    expect(leadCalls()).toHaveLength(0);
+    await wait(3700);
+    await flush();
+    expect(leadBody()._t).toMatch(/\.fresh$/);
+  }, 10_000);
+
+  it("replaces a token older than 25 minutes before sending", async () => {
+    let n = 0;
+    tokenReply = () =>
+      Promise.resolve(new Response(JSON.stringify({ token: n++ === 0 ? `${Date.now() - 26 * 60_000}.old` : okToken("new") })));
+    boot();
+    await flush();
+    await reachContactStep();
+    fill();
+    submit();
+    await flush();
+    expect(leadBody()._t).toMatch(/\.new$/);
+  });
+
+  it("only uses the looked-up state for the zip it belongs to", async () => {
+    boot();
+    await flush();
+    await reachContactStep();
+    fill({ zip: "19901", city: "" });
+    $("#pb-zip").dispatchEvent(new Event("blur"));
+    await flush();
+    fill({ zip: "21204", city: "Towson" });
+    submit();
+    await flush();
+    expect(leadBody().cityOrZip).toBe("Towson, MD 21204");
+  });
+
+  it("a hanging zip lookup does not block the submit", async () => {
+    zipReply = () => new Promise<Response>(() => {});
+    boot();
+    await flush();
+    await reachContactStep();
+    fill();
+    submit();
+    await flush();
+    expect(leadCalls()).toHaveLength(1);
   });
 });
