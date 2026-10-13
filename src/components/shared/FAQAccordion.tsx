@@ -25,7 +25,8 @@ export function FAQAccordion({ items, className }: FAQAccordionProps) {
           <AccordionTrigger className="text-left text-base font-semibold">
             {item.question}
           </AccordionTrigger>
-          <AccordionContent className="text-muted-foreground leading-relaxed">
+          {/* forceMount keeps every answer in the HTML so search engines can read it */}
+          <AccordionContent forceMount className="text-muted-foreground leading-relaxed">
             {item.answer}
           </AccordionContent>
         </AccordionItem>

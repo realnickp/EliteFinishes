@@ -91,7 +91,7 @@ export default function HomePage() {
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] mb-6 text-balance">
-                Painting and Remodeling in
+                Painting and Remodeling in{" "}
                 <span className="text-white block mt-1">Baltimore, MD</span>
               </h1>
 

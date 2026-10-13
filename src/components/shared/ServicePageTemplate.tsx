@@ -87,6 +87,9 @@ export function ServicePageTemplate({
                 {SITE.name} &middot; {SITE.address.region}, MD
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight mb-4 text-balance">
+                <span className="block font-sans text-sm md:text-base font-semibold tracking-wide text-white/80 mb-3">
+                  {title} in Baltimore, MD
+                </span>
                 {headline}
               </h1>
               <p className="text-lg text-white/70 mb-8 max-w-xl leading-relaxed">

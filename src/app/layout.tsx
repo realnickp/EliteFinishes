@@ -102,10 +102,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${dmSerif.variable} font-sans antialiased`}
-      >
+    // Font variables sit on <html> so --font-display (defined at :root) can resolve them
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${dmSerif.variable}`}>
+      <body className="font-sans antialiased">
         <AnalyticsProvider>
           <AdTrackingScripts />
           <LocalBusinessSchema />
