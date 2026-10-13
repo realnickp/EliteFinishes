@@ -11,6 +11,7 @@ import { GalleryGrid } from "./GalleryGrid";
 import { EstimateSidebar } from "./EstimateSidebar";
 import { ServiceSchema, FAQPageSchema } from "./SchemaOrg";
 import { Breadcrumbs } from "./Breadcrumbs";
+import { RelatedGuides } from "./RelatedGuides";
 import { ScrollReveal, StaggerChildren, StaggerItem, StickyStack, StackOver, ParallaxImage } from "./animations";
 import { SITE, GALLERY_ITEMS, TESTIMONIALS, CITY_DATA } from "@/lib/constants";
 
@@ -326,6 +327,9 @@ export function ServicePageTemplate({
         </div>
         </ScrollReveal>
       </Section>
+
+      {/* ===== Guides from the blog ===== */}
+      <RelatedGuides serviceSlug={slug} />
       </StackOver>
 
       {/* ===== Final CTA ===== */}

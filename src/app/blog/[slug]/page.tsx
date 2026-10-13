@@ -39,6 +39,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+/** Bold and [text](/url) links inside a line. Post content is our own, not user input. */
+function inline(text: string): string {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(
+      /\[([^\]]+)\]\(([^)\s]+)\)/g,
+      (_m, label: string, href: string) =>
+        `<a href="${href}" class="font-semibold text-foreground underline underline-offset-2 hover:text-brand"${
+          href.startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : ""
+        }>${label}</a>`
+    );
+}
+
 function renderMarkdown(content: string) {
   const lines = content.split("\n");
   const elements: React.ReactNode[] = [];
@@ -91,7 +104,7 @@ function renderMarkdown(content: string) {
             <thead>
               <tr className="bg-warm-bg">
                 {headers.map((h, hi) => (
-                  <th key={hi} className="px-4 py-3 text-left font-bold text-foreground border-b border-border/40" dangerouslySetInnerHTML={{ __html: h.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>") }} />
+                  <th key={hi} className="px-4 py-3 text-left font-bold text-foreground border-b border-border/40" dangerouslySetInnerHTML={{ __html: inline(h) }} />
                 ))}
               </tr>
             </thead>
@@ -99,7 +112,7 @@ function renderMarkdown(content: string) {
               {rows.map((row, ri) => (
                 <tr key={ri} className={ri % 2 === 1 ? "bg-warm-bg/50" : ""}>
                   {row.map((cell, ci) => (
-                    <td key={ci} className="px-4 py-3 text-muted-foreground border-b border-border/20" dangerouslySetInnerHTML={{ __html: cell.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>") }} />
+                    <td key={ci} className="px-4 py-3 text-muted-foreground border-b border-border/20" dangerouslySetInnerHTML={{ __html: inline(cell) }} />
                   ))}
                 </tr>
               ))}
@@ -126,20 +139,18 @@ function renderMarkdown(content: string) {
       );
     } else if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
       inList = true;
-      const content = trimmed
-        .replace(/^[-*] /, "")
-        .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      const content = inline(trimmed.replace(/^[-*] /, ""));
       listItems.push(content);
     } else if (/^\d+\. /.test(trimmed)) {
       flushList();
       inList = true;
-      const content = trimmed.replace(/^\d+\. /, "").replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      const content = inline(trimmed.replace(/^\d+\. /, ""));
       listItems.push(content);
     } else if (trimmed === "") {
       flushList();
     } else {
       flushList();
-      const html = trimmed.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      const html = inline(trimmed);
       elements.push(
         <p key={`p-${i}`} className="text-muted-foreground leading-relaxed mb-4" dangerouslySetInnerHTML={{ __html: html }} />
       );
@@ -238,7 +249,7 @@ export default async function BlogPostPage({ params }: Props) {
               We provide free estimates for all {post.relatedService.toLowerCase()} projects in Baltimore and surrounding Maryland communities.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
-              <CTAButton href="/contact" size="lg">
+              <CTAButton href="/quote" size="lg">
                 Get a Free Estimate
                 <ArrowRight className="h-5 w-5" />
               </CTAButton>

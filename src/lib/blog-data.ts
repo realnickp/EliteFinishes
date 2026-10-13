@@ -1,3 +1,5 @@
+import { OCTOBER_2026_POSTS } from "./blog-posts-2026-10";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -11,7 +13,7 @@ export interface BlogPost {
   content: string;
 }
 
-export const BLOG_POSTS: BlogPost[] = [
+const EARLIER_POSTS: BlogPost[] = [
   {
     slug: "how-to-choose-interior-paint-colors-baltimore",
     title: "How to Choose Interior Paint Colors for Baltimore Homes",
@@ -462,6 +464,26 @@ A full gut renovation may or may not be justified. In many Baltimore area homes,
 We'll tell you honestly during an estimate whether a full remodel or a targeted update makes more sense for your specific home and neighborhood.`,
   },
 ];
+
+/** Links every earlier post to the newer guides, the service pages and the main area pages. */
+function withRelatedLinks(post: BlogPost): BlogPost {
+  const footer = `
+
+## Keep reading
+
+- [How much does it cost to paint a house in Baltimore?](/blog/cost-to-paint-a-house-baltimore)
+- [How much does a bathroom remodel cost in Baltimore?](/blog/bathroom-remodel-cost-baltimore)
+- [How much does a kitchen remodel cost in Baltimore?](/blog/kitchen-remodel-cost-baltimore)
+- [The cheaper quote cost him $3,000 more: how to choose a contractor](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore)
+
+**Our services:** [interior painting](/services/interior-painting), [exterior painting](/services/exterior-painting), [bathroom remodeling](/services/bathroom-remodeling), [kitchen remodeling](/services/kitchen-remodeling), [basement finishing](/services/basement-remodeling), [flooring](/services/flooring) and [home remodeling](/services/home-remodeling).
+
+We work across [Baltimore](/areas/baltimore), [Towson](/areas/towson), [Catonsville](/areas/catonsville), [Ellicott City](/areas/ellicott-city), [Columbia](/areas/columbia), [Glen Burnie](/areas/glen-burnie), [Annapolis](/areas/annapolis) and [the rest of the Baltimore area](/areas). Questions about your project? [Get a free estimate](/quote) or call 443-825-0206.`;
+  return { ...post, content: post.content + footer };
+}
+
+/** Newest first. */
+export const BLOG_POSTS: BlogPost[] = [...OCTOBER_2026_POSTS, ...EARLIER_POSTS.map(withRelatedLinks).reverse()];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);

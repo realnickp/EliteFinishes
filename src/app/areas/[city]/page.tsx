@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { RelatedGuides } from "@/components/shared/RelatedGuides";
 import Link from "next/link";
 import {
   MapPin,
@@ -485,6 +486,9 @@ export default async function CityPage({
           </ScrollReveal>
         </Section>
       )}
+
+      {/* ===== GUIDES FROM THE BLOG ===== */}
+      <RelatedGuides heading={`Planning a project in ${city.name}? Start here`} />
 
       {/* ===== FINAL CTA ===== */}
       <section className="bg-primary text-white py-16 md:py-20">
