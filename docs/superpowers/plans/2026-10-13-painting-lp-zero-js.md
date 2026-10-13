@@ -863,3 +863,17 @@ git commit -m "test(lp): Lighthouse budget for the painting ad pages"
 - [ ] **Step 3: One real test lead on the preview** with Nick's OK. Use name "Test Claude", phone 443-555-0100, zip 21204. Expected: lands on `/lp/painting/thanks?name=Test`, the lead appears in the dashboard with source `lp_form:painting` and `cityOrZip` "Towson, MD 21204", GHL gets it, and Tag Assistant shows the painting "Submit lead form" conversion firing on the `/lp/painting/thanks` page view (it is URL based). Delete the test lead afterwards.
 - [ ] **Step 4: Live Lighthouse on the preview URL.** Run `node scripts/lh-budget.mjs https://<preview-url>`. Expected: median score ≥ 90 (live network adds TTFB) and LCP ≤ 2.5 s.
 - [ ] **Step 5: Merge to `main` with Nick's OK.** Vercel deploys. Re-run the budget against `https://www.elitefinishesmaryland.com`. Log the before/after in the Obsidian handoff. Google Ads re-scores landing page experience over the following 1–2 weeks; check `post_click_quality_score` through Windsor around 2026-10-27.
+
+---
+
+## Amendment 2026-10-13 (Nick): keep the Project Builder
+
+Nick: "the project builder is great, i dunno if we should remove it". This supersedes the "Cut: 4-step Project Builder quiz" and "Short form fields" decisions above.
+
+- The hero card is a plain-JS port of `src/components/lp/landing/ProjectBuilder.tsx`, with parity on every field the lead carries:
+  - Questions come from `config.builder.questions`. A question with `showIf` is shown only when the earlier answer is in `anyOf`. Tapping an option advances after 260 ms. Back works on every step. The header shows "Step N of M", or "Last step" on the contact step, with a progress bar.
+  - The contact step has name, phone, zip, city (autofilled from `/api/zip-lookup`) and email. Validation and its error message are the same as the React builder.
+  - POST body: `description` = answered questions as `"<question without ?>: <answer>"` joined with `" | "` (fallback `"Interested in: <serviceTitle>"`); `timeframe` = port of `extractTimeframe(answers.timeline)` from `src/lib/quiz-data.ts`; `budget` = the first answer containing `$`, omitted when none; `cityOrZip` = `formatLocation(city, zip, state)`.
+  - `source` label is `lp_builder:painting`. The pending conversion `method` is `"builder"`.
+- The separate quick form at the bottom of the page is still cut. Every "free estimate" button links to `#estimate`.
+- Task 1 and Task 2 tests change to match: the form tests drive the builder (answer questions → contact step → submit). The Review Focus items are unchanged.
