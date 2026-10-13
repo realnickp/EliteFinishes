@@ -90,4 +90,24 @@ describe("renderLandingHtml", () => {
     const qualities = new Set([...html.matchAll(/[?&]q=(\d+)/g)].map((m) => m[1]));
     expect([...qualities]).toEqual(["75"]);
   });
+  it("puts the photo behind the headline and the builder on the hero", () => {
+    const html = renderLandingHtml(painting, "near-me");
+    const hero = html.slice(html.indexOf('<section class="hero"'), html.indexOf("</section>", html.indexOf('<section class="hero"')));
+    expect(hero).toContain('class="hero-photo"');
+    expect(hero).toContain('class="hero-shade"');
+    expect(hero).toContain('class="hero-copy"');
+    expect(hero).toContain('id="estimate"');
+    expect(hero.indexOf('class="hero-photo"')).toBeLessThan(hero.indexOf('class="hero-copy"'));
+  });
+
+  it("has the original header: flag stripe, license line and three actions", () => {
+    const html = renderLandingHtml(painting, "near-me");
+    const header = html.slice(html.indexOf("<header"), html.indexOf("</header>"));
+    expect(header).toContain('class="flag"');
+    expect(header).toContain("Licensed and insured, ");
+    expect(header).toContain('data-contact="text"');
+    expect(header).toContain('data-contact="call"');
+    expect(header).toContain('href="#estimate"');
+    expect(html.indexOf("</header>")).toBeLessThan(html.indexOf('class="bar"'));
+  });
 });

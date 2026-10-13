@@ -107,14 +107,15 @@ export function renderLandingHtml(config: LandingConfig, variantKey?: string): s
 <link rel="preload" as="image" imagesrcset="${srcSet(hero, heroWidths)}" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-serif-display-latin.woff2" crossorigin>
 <style>${LP_CSS}</style></head><body>
+<header class="top"><div class="flag" aria-hidden="true"><i></i><i></i><i></i></div><div class="wrap">
+<div class="brand"><img src="${nextImageUrl("/images/logo.png", 128)}" width="106" height="110" alt="${esc(SITE.name)}"><div><b>${esc(SITE.name)}</b><span><span class="sm-up">Licensed and insured, </span>${esc(SITE.license)}</span></div></div>
+<div class="acts">${textLink("hbtn hbtn-out md-up", "Text us", config.smsBody, "header")}${callLink("hbtn hbtn-dark", SITE.phone, "header")}<a class="hbtn hbtn-green lg-up" href="#estimate">Free estimate</a></div></div></header>
 <a class="bar" href="#offer">${esc(config.offer.short)}<u>See details</u></a>
-<header class="top"><div class="wrap"><a href="/"><img src="${nextImageUrl("/images/logo.png", 128)}" width="106" height="110" alt="${esc(SITE.name)}"></a>
-${callLink("btn btn-dark", `Call ${SITE.phone}`, "header")}</div></header>
-<section class="hero"><div class="hero-img"><img src="${nextImageUrl(hero, 1080)}" srcset="${srcSet(hero, heroWidths)}" sizes="100vw" width="1200" height="750" alt="" fetchpriority="high" decoding="async"></div>
-<div class="hero-grid"><div><p class="eyebrow">${esc(eyebrow)}</p><h1>${esc(headline)}</h1><p class="sub">${esc(config.subheadline)}</p>
+<section class="hero"><div class="hero-photo"><img src="${nextImageUrl(hero, 1080)}" srcset="${srcSet(hero, heroWidths)}" sizes="100vw" width="1200" height="750" alt="" fetchpriority="high" decoding="async"><div class="hero-shade"></div></div>
+<div class="hero-grid"><div class="hero-copy"><p class="eyebrow">${esc(eyebrow)}</p><h1>${esc(headline)}</h1><p class="sub">${esc(config.subheadline)}</p>
 <ul class="ticks">${config.heroBullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
-<div class="cta-row">${callLink("btn btn-dark", "Call now", "hero")}${textLink("btn btn-light", "Text us", config.smsBody, "hero")}</div></div>
-${builder(config)}</div></section>
+<div class="cta-row">${callLink("btn btn-white", `Call ${SITE.phone}`, "hero")}${textLink("btn btn-ghost", "Text us", config.smsBody, "hero")}</div></div>
+<div>${builder(config)}<div class="talk"><p>Rather talk to a person?</p><div>${callLink("btn btn-dark", "Call", "hero_mobile")}${textLink("btn btn-outline", "Text", config.smsBody, "hero_mobile")}</div></div></div></div></section>
 <ul class="facts"><li><b>Maryland licensed</b><a class="muted" href="${MHIC_LOOKUP_URL}" target="_blank" rel="noopener noreferrer">Look up ${esc(SITE.license)}</a></li>
 <li><b>Family owned and insured</b><span class="muted">Run by ${esc(SITE.owner)}</span></li>
 <li><b>Free written estimates</b><span class="muted">No cost, no obligation</span></li>
