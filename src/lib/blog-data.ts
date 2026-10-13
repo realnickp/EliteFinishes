@@ -1,4 +1,5 @@
 import { OCTOBER_2026_POSTS } from "./blog-posts-2026-10";
+import { AUTO_POSTS } from "./blog-posts-auto";
 
 export interface BlogPost {
   slug: string;
@@ -483,7 +484,7 @@ We work across [Baltimore](/areas/baltimore), [Towson](/areas/towson), [Catonsvi
 }
 
 /** Newest first. */
-export const BLOG_POSTS: BlogPost[] = [...OCTOBER_2026_POSTS, ...EARLIER_POSTS.map(withRelatedLinks).reverse()];
+export const BLOG_POSTS: BlogPost[] = [...AUTO_POSTS, ...OCTOBER_2026_POSTS, ...EARLIER_POSTS.map(withRelatedLinks).reverse()];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);

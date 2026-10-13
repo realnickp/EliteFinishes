@@ -79,7 +79,7 @@ export default function BlogPage() {
               <div className="flex flex-col flex-1 p-6">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
                   <Calendar className="h-3.5 w-3.5" />
-                  {new Date(post.date).toLocaleDateString("en-US", {
+                  {new Date(`${post.date}T12:00:00`).toLocaleDateString("en-US", {
                     month: "long",
                     day: "numeric",
                     year: "numeric",

@@ -193,7 +193,7 @@ export default async function BlogPostPage({ params }: Props) {
           </Link>
           <div className="flex items-center gap-2 text-sm text-primary-foreground/60 mb-4">
             <Calendar className="h-4 w-4" />
-            {new Date(post.date).toLocaleDateString("en-US", {
+            {new Date(`${post.date}T12:00:00`).toLocaleDateString("en-US", {
               month: "long",
               day: "numeric",
               year: "numeric",
