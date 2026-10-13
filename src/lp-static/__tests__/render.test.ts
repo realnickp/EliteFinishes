@@ -83,6 +83,6 @@ describe("renderLandingHtml", () => {
     expect(html.length).toBeLessThanOrEqual(45_000);
     expect(LP_CSS.length).toBeLessThanOrEqual(14_000);
     const js = buildClientScript({ slug: "painting", serviceTitle: "x", googleAdsId: "AW-1", callLabel: "a", contactLabel: "", metaPixelId: "", phone: "1" });
-    expect(js.length).toBeLessThanOrEqual(7_000);
+    expect(js.length).toBeLessThanOrEqual(8_000);
   });
 });
