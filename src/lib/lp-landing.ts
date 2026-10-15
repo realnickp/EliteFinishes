@@ -204,9 +204,9 @@ const LICENSED_FAQ: FAQItem = {
 const PAINTING: LandingConfig = {
   slug: "painting",
   serviceTitle: "Painting (Interior and Exterior)",
-  metaTitle: "Interior and Exterior Painting | 10% Off | Elite Finishes",
+  metaTitle: "Interior and Exterior Painting | Elite Finishes",
   metaDescription:
-    "Interior and exterior painting across the Baltimore area. Careful prep, premium paint, clean crews. Save 10% and get a free estimate from Elite Finishes.",
+    "Interior and exterior painting across the Baltimore area. Careful prep, premium paint, clean crews. Get a free estimate from Elite Finishes.",
   heroSlides: ["/images/work/crew-navy-feature-wall.jpg"],
   heroFullImage: true,
   whyImage: "/images/work/interior-painter-brushing-wall.jpg",
@@ -221,31 +221,32 @@ const PAINTING: LandingConfig = {
   ],
   variants: {
     "near-me": {
-      metaTitle: "Painters Near You | 10% Off | Elite Finishes",
+      metaTitle: "Painters Near You | Elite Finishes",
       eyebrow: "Local painters near you in the Baltimore area",
       headline: "Trusted local painters, ready for your home.",
     },
     interior: {
-      metaTitle: "Interior Painters in Baltimore | 10% Off | Elite Finishes",
+      metaTitle: "Interior Painters in Baltimore | Elite Finishes",
       eyebrow: "Interior painters in the Baltimore area",
       headline: "Interior painting done with care, room by room.",
     },
     exterior: {
-      metaTitle: "Exterior House Painters in Baltimore | 10% Off | Elite Finishes",
+      metaTitle: "Exterior House Painters in Baltimore | Elite Finishes",
       eyebrow: "Exterior house painters in the Baltimore area",
       headline: "Exterior house painting built for Maryland weather.",
     },
     cabinets: {
-      metaTitle: "Kitchen Cabinet Painting in Baltimore | 10% Off | Elite Finishes",
+      metaTitle: "Kitchen Cabinet Painting in Baltimore | Elite Finishes",
       eyebrow: "Kitchen cabinet painters in the Baltimore area",
       headline: "Freshly painted cabinets without a full kitchen remodel.",
     },
     drywall: {
-      metaTitle: "Drywall Repair and Painting in Baltimore | 10% Off | Elite Finishes",
+      metaTitle: "Drywall Repair and Painting in Baltimore | Elite Finishes",
       eyebrow: "Drywall repair and painting in the Baltimore area",
       headline: "Drywall patched, smoothed and painted like new.",
     },
   },
+  // Not shown: the live painting page (src/lp-static) has no offer since 2026-10-15
   offer: {
     variant: "paint",
     badge: "10% off painting and drywall",
@@ -363,7 +364,7 @@ const PAINTING: LandingConfig = {
     {
       question: "How much does it cost to paint my home?",
       answer:
-        "Every home is different, so we give you a free written estimate after seeing the space. Price depends on the size of the area, the condition of the surfaces and how much trim and ceiling work is included. Right now you also save 10%.",
+        "Every home is different, so we give you a free written estimate after seeing the space. Price depends on the size of the area, the condition of the surfaces and how much trim and ceiling work is included.",
     },
     {
       question: "How long does a painting job take?",

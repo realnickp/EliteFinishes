@@ -82,7 +82,7 @@ describe("renderLandingHtml", () => {
     const html = renderLandingHtml(painting);
     expect(html).toContain('<dialog id="quick"');
     expect(html).toContain('id="quick-form"');
-    expect(html.match(/data-quick="/g)?.length).toBe(4);
+    expect(html.match(/data-quick="/g)?.length).toBe(3);
     // The popup has its own honeypot and every field the lead API requires
     const dialog = html.slice(html.indexOf('<dialog id="quick"'), html.indexOf("</dialog>"));
     for (const name of ["website_url", "name", "phone", "email", "zip", "city", "note"]) {
@@ -120,6 +120,6 @@ describe("renderLandingHtml", () => {
     expect(header).toContain('data-contact="text"');
     expect(header).toContain('data-contact="call"');
     expect(header).toContain('href="#estimate"');
-    expect(html.indexOf("</header>")).toBeLessThan(html.indexOf('class="bar"'));
+    expect(html).not.toContain('class="bar"'); // the 10% offer bar was removed 2026-10-15
   });
 });

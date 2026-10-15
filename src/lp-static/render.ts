@@ -127,7 +127,6 @@ export function renderLandingHtml(config: LandingConfig, variantKey?: string): s
 <header class="top"><div class="flag" aria-hidden="true"><i></i><i></i><i></i></div><div class="wrap">
 <div class="brand"><img src="${nextImageUrl("/images/logo.png", 128)}" width="106" height="110" alt="${esc(SITE.name)}"><div><b>${esc(SITE.name)}</b><span><span class="sm-up">Licensed and insured, </span>${esc(SITE.license)}</span></div></div>
 <div class="acts">${textLink("hbtn hbtn-out md-up", "Text us", config.smsBody, "header")}${callLink("hbtn hbtn-dark", SITE.phone, "header")}<a class="hbtn hbtn-green lg-up" href="#estimate" data-quick="header">Free estimate</a></div></div></header>
-<a class="bar" href="#offer">${esc(config.offer.short)}<u>See details</u></a>
 <section class="hero${full ? " hero-full" : ""}"><div class="hero-photo"><img src="${nextImageUrl(hero, 1080)}" srcset="${srcSet(hero, heroWidths)}" sizes="100vw" width="${full ? 1672 : 1200}" height="${full ? 941 : 750}" alt="" fetchpriority="high" decoding="async"><div class="hero-shade"></div></div>
 <div class="hero-grid"><div class="hero-copy"><p class="eyebrow">${esc(eyebrow)}</p><h1>${esc(headline)}</h1><p class="sub">${esc(config.subheadline)}</p>
 <ul class="ticks">${config.heroBullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
@@ -138,9 +137,6 @@ export function renderLandingHtml(config: LandingConfig, variantKey?: string): s
 <li><b>Free written estimates</b><span class="muted">No cost, no obligation</span></li>
 <li><b>Fast response</b><span class="muted">Within 1 business day</span></li></ul>
 ${reviews}
-<section class="sec" id="offer"><div class="wrap"><div class="offer"><span class="badge">${esc(config.offer.badge)}</span>
-<h2 style="margin-top:1rem">${esc(config.offer.title)}</h2><p>${esc(config.offer.details)}</p>
-<a class="btn btn-light" href="#estimate" data-quick="offer">Claim my free estimate</a><p class="fine" style="color:#cfd8da">${esc(config.offer.finePrint)}</p></div></div></section>
 <section class="sec"><div class="wrap"><h2>Recent ${esc(SITE.name)} projects</h2><p class="muted">Real jobs by our crew, not stock photos.</p><div class="photos">${photos}</div></div></section>
 <section class="sec tint"><div class="wrap"><h2>A local company you can look up</h2>
 <p>${esc(SITE.name)} is a family owned Baltimore contractor run by ${esc(SITE.owner)}. We hold a Maryland Home Improvement Commission license and we are fully insured.</p>
