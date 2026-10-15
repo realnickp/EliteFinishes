@@ -78,12 +78,24 @@ describe("renderLandingHtml", () => {
     expect(html).not.toContain(`<b>"now"</b>`);
   });
 
+  it("opens the short estimate popup from every Free estimate button", () => {
+    const html = renderLandingHtml(painting);
+    expect(html).toContain('<dialog id="quick"');
+    expect(html).toContain('id="quick-form"');
+    expect(html.match(/data-quick="/g)?.length).toBe(4);
+    // The popup has its own honeypot and every field the lead API requires
+    const dialog = html.slice(html.indexOf('<dialog id="quick"'), html.indexOf("</dialog>"));
+    for (const name of ["website_url", "name", "phone", "email", "zip", "city", "note"]) {
+      expect(dialog).toContain(`name="${name}"`);
+    }
+  });
+
   it("stays within the size budgets", () => {
     const html = renderLandingHtml(painting, "near-me");
     expect(html.length).toBeLessThanOrEqual(45_000);
     expect(LP_CSS.length).toBeLessThanOrEqual(14_000);
     const js = buildClientScript({ slug: "painting", serviceTitle: "x", googleAdsId: "AW-1", callLabel: "a", contactLabel: "", metaPixelId: "", phone: "1" });
-    expect(js.length).toBeLessThanOrEqual(8_000);
+    expect(js.length).toBeLessThanOrEqual(9_000); // includes the estimate popup form
   });
   it("only requests image quality 75, the one Next 16 allows by default", () => {
     const html = renderLandingHtml(painting, "near-me");
@@ -92,7 +104,7 @@ describe("renderLandingHtml", () => {
   });
   it("puts the photo behind the headline and the builder on the hero", () => {
     const html = renderLandingHtml(painting, "near-me");
-    const hero = html.slice(html.indexOf('<section class="hero"'), html.indexOf("</section>", html.indexOf('<section class="hero"')));
+    const hero = html.slice(html.indexOf('<section class="hero'), html.indexOf("</section>", html.indexOf('<section class="hero')));
     expect(hero).toContain('class="hero-photo"');
     expect(hero).toContain('class="hero-shade"');
     expect(hero).toContain('class="hero-copy"');

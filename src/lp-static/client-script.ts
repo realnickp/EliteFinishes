@@ -47,6 +47,43 @@ function within(p,ms){return Promise.race([p,new Promise(function(r){setTimeout(
 function readyToken(){return(token&&age(token)<1500000?Promise.resolve(token):within(getToken(),6000)).then(function(t){
 t=t||token;var wait=t?Math.max(0,3500-age(t)):0;return new Promise(function(r){setTimeout(function(){r(t)},wait)})})}
 
+function timeframe(a){a=(a||"").toLowerCase();if(a.indexOf("asap")>-1||a.indexOf("emergency")>-1||a.indexOf("active leak")>-1||a.indexOf("urgent")>-1)return"ASAP";
+if(a.indexOf("1 month")>-1||a.indexOf("4 to 6 weeks")>-1)return"Within 1 month";if(a.indexOf("3 month")>-1)return"Within 3 months";
+if(a.indexOf("6 month")>-1)return"Within 6 months";if(a.indexOf("summer")>-1||a.indexOf("season")>-1)return"This season";
+if(a.indexOf("next year")>-1||a.indexOf("later this year")>-1)return"Later this year";
+if(a.indexOf("explor")>-1||a.indexOf("planning ahead")>-1||a.indexOf("flexible")>-1)return"Just exploring";return"To be discussed"}
+// One submit path for the builder and the popup form: same POST body as submitLpLead(), so both reach GHL and the emails the same way
+function wire(form,err,method,details){var el=form.elements,looked={zip:"",state:""},busy=false,btn=$('button[type="submit"]',form),label=btn.textContent;
+function zip5(){var m=el.zip.value.match(/\\d{5}/);return m?m[0]:""}
+el.zip.addEventListener("blur",function(){var z=zip5();if(!z)return;fetch("/api/zip-lookup?zip="+z).then(function(r){return r.json()}).then(function(d){
+if(d.state)looked={zip:z,state:d.state};if(d.city&&!el.city.value.trim())el.city.value=d.city}).catch(function(){})});
+function loc(){var c=el.city.value.trim(),z=el.zip.value.trim(),n=Number(z.slice(0,5)),s=(looked.zip===zip5()&&looked.state)||(n>=20600&&n<=21999?"MD":"");
+if(!c)return z;return s?c+", "+s+" "+z:c+", "+z}
+form.addEventListener("submit",function(e){e.preventDefault();if(busy)return;err.textContent="";
+var val=function(n){return(el[n].value||"").trim()};
+if(!val("name")||val("phone").replace(/\\D/g,"").length<10||!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$/.test(val("email"))||!/^\\d{5}(-\\d{4})?$/.test(val("zip"))||val("city").length<2){
+err.textContent="Please add your name, a 10 digit phone number, your email, your zip code and your city.";return}
+busy=true;btn.disabled=true;btn.textContent="Sending...";var x=details();
+readyToken().then(function(t){var u=readUtm();
+return fetch("/api/leads",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+name:val("name"),phone:val("phone"),email:val("email"),service:C.serviceTitle,cityOrZip:loc(),
+description:x.description,timeframe:x.timeframe,budget:x.budget,source:source(u,"lp_"+method+":"+C.slug),
+utmSource:u.utm_source||"",utmMedium:u.utm_medium||"",utmCampaign:u.utm_campaign||"",landingPage:location.href,_t:t||"",website_url:el.website_url.value})})
+}).then(function(r){return r.json().catch(function(){return{}}).then(function(d){
+if(!r.ok)throw{server:d.error||"Something went wrong. Please call or text us instead."};
+if(d.accepted!==false)ss("ef_lp_pending_conversion",JSON.stringify({service:C.serviceTitle,method:method}));
+var url="/lp/"+C.slug+"/thanks?name="+encodeURIComponent(val("name").split(" ")[0]);(W.__lpNavigate||function(x){location.assign(x)})(url)})
+}).catch(function(x){err.textContent=x&&x.server?x.server:"Something went wrong. Please call or text us at "+C.phone+".";
+busy=false;btn.disabled=false;btn.textContent=label})})}
+
+// "Free estimate" buttons open the short form popup; without the script they still jump to the builder
+var dlg=$("#quick");if(dlg&&dlg.showModal){var qf=$("#quick-form");
+wire(qf,$("#qf-err"),"form",function(){var n=(qf.elements.note.value||"").trim();
+return{description:n?"Quick form: "+n:"Quick form on the "+C.serviceTitle+" ad page. Details to be gathered on follow-up.",timeframe:"To be discussed"}});
+D.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-quick]");if(!a)return;e.preventDefault();dlg.showModal()});
+dlg.addEventListener("click",function(e){if(e.target===dlg||e.target.closest("[data-close]"))dlg.close();
+else if(e.target.closest("[data-to-builder]")){dlg.close();var b=$("#estimate");if(b)b.scrollIntoView({behavior:"smooth",block:"start"})}})}
+
 var card=$("#estimate");if(!card)return;
 var sets=$$("fieldset[data-q]",card),form=$("#estimate-form"),err=$("#pb-err"),answers={},step=0,moving=false;
 function visible(){return sets.filter(function(f){var c=f.getAttribute("data-showif");if(!c)return true;c=JSON.parse(c);return c.anyOf.indexOf(answers[c.questionId]||"")>-1})}
@@ -62,37 +99,8 @@ if(moving)return;moving=true;var f=t.closest("fieldset");answers[f.getAttribute(
 $$(".opt",f).forEach(function(b){b.setAttribute("aria-pressed",String(b===t))});
 setTimeout(function(){step++;moving=false;render();keepInView()},260)});
 
-var el=form.elements,looked={zip:"",state:""};
-function zip5(){var m=el.zip.value.match(/\\d{5}/);return m?m[0]:""}
-function lookup(){var z=zip5();if(!z)return Promise.resolve();return fetch("/api/zip-lookup?zip="+z).then(function(r){return r.json()}).then(function(d){
-if(d.state)looked={zip:z,state:d.state};if(d.city&&!el.city.value.trim())el.city.value=d.city}).catch(function(){})}
-el.zip.addEventListener("blur",lookup);
-function loc(){var c=el.city.value.trim(),z=el.zip.value.trim(),n=Number(z.slice(0,5)),s=(looked.zip===zip5()&&looked.state)||(n>=20600&&n<=21999?"MD":"");
-if(!c)return z;return s?c+", "+s+" "+z:c+", "+z}
-function timeframe(a){a=(a||"").toLowerCase();if(a.indexOf("asap")>-1||a.indexOf("emergency")>-1||a.indexOf("active leak")>-1||a.indexOf("urgent")>-1)return"ASAP";
-if(a.indexOf("1 month")>-1||a.indexOf("4 to 6 weeks")>-1)return"Within 1 month";if(a.indexOf("3 month")>-1)return"Within 3 months";
-if(a.indexOf("6 month")>-1)return"Within 6 months";if(a.indexOf("summer")>-1||a.indexOf("season")>-1)return"This season";
-if(a.indexOf("next year")>-1||a.indexOf("later this year")>-1)return"Later this year";
-if(a.indexOf("explor")>-1||a.indexOf("planning ahead")>-1||a.indexOf("flexible")>-1)return"Just exploring";return"To be discussed"}
-var busy=false,btn=$('button[type="submit"]',form);
-form.addEventListener("submit",function(e){e.preventDefault();if(busy)return;err.textContent="";
-var val=function(n){return(el[n].value||"").trim()};
-if(!val("name")||val("phone").replace(/\\D/g,"").length<10||!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$/.test(val("email"))||!/^\\d{5}(-\\d{4})?$/.test(val("zip"))||val("city").length<2){
-err.textContent="Please add your name, a 10 digit phone number, your email, your zip code and your city.";return}
-busy=true;btn.disabled=true;btn.textContent="Sending...";
-var answered=visible().filter(function(f){return answers[f.getAttribute("data-q")]}),picks=answered.map(function(f){return answers[f.getAttribute("data-q")]});
-var budget=picks.filter(function(a){return a.indexOf("$")>-1})[0];
-readyToken().then(function(t){var u=readUtm();
-return fetch("/api/leads",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
-name:val("name"),phone:val("phone"),email:val("email"),service:C.serviceTitle,cityOrZip:loc(),
-description:answered.map(function(f){return f.getAttribute("data-question").replace("?","")+": "+answers[f.getAttribute("data-q")]}).join(" | ")||"Interested in: "+C.serviceTitle,
-timeframe:timeframe(answers.timeline),budget:budget,source:source(u,"lp_builder:"+C.slug),
-utmSource:u.utm_source||"",utmMedium:u.utm_medium||"",utmCampaign:u.utm_campaign||"",landingPage:location.href,_t:t||"",website_url:el.website_url.value})})
-}).then(function(r){return r.json().catch(function(){return{}}).then(function(d){
-if(!r.ok)throw{server:d.error||"Something went wrong. Please call or text us instead."};
-if(d.accepted!==false)ss("ef_lp_pending_conversion",JSON.stringify({service:C.serviceTitle,method:"builder"}));
-var url="/lp/"+C.slug+"/thanks?name="+encodeURIComponent(val("name").split(" ")[0]);(W.__lpNavigate||function(x){location.assign(x)})(url)})
-}).catch(function(x){err.textContent=x&&x.server?x.server:"Something went wrong. Please call or text us at "+C.phone+".";
-busy=false;btn.disabled=false;btn.textContent="Get my free estimate"})});
+wire(form,err,"builder",function(){var answered=visible().filter(function(f){return answers[f.getAttribute("data-q")]}),picks=answered.map(function(f){return answers[f.getAttribute("data-q")]});
+return{description:answered.map(function(f){return f.getAttribute("data-question").replace("?","")+": "+answers[f.getAttribute("data-q")]}).join(" | ")||"Interested in: "+C.serviceTitle,
+timeframe:timeframe(answers.timeline),budget:picks.filter(function(a){return a.indexOf("$")>-1})[0]}});
 render()})();`;
 }

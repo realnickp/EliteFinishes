@@ -65,12 +65,29 @@ ${field("pb-email", "email", "Email", 'type="email" autocomplete="email" placeho
 <div class="pb-foot"><button type="button" class="back" data-back>&larr; Back</button><span>Private. No spam, ever.</span></div></form></div></div>`;
 }
 
+/** Short estimate form in a native dialog, opened by every "Free estimate" button (data-quick). */
+function quickForm(): string {
+  return `<dialog id="quick" aria-labelledby="quick-title"><form id="quick-form" novalidate><input class="hp" type="text" name="website_url" tabindex="-1" autocomplete="off" aria-hidden="true">
+<button type="button" class="x" data-close aria-label="Close">&times;</button>
+<h2 id="quick-title">Get your free estimate</h2><p class="muted" style="margin:.4rem 0 0;font-size:.875rem">Just your name, number, zip and city. We&#39;ll get back to you within one business day.</p>
+${field("qf-name", "name", "Your name", 'autocomplete="name" placeholder="First and last name"')}
+${field("qf-phone", "phone", "Phone", 'type="tel" inputmode="tel" autocomplete="tel" placeholder="(443) 555-0123"')}
+${field("qf-email", "email", "Email", 'type="email" autocomplete="email" placeholder="you@email.com"')}
+<div class="row2">${field("qf-zip", "zip", "Zip code", 'inputmode="numeric" autocomplete="postal-code" maxlength="10" placeholder="21230"')}${field("qf-city", "city", "City", 'autocomplete="address-level2" placeholder="Baltimore"')}</div>
+<div><label for="qf-note">What do you need done? <span class="muted" style="font-weight:400">(optional)</span></label><textarea id="qf-note" name="note" rows="3" maxlength="1000" placeholder="A few words about your project"></textarea></div>
+<p class="err" id="qf-err" role="alert"></p>
+<button class="btn btn-green" type="submit" style="margin-top:1.25rem">Request my free estimate</button>
+<p class="fine" style="text-align:center">Private. No spam, ever.</p>
+<button type="button" class="back" data-to-builder style="display:block;margin:.5rem auto 0;text-decoration:underline">Or answer a few quick questions instead</button></form></dialog>`;
+}
+
 export function renderLandingHtml(config: LandingConfig, variantKey?: string): string {
   const v = variantKey ? config.variants[variantKey] : undefined;
   const title = v?.metaTitle ?? config.metaTitle;
   const eyebrow = v?.eyebrow ?? config.eyebrow;
   const headline = v?.headline ?? config.headline;
   const hero = config.heroSlides[0];
+  const full = config.heroFullImage === true;
   const heroWidths = [640, 750, 828, 1080, 1200];
   const { address } = SITE;
 
@@ -109,9 +126,9 @@ export function renderLandingHtml(config: LandingConfig, variantKey?: string): s
 <style>${LP_CSS}</style></head><body>
 <header class="top"><div class="flag" aria-hidden="true"><i></i><i></i><i></i></div><div class="wrap">
 <div class="brand"><img src="${nextImageUrl("/images/logo.png", 128)}" width="106" height="110" alt="${esc(SITE.name)}"><div><b>${esc(SITE.name)}</b><span><span class="sm-up">Licensed and insured, </span>${esc(SITE.license)}</span></div></div>
-<div class="acts">${textLink("hbtn hbtn-out md-up", "Text us", config.smsBody, "header")}${callLink("hbtn hbtn-dark", SITE.phone, "header")}<a class="hbtn hbtn-green lg-up" href="#estimate">Free estimate</a></div></div></header>
+<div class="acts">${textLink("hbtn hbtn-out md-up", "Text us", config.smsBody, "header")}${callLink("hbtn hbtn-dark", SITE.phone, "header")}<a class="hbtn hbtn-green lg-up" href="#estimate" data-quick="header">Free estimate</a></div></div></header>
 <a class="bar" href="#offer">${esc(config.offer.short)}<u>See details</u></a>
-<section class="hero"><div class="hero-photo"><img src="${nextImageUrl(hero, 1080)}" srcset="${srcSet(hero, heroWidths)}" sizes="100vw" width="1200" height="750" alt="" fetchpriority="high" decoding="async"><div class="hero-shade"></div></div>
+<section class="hero${full ? " hero-full" : ""}"><div class="hero-photo"><img src="${nextImageUrl(hero, 1080)}" srcset="${srcSet(hero, heroWidths)}" sizes="100vw" width="${full ? 1672 : 1200}" height="${full ? 941 : 750}" alt="" fetchpriority="high" decoding="async"><div class="hero-shade"></div></div>
 <div class="hero-grid"><div class="hero-copy"><p class="eyebrow">${esc(eyebrow)}</p><h1>${esc(headline)}</h1><p class="sub">${esc(config.subheadline)}</p>
 <ul class="ticks">${config.heroBullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
 <div class="cta-row">${callLink("btn btn-white", `Call ${SITE.phone}`, "hero")}${textLink("btn btn-ghost", "Text us", config.smsBody, "hero")}</div></div>
@@ -123,7 +140,7 @@ export function renderLandingHtml(config: LandingConfig, variantKey?: string): s
 ${reviews}
 <section class="sec" id="offer"><div class="wrap"><div class="offer"><span class="badge">${esc(config.offer.badge)}</span>
 <h2 style="margin-top:1rem">${esc(config.offer.title)}</h2><p>${esc(config.offer.details)}</p>
-<a class="btn btn-light" href="#estimate">Claim my free estimate</a><p class="fine" style="color:#cfd8da">${esc(config.offer.finePrint)}</p></div></div></section>
+<a class="btn btn-light" href="#estimate" data-quick="offer">Claim my free estimate</a><p class="fine" style="color:#cfd8da">${esc(config.offer.finePrint)}</p></div></div></section>
 <section class="sec"><div class="wrap"><h2>Recent ${esc(SITE.name)} projects</h2><p class="muted">Real jobs by our crew, not stock photos.</p><div class="photos">${photos}</div></div></section>
 <section class="sec tint"><div class="wrap"><h2>A local company you can look up</h2>
 <p>${esc(SITE.name)} is a family owned Baltimore contractor run by ${esc(SITE.owner)}. We hold a Maryland Home Improvement Commission license and we are fully insured.</p>
@@ -140,10 +157,11 @@ ${reviews}
   ).join("")}</ol></div></section>
 <section class="sec"><div class="wrap"><h2>Questions homeowners ask</h2>${config.faq.map((f) => `<details><summary>${esc(f.question)}</summary><p class="muted">${esc(f.answer)}</p></details>`).join("")}</div></section>
 <section class="sec tint"><div class="wrap" style="text-align:center"><h2>Ready for a free estimate?</h2><p class="muted">Answer a few quick questions, or call or text. We reply within 1 business day.</p>
-<div class="cta-row" style="justify-content:center"><a class="btn btn-dark" href="#estimate">Start my free estimate</a>${callLink("btn btn-light", `Call ${SITE.phone}`, "final")}</div></div></section>
+<div class="cta-row" style="justify-content:center"><a class="btn btn-dark" href="#estimate" data-quick="final">Start my free estimate</a>${callLink("btn btn-light", `Call ${SITE.phone}`, "final")}</div></div></section>
 <footer><p style="font-size:.875rem;font-weight:700;color:var(--fg)">${esc(SITE.name)}</p><p>${esc(address.street)}, ${esc(address.city)}, ${address.stateCode} ${address.zip}</p>
 <p>Licensed and insured, ${esc(SITE.license)}</p><p>${callLink("", SITE.phone, "footer")} | <a href="mailto:${SITE.email}">${esc(SITE.email)}</a></p>
 <p class="links"><a href="/">Main website</a><a href="/privacy-policy">Privacy Policy</a><a href="/terms">Terms</a></p></footer>
-<nav class="sticky" aria-label="Quick actions">${callLink("btn btn-dark", "Call", "sticky")}${textLink("btn btn-light", "Text", config.smsBody, "sticky")}<a class="btn btn-green" href="#estimate" style="min-height:46px">Free estimate</a></nav>
+<nav class="sticky" aria-label="Quick actions">${callLink("btn btn-dark", "Call", "sticky")}${textLink("btn btn-light", "Text", config.smsBody, "sticky")}<a class="btn btn-green" href="#estimate" data-quick="sticky" style="min-height:46px">Free estimate</a></nav>
+${quickForm()}
 <script>${script}</script></body></html>`;
 }

@@ -44,6 +44,8 @@ export interface LandingConfig {
   metaDescription: string;
   /** Background photos that slowly rotate behind the headline. The first one loads right away. */
   heroSlides: string[];
+  /** Plain HTML page only: size the hero to the 1672x941 photo so the whole photo shows. */
+  heroFullImage?: boolean;
   /** Decorative photo beside the "Why" list. */
   whyImage: string;
   eyebrow: string;
@@ -205,13 +207,8 @@ const PAINTING: LandingConfig = {
   metaTitle: "Interior and Exterior Painting | 10% Off | Elite Finishes",
   metaDescription:
     "Interior and exterior painting across the Baltimore area. Careful prep, premium paint, clean crews. Save 10% and get a free estimate from Elite Finishes.",
-  heroSlides: [
-    "/images/work/navy-bedroom-finished.jpg",
-    "/images/work/exterior-brick-rowhouse-dusk.jpg",
-    "/images/work/green-bedroom-window.jpg",
-    "/images/work/exterior-stucco-crew-ladders.jpg",
-    "/images/work/primary-bath-red-vanity.jpg",
-  ],
+  heroSlides: ["/images/work/crew-navy-feature-wall.jpg"],
+  heroFullImage: true,
   whyImage: "/images/work/interior-painter-brushing-wall.jpg",
   eyebrow: "Licensed painting contractor in the Baltimore area",
   headline: "Baltimore house painters you'll be proud to hire.",
