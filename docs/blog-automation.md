@@ -55,7 +55,7 @@ Only link to pages that exist. Allowed static paths: `/`, `/quote`, `/contact`, 
 ## Topic queue (buyer intent first)
 
 - [x] **How long does a kitchen remodel take? A week-by-week look.** Covers: how long does a kitchen remodel take (1.3K/mo), what comes first, steps. Needs: timing only as stated in the kitchen cost post (cosmetic refresh 1 to 2 weeks, mid-range several weeks, countertops measured after cabinets). (how-long-does-kitchen-remodel-take-baltimore, 2026-10-13)
-- [ ] **Painting cabinets vs. replacing them: the smart way to update a Baltimore kitchen.** Covers: cheapest way to remodel a kitchen, remodel on a budget, is $10,000 enough. Needs: kitchen ranges from the sales sheet. Don't give a cabinet-painting-only price.
+- [x] **Painting cabinets vs. replacing them: the smart way to update a Baltimore kitchen.** Covers: cheapest way to remodel a kitchen, remodel on a budget, is $10,000 enough. Needs: kitchen ranges from the sales sheet. Don't give a cabinet-painting-only price. (paint-or-replace-kitchen-cabinets-baltimore, 2026-10-16)
 - [ ] **How long does a bathroom remodel take, and do you need a permit in Baltimore?** Covers: how long, permits, what comes first, steps. Needs: bathroom timing from the bathroom service page FAQ.
 - [ ] **The cheapest way to modernize a bathroom without a full remodel.** Covers: cheapest way to modernize, save money remodeling. Needs: refresh ranges from `bathroom-remodel-roi-baltimore` and the bathroom cost post.
 - [ ] **What your painting quote should include (the prep most painters skip).** Covers: how to prep a house for exterior painting, do you need to power wash before painting, what to do before painting. Needs: painting ranges only if used.

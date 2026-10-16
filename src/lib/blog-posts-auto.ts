@@ -5,6 +5,108 @@ import type { BlogPost } from "./blog-data";
 
 export const AUTO_POSTS: BlogPost[] = [
   {
+    slug: "paint-or-replace-kitchen-cabinets-baltimore",
+    title: "Painting Cabinets vs. Replacing Them: The Smart Way to Update a Baltimore Kitchen",
+    description:
+      "Painting solid cabinets is the cheapest way to change a kitchen. Here is when it works, when it doesn't, and what a refresh, mid-range and full gut cost.",
+    date: "2026-10-16",
+    image: "/images/work/kitchen-wood-cabinets-granite.jpg",
+    imageAlt: "Kitchen with wood cabinets and granite countertops in a Baltimore area home",
+    category: "Kitchen Remodeling",
+    relatedService: "Kitchen Remodeling",
+    relatedServiceSlug: "kitchen-remodeling",
+    content: `Almost every homeowner who calls me about a kitchen asks the same thing in a different way: "What is the cheapest way to do this?" My answer is almost always the same. Look at the cabinets first. They are the biggest line item in a kitchen, and they are the one place where a good decision can save you real money.
+
+So the question is not really paint or replace. The question is whether the cabinets you have are worth keeping.
+
+## Why cabinets decide the budget
+
+New cabinets are usually the single largest cost in a kitchen remodel. That is why the numbers jump so much between the first level of work and the second. Here are the ranges I give people, the same ones in my post on [what a kitchen remodel costs in Baltimore](/blog/kitchen-remodel-cost-baltimore):
+
+| Level | What it involves | Typical cost |
+| --- | --- | --- |
+| Cosmetic refresh | Painted cabinets, new countertops, backsplash, hardware, lighting | Around $15,000 |
+| Mid-range remodel | New cabinets, countertops and appliances, same layout | Around $35,000 |
+| Full gut | Layout change, plumbing and electrical | $60,000 and up |
+
+The gap between the first row and the second is mostly the cabinets. If yours are solid, you can stay in the first row and still end up with a kitchen that feels new. These are honest ranges, not quotes. The real number comes after I walk your kitchen and open your cabinets myself.
+
+## When painting is the right call
+
+Paint your cabinets when most of these are true:
+
+- **The boxes are solid.** Frames are square and sturdy, with no soft spots or water damage.
+- **The doors and drawers still work.** Hinges hold, drawers slide, nothing is pulling out of the wood.
+- **You like the layout.** The sink, stove and refrigerator are where you want them, and traffic flows.
+- **You want the money for other things.** A good cabinet job lets you spend on counters, backsplash and lighting instead.
+
+Many Baltimore kitchens fit this. Plenty of the houses in [Towson](/areas/towson), [Catonsville](/areas/catonsville) and [Parkville](/areas/parkville) have well-built wood cabinets from decades ago. The wood is often better than a lot of what you can buy today. They only look tired. For those homes, new cabinets would be money spent on something you already own.
+
+## When you should replace them
+
+Painting is not a fix for everything. I will tell you straight when it is the wrong move:
+
+- **The layout does not work.** Paint will not move a refrigerator or open up a cramped corner.
+- **The boxes are damaged.** Water damage, rot, or frames that have come apart cannot be hidden with paint.
+- **You are changing the layout anyway.** Once walls, plumbing or electrical are moving, new cabinets usually make sense.
+- **You are replacing the counters and the cabinets are marginal.** At that point you are most of the way to a remodel. The [signs your kitchen needs a full remodel](/blog/signs-baltimore-home-needs-kitchen-remodel) are worth reading before you decide.
+
+I would rather tell you to keep your cabinets than sell you new ones you do not need. I would also rather tell you to replace them than paint boxes that will fail in two years.
+
+## What a proper cabinet paint job looks like
+
+This is where I get serious, because it is where most of the bad work happens. Painted cabinets live a hard life. Hands, steam, grease, and doors opening dozens of times a day. A fast coat of wall paint peels in about a year.
+
+A proper job means:
+
+1. Taking off the doors, drawers and hardware
+2. Cleaning off kitchen grease so the paint can grip
+3. Sanding and repairing dings and old finish
+4. Priming with a bonding primer
+5. A durable cabinet-grade finish, usually in Benjamin Moore or Sherwin-Williams products
+6. Protecting your floors and furniture the whole time, and cleaning up when we are done each day
+
+You can see how we approach it on our [cabinet painting page](/lp/painting/cabinets). I do not put a flat price on cabinet painting alone in this post, because it depends on how many doors and drawers you have and their condition. Ask for a [free written estimate](/quote) and you will get a real number for your kitchen.
+
+## What $10,000 can still do
+
+People ask me whether $10,000 is enough. It is not enough for a full remodel with new cabinets. But if your cabinet boxes are solid, a budget like that can change the room:
+
+- Paint the cabinets instead of replacing them
+- Add new hardware and better lighting
+- Put in a new backsplash
+- Repaint the walls and trim with [interior painting](/services/interior-painting)
+
+Order matters. Cabinets, then counters, then backsplash, then final paint. If you want the timeline, I laid it out in [how long a kitchen remodel takes](/blog/how-long-does-kitchen-remodel-take-baltimore). A refresh runs one to two weeks, and countertops are measured after the cabinets are done.
+
+## Older Baltimore houses
+
+A 1920s rowhouse in [Canton](/areas/canton) or [Hampden](/areas/hampden) often has a small kitchen with plaster walls and wood cabinets that are older than I am. If the layout works, painting is often a good move there. If the home was built before 1978, we follow lead-safe practices on any work that disturbs old paint, and we handle permits if the project needs them.
+
+## Get more than one number, but compare the same thing
+
+When you collect quotes, compare what is included: who does the work, whether demolition, permits, plumbing and electrical are in the price, and who you call afterward. I wrote a whole post about a lower quote that ended up costing a homeowner $3,000 more, and the lesson is simple: [read the quote like a contract](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore).
+
+## Talk to me about your kitchen
+
+Tell me what you have and what bothers you about it. I will come out, look inside the cabinets, and tell you honestly whether to paint or replace. [Get your free kitchen estimate](/quote), call me at 443-825-0206, or see our [kitchen remodeling services](/services/kitchen-remodeling). If you are updating more than the kitchen, our [whole-home remodeling](/services/home-remodeling) team can plan it together. We currently take 10% off painting and drywall work.
+
+## Where we work
+
+We are based in Baltimore City and work across Baltimore County, Anne Arundel County and Howard County, including [Towson](/areas/towson), [Catonsville](/areas/catonsville), [Annapolis](/areas/annapolis), [Pikesville](/areas/pikesville), [Ellicott City](/areas/ellicott-city), [Glen Burnie](/areas/glen-burnie), [Parkville](/areas/parkville), [Columbia](/areas/columbia), [Dundalk](/areas/dundalk), [Hampden](/areas/hampden). See [all the areas we serve](/areas).
+
+## Keep reading
+
+- [How much does a kitchen remodel cost in Baltimore?](/blog/kitchen-remodel-cost-baltimore)
+- [How long does a kitchen remodel take?](/blog/how-long-does-kitchen-remodel-take-baltimore)
+- [Signs your kitchen needs a remodel, not just a refresh](/blog/signs-baltimore-home-needs-kitchen-remodel)
+- [The cheaper quote cost him $3,000 more: how to choose a contractor](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore)
+- [How much does it cost to paint a house in Baltimore?](/blog/cost-to-paint-a-house-baltimore)
+- [How to choose interior paint colors for Baltimore homes](/blog/how-to-choose-interior-paint-colors-baltimore)
+
+**Our services:** [Interior painting](/services/interior-painting), [Exterior painting](/services/exterior-painting), [Bathroom remodeling](/services/bathroom-remodeling), [Kitchen remodeling](/services/kitchen-remodeling), [Basement finishing](/services/basement-remodeling), [Flooring](/services/flooring), [Home remodeling](/services/home-remodeling), [Decks](/services/decks), [Siding](/services/siding). [See everything we do](/services).`,
+  },
+  {
     slug: "how-long-does-kitchen-remodel-take-baltimore",
     title: "How Long Does a Kitchen Remodel Take? A Step-by-Step Look",
     description:
