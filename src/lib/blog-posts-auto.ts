@@ -5,6 +5,106 @@ import type { BlogPost } from "./blog-data";
 
 export const AUTO_POSTS: BlogPost[] = [
   {
+    slug: "how-long-does-bathroom-remodel-take-permit-baltimore",
+    title: "How Long Does a Bathroom Remodel Take, and Do You Need a Permit in Baltimore?",
+    description:
+      "A full bathroom gut takes two to three weeks once work begins. A refresh takes three to five days. Here is the order of the work and when a permit is needed.",
+    date: "2026-10-20",
+    image: "/images/work/primary-bath-red-shower.jpg",
+    imageAlt: "Primary bathroom with red walls, soaking tub and marble walk-in shower in a Baltimore area home",
+    category: "Bathroom Remodeling",
+    relatedService: "Bathroom Remodeling",
+    relatedServiceSlug: "bathroom-remodeling",
+    content: `When someone calls me about a bathroom, the first question is usually price. The second comes right after: "How long will I be without it?" In a house with one bathroom, that is not a small question. You have a family to get out the door in the morning.
+
+So here is the straight answer, and then the order the work happens in, and the permit question, which trips up a lot of people.
+
+## The short answer on timing
+
+A full bathroom gut takes two to three weeks once work begins. A limited refresh, meaning a vanity, a toilet and paint with no tile work, takes three to five days. Those are the numbers on our [bathroom remodeling page](/services/bathroom-remodeling), and I stand behind them.
+
+| Type of job | What it involves | Time once work begins |
+| --- | --- | --- |
+| Refresh | Vanity, toilet, paint, no tile work | 3 to 5 days |
+| Full gut | Demolition, plumbing, waterproofing, tile, fixtures | 2 to 3 weeks |
+
+Notice the words "once work begins." The clock does not start the day you call me. Design choices, ordering materials and, when it is needed, a permit all come before the first day of demolition. I explain that schedule to you in writing before we start, so you can plan for the disruption and arrange another bathroom if you need one.
+
+## What happens first, step by step
+
+Here is the order on a full gut. It matters, because each step depends on the one before it.
+
+1. **Estimate and design.** I come out, look at the room, and ask how you use it. You get a written estimate that lists demolition, materials, fixtures, permits and cleanup. Our [price guide for Baltimore bathrooms](/blog/bathroom-remodel-cost-baltimore) explains what drives the number.
+2. **Choosing and ordering.** Tile, vanity, fixtures and glass. This is where homeowners can slow things down without meaning to. Decide early, and the job stays on schedule.
+3. **Permit, if the work needs one.** More on this below.
+4. **Protection and demolition.** We cover your floors and furniture and take the old bathroom out. This is the day you find out what is behind the walls.
+5. **Rough work.** Plumbing and electrical changes, any repair to framing or subfloor, and the exhaust fan.
+6. **Waterproofing.** The membrane behind the tile. This step is not rushed, and I will say why in a minute.
+7. **Tile.** Floor, shower walls, grout.
+8. **Fixtures and finish.** Vanity, toilet, faucets, lighting, glass, and [interior painting](/services/interior-painting) to finish the room.
+9. **Cleanup and walkthrough.** We clean as we go and again at the end, and then we walk it together.
+
+## Why waterproofing is not where you save time
+
+Tile is not waterproof. Grout is not waterproof. The membrane behind them is what keeps water out of your framing and drywall. A bad shower install leaks into the wall, and you do not see it until the damage is serious.
+
+If a contractor promises a full gut in a few days, ask what is happening to the waterproofing. I have seen the story where [the cheaper quote cost a homeowner $3,000 more](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore), and a rushed or missing scope was part of it.
+
+## Do you need a permit for a bathroom remodel in Baltimore?
+
+It depends on the work, not the room. Here is how it generally breaks down in Maryland:
+
+- **Usually needs a permit:** moving plumbing, adding a new exhaust fan circuit, or making structural changes.
+- **Generally does not:** cosmetic work such as tile, a vanity swap and paint.
+
+The rules vary a little by jurisdiction. In Baltimore City, structural remodeling and work that moves walls, plumbing or electrical needs a permit. Baltimore County and the surrounding counties have their own offices. That means a bathroom in [Federal Hill](/areas/federal-hill) and one in [Towson](/areas/towson) go through different offices, even when the work looks the same.
+
+Here is what I tell every homeowner. We identify what needs a permit during planning, and we handle the applications for you at no extra charge. You do not stand in line at a government office. And if a contractor tells you a full remodel needs no permit at all, treat that as a red flag. Permits protect you when you sell the house, and they mean someone besides the contractor looked at the plumbing and electrical.
+
+Permits take their own time, and that time sits outside our crew's days on site. It is the reason I will not promise you a start date until I know whether your project needs one.
+
+## What can stretch the schedule
+
+Most delays have the same few causes:
+
+- **What is behind the walls.** In older homes, from rowhouses in [Canton](/areas/canton) and [Hampden](/areas/hampden) to mid-century houses in [Catonsville](/areas/catonsville), we sometimes find water damage, a soft subfloor or old pipes once the tile comes off. I tell you this is possible up front, and I price any repair in writing before we do it.
+- **Moving plumbing.** Keeping the toilet, sink and shower where they are keeps the job shorter and cheaper.
+- **Late selections.** Tile that is not ordered when the walls are ready means a crew waiting.
+- **Special-order items.** Custom glass is measured after the tile is set, so plan for a gap there.
+- **Pre-1978 paint.** If your home was built before 1978, we use lead-safe practices on work that disturbs old paint. That is the right way to do it, and it is part of how we plan the days.
+
+## Living through it
+
+A few things help a family get through two or three weeks without their bathroom:
+
+- Tell us where you can shower. Many people use a second bathroom, a basement fixture or a relative's house for part of it.
+- Expect noise and dust during demolition. We protect floors and furniture and clean up, but it is still a work site.
+- Keep pets and children away from the room until we finish.
+
+If you are also considering a basement bathroom, look at our guide to [finishing a basement](/blog/finishing-basement-baltimore-guide), since the timeline and permits differ there.
+
+## Before you decide
+
+If you are deciding how far to go, read [which bathroom upgrades pay off when you sell](/blog/bathroom-remodel-roi-baltimore) first. And if your project is bigger than one room, our [whole-home remodeling](/services/home-remodeling) team can schedule the work together.
+
+I would rather give you an honest schedule than a short one. [Request your free bathroom estimate](/quote) or call me at 443-825-0206. I come out myself, look at the room, and tell you how long it will really take. We also currently take 10% off painting and drywall work.
+
+## Where we work
+
+We are based in Baltimore City and work across Baltimore County, Anne Arundel County and Howard County, including [Towson](/areas/towson), [Catonsville](/areas/catonsville), [Annapolis](/areas/annapolis), [Pikesville](/areas/pikesville), [Ellicott City](/areas/ellicott-city), [Glen Burnie](/areas/glen-burnie), [Parkville](/areas/parkville), [Columbia](/areas/columbia), [Dundalk](/areas/dundalk), [Canton](/areas/canton). See [all the areas we serve](/areas).
+
+## Keep reading
+
+- [How much does a bathroom remodel cost in Baltimore?](/blog/bathroom-remodel-cost-baltimore)
+- [Which bathroom upgrades pay off when you sell](/blog/bathroom-remodel-roi-baltimore)
+- [The cheaper quote cost him $3,000 more: how to choose a contractor](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore)
+- [How long does a kitchen remodel take?](/blog/how-long-does-kitchen-remodel-take-baltimore)
+- [How much does a kitchen remodel cost in Baltimore?](/blog/kitchen-remodel-cost-baltimore)
+- [Finishing a basement in Baltimore: the guide](/blog/finishing-basement-baltimore-guide)
+
+**Our services:** [Interior painting](/services/interior-painting), [Exterior painting](/services/exterior-painting), [Bathroom remodeling](/services/bathroom-remodeling), [Kitchen remodeling](/services/kitchen-remodeling), [Basement finishing](/services/basement-remodeling), [Flooring](/services/flooring), [Home remodeling](/services/home-remodeling), [Decks](/services/decks), [Siding](/services/siding). [See everything we do](/services).`,
+  },
+  {
     slug: "paint-or-replace-kitchen-cabinets-baltimore",
     title: "Painting Cabinets vs. Replacing Them: The Smart Way to Update a Baltimore Kitchen",
     description:
