@@ -5,6 +5,97 @@ import type { BlogPost } from "./blog-data";
 
 export const AUTO_POSTS: BlogPost[] = [
   {
+    slug: "cheapest-way-to-modernize-bathroom-baltimore",
+    title: "The Cheapest Way to Modernize a Bathroom Without a Full Remodel",
+    description:
+      "A bathroom refresh runs under $8,000 to about $10,000. Here is what to update first, what to skip, and when a full remodel is not worth the money.",
+    date: "2026-10-23",
+    image: "/images/work/primary-bath-gray-crew.jpg",
+    imageAlt: "Elite Finishes crew finishing a gray tiled primary bathroom in a Baltimore area home",
+    category: "Bathroom Remodeling",
+    relatedService: "Bathroom Remodeling",
+    relatedServiceSlug: "bathroom-remodeling",
+    content: `Most people who call me about a bathroom do not want a full remodel. They want the room to stop looking tired. They ask me, "Victor, what is the cheapest way to modernize it?" That is a good question, and I would rather answer it honestly than sell you a bigger job than you need.
+
+Here is how I think about it, and what I would do in my own house.
+
+## Start with what actually makes a bathroom look old
+
+A bathroom looks dated for a few reasons, and they are not equal. In the homes I walk, the biggest offenders are usually:
+
+- A worn vanity, a cloudy mirror and a builder-grade faucet
+- A floor of old vinyl, cracked ceramic or a pattern from another decade
+- Yellowed paint, old towel bars and a bad light fixture
+
+Notice what is not on the list: the layout, the plumbing, the walls. If those work, leave them alone. Moving plumbing is where the money goes, as I explain in our [bathroom cost guide](/blog/bathroom-remodel-cost-baltimore). Keep the toilet, sink and shower where they are, and you keep your budget.
+
+## What a refresh costs
+
+A refresh means paint, a new vanity and faucet, a mirror, lighting, hardware, and maybe a new floor. It runs under $8,000 to around $10,000. A full remodel on the same room runs $8,000 to $40,000 depending on how far you go. These are ranges, not quotes. The real number comes after I look at your bathroom.
+
+Here are the pieces, using the same ranges I use in every estimate:
+
+| Upgrade | Typical range |
+| --- | --- |
+| New vanity, faucet and mirror | $1,500 to $3,500 |
+| New tile floor | $1,500 to $4,000, depending on room size |
+| Paint, new hardware and a light fixture | $800 to $1,500 |
+| Retiling a shower surround | $3,000 to $8,000, depending on size and tile |
+
+You do not need every row. Pick the one or two that bother you most.
+
+## My order of priority
+
+If your budget is tight, this is the order I would follow.
+
+**1. Fix anything that does not work first.** Before you spend a dollar on looks, check ventilation, lighting and any sign of water damage. A bathroom with no exhaust fan will grow mold on your new paint. I wrote about that difference between outdated and broken in [which bathroom upgrades pay off when you sell](/blog/bathroom-remodel-roi-baltimore).
+
+**2. Replace the vanity, faucet and mirror.** This changes the room more than anything else for the money. Buyers and guests notice it immediately.
+
+**3. Paint, hardware and light fixture.** Our [interior painting](/services/interior-painting) crew uses Benjamin Moore or Sherwin-Williams, and this is the cheapest update with the biggest visible change. Bathrooms need paint that handles moisture, and prep matters. If you are choosing a color, my guide to [interior paint colors for Baltimore homes](/blog/how-to-choose-interior-paint-colors-baltimore) will help.
+
+**4. The floor.** A new floor in a neutral large-format porcelain or simple tile makes the whole room read as updated. If the rest of your house needs a new floor too, compare options in [hardwood vs. LVP flooring](/blog/hardwood-vs-lvp-flooring-baltimore) and look at our [flooring services](/services/flooring).
+
+**5. The shower, only if it is really bad.** A stained or cracked shower enclosure is the one thing buyers object to most. Retiling is real work, and waterproofing behind the tile is not a place to cut corners. I will not do it cheap, and you should not let anyone else.
+
+## What I would not spend money on
+
+- **Luxury fixtures.** Most people cannot tell a $200 faucet from a $2,000 one. Buy good quality, not luxury.
+- **Heated floors and showpiece tile in a hall bath.** Nice if you will enjoy it. Not a smart way to save money.
+- **Moving the toilet or the sink.** It opens floors and walls, and it can bring in permits and weeks of work. If you want to know how a bigger job is scheduled, read [how long a bathroom remodel takes and when you need a permit](/blog/how-long-does-bathroom-remodel-take-permit-baltimore).
+
+## When a refresh is not enough
+
+I will tell you straight when to stop patching. If the subfloor is soft, if the shower leaks, if the plumbing is failing, or if the layout truly does not work for your family, paint will not fix it. In a 1920s rowhouse in [Canton](/areas/canton) or [Hampden](/areas/hampden), we sometimes find water damage once the tile comes off. In older homes in [Catonsville](/areas/catonsville) and [Towson](/areas/towson), the same is true of old pipes.
+
+In those cases a full remodel is the honest answer, and I will say so. But in many Baltimore homes, a targeted refresh is the better use of your money than a full gut. If you are comparing both paths, [our bathroom remodeling team](/services/bathroom-remodeling) can price each one so you see the difference side by side.
+
+## Protect yourself with a written scope
+
+Whatever size job you choose, get it in writing. A refresh quote should list the vanity, the faucet, the paint, the floor and the cleanup. Compare quotes item by item. I told the story of [a cheaper quote that cost a homeowner $3,000 more](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore), and it started with a scope that was missing pieces.
+
+Here is what we do. I come out myself, we walk the room, and you get a free written estimate. We cover your floors and furniture, and we clean up when we leave. On homes built before 1978, we use lead-safe practices on work that disturbs old paint. We are licensed and insured, MHIC 153498.
+
+## Get the room done, not the biggest bill
+
+Tell me what bothers you about your bathroom and what you want to spend. I will tell you what to do, and what to leave alone. [Request your free bathroom estimate](/quote) or call me at 443-825-0206. If you are updating more than one room, our [whole-home remodeling](/services/home-remodeling) team can plan it together. We currently take 10% off painting and drywall work.
+
+## Where we work
+
+We are based in Baltimore City and work across Baltimore County, Anne Arundel County and Howard County, including [Towson](/areas/towson), [Catonsville](/areas/catonsville), [Annapolis](/areas/annapolis), [Pikesville](/areas/pikesville), [Ellicott City](/areas/ellicott-city), [Glen Burnie](/areas/glen-burnie), [Parkville](/areas/parkville), [Columbia](/areas/columbia), [Dundalk](/areas/dundalk), [Canton](/areas/canton). See [all the areas we serve](/areas).
+
+## Keep reading
+
+- [How much does a bathroom remodel cost in Baltimore?](/blog/bathroom-remodel-cost-baltimore)
+- [Which bathroom upgrades pay off when you sell](/blog/bathroom-remodel-roi-baltimore)
+- [How long does a bathroom remodel take, and do you need a permit?](/blog/how-long-does-bathroom-remodel-take-permit-baltimore)
+- [The cheaper quote cost him $3,000 more: how to choose a contractor](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore)
+- [How much does it cost to paint a house in Baltimore?](/blog/cost-to-paint-a-house-baltimore)
+- [How to choose interior paint colors for Baltimore homes](/blog/how-to-choose-interior-paint-colors-baltimore)
+
+**Our services:** [Interior painting](/services/interior-painting), [Exterior painting](/services/exterior-painting), [Bathroom remodeling](/services/bathroom-remodeling), [Kitchen remodeling](/services/kitchen-remodeling), [Basement finishing](/services/basement-remodeling), [Flooring](/services/flooring), [Home remodeling](/services/home-remodeling), [Decks](/services/decks), [Siding](/services/siding). [See everything we do](/services).`,
+  },
+  {
     slug: "how-long-does-bathroom-remodel-take-permit-baltimore",
     title: "How Long Does a Bathroom Remodel Take, and Do You Need a Permit in Baltimore?",
     description:
