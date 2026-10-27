@@ -5,6 +5,102 @@ import type { BlogPost } from "./blog-data";
 
 export const AUTO_POSTS: BlogPost[] = [
   {
+    slug: "what-painting-quote-should-include-prep-baltimore",
+    title: "What Your Painting Quote Should Include (the Prep Most Painters Skip)",
+    description:
+      "Good paint fails on bad prep. Here is what a painting quote should list in writing: washing, scraping, patching, priming and cleanup, and what to ask before you sign.",
+    date: "2026-10-27",
+    image: "/images/work/interior-painter-brushing-wall.jpg",
+    imageAlt: "Elite Finishes painter brushing a wall during interior painting in a Baltimore area home",
+    category: "Painting",
+    relatedService: "Interior Painting",
+    relatedServiceSlug: "interior-painting",
+    content: `When I read a painting quote from another company, I do not look at the total first. I look at what is missing. The paint is the cheap part of a paint job. The time is in the prep, and the prep is what most painters leave out because it is the part you cannot see when the job is done.
+
+A paint job that skips prep looks fine for a few months. Then it peels, bubbles or shows every crack again. So before you compare prices, compare what each quote actually promises to do.
+
+## Why prep decides how long paint lasts
+
+Paint does not hold a wall together. It sticks to the surface under it. If that surface is dirty, chalky, loose or damp, the new paint sticks to the problem and comes off with it. I explained how long a good exterior job should hold in [how long exterior paint lasts in Maryland](/blog/how-long-does-exterior-paint-last-maryland), and the answer always comes back to the work done before the first coat.
+
+Here is what I want to see written on every quote, inside and out.
+
+## Exterior prep: what the quote should say
+
+For the outside of a house, the list is longer. Our sales sheet puts [exterior painting](/services/exterior-painting) at $3,000 to $15,000 including prep and power wash, and I stand by the idea that prep is inside that number, not an extra. Ask whether the quote includes each of these:
+
+1. **Power washing.** Do you need to power wash before painting? Yes. Dirt, mildew and chalk on old siding stop paint from bonding. The house has to be washed and then given time to dry before anyone opens a paint can.
+2. **Scraping and sanding.** Loose and peeling paint comes off. Painting over it only hides it for one season.
+3. **Repairs.** Soft or rotted trim, split boards and gaps need to be fixed or replaced first. If your siding needs more than paint, our [siding team](/services/siding) can tell you.
+4. **Caulking.** Joints around windows, doors and trim get sealed so water stays out.
+5. **Priming.** Bare wood and repaired spots get primer. Paint alone does not seal them.
+6. **Two coats of quality paint.** Benjamin Moore or Sherwin-Williams, named on the quote, not "paint" with no brand.
+7. **Protection and cleanup.** Plants, walkways, windows and furniture covered, and the yard left clean.
+
+A brick or stucco house has its own prep, from cleaning to masonry repair. If the brick itself is damaged, that belongs with a [concrete and masonry](/services/concrete-and-masonry) contractor before paint goes on.
+
+## Interior prep: where the quote gets thin
+
+Inside, the work is quieter, but the same rule applies. A quote for [interior painting](/services/interior-painting) should say:
+
+- **Moving and covering furniture and floors.** Ours are protected, and we clean up when we leave each day.
+- **Patching nail holes, dents and cracks.** Then sanding them flat so the repair does not show.
+- **Priming repairs and stains.** Water stains and patches bleed through a single coat of paint.
+- **Caulking trim and corners.** Small gaps are what make a room look sloppy.
+- **Cutting in clean lines.** Ceilings, trim and walls, not just the middle of the wall.
+- **How many coats and which rooms.** Ceilings, closets, trim and doors should be listed or marked as not included.
+
+Older Baltimore homes need more of this. Plaster walls in rowhouses in [Canton](/areas/canton), [Federal Hill](/areas/federal-hill) and [Hampden](/areas/hampden) have hairline cracks, and nobody should paint over them without repairing them first. If drywall repair is part of the job, it should be on the quote as a line, and you can see [what else we do](/services/home-remodeling) when a room needs more than paint.
+
+## The lead question on homes built before 1978
+
+If your home was built before 1978, the old paint may contain lead. Scraping and sanding it is not a job for a painter with a dry scraper and a fan. We use lead-safe practices on any work that disturbs old paint in a pre-1978 home. That means containment, wet methods and a proper cleanup.
+
+Ask every painter you get a quote from: "How do you handle old paint in a house this age?" If the answer is a shrug, keep looking. This applies to a lot of the older housing in [Catonsville](/areas/catonsville), [Ellicott City](/areas/ellicott-city) and [Dundalk](/areas/dundalk), and it is a family safety matter, not a detail.
+
+## A quick comparison
+
+| Item | Thin quote | Complete quote |
+| --- | --- | --- |
+| Washing (exterior) | Not mentioned | Power wash and dry time |
+| Surface repair | "Minor prep" | Scrape, sand, patch and caulk, listed |
+| Primer | Not mentioned | Primer on bare and repaired areas |
+| Paint | "Paint" | Brand, product line and number of coats |
+| Old homes | Silent | Lead-safe practices for pre-1978 houses |
+| Cleanup | Not mentioned | Floors, furniture and yard protected and cleaned |
+
+If a quote looks like the left column, the price is low for a reason.
+
+## The cheaper quote story
+
+I have seen what a missing scope costs. I wrote about a homeowner whose lower quote ended up costing about $3,000 more once the missing pieces had to be paid for. You can read it in [the cheaper quote that cost more](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore). A quote is a promise, and a short quote promises less. For a wider look at pricing, see [what it costs to paint a house in Baltimore](/blog/cost-to-paint-a-house-baltimore).
+
+## What I do on an estimate
+
+I come out myself. I walk the outside and the inside, look at the siding, the trim and the walls, and tell you what is needed. You get a free written estimate that lists the prep, the paint, the coats and the cleanup. We are licensed and insured, MHIC 153498, and we handle permits when a job needs one.
+
+If you are picking colors at the same time, my guide to [choosing interior paint colors](/blog/how-to-choose-interior-paint-colors-baltimore) will save you a few samples. And if you are thinking of painting before a sale, wait until we talk, because the prep list changes what is worth doing.
+
+## Get a quote you can compare
+
+Send me what you have from another painter and I will tell you what is missing, even if you do not hire us. [Request your free painting estimate](/quote) or call me at 443-825-0206. We currently take 10% off painting and drywall work.
+
+## Where we work
+
+We are based in Baltimore City and work across Baltimore County, Anne Arundel County and Howard County, including [Towson](/areas/towson), [Catonsville](/areas/catonsville), [Annapolis](/areas/annapolis), [Pikesville](/areas/pikesville), [Ellicott City](/areas/ellicott-city), [Glen Burnie](/areas/glen-burnie), [Parkville](/areas/parkville), [Columbia](/areas/columbia), [Dundalk](/areas/dundalk), [Canton](/areas/canton). See [all the areas we serve](/areas).
+
+## Keep reading
+
+- [How much does it cost to paint a house in Baltimore?](/blog/cost-to-paint-a-house-baltimore)
+- [How long does exterior paint last in Maryland?](/blog/how-long-does-exterior-paint-last-maryland)
+- [How to choose interior paint colors for Baltimore homes](/blog/how-to-choose-interior-paint-colors-baltimore)
+- [The cheaper quote cost him $3,000 more: how to choose a contractor](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore)
+- [How much does a kitchen remodel cost in Baltimore?](/blog/kitchen-remodel-cost-baltimore)
+- [How much does a bathroom remodel cost in Baltimore?](/blog/bathroom-remodel-cost-baltimore)
+
+**Our services:** [Interior painting](/services/interior-painting), [Exterior painting](/services/exterior-painting), [Bathroom remodeling](/services/bathroom-remodeling), [Kitchen remodeling](/services/kitchen-remodeling), [Basement finishing](/services/basement-remodeling), [Flooring](/services/flooring), [Home remodeling](/services/home-remodeling), [Decks](/services/decks), [Siding](/services/siding). [See everything we do](/services).`,
+  },
+  {
     slug: "cheapest-way-to-modernize-bathroom-baltimore",
     title: "The Cheapest Way to Modernize a Bathroom Without a Full Remodel",
     description:
