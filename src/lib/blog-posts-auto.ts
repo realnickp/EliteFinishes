@@ -5,6 +5,95 @@ import type { BlogPost } from "./blog-data";
 
 export const AUTO_POSTS: BlogPost[] = [
   {
+    slug: "should-you-paint-before-selling-home-baltimore",
+    title: "Should You Paint Before Selling Your Baltimore Home?",
+    description:
+      "Is it worth painting before you sell? Usually yes, for the right rooms. Here is what to paint, what to skip, and what it costs in the Baltimore area.",
+    date: "2026-10-30",
+    image: "/images/work/living-room-cream-walls.jpg",
+    imageAlt: "Freshly painted cream living room walls in a Baltimore area home finished by Elite Finishes",
+    category: "Painting",
+    relatedService: "Interior Painting",
+    relatedServiceSlug: "interior-painting",
+    content: `Every few weeks a homeowner calls me and says, "Victor, we're about to list the house. Is it worth painting first?" My answer is almost always the same: yes, but paint the right things, and do it before the photographer shows up.
+
+I will not throw numbers at you about how much value paint adds, because I do not have a number I can stand behind and I do not trust the ones I see online. What I can tell you is what I see from the inside of Baltimore houses, and what I would do if it were my own family's home.
+
+## Why paint is the first thing to fix before you list
+
+Buyers decide quickly. They walk in, and the walls tell them how the house has been kept. Scuffs by the stairs, a dark accent wall from ten years ago, nail holes from every picture frame: a buyer reads that as a house with other problems too, even when the roof and the furnace are fine.
+
+Fresh paint costs far less than a kitchen or a bathroom, and it changes how every room photographs and feels. Of all the work you can do before listing, it is the cheapest per room. If you are weighing bigger projects, I wrote about [which bathroom upgrades pay off when you sell](/blog/bathroom-remodel-roi-baltimore), and about why a full kitchen remodel rarely returns its cost in [the signs your kitchen needs a remodel](/blog/signs-baltimore-home-needs-kitchen-remodel).
+
+## What to paint first
+
+If the budget is tight, work in this order:
+
+1. **The main living areas.** Living room, dining room, entry and hallway. These are the rooms buyers see first and photos show most.
+2. **The kitchen and bathrooms.** Walls and trim here take the most wear. Fresh paint does a lot in a [bathroom](/services/bathroom-remodeling) without touching the fixtures.
+3. **Bedrooms with bold colors.** A deep red or dark navy shrinks a room in a buyer's eyes. A soft neutral lets them picture their own furniture.
+4. **Ceilings with water stains or yellowing.** A stained ceiling makes people ask about the roof, whether or not the leak was ever real.
+5. **Front door and exterior trim.** First impressions start at the curb. A tired front door or peeling trim sets the tone before anyone steps inside.
+
+## What to skip
+
+Not every wall needs paint. If a room is in good shape and the color is already a clean neutral, leave it. I would rather tell you to save the money than paint a room that does not need it.
+
+Also skip trying to match the latest trend color. You are not painting for your taste anymore. You are painting for the widest group of buyers, which means warm whites, soft grays and light creams. I covered how to pick a color that works in [how to choose interior paint colors in Baltimore](/blog/how-to-choose-interior-paint-colors-baltimore).
+
+## What it costs in the Baltimore area
+
+Here are the ranges we use for the jobs we price:
+
+| Project | Typical range |
+| --- | --- |
+| Interior painting (a few rooms up to a whole house) | $1,500 to $8,000 |
+| Whole interior repaint, 2,500 to 3,500 sq ft home | $4,500 to $9,000 |
+| Exterior painting (with power washing, caulking, two coats) | $3,000 to $15,000 |
+| Painting a bathroom, with new hardware and light fixture | $800 to $1,500 |
+
+Where you land depends on how many rooms, how much prep the walls need, whether ceilings, trim and doors are included, and how dark the current color is. Going from a dark color to a light one takes more coats. For a full breakdown, read [how much it costs to paint a house in Baltimore](/blog/cost-to-paint-a-house-baltimore).
+
+You will also hear that you can save money by painting it yourself. Sometimes that is fair for one small room. But a rushed paint job with rough edges and missed patches looks worse to a buyer than old paint, because it looks like a shortcut. If you are going to hire someone, read [what your painting quote should include](/blog/what-painting-quote-should-include-prep-baltimore) so you can compare quotes fairly.
+
+## Do not forget the prep
+
+Paint over cracks and holes and the cracks show through. Before the first coat, the walls should be patched, sanded and primed where needed, and the trim caulked. This matters most in older Baltimore homes. Plaster walls in rowhouses in [Canton](/areas/canton), [Federal Hill](/areas/federal-hill) and [Hampden](/areas/hampden) have hairline cracks that come back through thin paint. Colonials and split-levels in [Towson](/areas/towson) and [Catonsville](/areas/catonsville) often have a decade of nail holes and scuffs on the walls.
+
+If your home was built before 1978, the old paint may contain lead. We use lead-safe practices whenever we disturb it, and you should ask any painter you interview how they handle it. A home inspector may raise the question for the buyer anyway, so it is better that your painter already did it the right way.
+
+## Timing matters when you are selling
+
+The best time to paint is before the house is listed, not after you get an offer. Once the photos are taken, you cannot undo the first impression. Painting also takes less time than people think. A few rooms usually go quickly, and we cover your floors and furniture and clean up when we leave each day, so you can keep living in the house while it is on the market.
+
+If a buyer's inspection turns up a list of repairs, drywall patches and touch-ups tend to be on it. Handling those before you list helps you avoid a negotiation over small things. Right now we are offering 10% off painting and drywall work, which helps on a listing budget.
+
+## What I would do
+
+If I were selling a house in [Parkville](/areas/parkville) or [Dundalk](/areas/dundalk) next month, I would walk through it with a notebook, picking out every scuffed wall, every dark color and every stained ceiling. Then I would paint those and leave the rest. If the front of the house needs help, I would look at the trim and the door, and for a bigger problem I would call someone to look at [exterior painting](/services/exterior-painting) or [siding](/services/siding).
+
+That is the whole plan. It is not complicated, and it does not take a big budget. It takes someone honest to tell you which rooms matter.
+
+## Get a straight answer for your house
+
+I will come out, walk the house with you, and tell you what is worth painting before you list and what is not. The estimate is free and in writing. [Request your free estimate](/quote) or call me at 443-825-0206. If you are also thinking about [interior painting](/services/interior-painting) for your own home after the move, we do that too. And if you are comparing quotes, read [the cheaper quote that cost him $3,000 more](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore) first.
+
+## Where we work
+
+We are based in Baltimore City and work across Baltimore County, Anne Arundel County and Howard County, including [Baltimore](/areas/baltimore), [Towson](/areas/towson), [Catonsville](/areas/catonsville), [Ellicott City](/areas/ellicott-city), [Columbia](/areas/columbia), [Glen Burnie](/areas/glen-burnie), [Annapolis](/areas/annapolis), [Parkville](/areas/parkville), [Pikesville](/areas/pikesville), [Dundalk](/areas/dundalk). See [all the areas we serve](/areas).
+
+## Keep reading
+
+- [How much does it cost to paint a house in Baltimore?](/blog/cost-to-paint-a-house-baltimore)
+- [What your painting quote should include](/blog/what-painting-quote-should-include-prep-baltimore)
+- [How to choose interior paint colors for Baltimore homes](/blog/how-to-choose-interior-paint-colors-baltimore)
+- [Bathroom remodel ROI: which upgrades pay off at resale](/blog/bathroom-remodel-roi-baltimore)
+- [The cheaper quote cost him $3,000 more: how to choose a contractor](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore)
+- [How long does exterior paint last in Maryland?](/blog/how-long-does-exterior-paint-last-maryland)
+
+**Our services:** [Interior painting](/services/interior-painting), [Exterior painting](/services/exterior-painting), [Bathroom remodeling](/services/bathroom-remodeling), [Kitchen remodeling](/services/kitchen-remodeling), [Basement finishing](/services/basement-remodeling), [Flooring](/services/flooring), [Home remodeling](/services/home-remodeling), [Decks](/services/decks), [Siding](/services/siding). [See everything we do](/services).`,
+  },
+  {
     slug: "what-painting-quote-should-include-prep-baltimore",
     title: "What Your Painting Quote Should Include (the Prep Most Painters Skip)",
     description:
