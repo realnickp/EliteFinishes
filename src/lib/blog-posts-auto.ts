@@ -5,6 +5,93 @@ import type { BlogPost } from "./blog-data";
 
 export const AUTO_POSTS: BlogPost[] = [
   {
+    slug: "painting-brick-rowhouse-baltimore",
+    title: "Painting a Brick Rowhouse in Baltimore: Smart Move or Mistake?",
+    description:
+      "Is painting a brick house a good idea? Sometimes, but it is hard to undo. Here is when it makes sense, when it does not, and what to check first in Baltimore.",
+    date: "2026-11-03",
+    image: "/images/work/exterior-brick-rowhouse-dusk.jpg",
+    imageAlt: "Brick rowhouse exterior at dusk in Baltimore, a home type Elite Finishes paints and repairs",
+    category: "Painting",
+    relatedService: "Exterior Painting",
+    relatedServiceSlug: "exterior-painting",
+    content: `People ask me about this more than almost any other exterior question: "Victor, the brick on my rowhouse looks tired. Should I just paint it?" I never answer yes or no on the phone. I tell them painting brick is easy to do and hard to undo, so we should look at the wall first.
+
+Baltimore is a brick city. Whole blocks in [Canton](/areas/canton), [Federal Hill](/areas/federal-hill) and [Hampden](/areas/hampden) are brick rowhouses, and the county has plenty of brick colonials and split-levels too. Here is how I think about it, as someone who looks at these walls every week.
+
+## Painted brick is a commitment
+
+Once brick is painted, it stays painted. The paint soaks into the surface. You can strip it with chemicals or blasting, but both are slow, messy and can damage the brick. Most owners who paint brick end up repainting it every so often for good.
+
+That is not a reason to say no. It is a reason to be sure. If you love the red or the old character of your brick, leave it. If the brick is already painted, or it is stained, patched with mismatched repairs, or ugly from years of bad work, paint can be the right fix.
+
+## First, check with CHAP if you are in a historic district
+
+Many Baltimore neighborhoods are in historic districts. If yours is, exterior changes usually need approval from the city's historic preservation commission, known as CHAP, before you start. That can include painting.
+
+I will not tell you the rules, because I am not the one who sets them and they can change. Call CHAP first and ask whether your address is in a district and whether your project needs approval. It is a short call, and it can save you from a violation or from repainting. If you are not sure whether your block is in a district, check before you buy a single can of paint.
+
+## When painting brick makes sense
+
+- **The brick is already painted.** Repainting is normal maintenance. The question is just doing it right.
+- **The surface is mismatched.** Old patches, different brick colors from past repairs, or stains that will not clean.
+- **You want a clean, even look** that helps the house hold its own on the block, and you are outside a district or have approval.
+- **The brick is sound.** Solid mortar, no crumbling faces, no active water coming through.
+
+## When I would tell you to wait or skip it
+
+- **The walls are damp.** Brick and mortar take on water. If you see white powder on the surface, crumbling mortar or bricks that flake, fix the cause first. Paint will not hold over moisture and can hide a problem that keeps growing.
+- **The mortar is failing.** Loose joints need repointing before paint. A [concrete and masonry](/services/concrete-and-masonry) contractor handles that, and it should be done before any coating goes on.
+- **The brick is in good shape and you like it.** Healthy, unpainted brick lasts a very long time with little care. Painting it adds a maintenance job you did not have.
+- **You are in a historic district and have no approval.** Stop there.
+
+## How a brick job should be done
+
+I wrote about [what a painting quote should include](/blog/what-painting-quote-should-include-prep-baltimore), and brick follows the same rule: the prep is the job. For brick, ask that the quote spell out:
+
+1. **Cleaning.** Washing off dirt, mildew and loose paint, then letting the wall dry fully.
+2. **Repairs.** Cracked or missing mortar repaired and any damaged brick dealt with.
+3. **Primer.** Brick is porous and drinks paint, so it needs the right primer for masonry.
+4. **The right coating.** Paint made for masonry, named on the quote by brand. We use Benjamin Moore and Sherwin-Williams.
+5. **Caulking and trim.** Joints around windows, doors and the cornice sealed, and trim painted to match.
+6. **Protection and cleanup.** Windows, plants, steps and sidewalk covered, and everything left clean.
+
+Ask the contractor how they handle moisture. If the answer is "we just spray it," keep looking.
+
+## Older homes and lead paint
+
+If your house was built before 1978, the trim, cornice, windows and doors around the brick may carry old lead paint. We use lead-safe practices on any work that disturbs it, with containment and a careful cleanup. It matters in older rowhouses in [Baltimore City](/areas/baltimore), and in older colonials in [Towson](/areas/towson) and [Catonsville](/areas/catonsville) too. Ask every painter how they handle it. It is a safety matter for your family.
+
+## What I would do
+
+If it were my own rowhouse, I would walk the front and back with a flashlight, looking at the mortar and any damp spots. I would call CHAP if there was any chance of a district. If the brick were sound and handsome, I would clean it and leave it, and spend my money on the trim, the door and the cornice, where paint does a lot more for the look. I would paint the brick only if it were already painted or beyond saving by cleaning.
+
+That is not the answer people expect from a painter. But I would rather you keep the brick than regret the paint. If you are also thinking about the wood and trim, [exterior painting](/services/exterior-painting) is where I would start, and if the siding or cornice needs more, we also do [siding](/services/siding) and [home remodeling](/services/home-remodeling).
+
+## What it costs
+
+I will not guess at a number without seeing the wall. Brick jobs vary with the size of the house, the condition of the mortar and how much prep it needs. For a general idea of how exterior jobs are priced, read [how much it costs to paint a house in Baltimore](/blog/cost-to-paint-a-house-baltimore). I will come out and give you a written price, and I will tell you if the answer is to leave the brick alone. If you are comparing quotes, [the cheaper quote that cost him $3,000 more](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore) is worth five minutes before you sign anything. We are also offering 10% off painting and drywall work right now.
+
+## Get it looked at
+
+Estimates are free and in writing, and I come to the house myself. [Request your free estimate](/quote) or call me at 443-825-0206. I would rather you ask the question now than strip paint off brick later. For the timing, [how long exterior paint lasts in Maryland](/blog/how-long-does-exterior-paint-last-maryland) explains what to expect from a good job, and [should you paint before selling](/blog/should-you-paint-before-selling-home-baltimore) covers curb appeal if you are listing. For inside the house, we handle [interior painting](/services/interior-painting) as well.
+
+## Where we work
+
+We are based in Baltimore City and work across Baltimore County, Anne Arundel County and Howard County, including [Baltimore](/areas/baltimore), [Towson](/areas/towson), [Catonsville](/areas/catonsville), [Ellicott City](/areas/ellicott-city), [Columbia](/areas/columbia), [Glen Burnie](/areas/glen-burnie), [Annapolis](/areas/annapolis), [Parkville](/areas/parkville), [Pikesville](/areas/pikesville), [Dundalk](/areas/dundalk). See [all the areas we serve](/areas).
+
+## Keep reading
+
+- [How much does it cost to paint a house in Baltimore?](/blog/cost-to-paint-a-house-baltimore)
+- [What your painting quote should include](/blog/what-painting-quote-should-include-prep-baltimore)
+- [How long does exterior paint last in Maryland?](/blog/how-long-does-exterior-paint-last-maryland)
+- [Should you paint before selling your Baltimore home?](/blog/should-you-paint-before-selling-home-baltimore)
+- [How to choose interior paint colors for Baltimore homes](/blog/how-to-choose-interior-paint-colors-baltimore)
+- [The cheaper quote cost him $3,000 more: how to choose a contractor](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore)
+
+**Our services:** [Interior painting](/services/interior-painting), [Exterior painting](/services/exterior-painting), [Concrete and masonry](/services/concrete-and-masonry), [Bathroom remodeling](/services/bathroom-remodeling), [Kitchen remodeling](/services/kitchen-remodeling), [Basement finishing](/services/basement-remodeling), [Flooring](/services/flooring), [Home remodeling](/services/home-remodeling), [Decks](/services/decks), [Siding](/services/siding). [See everything we do](/services).`,
+  },
+  {
     slug: "should-you-paint-before-selling-home-baltimore",
     title: "Should You Paint Before Selling Your Baltimore Home?",
     description:
