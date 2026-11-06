@@ -5,6 +5,104 @@ import type { BlogPost } from "./blog-data";
 
 export const AUTO_POSTS: BlogPost[] = [
   {
+    slug: "how-much-does-it-cost-to-finish-basement-baltimore",
+    title: "How Much Does It Cost to Finish a Basement in Baltimore?",
+    description:
+      "Finishing a Baltimore basement runs $25 to $60 per square foot, or $20,000 to $80,000 overall. Here is what drives the price and what to put in the quote.",
+    date: "2026-11-06",
+    image: "/images/work/wet-bar-hallway.jpg",
+    imageAlt: "Wet bar and finished hallway built by Elite Finishes in a Baltimore home",
+    category: "Basement Remodeling",
+    relatedService: "Basement Remodeling",
+    relatedServiceSlug: "basement-remodeling",
+    content: `Every week someone calls and asks me the same thing: "Victor, what does it cost to finish my basement?" I understand why. It is the biggest unfinished space in the house, and nobody wants to guess.
+
+Here is the straight answer I give at the kitchen table, and what moves the number up or down. I have never believed in hiding the price until the end.
+
+## The short answer
+
+Finished living space in a Baltimore basement runs from $20,000 to $80,000. That is a wide range, and I will explain why. By the square foot, most basement finishing in our area lands between $25 and $60 per square foot for a complete space: framing, insulation, drywall, electrical coordination, flooring and paint. In our [Baltimore basement finishing guide](/blog/finishing-basement-baltimore-guide), a straightforward mid-level finish was $35 to $55 per square foot.
+
+Here is what that looks like on real sizes:
+
+| Basement size | At $25 to $60 per sq ft |
+|---|---|
+| 600 sq ft | $15,000 to $36,000 |
+| 700 sq ft | $17,500 to $42,000 |
+
+For a 600 square foot basement with a plain layout and LVP flooring, the guide puts a mid-level finish at $21,000 to $33,000. The top of the $20,000 to $80,000 range is for large basements with a bathroom, a bar and extra work. Compare that to an addition above grade, which often costs $150 or more per square foot. A basement is the most cost-effective way to add space to a house.
+
+## What pushes the price up
+
+Square footage is only the start. These are the items that change the number most:
+
+- **Egress window.** A legal bedroom needs one. Our guide puts it at $4,000 to $8,000 per window, with the well.
+- **A full bathroom** that is not roughed in yet: $12,000 to $20,000.
+- **A wet bar:** $5,000 to $12,000.
+- **Moisture work.** Grading, gutter extensions, drainage or a sump pump all cost extra, and they come first.
+- **HVAC.** Heat and cooling for the new space, from extending ductwork or adding a mini-split.
+- **Low ceilings and obstructions.** Older rowhouses sometimes have 6.5 to 7 feet, and beams and ducts have to be boxed in properly.
+- **Finish level.** LVP, engineered hardwood or tile, and the trim and doors you choose.
+
+On the sales sheet I write it simply: egress, moisture control and HVAC add significantly. I mean it. Two basements of the same size can be $20,000 apart.
+
+## Moisture comes before anything else
+
+I will say this to every homeowner in [Baltimore](/areas/baltimore), [Dundalk](/areas/dundalk) or [Catonsville](/areas/catonsville). If your basement is damp, fix that first. White powder on the foundation, a musty smell after rain, or soft wood near the concrete all mean water is getting in.
+
+Framing over a wet wall and closing it with drywall grows mold. It is not a question of if. A contractor who quotes you a finished basement without looking at moisture is guessing, and you will pay for it later. We look at it before we frame a single wall.
+
+## Permits, code and timing
+
+Finishing a basement needs permits in Maryland when there is framing, electrical or plumbing. We handle the permit applications and the inspections. Code asks for a minimum ceiling height of about 7 feet in finished space, smoke and carbon monoxide detectors, current electrical work, and heat and cooling. For a bedroom, the egress window is required.
+
+On timing, a standard 600 to 800 square foot basement finish takes about 6 to 10 weeks from start to final inspection, with permitting adding 2 to 4 weeks before work begins. You usually do not have to move out. There is dust and noise, but the work stays mostly downstairs. We protect your floors and furniture and clean up.
+
+## What a good basement quote spells out
+
+A price on a napkin is not a quote. Ask that the written estimate name:
+
+1. **The moisture plan.** What was checked, and what is fixed first.
+2. **The scope by line.** Framing, insulation, drywall, electrical, flooring, trim, paint.
+3. **Who does the electrical and plumbing.** Licensed trades, with permits pulled.
+4. **Egress and bathroom,** priced separately if you want them.
+5. **The flooring product and brand,** rated for below grade.
+6. **Cleanup and protection** of the rest of your home.
+
+I wrote about the same idea for painting in [what your painting quote should include](/blog/what-painting-quote-should-include-prep-baltimore), and it applies here too. A lower number that leaves out moisture or permits is not a lower number. I tell the real story in [the cheaper quote that cost him $3,000 more](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore). That is a good five minutes before you sign.
+
+## The flooring choice
+
+Flooring is one of the choices that moves the budget in a basement. LVP and engineered hardwood handle basement conditions well, and solid hardwood and tile are options in a dry basement. Our post on [hardwood vs. LVP flooring](/blog/hardwood-vs-lvp-flooring-baltimore) walks through the tradeoffs, and our [flooring](/services/flooring) team can price the options for your room.
+
+## Is it worth it?
+
+A finished basement adds a family room, a home office, a play space for the kids or a guest room under the same roof. That is a big deal for a family. Finished below-grade space is valued lower per square foot than the floors above it, so I would not tell you it pays back dollar for dollar. But a basement with a legal bedroom opens your home to more buyers. For the same reason, think about it next to a [bathroom remodel](/services/bathroom-remodeling) or [kitchen remodel](/services/kitchen-remodeling) if you are choosing where to spend. I covered that math in [bathroom remodel ROI](/blog/bathroom-remodel-roi-baltimore).
+
+## What I would do
+
+If this were my family's basement, I would first get the moisture checked, then decide whether I want a bedroom, because that sets the egress window. Then I would price a simple, clean finish before adding a bar or bath. Good drywall and [interior painting](/services/interior-painting) make a plain basement feel like part of the house. We are offering 10% off painting and drywall work right now, and it applies to that part of the job.
+
+## Get a real number
+
+Every basement is different, so I come out myself. You get a free written estimate with the scope and price spelled out. [Request your free estimate](/quote) or call me at 443-825-0206. You can also read about our full [basement remodeling](/services/basement-remodeling) work, and our [home remodeling](/services/home-remodeling) team handles the rest of the house under one contract. If you are weighing financing, see [our financing options](/financing).
+
+## Where we work
+
+We are based in Baltimore City and work across Baltimore County, Anne Arundel County and Howard County, including [Baltimore](/areas/baltimore), [Towson](/areas/towson), [Catonsville](/areas/catonsville), [Ellicott City](/areas/ellicott-city), [Columbia](/areas/columbia), [Glen Burnie](/areas/glen-burnie), [Annapolis](/areas/annapolis), [Parkville](/areas/parkville), [Pikesville](/areas/pikesville), [Dundalk](/areas/dundalk). See [all the areas we serve](/areas).
+
+## Keep reading
+
+- [Finishing your Baltimore basement: what you need to know before you start](/blog/finishing-basement-baltimore-guide)
+- [Hardwood vs. LVP flooring in Baltimore homes](/blog/hardwood-vs-lvp-flooring-baltimore)
+- [Bathroom remodel ROI in Baltimore: which upgrades pay off](/blog/bathroom-remodel-roi-baltimore)
+- [How much does a kitchen remodel cost in Baltimore?](/blog/kitchen-remodel-cost-baltimore)
+- [What your painting quote should include](/blog/what-painting-quote-should-include-prep-baltimore)
+- [The cheaper quote cost him $3,000 more: how to choose a contractor](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore)
+
+**Our services:** [Interior painting](/services/interior-painting), [Exterior painting](/services/exterior-painting), [Bathroom remodeling](/services/bathroom-remodeling), [Kitchen remodeling](/services/kitchen-remodeling), [Basement finishing](/services/basement-remodeling), [Flooring](/services/flooring), [Home remodeling](/services/home-remodeling), [Decks](/services/decks), [Siding](/services/siding). [See everything we do](/services).`,
+  },
+  {
     slug: "painting-brick-rowhouse-baltimore",
     title: "Painting a Brick Rowhouse in Baltimore: Smart Move or Mistake?",
     description:
