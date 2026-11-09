@@ -107,6 +107,17 @@ export function renderLandingHtml(config: LandingConfig, variantKey?: string): s
     )
     .join("");
 
+  // Real before and after, only on ad groups that set one (e.g. /lp/painting/cabinets).
+  const ba = v?.beforeAfter;
+  const beforeAfter = ba
+    ? `<section class="sec tint"><div class="wrap"><h2>${esc(ba.heading)}</h2><p class="muted">${esc(ba.subheading)}</p><ol class="ba">${ba.steps
+        .map(
+          (s, i) =>
+            `<li><figure><div class="ba-pic">${lazyImg(s.src, s.alt, [640, 828], "(min-width:768px) 33vw, 100vw", 828, 621)}<span class="ba-tag${i === ba.steps.length - 1 ? " ba-after" : ""}">${esc(s.label)}</span></div><figcaption>${esc(s.caption)}</figcaption></figure></li>`,
+        )
+        .join("")}</ol></div></section>`
+    : "";
+
   const script = buildClientScript({
     slug: config.slug,
     serviceTitle: config.serviceTitle,
@@ -137,6 +148,7 @@ export function renderLandingHtml(config: LandingConfig, variantKey?: string): s
 <li><b>Free written estimates</b><span class="muted">No cost, no obligation</span></li>
 <li><b>Fast response</b><span class="muted">Within 1 business day</span></li></ul>
 ${reviews}
+${beforeAfter}
 <section class="sec"><div class="wrap"><h2>Recent ${esc(SITE.name)} projects</h2><p class="muted">Real jobs by our crew, not stock photos.</p><div class="photos">${photos}</div></div></section>
 <section class="sec tint"><div class="wrap"><h2>A local company you can look up</h2>
 <p>${esc(SITE.name)} is a family owned Baltimore contractor run by ${esc(SITE.owner)}. We hold a Maryland Home Improvement Commission license and we are fully insured.</p>

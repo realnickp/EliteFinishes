@@ -46,6 +46,7 @@ export default async function LpVariantPage({ params }: { params: Params }) {
         eyebrow: swap.eyebrow,
         headline: swap.headline,
         heroSlides: swap.heroSlides ?? landing.heroSlides,
+        beforeAfter: swap.beforeAfter ?? landing.beforeAfter,
       }}
     />
   );

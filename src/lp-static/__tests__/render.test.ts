@@ -122,4 +122,14 @@ describe("renderLandingHtml", () => {
     expect(header).toContain('href="#estimate"');
     expect(html).not.toContain('class="bar"'); // the 10% offer bar was removed 2026-10-15
   });
+
+  it("shows the real cabinet before and after only on the cabinets ad group", () => {
+    const cabinets = renderLandingHtml(painting, "cabinets");
+    expect(cabinets).toContain('class="ba"');
+    expect(cabinets).toContain(encodeURIComponent("/images/work/cabinets-cherry-before.jpg"));
+    expect(cabinets).toContain(encodeURIComponent("/images/work/cabinets-green-after.jpg"));
+    expect(cabinets.length).toBeLessThanOrEqual(48_000); // base budget plus the 3 before and after photos
+    expect(renderLandingHtml(painting)).not.toContain('class="ba"');
+    expect(renderLandingHtml(painting, "interior")).not.toContain('class="ba"');
+  });
 });

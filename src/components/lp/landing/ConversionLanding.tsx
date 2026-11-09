@@ -294,6 +294,44 @@ export function ConversionLanding({ config }: { config: LandingConfig }) {
       {/* ── Offer ────────────────────────────────────────────────────────── */}
       <OfferShowcase config={config} />
 
+      {/* ── Before and after: one real job, our own photos ──────────────── */}
+      {config.beforeAfter && (
+        <section className="bg-[#eef0ee] py-14 sm:py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <h2 className={sectionTitle}>{config.beforeAfter.heading}</h2>
+            <p className="mt-3 max-w-2xl text-base text-muted-foreground sm:text-lg">{config.beforeAfter.subheading}</p>
+            <ol className="mt-8 grid gap-5 sm:grid-cols-3">
+              {config.beforeAfter.steps.map((step, i, steps) => {
+                const last = i === steps.length - 1;
+                return (
+                  <li key={step.src}>
+                    <figure>
+                      <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-muted">
+                        <Image
+                          src={step.src}
+                          alt={step.alt}
+                          fill
+                          sizes="(max-width: 640px) 92vw, (max-width: 1152px) 33vw, 370px"
+                          className="object-cover"
+                        />
+                        <span
+                          className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider shadow ${
+                            last ? "bg-brand-green text-white" : "bg-white text-foreground"
+                          }`}
+                        >
+                          {step.label}
+                        </span>
+                      </div>
+                      <figcaption className="mt-2.5 text-sm leading-snug text-muted-foreground">{step.caption}</figcaption>
+                    </figure>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        </section>
+      )}
+
       {/* ── Our own work: real job photos only ───────────────────────────── */}
       <section className="bg-white py-14 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -332,6 +370,24 @@ export function ConversionLanding({ config }: { config: LandingConfig }) {
             <p className="mt-4 text-base leading-relaxed text-foreground/80 sm:text-lg">
               Don&apos;t take our word for it. Check our license number on the state website before you ever call us.
             </p>
+            {config.teamPhotos && config.teamPhotos.length > 0 && (
+              <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4">
+                {config.teamPhotos.map((photo) => (
+                  <figure key={photo.src}>
+                    <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-muted">
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        sizes="(max-width: 1024px) 46vw, 270px"
+                        className="object-cover"
+                      />
+                    </div>
+                    <figcaption className="mt-2 text-sm leading-snug text-muted-foreground">{photo.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
           </div>
           <dl className="divide-y divide-border self-start rounded-lg border border-border bg-white text-sm sm:text-base">
             <div className="flex items-baseline justify-between gap-4 px-5 py-4">

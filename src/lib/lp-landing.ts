@@ -20,6 +20,21 @@ export interface WorkPhoto {
   caption: string;
 }
 
+/** One stage of a real before and after, e.g. "Before", "In progress", "After". */
+export interface BeforeAfterStep {
+  src: string;
+  alt: string;
+  label: string;
+  caption: string;
+}
+
+/** A real Elite Finishes job shown from start to finish. Our own photos only. */
+export interface BeforeAfter {
+  heading: string;
+  subheading: string;
+  steps: BeforeAfterStep[];
+}
+
 /** Style idea photo for the scrolling inspiration strip. Stock imagery, never credited as our work. */
 export interface IdeaPhoto {
   src: string;
@@ -36,6 +51,8 @@ export interface HeadlineVariant {
   headline: string;
   /** Optional hero photo order for this ad group (React pages only), e.g. lead with the kitchen. */
   heroSlides?: string[];
+  /** Optional before and after for this ad group only, e.g. cabinet painting. */
+  beforeAfter?: BeforeAfter;
 }
 
 export interface LandingConfig {
@@ -83,6 +100,10 @@ export interface LandingConfig {
   };
   /** Real Elite Finishes job photos only. */
   workPhotos: WorkPhoto[];
+  /** Real before and after from one of our jobs (React pages only; plain HTML page uses a variant's). */
+  beforeAfter?: BeforeAfter;
+  /** Real photos of our crew, shown beside the license and owner facts (React pages only). */
+  teamPhotos?: WorkPhoto[];
   why: {
     heading: string;
     items: { title: string; text: string }[];
@@ -185,10 +206,80 @@ const PHOTO_POWDER_ROOM: WorkPhoto = {
   caption: "Powder room with a glass vessel sink and floating vanity",
 };
 
-const PHOTO_KITCHEN: WorkPhoto = {
-  src: "/images/work/kitchen-wood-cabinets-granite.jpg",
-  alt: "Kitchen with wood cabinets, granite counters and stainless appliances, an Elite Finishes job",
-  caption: "Kitchen with wood cabinets and granite counters",
+// November 2026 job photos. Finished rooms first, then the cabinet job and crew.
+const PHOTO_SLATE_KITCHEN: WorkPhoto = {
+  src: "/images/work/kitchen-slate-blue-shaker-island.jpg",
+  alt: "Kitchen with slate blue shaker cabinets, gold hardware, a white island and geometric pendant lights by Elite Finishes",
+  caption: "Slate blue shaker kitchen with a white island and gold hardware",
+};
+
+const PHOTO_MODERN_KITCHEN: WorkPhoto = {
+  src: "/images/work/kitchen-modern-island-gold-fixtures.jpg",
+  alt: "Modern kitchen with white gloss upper cabinets, wood base cabinets, a long island, gold faucet and starburst chandeliers by Elite Finishes",
+  caption: "Modern kitchen with a long island, gold faucet and starburst lights",
+};
+
+const PHOTO_FREESTANDING_TUB: WorkPhoto = {
+  src: "/images/work/primary-bath-freestanding-tub.jpg",
+  alt: "Primary bathroom with a freestanding soaking tub, tiled walk-in shower and long vanity by Elite Finishes",
+  caption: "Primary bath with a freestanding tub and tiled walk-in shower",
+};
+
+const PHOTO_CHARCOAL_VANITY: WorkPhoto = {
+  src: "/images/work/primary-bath-double-vanity-charcoal.jpg",
+  alt: "Primary bathroom with a long double vanity, charcoal accent wall and matte black fixtures by Elite Finishes",
+  caption: "Double vanity with a charcoal accent wall and matte black fixtures",
+};
+
+const PHOTO_GREEN_TILE_SHOWER: WorkPhoto = {
+  src: "/images/work/bath-green-tile-shower.jpg",
+  alt: "Walk-in shower with glossy green tile walls and a marble hexagon tile floor by Elite Finishes",
+  caption: "Walk-in shower in glossy green tile with a marble hex floor",
+};
+
+const PHOTO_SAGE_BATH: WorkPhoto = {
+  src: "/images/work/bath-sage-marble-shower.jpg",
+  alt: "Bathroom with sage green walls, a marble look tile walk-in shower and white vanity by Elite Finishes",
+  caption: "Sage green bath with a marble look tile shower",
+};
+
+const PHOTO_CREW_STAIRCASE: WorkPhoto = {
+  src: "/images/work/crew-staircase-team.jpg",
+  alt: "Four members of the Elite Finishes crew on a staircase job",
+  caption: "Our crew on a staircase job",
+};
+
+const PHOTO_CREW_PAINTER: WorkPhoto = {
+  src: "/images/work/crew-painter-teal-wall.jpg",
+  alt: "Elite Finishes painter cutting in a teal wall along the baseboard",
+  caption: "Cutting in a teal wall by hand",
+};
+
+/** Same kitchen, photographed by our crew before, during and after the cabinets were sprayed. */
+const CABINET_BEFORE_AFTER: BeforeAfter = {
+  heading: "Same kitchen, new cabinets",
+  subheading:
+    "A real cabinet job from start to finish. We masked the whole kitchen, sprayed the cherry cabinets green and left the counters and appliances untouched.",
+  steps: [
+    {
+      src: "/images/work/cabinets-cherry-before.jpg",
+      alt: "Kitchen with cherry wood cabinets and a white island before Elite Finishes painted the cabinets",
+      label: "Before",
+      caption: "Cherry cabinets before we started",
+    },
+    {
+      src: "/images/work/cabinets-green-spraying.jpg",
+      alt: "Kitchen fully masked in plastic and paper while Elite Finishes sprays the cabinets green",
+      label: "In progress",
+      caption: "Everything masked off while the cabinets are sprayed",
+    },
+    {
+      src: "/images/work/cabinets-green-after.jpg",
+      alt: "The same kitchen after Elite Finishes painted the cabinets green, before final cleanup",
+      label: "After",
+      caption: "Cabinets finished in green, right before cleanup",
+    },
+  ],
 };
 
 const TIMELINE_OPTIONS: BuilderOption[] = [
@@ -257,6 +348,7 @@ const PAINTING: LandingConfig = {
       metaTitle: "Kitchen Cabinet Painting in Baltimore | Elite Finishes",
       eyebrow: "Kitchen cabinet painters in the Baltimore area",
       headline: "Freshly painted cabinets without a full kitchen remodel.",
+      beforeAfter: CABINET_BEFORE_AFTER,
     },
     drywall: {
       metaTitle: "Drywall Repair and Painting in Baltimore | Elite Finishes",
@@ -592,10 +684,10 @@ const REMODELING: LandingConfig = {
   metaDescription:
     "Kitchen, bathroom and basement remodeling across the Baltimore area. Get a free in-home estimate, plus a $500 gift card when you book your remodel by Nov 30.",
   heroSlides: [
+    "/images/work/kitchen-slate-blue-shaker-island.jpg",
+    "/images/work/primary-bath-freestanding-tub.jpg",
+    "/images/work/kitchen-modern-island-gold-fixtures.jpg",
     "/images/work/primary-bath-red-shower.jpg",
-    "/images/work/kitchen-wood-cabinets-granite.jpg",
-    "/images/lp/work/bathroom-primary-double-vanity.jpg",
-    "/images/work/primary-bath-gray-tub.jpg",
   ],
   whyImage: "/images/work/primary-bath-gray-crew.jpg",
   eyebrow: "Kitchen, bath and basement remodelers in the Baltimore area",
@@ -613,15 +705,20 @@ const REMODELING: LandingConfig = {
       eyebrow: "Kitchen remodelers in the Baltimore area",
       headline: "Remodel your kitchen, get a $500 gift card.",
       heroSlides: [
-        "/images/work/kitchen-wood-cabinets-granite.jpg",
-        "/images/work/primary-bath-red-shower.jpg",
-        "/images/lp/work/bathroom-primary-double-vanity.jpg",
+        "/images/work/kitchen-slate-blue-shaker-island.jpg",
+        "/images/work/kitchen-modern-island-gold-fixtures.jpg",
+        "/images/work/primary-bath-freestanding-tub.jpg",
       ],
     },
     bathroom: {
       metaTitle: "Bathroom Remodeling | $500 Gift Card | Elite Finishes",
       eyebrow: "Bathroom remodelers in the Baltimore area",
       headline: "Remodel your bathroom, get a $500 gift card.",
+      heroSlides: [
+        "/images/work/primary-bath-freestanding-tub.jpg",
+        "/images/work/primary-bath-double-vanity-charcoal.jpg",
+        "/images/work/primary-bath-red-shower.jpg",
+      ],
     },
     basement: {
       metaTitle: "Basement Remodeling | $500 Gift Card | Elite Finishes",
@@ -681,13 +778,18 @@ const REMODELING: LandingConfig = {
     ],
   },
   workPhotos: [
+    PHOTO_SLATE_KITCHEN,
+    PHOTO_FREESTANDING_TUB,
+    PHOTO_GREEN_TILE_SHOWER,
+    PHOTO_MODERN_KITCHEN,
+    PHOTO_CHARCOAL_VANITY,
+    PHOTO_SAGE_BATH,
     PHOTO_RED_PRIMARY_BATH,
-    PHOTO_KITCHEN,
     PHOTO_PRIMARY_BATH,
-    PHOTO_RED_BATH_SHOWER,
     PHOTO_POWDER_ROOM,
-    PHOTO_TUB_SURROUND,
   ],
+  beforeAfter: CABINET_BEFORE_AFTER,
+  teamPhotos: [PHOTO_CREW_STAIRCASE, PHOTO_CREW_PAINTER],
   why: {
     heading: "Why homeowners pick Elite Finishes",
     items: [

@@ -36,6 +36,25 @@ describe("remodel gift card landing pages", () => {
   });
 });
 
+describe("remodeling page photos", () => {
+  it("leads with the finished slate blue kitchen", () => {
+    expect(LANDING_PAGES.remodeling.heroSlides[0]).toBe("/images/work/kitchen-slate-blue-shaker-island.jpg");
+  });
+
+  it("only uses our own job photos in the work, before and after and crew sections", () => {
+    const r = LANDING_PAGES.remodeling;
+    const srcs = [...r.workPhotos, ...(r.beforeAfter?.steps ?? []), ...(r.teamPhotos ?? [])].map((p) => p.src);
+    expect(srcs.length).toBeGreaterThan(0);
+    for (const src of srcs) expect(src).toMatch(/^\/images\/(work|lp\/work)\//);
+  });
+
+  it("shows a real before and after on the remodeling page", () => {
+    const labels = LANDING_PAGES.remodeling.beforeAfter?.steps.map((s) => s.label);
+    expect(labels?.[0]).toBe("Before");
+    expect(labels?.at(-1)).toBe("After");
+  });
+});
+
 describe("extractTimeframe with the remodel builder answers", () => {
   it.each([
     ["Within 1 month", "Within 1 month"],
