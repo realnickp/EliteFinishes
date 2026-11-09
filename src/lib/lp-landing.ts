@@ -34,6 +34,8 @@ export interface HeadlineVariant {
   metaTitle: string;
   eyebrow: string;
   headline: string;
+  /** Optional hero photo order for this ad group (React pages only), e.g. lead with the kitchen. */
+  heroSlides?: string[];
 }
 
 export interface LandingConfig {
@@ -55,8 +57,8 @@ export interface LandingConfig {
   /** Keyed by URL segment, e.g. "near-me" serves /lp/painting/near-me. */
   variants: Record<string, HeadlineVariant>;
   offer: {
-    /** "dinner" shows the steakhouse gift cards, "paint" shows the paint chips. */
-    variant: "dinner" | "paint";
+    /** "giftcard" shows a generic $500 gift card (no brand names), "paint" shows the paint chips. */
+    variant: "giftcard" | "paint";
     badge: string;
     /** One line version for the bar at the top of the page. */
     short: string;
@@ -183,6 +185,12 @@ const PHOTO_POWDER_ROOM: WorkPhoto = {
   caption: "Powder room with a glass vessel sink and floating vanity",
 };
 
+const PHOTO_KITCHEN: WorkPhoto = {
+  src: "/images/work/kitchen-wood-cabinets-granite.jpg",
+  alt: "Kitchen with wood cabinets, granite counters and stainless appliances, an Elite Finishes job",
+  caption: "Kitchen with wood cabinets and granite counters",
+};
+
 const TIMELINE_OPTIONS: BuilderOption[] = [
   { label: "ASAP" },
   { label: "Within 1 month" },
@@ -192,6 +200,16 @@ const TIMELINE_OPTIONS: BuilderOption[] = [
 
 const OFFER_FINE_PRINT =
   "Limited-time offer. Cannot be combined with other discounts. Mention this offer at your free estimate.";
+
+// Remodel gift card offer, approved by the client. Ends November 30, 2026.
+const REMODEL_GIFT_CARD_FINE_PRINT =
+  "Offer valid on kitchen, bathroom and basement remodels booked by November 30, 2026. Gift card issued when you book. Cannot be combined with other discounts.";
+
+const REMODEL_GIFT_CARD_FAQ: FAQItem = {
+  question: "How does the $500 gift card work?",
+  answer:
+    "Book a kitchen, bathroom or basement remodel with Elite Finishes by November 30, 2026 and we'll give you a $500 gift card when you book. There's no minimum project size. It can't be combined with other discounts.",
+};
 
 const LICENSED_FAQ: FAQItem = {
   question: "Are you licensed and insured?",
@@ -400,7 +418,7 @@ const BATHROOM: LandingConfig = {
   serviceTitle: "Bathroom Remodeling",
   metaTitle: "Bathroom Remodeling | $500 Gift Card | Elite Finishes",
   metaDescription:
-    "Tile showers, new vanities and full bathroom remodels across the Baltimore area. Get a free estimate and a $500 dining gift card with your remodel.",
+    "Tile showers, new vanities and full bathroom remodels across the Baltimore area. Get a free estimate, plus a $500 gift card when you book your remodel by Nov 30.",
   heroSlides: [
     "/images/work/primary-bath-red-shower.jpg",
     "/images/work/primary-bath-red-vanity.jpg",
@@ -424,19 +442,19 @@ const BATHROOM: LandingConfig = {
       headline: "Bathroom remodeling near you, start to finish.",
     },
     shower: {
-      metaTitle: "Shower Remodels and Tub to Shower Conversions | Elite Finishes",
+      metaTitle: "Shower Remodels and Tub to Shower Conversions | $500 Gift Card | Elite Finishes",
       eyebrow: "Shower remodels and tub to shower conversions",
       headline: "Trade the old tub for a walk-in shower you'll love.",
     },
   },
   offer: {
-    variant: "dinner",
-    badge: "$500 dining gift card with your remodel",
-    short: "Dinner's on us: a $500 steakhouse gift card with your bathroom remodel",
-    title: "Remodel your bathroom. Dinner's on us.",
+    variant: "giftcard",
+    badge: "$500 gift card when you book your remodel",
+    short: "Get a $500 gift card when you book your bathroom remodel by Nov 30",
+    title: "Book your bathroom remodel. Get a $500 gift card.",
     details:
-      "Book your bathroom remodel with Elite Finishes and we'll hand you a $500 gift card to The Capital Grille or Ruth's Chris Steak House, your choice. Celebrate the new bathroom with a great dinner on us.",
-    finePrint: OFFER_FINE_PRINT,
+      "Book your bathroom remodel with Elite Finishes by November 30 and we'll give you a $500 gift card when you book. Any size bathroom project counts, with no minimum.",
+    finePrint: REMODEL_GIFT_CARD_FINE_PRINT,
   },
   showFinancing: true,
   showReviews: false,
@@ -562,6 +580,164 @@ const BATHROOM: LandingConfig = {
       answer:
         "Yes. You can prequalify in about a minute with no impact to your credit score, with fixed monthly payments.",
     },
+    REMODEL_GIFT_CARD_FAQ,
+    LICENSED_FAQ,
+  ],
+};
+
+const REMODELING: LandingConfig = {
+  slug: "remodeling",
+  serviceTitle: "Kitchen, Bath & Basement Remodeling",
+  metaTitle: "Kitchen, Bath & Basement Remodeling | $500 Gift Card | Elite Finishes",
+  metaDescription:
+    "Kitchen, bathroom and basement remodeling across the Baltimore area. Get a free in-home estimate, plus a $500 gift card when you book your remodel by Nov 30.",
+  heroSlides: [
+    "/images/work/primary-bath-red-shower.jpg",
+    "/images/work/kitchen-wood-cabinets-granite.jpg",
+    "/images/lp/work/bathroom-primary-double-vanity.jpg",
+    "/images/work/primary-bath-gray-tub.jpg",
+  ],
+  whyImage: "/images/work/primary-bath-gray-crew.jpg",
+  eyebrow: "Kitchen, bath and basement remodelers in the Baltimore area",
+  headline: "Book your remodel, get a $500 gift card.",
+  subheadline:
+    "Book a kitchen, bathroom or basement remodel with Elite Finishes by November 30 and get a $500 gift card when you book. It starts with a free in-home estimate.",
+  heroBullets: [
+    "$500 gift card on any kitchen, bath or basement remodel, no minimum",
+    "Free in-home estimate with a clear written quote",
+    "One licensed team handles tile, flooring, paint and every trade in between",
+  ],
+  variants: {
+    kitchen: {
+      metaTitle: "Kitchen Remodeling | $500 Gift Card | Elite Finishes",
+      eyebrow: "Kitchen remodelers in the Baltimore area",
+      headline: "Remodel your kitchen, get a $500 gift card.",
+      heroSlides: [
+        "/images/work/kitchen-wood-cabinets-granite.jpg",
+        "/images/work/primary-bath-red-shower.jpg",
+        "/images/lp/work/bathroom-primary-double-vanity.jpg",
+      ],
+    },
+    bathroom: {
+      metaTitle: "Bathroom Remodeling | $500 Gift Card | Elite Finishes",
+      eyebrow: "Bathroom remodelers in the Baltimore area",
+      headline: "Remodel your bathroom, get a $500 gift card.",
+    },
+    basement: {
+      metaTitle: "Basement Remodeling | $500 Gift Card | Elite Finishes",
+      eyebrow: "Basement remodelers in the Baltimore area",
+      headline: "Finish your basement, get a $500 gift card.",
+    },
+  },
+  offer: {
+    variant: "giftcard",
+    badge: "$500 gift card when you book your remodel",
+    short: "Get a $500 gift card when you book a kitchen, bath or basement remodel by Nov 30",
+    title: "Book your remodel. Get a $500 gift card.",
+    details:
+      "Book a kitchen, bathroom or basement remodel with Elite Finishes by November 30 and we'll give you a $500 gift card when you book. Any size project counts, with no minimum.",
+    finePrint: REMODEL_GIFT_CARD_FINE_PRINT,
+  },
+  showFinancing: true,
+  showReviews: false,
+  ideas: {
+    heading: "What could your space look like?",
+    subheading:
+      "A few kitchen, bath and basement styles to get you thinking. Tell us what you like and we'll price it out for your home.",
+    photos: [
+      { src: "/images/pexels-curtis-adams-1694007-4092029.jpg", label: "White shaker kitchen" },
+      { src: "/images/lp/ideas/bath-15062118.jpg", label: "Freestanding tub and glass shower" },
+      { src: "/images/pexels-introspectivedsgn-9899847.jpg", label: "Finished basement with LVP flooring" },
+      { src: "/images/pexels-falling4utah-1080721.jpg", label: "Kitchen island with pendant lights" },
+      { src: "/images/lp/ideas/bath-36777898.jpg", label: "Marble look walk-in shower" },
+      { src: "/images/smart-renovations-YBxrveqHAFU-unsplash.jpg", label: "Basement living space with a fireplace" },
+      { src: "/images/pexels-artbovich-6301185.jpg", label: "Modern kitchen with an island" },
+      { src: "/images/lp/ideas/bath-16501253.jpg", label: "Double vanities in navy" },
+      { src: "/images/point3d-commercial-imaging-ltd-rgfbZBhnxqQ-unsplash.jpg", label: "Basement with built-in shelving" },
+      { src: "/images/pexels-clickerhappy-349749.jpg", label: "Bright white kitchen" },
+      { src: "/images/lp/ideas/bath-5502260.jpg", label: "Herringbone tile shower" },
+      { src: "/images/point3d-commercial-imaging-ltd-qVIDQ-jCMFw-unsplash.jpg", label: "Basement home office" },
+    ],
+  },
+  smsBody: "Hi Elite Finishes, I'd like a free remodel estimate and the $500 gift card offer.",
+  builder: {
+    title: "Free remodel estimate",
+    questions: [
+      {
+        id: "project",
+        question: "Which project are you planning?",
+        options: [{ label: "Kitchen" }, { label: "Bathroom" }, { label: "Basement" }, { label: "More than one" }],
+      },
+      {
+        id: "timeline",
+        question: "When would you like to start?",
+        options: [
+          { label: "Within 1 month" },
+          { label: "1 to 3 months" },
+          { label: "3+ months" },
+          { label: "Just pricing" },
+        ],
+      },
+    ],
+  },
+  workPhotos: [
+    PHOTO_RED_PRIMARY_BATH,
+    PHOTO_KITCHEN,
+    PHOTO_PRIMARY_BATH,
+    PHOTO_RED_BATH_SHOWER,
+    PHOTO_POWDER_ROOM,
+    PHOTO_TUB_SURROUND,
+  ],
+  why: {
+    heading: "Why homeowners pick Elite Finishes",
+    items: [
+      {
+        title: "One team, every trade",
+        text: "Tile, flooring, walk-in showers, cabinet painting and paint, all coordinated by one contractor.",
+      },
+      {
+        title: "One point of contact",
+        text: "No juggling separate tile setters, plumbers and painters. We coordinate it all.",
+      },
+      {
+        title: "Licensed, insured, permitted",
+        text: "MHIC 153498, fully insured, and we pull the permits when your project needs them.",
+      },
+      {
+        title: "Clean, careful crews",
+        text: "We protect the rest of your home and clean up so you can live comfortably during the job.",
+      },
+      {
+        title: "Financing available",
+        text: "Spread the cost into monthly payments. Checking your rate won't affect your credit score.",
+      },
+      {
+        title: "Fast estimates",
+        text: "We get back to you within one business day and come out to see the space in person.",
+      },
+    ],
+  },
+  faq: [
+    REMODEL_GIFT_CARD_FAQ,
+    {
+      question: "How much does a remodel cost?",
+      answer:
+        "It depends on the room, its size and the finishes you choose. We give you a free written estimate after seeing the space, and financing is available.",
+    },
+    {
+      question: "What kinds of remodels do you do?",
+      answer:
+        "Kitchens, bathrooms and basements, including tile, flooring, walk-in showers and tub to shower conversions, cabinet painting and interior painting.",
+    },
+    {
+      question: "Do you handle permits?",
+      answer: "Yes. When your project needs a permit, we pull it and coordinate the inspections.",
+    },
+    {
+      question: "Do you offer financing?",
+      answer:
+        "Yes. You can prequalify in about a minute with no impact to your credit score, with fixed monthly payments.",
+    },
     LICENSED_FAQ,
   ],
 };
@@ -569,4 +745,5 @@ const BATHROOM: LandingConfig = {
 export const LANDING_PAGES: Record<string, LandingConfig> = {
   [PAINTING.slug]: PAINTING,
   [BATHROOM.slug]: BATHROOM,
+  [REMODELING.slug]: REMODELING,
 };

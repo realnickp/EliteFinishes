@@ -7,44 +7,32 @@ import { ContactButton, EstimateButton } from "./ActionButtons";
 const btn =
   "inline-flex min-h-[54px] cursor-pointer items-center justify-center gap-2 rounded-lg px-6 text-base font-bold transition-colors active:scale-[0.98]";
 
-// ── Dinner offer: two steakhouse gift cards ──────────────────────────────────
-// Restaurant names are set in our own type on purpose. We don't use their logos.
+// ── Gift card offer: a generic $500 gift card ───────────────────────────────
+// Deliberately brand-free: no restaurant, store or card network names or logos.
 
-function GiftCard({
-  name,
-  small,
-  className = "",
-}: {
-  name: string;
-  small?: string;
-  className?: string;
-}) {
+function GiftCard({ className = "" }: { className?: string }) {
   return (
     <div
-      className={`flex aspect-[1.586] w-[270px] flex-col justify-between rounded-xl border border-[#d2ae6d]/45 bg-gradient-to-br from-[#2a1014] to-[#14070a] p-5 text-[#f7ecda] shadow-[0_24px_50px_-12px_rgba(0,0,0,0.65)] sm:w-[340px] sm:p-6 ${className}`}
+      className={`relative flex aspect-[1.586] w-[270px] flex-col justify-between overflow-hidden rounded-xl border border-[#d2ae6d]/45 bg-gradient-to-br from-[#1f3a30] to-[#0d1a15] p-5 text-[#f7ecda] shadow-[0_24px_50px_-12px_rgba(0,0,0,0.65)] sm:w-[380px] sm:p-7 ${className}`}
     >
-      {/* Name sits at the top so it stays readable on the card tucked behind. */}
-      <div>
-        <p className="font-display text-[1.3rem] uppercase leading-tight tracking-[0.08em] sm:text-[1.65rem]">{name}</p>
-        {small && <p className="mt-1 text-[10px] uppercase tracking-[0.32em] text-[#d2ae6d] sm:text-[11px]">{small}</p>}
-      </div>
-      <div className="flex items-end justify-between gap-3">
-        <p className="text-[11px] leading-snug text-[#f7ecda]/60">
-          Dining gift card
-          <br />
-          With your {SITE.name} remodel
-        </p>
-        <span className="font-display text-4xl leading-none text-[#d2ae6d] sm:text-5xl">$500</span>
+      {/* Ribbon, like a wrapped gift. Kept left of the right-aligned text. */}
+      <span className="absolute inset-y-0 left-[20%] w-3 bg-[#d2ae6d]/75 sm:w-4" />
+      <span className="absolute inset-x-0 top-[32%] h-3 bg-[#d2ae6d]/75 sm:h-4" />
+      <p className="relative text-right text-[11px] font-semibold uppercase tracking-[0.32em] text-[#d2ae6d] sm:text-xs">
+        Gift card
+      </p>
+      <div className="relative text-right">
+        <p className="font-display text-5xl leading-none text-[#d2ae6d] sm:text-6xl">$500</p>
+        <p className="mt-1.5 text-[11px] leading-snug text-[#f7ecda]/70">When you book your remodel</p>
       </div>
     </div>
   );
 }
 
-function DinnerVisual() {
+function GiftCardVisual() {
   return (
-    <div className="relative mx-auto h-[275px] w-[310px] sm:h-[350px] sm:w-[410px]" aria-hidden>
-      <GiftCard name="Ruth's Chris" small="Steak House" className="absolute right-0 top-0 rotate-[6deg]" />
-      <GiftCard name="The Capital Grille" className="absolute bottom-0 left-0 -rotate-[4deg]" />
+    <div className="mx-auto flex w-fit items-center justify-center py-6" aria-hidden>
+      <GiftCard className="-rotate-[4deg]" />
     </div>
   );
 }
@@ -96,24 +84,24 @@ function PaintVisual() {
 
 export function OfferShowcase({ config }: { config: LandingConfig }) {
   const { offer, serviceTitle } = config;
-  const dinner = offer.variant === "dinner";
+  const gift = offer.variant === "giftcard";
 
   return (
     <section
       id="offer"
-      className={`relative scroll-mt-20 overflow-hidden py-16 text-[#f7ecda] sm:py-24 ${dinner ? "bg-[#3b0d14]" : "bg-[#17343a]"}`}
+      className={`relative scroll-mt-20 overflow-hidden py-16 text-[#f7ecda] sm:py-24 ${gift ? "bg-[#14271f]" : "bg-[#17343a]"}`}
     >
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          background: dinner
+          background: gift
             ? "radial-gradient(90% 70% at 75% 35%, rgba(210,174,109,0.16), transparent 60%)"
             : "radial-gradient(90% 70% at 75% 35%, rgba(255,255,255,0.10), transparent 60%)",
         }}
         aria-hidden
       />
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16">
-        <div className="lg:order-2">{dinner ? <DinnerVisual /> : <PaintVisual />}</div>
+        <div className="lg:order-2">{gift ? <GiftCardVisual /> : <PaintVisual />}</div>
 
         <div>
           <h2 className="text-4xl leading-[1.05] sm:text-5xl lg:text-6xl text-balance">{offer.title}</h2>
@@ -122,7 +110,7 @@ export function OfferShowcase({ config }: { config: LandingConfig }) {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <EstimateButton
               placement="offer"
-              className={`${btn} ${dinner ? "bg-[#d2ae6d] text-[#2a1014] hover:bg-[#e0c083]" : "bg-white text-[#17343a] hover:bg-white/90"}`}
+              className={`${btn} ${gift ? "bg-[#d2ae6d] text-[#14271f] hover:bg-[#e0c083]" : "bg-white text-[#17343a] hover:bg-white/90"}`}
             >
               Claim this offer
             </EstimateButton>
@@ -150,8 +138,6 @@ export function OfferShowcase({ config }: { config: LandingConfig }) {
 
           <p className="mt-6 max-w-xl text-xs leading-relaxed text-[#f7ecda]/55">
             {offer.finePrint}
-            {dinner &&
-              ` The Capital Grille and Ruth's Chris Steak House are not sponsors of this offer and are not affiliated with ${SITE.name}. Their names are trademarks of their owners.`}
           </p>
         </div>
       </div>

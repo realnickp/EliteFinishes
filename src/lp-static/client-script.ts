@@ -35,6 +35,11 @@ if(C.googleAdsId){W.gtag("js",new Date());W.gtag("config",C.googleAdsId);
 if(C.callLabel)W.gtag("config",C.googleAdsId+"/"+C.callLabel,{phone_conversion_number:C.phone})}
 function loadTag(){if(!C.googleAdsId)return;var s=D.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id="+C.googleAdsId;D.head.appendChild(s)}
 if(D.readyState==="complete")setTimeout(loadTag,0);else W.addEventListener("load",function(){setTimeout(loadTag,0)});
+// Meta pixel: standard queue stub now so PageView and Contact queue up, fbevents.js loads after page load like the Google tag
+if(C.metaPixelId&&!W.fbq){var n=W.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!W._fbq)W._fbq=n;
+n.push=n;n.loaded=true;n.version="2.0";n.queue=[];W.fbq("init",C.metaPixelId);W.fbq("track","PageView");
+var loadPixel=function(){var s=D.createElement("script");s.async=true;s.src="https://connect.facebook.net/en_US/fbevents.js";D.head.appendChild(s)};
+if(D.readyState==="complete")setTimeout(loadPixel,0);else W.addEventListener("load",function(){setTimeout(loadPixel,0)})}
 D.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest("[data-contact]");if(!a)return;
 if(C.contactLabel)W.gtag("event","conversion",{send_to:C.googleAdsId+"/"+C.contactLabel});
 if(W.fbq)W.fbq("track","Contact",{content_name:C.serviceTitle,content_category:a.getAttribute("data-contact")})});

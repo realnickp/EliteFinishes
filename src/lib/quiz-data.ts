@@ -1008,11 +1008,13 @@ export function extractTimeframe(lastAnswer: string): string {
   const a = lastAnswer.toLowerCase();
   if (a.includes("asap") || a.includes("emergency") || a.includes("active leak") || a.includes("urgent")) return "ASAP";
   if (a.includes("1 month") || a.includes("4 to 6 weeks")) return "Within 1 month";
+  if (a.includes("3+ month")) return "3+ months";
   if (a.includes("3 month")) return "Within 3 months";
   if (a.includes("6 month")) return "Within 6 months";
   if (a.includes("summer") || a.includes("season")) return "This season";
   if (a.includes("next year") || a.includes("later this year")) return "Later this year";
-  if (a.includes("explor") || a.includes("planning ahead") || a.includes("flexible")) return "Just exploring";
+  if (a.includes("explor") || a.includes("planning ahead") || a.includes("flexible") || a.includes("just pricing"))
+    return "Just exploring";
   return "To be discussed";
 }
 

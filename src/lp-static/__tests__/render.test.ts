@@ -95,7 +95,7 @@ describe("renderLandingHtml", () => {
     expect(html.length).toBeLessThanOrEqual(45_000);
     expect(LP_CSS.length).toBeLessThanOrEqual(14_000);
     const js = buildClientScript({ slug: "painting", serviceTitle: "x", googleAdsId: "AW-1", callLabel: "a", contactLabel: "", metaPixelId: "", phone: "1" });
-    expect(js.length).toBeLessThanOrEqual(9_000); // includes the estimate popup form
+    expect(js.length).toBeLessThanOrEqual(9_500); // includes the estimate popup form and the Meta pixel loader
   });
   it("only requests image quality 75, the one Next 16 allows by default", () => {
     const html = renderLandingHtml(painting, "near-me");

@@ -26,7 +26,7 @@ export const SITE = {
 } as const;
 
 /** Ad landing pages that render as standalone one pagers (no site header, footer or popup). */
-export const CONVERSION_LP_SLUGS = ["painting", "bathroom-remodeling"] as const;
+export const CONVERSION_LP_SLUGS = ["painting", "bathroom-remodeling", "remodeling"] as const;
 
 /**
  * Ad platform IDs. Tracking stays switched off while these are blank.
@@ -42,7 +42,7 @@ export const AD_TRACKING: {
   /** Website call conversion label; Google swaps SITE.phone text for a forwarding number. */
   googleAdsCallLabel: string;
 } = {
-  metaPixelId: "",
+  metaPixelId: "1783877836170300",
   googleAdsId: "AW-18451341957",
   googleAdsLeadLabel: "",
   googleAdsLeadLabelsBySlug: {

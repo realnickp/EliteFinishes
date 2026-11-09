@@ -51,7 +51,7 @@ function GoogleG({ className = "h-4 w-4" }: { className?: string }) {
 
 export function ConversionLanding({ config }: { config: LandingConfig }) {
   const { slug, serviceTitle, smsBody, offer } = config;
-  const dinner = offer.variant === "dinner";
+  const gift = offer.variant === "giftcard";
   const { address } = SITE;
 
   return (
@@ -108,7 +108,7 @@ export function ConversionLanding({ config }: { config: LandingConfig }) {
       <a
         href="#offer"
         className={`block px-4 py-2.5 text-center text-sm font-semibold leading-snug ${
-          dinner ? "bg-[#3b0d14] text-[#e6c88c]" : "bg-[#17343a] text-white"
+          gift ? "bg-[#14271f] text-[#e6c88c]" : "bg-[#17343a] text-white"
         }`}
       >
         {offer.short}
@@ -447,7 +447,7 @@ export function ConversionLanding({ config }: { config: LandingConfig }) {
               Pick whatever is easiest for you. However you reach out, a real person from {SITE.name} gets back to
               you within one business day.
             </p>
-            <p className={`mt-4 text-sm font-semibold ${dinner ? "text-[#e6c88c]" : "text-white"}`}>
+            <p className={`mt-4 text-sm font-semibold ${gift ? "text-[#e6c88c]" : "text-white"}`}>
               Current offer: {offer.badge}.
             </p>
             <div className="mt-6 space-y-3">

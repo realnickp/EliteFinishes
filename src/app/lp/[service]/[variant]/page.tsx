@@ -39,5 +39,14 @@ export default async function LpVariantPage({ params }: { params: Params }) {
   const found = resolve(service, variant);
   if (!found) notFound();
   const { landing, swap } = found;
-  return <ConversionLanding config={{ ...landing, eyebrow: swap.eyebrow, headline: swap.headline }} />;
+  return (
+    <ConversionLanding
+      config={{
+        ...landing,
+        eyebrow: swap.eyebrow,
+        headline: swap.headline,
+        heroSlides: swap.heroSlides ?? landing.heroSlides,
+      }}
+    />
+  );
 }
