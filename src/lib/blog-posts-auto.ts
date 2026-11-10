@@ -5,6 +5,114 @@ import type { BlogPost } from "./blog-data";
 
 export const AUTO_POSTS: BlogPost[] = [
   {
+    slug: "how-much-does-new-flooring-cost-baltimore",
+    title: "How Much Does New Flooring Cost in a Baltimore Home?",
+    description:
+      "New flooring in Baltimore runs about $3,000 to $20,000 for a home, from $4 to $10 per square foot for LVP to $20 for solid hardwood. What drives the price.",
+    date: "2026-11-10",
+    image: "/images/work/navy-bedroom-finished.jpg",
+    imageAlt: "Finished navy bedroom completed by Elite Finishes in a Baltimore home",
+    category: "Flooring",
+    relatedService: "Flooring",
+    relatedServiceSlug: "flooring",
+    content: `Flooring is one of the first things a homeowner asks me about, and one of the hardest to price over the phone. "Victor, what does it cost per foot?" The honest answer depends on the material, the room, and what is under your old floor.
+
+Here is what I tell people at the kitchen table, with real ranges and what moves them.
+
+## The short answer
+
+Across a Baltimore home, new flooring generally lands between $3,000 and $20,000. LVP (luxury vinyl plank) is the volume seller. Hardwood costs more. Carpet is the low end.
+
+By the square foot, installed, here is where the materials sit:
+
+| Material | Installed, per square foot |
+|---|---|
+| Luxury vinyl plank (LVP) | $4 to $10 |
+| Engineered hardwood | $6 to $15 |
+| Solid hardwood | $8 to $20 |
+| Tile (porcelain or ceramic) | $8 to $18 |
+| Hardwood refinishing (existing floor) | $3 to $6 |
+
+The spread inside each row is real. Quality of the product, plank width, species, tile size and layout complexity all move the number. Budget LVP runs lower, but it gives up thickness and durability, and I would not put it in a busy kitchen.
+
+## What it looks like on a real room
+
+Take a 500 square foot main level. Using the numbers in our [hardwood vs. LVP flooring guide](/blog/hardwood-vs-lvp-flooring-baltimore):
+
+- LVP: $2,000 to $4,500
+- Engineered hardwood: $3,000 to $7,000
+- Solid hardwood: $4,000 to $7,500
+
+Notice that those are installed prices. Anyone who quotes you only the material is quoting half the job.
+
+## What pushes the price up
+
+Square footage is only the start. These are the items that change the number:
+
+- **The subfloor.** A new floor is only as good as what is under it. Waves, squeaks and soft spots have to be fixed first. In older homes, from a rowhouse in [Canton](/areas/canton) to a colonial in [Towson](/areas/towson), we often find uneven or tired subfloor once the old floor comes up.
+- **Removing the old floor.** Tearing out glued-down vinyl, tile or carpet with tack strips takes hours, and the quote should say so.
+- **Layout.** Stairs, closets, angled rooms and lots of door transitions cost more than one big square room.
+- **Moisture.** Basements and slabs need products that handle it. LVP and engineered hardwood do well there, and solid hardwood does not.
+- **Furniture and trim.** Moving furniture, pulling baseboards and putting them back, new thresholds.
+- **Pattern.** Herringbone costs more than straight plank, and so does large-format tile with tight grout lines.
+
+## Refinish before you replace
+
+If you already have hardwood, do not tear it out before someone checks it. Floors with enough thickness, at least 3/4 inch solid or 1/8 inch of veneer on engineered, can usually be sanded and refinished for $3 to $6 per square foot. That is a fraction of replacement, and in many pre-war Baltimore houses the original oak is better than anything you can buy today. I will tell you honestly if yours can be saved. We cover that in the [flooring service](/services/flooring) visit.
+
+## Which material for which room
+
+My honest take, after years of walking Baltimore homes:
+
+- **LVP:** Basements, bathrooms, laundry, mudrooms, rentals, and busy family kitchens. It is waterproof and tough. Our [basement finishing](/services/basement-remodeling) projects usually go this way.
+- **Engineered hardwood:** Main living areas and kitchens where you want real wood with less movement in our humid summers.
+- **Solid hardwood:** Dining rooms, living rooms and bedrooms in homes with steady climate control.
+- **Tile:** Bathrooms, entries and kitchens. See what a tile floor adds in our [bathroom remodel cost guide](/blog/bathroom-remodel-cost-baltimore).
+- **Carpet:** Bedrooms and low-traffic rooms, and it is the least expensive way to cover a floor.
+
+For a whole-home project I often suggest engineered hardwood on the main level and LVP below grade and in the baths. You get the look and resale value of wood where people see it, and the practical floor where water is a risk.
+
+## Order matters: paint and floors
+
+Flooring and paint fight each other if they are done in the wrong order. New floors get scratched by ladders and drop cloths get dragged across them. Usually the walls and trim are painted first, or the floor is fully covered while we work. We schedule both so one crew does not damage the other's work. If you want that handled together, our [interior painting](/services/interior-painting) team works hand in hand with the flooring crew, and we are offering 10% off painting and drywall work right now.
+
+## What a good flooring quote spells out
+
+A single number on a card is not a quote. Ask that the written estimate name:
+
+1. **The product.** Brand, line, thickness, and wear layer for LVP or engineered wood.
+2. **Square footage** measured, and the waste allowance.
+3. **Subfloor prep,** and what happens if we find damage.
+4. **Removal and disposal** of the old floor.
+5. **Trim, transitions and stairs.**
+6. **Protection and cleanup** of the rest of your home.
+
+I wrote about the same discipline for paint in [what your painting quote should include](/blog/what-painting-quote-should-include-prep-baltimore). It is the same idea. I also told a real story about what a low number cost one family in [the cheaper quote that cost him $3,000 more](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore). Read it before you sign anything.
+
+## What I would do
+
+If this were my family's house, I would first see whether the existing hardwood can be refinished. If not, I would pick the material room by room, spend the money in the rooms people actually see, and fix the subfloor before anything goes on top. I would not choose the cheapest product for the highest-traffic room. A floor is something you walk on every day for years.
+
+## Get a real number
+
+Every house is different, so I come out and measure. You get a free written estimate with the product, the prep and the price spelled out. [Request your free estimate](/quote) or call me at 443-825-0206. If the floor is part of a bigger plan, our [kitchen remodeling](/services/kitchen-remodeling), [bathroom remodeling](/services/bathroom-remodeling) and [home remodeling](/services/home-remodeling) teams handle it under one contract. If you want to spread the cost, see [our financing options](/financing). Ready to compare ideas first? Browse the [Elite Finishes blog](/blog).
+
+## Where we work
+
+We are based in Baltimore City and work across Baltimore County, Anne Arundel County and Howard County, including [Baltimore](/areas/baltimore), [Towson](/areas/towson), [Catonsville](/areas/catonsville), [Ellicott City](/areas/ellicott-city), [Columbia](/areas/columbia), [Glen Burnie](/areas/glen-burnie), [Annapolis](/areas/annapolis), [Parkville](/areas/parkville), [Pikesville](/areas/pikesville), [Dundalk](/areas/dundalk). See [all the areas we serve](/areas).
+
+## Keep reading
+
+- [Hardwood vs. LVP flooring in Baltimore homes](/blog/hardwood-vs-lvp-flooring-baltimore)
+- [How much does it cost to finish a basement in Baltimore?](/blog/how-much-does-it-cost-to-finish-basement-baltimore)
+- [How much does a kitchen remodel cost in Baltimore?](/blog/kitchen-remodel-cost-baltimore)
+- [How much does a bathroom remodel cost in Baltimore?](/blog/bathroom-remodel-cost-baltimore)
+- [What your painting quote should include](/blog/what-painting-quote-should-include-prep-baltimore)
+- [The cheaper quote cost him $3,000 more: how to choose a contractor](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore)
+
+**Our services:** [Interior painting](/services/interior-painting), [Exterior painting](/services/exterior-painting), [Bathroom remodeling](/services/bathroom-remodeling), [Kitchen remodeling](/services/kitchen-remodeling), [Basement finishing](/services/basement-remodeling), [Flooring](/services/flooring), [Home remodeling](/services/home-remodeling), [Decks](/services/decks), [Siding](/services/siding). [See everything we do](/services).`,
+  },
+  {
     slug: "how-much-does-it-cost-to-finish-basement-baltimore",
     title: "How Much Does It Cost to Finish a Basement in Baltimore?",
     description:
