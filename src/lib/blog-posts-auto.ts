@@ -5,6 +5,118 @@ import type { BlogPost } from "./blog-data";
 
 export const AUTO_POSTS: BlogPost[] = [
   {
+    slug: "home-depot-lowes-vs-local-contractor-kitchen-bathroom-baltimore",
+    title: "Home Depot or Lowe's vs. a Local Contractor for Your Kitchen or Bathroom",
+    description:
+      "Home Depot and Lowe's sell kitchen and bathroom remodels, and a local contractor builds them. Here is how they differ on who installs, permits and who you call.",
+    date: "2026-11-13",
+    image: "/images/work/kitchen-slate-blue-shaker-island.jpg",
+    imageAlt: "Finished slate blue shaker kitchen with island remodeled by Elite Finishes in Baltimore",
+    category: "Hiring a Contractor",
+    relatedService: "Kitchen Remodeling",
+    relatedServiceSlug: "kitchen-remodeling",
+    content: `I'm Victor Cataldi, and I run Elite Finishes here in Baltimore. Every month someone asks me some version of the same question: "Victor, I can get my kitchen through Home Depot. Why would I call a contractor?"
+
+It is a fair question, and I am not going to answer it by running down the big stores. They sell good products, and I buy plenty of materials from places like them myself. So here is a plain comparison. I am not quoting you any store's prices, because I do not know what they will charge for your house, and neither does anyone else until somebody measures it.
+
+## What you are actually buying
+
+When you order a kitchen or bathroom remodel through Home Depot or Lowe's, you are buying a package: the product, plus an installation arranged through the store. Often the store does not send its own employees to your house. The installation is typically handled by an independent installer or a contracting company the store works with, so ask how it works for your order.
+
+When you hire a local contractor, you are buying the project itself. One company measures it, plans it, schedules it and answers for it from start to finish.
+
+Neither model is wrong. They are different, and the differences show up in a few places.
+
+| Question | Big-box store package | Local contractor |
+| --- | --- | --- |
+| Who sells it | The store | The contractor |
+| Who installs it | Usually a third-party installer arranged by the store | The contractor's own crew |
+| Who measures | A store measure, then often a separate installer visit | The contractor, in person |
+| Who handles permits | Ask before you sign | Should be part of the contract |
+| Who do you call with a problem | The store, who may call the installer | The contractor |
+
+That last row is the one I would think about longest. Ask any store the same question I am about to tell you to ask any contractor.
+
+## Who is the licensed party in your house?
+
+In Maryland, home improvement work needs a license from the Maryland Home Improvement Commission. Whoever is doing the work in your home should have one. Ours is MHIC 153498, and I would rather you look it up than take my word for it.
+
+With a store package, ask who the licensed contractor is on your job, not who sold it. Get the name and the license number in writing. If the answer is vague, that tells you something.
+
+I covered the full checklist in [how to choose a contractor in Baltimore](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore), including a true story about a cheaper quote that ended up costing more. Read it before you sign with anyone.
+
+## Old Baltimore houses are not standard
+
+This is where I see packages struggle, and it is not the stores' fault. A package is built around standard rooms. Baltimore is not standard.
+
+A rowhouse in [Canton](/areas/canton) or [Hampden](/areas/hampden) can have a kitchen with walls that are not square, plaster that crumbles when you touch it, and old wiring or plumbing behind the cabinets. A split-level in [Towson](/areas/towson) or a colonial in [Catonsville](/areas/catonsville) has its own surprises. Pre-1978 homes can have lead paint, which means lead-safe work practices on every job.
+
+A cabinet order that is perfect on paper still has to fit a room where one wall is a half inch off. Somebody has to make that call on site, and that person should work for the company you are paying, with the authority to fix it.
+
+When we find something behind a wall, you hear about it before we touch it, with a price, in writing. Ask any company how they handle surprises. How they answer matters.
+
+## Permits
+
+Some kitchen and bathroom work needs permits. Moving plumbing, adding circuits or changing structure typically does. Cosmetic work like paint, tile and a vanity swap generally does not.
+
+Whoever is running your job should tell you which category you are in, and who pulls the permits. We handle the permit applications for our customers. With any other company, get the answer in writing before the deposit, not after the demolition.
+
+For more on this, see [how long a bathroom remodel takes and whether you need a permit in Baltimore](/blog/how-long-does-bathroom-remodel-take-permit-baltimore).
+
+## Where the store is the better choice
+
+I want to be fair, because there are cases where the store wins.
+
+- **A simple swap.** Replacing a standard vanity or a standard faucet in an otherwise fine bathroom does not need a contractor to design it.
+- **Materials.** Many of my customers buy appliances, fixtures or tile from a store, and that is fine. We install customer-supplied materials when it makes sense, and I will tell you if a product is going to cause trouble.
+- **Convenience.** If you want one place to browse and order, a store is hard to beat.
+
+For anything where the walls come open, the room changes shape, or three trades have to show up in the right order, I think you want one accountable company that runs the whole job.
+
+## What a local contractor should give you that a package does not
+
+Here is what I would hold any contractor to, including me.
+
+1. **A free written estimate after someone walks the job.** I come out myself, and you get the scope in writing.
+2. **One schedule.** Demo, plumbing, electrical, drywall, tile, cabinets, paint and punch list in the right order. Our [kitchen timeline breakdown](/blog/how-long-does-kitchen-remodel-take-baltimore) shows how the order works.
+3. **Your home protected.** Floors and furniture covered, and the house cleaned when we leave.
+4. **One phone number.** Mine is 443-825-0206. If something is wrong a month later, you call the same people who built it.
+
+Our [kitchen remodeling](/services/kitchen-remodeling) and [bathroom remodeling](/services/bathroom-remodeling) work is run the same way, and our [home remodeling](/services/home-remodeling) crew can handle a [basement](/services/basement-remodeling) or [flooring](/services/flooring) in the same project, so you are not coordinating three companies.
+
+## Questions to ask either one
+
+Whoever you are considering, ask these.
+
+- Who is the licensed contractor on my job, and what is the MHIC number?
+- Who will actually be in my house, and will it be the same people start to finish?
+- Who pulls the permits?
+- What happens if you find rot, bad wiring or a failed subfloor?
+- Who do I call if something is wrong after you leave?
+- What is in writing, and what is not?
+
+The answers are worth more than any price on the table. If you want help understanding costs first, our [kitchen remodel cost guide](/blog/kitchen-remodel-cost-baltimore) and [bathroom remodel cost guide](/blog/bathroom-remodel-cost-baltimore) show real Baltimore ranges, and you can compare any quote line by line.
+
+## Get a quote, then compare
+
+Get a number from the store if you like. Then let me walk your kitchen or bathroom, and put both on the table next to each other. If another company is the better fit for your job, I will tell you. [Request your free estimate](/quote) or call me at 443-825-0206. We are offering 10% off painting and drywall work right now, which helps if your remodel includes [interior painting](/services/interior-painting). We serve homeowners in [Ellicott City](/areas/ellicott-city), [Columbia](/areas/columbia) and [Annapolis](/areas/annapolis), too.
+
+## Where we work
+
+We are based in Baltimore City and work across Baltimore County, Anne Arundel County and Howard County, including [Baltimore](/areas/baltimore), [Towson](/areas/towson), [Catonsville](/areas/catonsville), [Ellicott City](/areas/ellicott-city), [Columbia](/areas/columbia), [Glen Burnie](/areas/glen-burnie), [Annapolis](/areas/annapolis), [Parkville](/areas/parkville), [Pikesville](/areas/pikesville), [Dundalk](/areas/dundalk). See [all the areas we serve](/areas).
+
+## Keep reading
+
+- [The cheaper quote cost him $3,000 more: how to choose a contractor](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore)
+- [How much does a kitchen remodel cost in Baltimore?](/blog/kitchen-remodel-cost-baltimore)
+- [How much does a bathroom remodel cost in Baltimore?](/blog/bathroom-remodel-cost-baltimore)
+- [How long does a kitchen remodel take?](/blog/how-long-does-kitchen-remodel-take-baltimore)
+- [How long does a bathroom remodel take, and do you need a permit?](/blog/how-long-does-bathroom-remodel-take-permit-baltimore)
+- [Painting cabinets vs. replacing them](/blog/paint-or-replace-kitchen-cabinets-baltimore)
+
+**Our services:** [Interior painting](/services/interior-painting), [Exterior painting](/services/exterior-painting), [Bathroom remodeling](/services/bathroom-remodeling), [Kitchen remodeling](/services/kitchen-remodeling), [Basement finishing](/services/basement-remodeling), [Flooring](/services/flooring), [Home remodeling](/services/home-remodeling), [Decks](/services/decks), [Siding](/services/siding). [See everything we do](/services).`,
+  },
+  {
     slug: "how-much-does-new-flooring-cost-baltimore",
     title: "How Much Does New Flooring Cost in a Baltimore Home?",
     description:
