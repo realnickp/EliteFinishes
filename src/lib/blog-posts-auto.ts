@@ -5,6 +5,102 @@ import type { BlogPost } from "./blog-data";
 
 export const AUTO_POSTS: BlogPost[] = [
   {
+    slug: "what-to-ask-contractor-before-remodeling-bathroom-baltimore",
+    title: "What to Ask a Contractor Before Remodeling Your Bathroom",
+    description:
+      "Before you sign for a bathroom remodel, ask these questions about the license, the written scope, permits, surprises and who is in your home. Straight from a Baltimore contractor.",
+    date: "2026-11-17",
+    image: "/images/work/primary-bath-freestanding-tub.jpg",
+    imageAlt: "Finished primary bathroom with freestanding tub remodeled by Elite Finishes in Baltimore",
+    category: "Hiring a Contractor",
+    relatedService: "Bathroom Remodeling",
+    relatedServiceSlug: "bathroom-remodeling",
+    content: `I'm Victor Cataldi, and I run Elite Finishes here in Baltimore. When I sit down with a family to talk about their bathroom, I like it when they come with questions. It tells me they are taking the job as seriously as I am.
+
+A bathroom is the smallest room in the house and the hardest to get right. Plumbing, electrical, waterproofing, tile and often a permit all happen in about forty square feet. If the contractor you pick is careless, you will live with it every morning.
+
+So here is what I would ask any contractor before signing, including me. Write the answers down. A good contractor will not mind.
+
+## 1. Who is licensed, and what is the number?
+
+In Maryland, home improvement contractors need a license from the Maryland Home Improvement Commission. Ours is MHIC 153498, and we are licensed and insured. Do not take my word for it. Look it up on the state's site, and do the same for anyone else you are considering.
+
+Then ask for proof of insurance. If a worker is hurt in your bathroom or a pipe lets go in the wall, you want to know who pays.
+
+My full checklist is in [how to choose a contractor in Baltimore](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore). It includes a true story about a cheaper quote that ended up costing a business owner about $3,000 more than mine. I tell it because the questions in this post are exactly the ones he did not ask.
+
+## 2. Will I get a written, itemized estimate?
+
+A number on the back of a card is not an estimate. You want the scope in writing: what is being demolished, what is being installed, which fixtures and tile, and who supplies what.
+
+Free written estimates are how we do it, and I come out and walk the room myself. If a company quotes your bathroom without seeing it, you are getting a guess.
+
+Ask the contractor to separate the line items so you can compare two quotes side by side. For real Baltimore ranges to compare against, see our [bathroom remodel cost guide](/blog/bathroom-remodel-cost-baltimore).
+
+## 3. What kind of project is this: a refresh or a full gut?
+
+Be clear about which one you are buying. A refresh keeps the layout and updates surfaces and fixtures. A full gut takes the room down to the studs. They are very different jobs with different timelines.
+
+From our [bathroom remodeling](/services/bathroom-remodeling) page: a full gut takes 2 to 3 weeks once work begins, and a refresh takes 3 to 5 days. Ask any contractor for their own timeline and what it depends on. If you are not sure a full remodel is what you need, read [the cheapest way to modernize a bathroom](/blog/cheapest-way-to-modernize-bathroom-baltimore) first. Sometimes a refresh gets you most of the way.
+
+## 4. Who pulls the permits?
+
+Moving plumbing, adding circuits or changing structure typically needs a permit. Cosmetic work often does not. Whoever runs your job should tell you which side of that line you are on, and who applies.
+
+We handle permits for our customers. Ask the contractor to put it in the contract, and never let anyone talk you out of a permit that is needed. It can cause trouble when you sell. I wrote more in [how long a bathroom remodel takes and whether you need a permit in Baltimore](/blog/how-long-does-bathroom-remodel-take-permit-baltimore).
+
+## 5. What happens when you open the wall?
+
+This is the question that separates contractors. Old Baltimore bathrooms hold surprises. A rowhouse in [Canton](/areas/canton) or [Hampden](/areas/hampden) can have plaster that crumbles, old pipes and a subfloor that has been wet for years. A split-level in [Towson](/areas/towson) or a colonial in [Catonsville](/areas/catonsville) has its own.
+
+Ask this directly: "If you find rot, bad wiring or a failed subfloor, what happens?" The right answer is that you are told before anything is touched, you get a price in writing, and you decide. The wrong answer is a shrug, or a surprise bill at the end.
+
+## 6. How do you handle a house built before 1978?
+
+If your home was built before 1978, there may be lead paint on walls and trim. Demolition kicks up dust, and lead dust in a house with kids is not something to take lightly. Ask whether the contractor uses lead-safe practices. We do on every pre-1978 home.
+
+## 7. Who will actually be in my home?
+
+Ask who is doing the work. Is it the company's own crew, or subcontractors you have not met? Will it be the same people from start to finish?
+
+I am a family man, and I know how it feels to have strangers in your house. Ask how they protect your floors and furniture, and what the house looks like when they leave. Ours are covered while we work and cleaned when we finish.
+
+## 8. How does payment work?
+
+Ask what the deposit is, when the next payments are due and what each one is tied to. Payments should follow real progress on the job, not the calendar. If anyone asks for most of the money up front, walk away.
+
+If financing would help, see our [financing options](/financing).
+
+## 9. Can I talk to someone about the work after it is done?
+
+When something is wrong a month later, you want to call the same people who built it. Ask who you call and how fast they answer. Mine is 443-825-0206, and it rings to the company that did your job.
+
+## What I would do with the answers
+
+Get at least two estimates, and compare them line by line, not just at the bottom number. Weigh the answers to the questions above heavily. The contractor who is clear about permits, surprises and payment is usually the one who will be clear when the job gets hard.
+
+If the bathroom is part of a bigger plan, our [home remodeling](/services/home-remodeling) crew can handle a [kitchen](/services/kitchen-remodeling), [flooring](/services/flooring) or [interior painting](/services/interior-painting) in the same project, so you are not coordinating several companies. We also have 10% off painting and drywall work right now.
+
+## Ask me these questions
+
+I would rather you ask me every one of these than skip them. [Request a free estimate](/quote) and I will walk your bathroom myself, or call me at 443-825-0206. We work for homeowners in [Ellicott City](/areas/ellicott-city), [Columbia](/areas/columbia), [Annapolis](/areas/annapolis) and [Pikesville](/areas/pikesville), too.
+
+## Where we work
+
+We are based in Baltimore City and work across Baltimore County, Anne Arundel County and Howard County, including [Baltimore](/areas/baltimore), [Towson](/areas/towson), [Catonsville](/areas/catonsville), [Ellicott City](/areas/ellicott-city), [Columbia](/areas/columbia), [Glen Burnie](/areas/glen-burnie), [Annapolis](/areas/annapolis), [Parkville](/areas/parkville), [Pikesville](/areas/pikesville), [Dundalk](/areas/dundalk). See [all the areas we serve](/areas).
+
+## Keep reading
+
+- [The cheaper quote cost him $3,000 more: how to choose a contractor](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore)
+- [How much does a bathroom remodel cost in Baltimore?](/blog/bathroom-remodel-cost-baltimore)
+- [How long does a bathroom remodel take, and do you need a permit?](/blog/how-long-does-bathroom-remodel-take-permit-baltimore)
+- [The cheapest way to modernize a bathroom](/blog/cheapest-way-to-modernize-bathroom-baltimore)
+- [Bathroom remodel ROI in Baltimore](/blog/bathroom-remodel-roi-baltimore)
+- [Home Depot or Lowe's vs. a local contractor](/blog/home-depot-lowes-vs-local-contractor-kitchen-bathroom-baltimore)
+
+**Our services:** [Interior painting](/services/interior-painting), [Exterior painting](/services/exterior-painting), [Bathroom remodeling](/services/bathroom-remodeling), [Kitchen remodeling](/services/kitchen-remodeling), [Basement finishing](/services/basement-remodeling), [Flooring](/services/flooring), [Home remodeling](/services/home-remodeling), [Decks](/services/decks), [Siding](/services/siding). [See everything we do](/services).`,
+  },
+  {
     slug: "home-depot-lowes-vs-local-contractor-kitchen-bathroom-baltimore",
     title: "Home Depot or Lowe's vs. a Local Contractor for Your Kitchen or Bathroom",
     description:
