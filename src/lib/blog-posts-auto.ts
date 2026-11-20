@@ -5,6 +5,112 @@ import type { BlogPost } from "./blog-data";
 
 export const AUTO_POSTS: BlogPost[] = [
   {
+    slug: "best-time-to-paint-house-exterior-maryland",
+    title: "When Is the Best Time to Paint Your House's Exterior in Maryland?",
+    description:
+      "Spring through fall is the window for exterior painting in Maryland. Here is how weather, humidity and scheduling decide the right week for your Baltimore home.",
+    date: "2026-11-20",
+    image: "/images/work/exterior-stucco-crew-ladders.jpg",
+    imageAlt: "Elite Finishes crew on ladders painting the exterior of a Baltimore home",
+    category: "Painting",
+    relatedService: "Exterior Painting",
+    relatedServiceSlug: "exterior-painting",
+    content: `I'm Victor Cataldi, and I run Elite Finishes here in Baltimore. Every spring the phone starts ringing with the same question: when should we paint the outside of the house? Every November I get the opposite call: can you still do it before winter?
+
+The honest answer is that paint does not care what the calendar says. It cares about the weather on the day it goes on and for a day or so after. Get that right and an exterior paint job lasts. Get it wrong and you will be looking at peeling, blistering or mildew sooner than you should.
+
+## The short answer
+
+In Maryland, the best window for exterior painting is generally spring through fall. What you need is a stretch of days that are warm enough and dry enough for the paint to cure properly. That can happen in April and it can happen in late October. It can also fail to happen in July.
+
+So think in conditions, not months. These are the ones we watch:
+
+| Condition | What we look for |
+| --- | --- |
+| Temperature | 50 to 90 degrees Fahrenheit |
+| Humidity | Below 70 percent |
+| Rain | None forecast for 24 hours after painting |
+| Surface | Dry, with no morning dew or moisture left in the wood |
+
+That is the same standard I wrote about in [how long exterior paint lasts in Maryland](/blog/how-long-does-exterior-paint-last-maryland). Paint put on outside those conditions does not cure the way the can says it will. It may look fine for a few weeks and then let go.
+
+## Spring: a good start, with some patience
+
+Spring is when most homeowners think about it, and for good reason. The winter is behind us, and you can see what the cold did to the house: cracked caulk, peeling spots, bare wood on the trim.
+
+The catch is that Maryland springs are wet and swing back and forth. A warm Tuesday can be followed by a cold, rainy week. A house in [Towson](/areas/towson) or [Catonsville](/areas/catonsville) with wood siding may also hold moisture from the winter, and we do not paint over wet wood.
+
+## Summer: dry days, but heat and humidity cause their own trouble
+
+Summer gives us long days and plenty of dry weather, and we do paint through it. But Baltimore summers bring two problems.
+
+**Humidity.** We average over 60 percent relative humidity most of the year, and summer pushes it higher. High humidity slows drying and can trap moisture. On the worst days we wait.
+
+**Heat on the wall.** A wall in full afternoon sun can run much hotter than the air around it, and paint that dries too fast can lose adhesion. A good crew works around it by following the shade. West-facing walls in the morning, east-facing walls in the afternoon.
+
+Afternoon thunderstorms are the other reason we watch the forecast hour by hour. A sudden storm over [Glen Burnie](/areas/glen-burnie) or [Annapolis](/areas/annapolis) on a freshly painted wall is how a good day of work gets washed down the siding.
+
+## Fall: often the best of the year
+
+If you ask me for my favorite time to paint an exterior in Maryland, I will say early fall. The humidity drops, the days are still warm enough, and the weather tends to hold steady for longer stretches. Paint dries and cures evenly.
+
+Fall is also a smart time to fix what summer and the last winter did to your house. If you are thinking about [siding](/services/siding) repairs, trim replacement or work on your [deck](/services/decks), get it done first so the paint goes over sound wood.
+
+The limit is the cold. As the nights drop toward the bottom of that 50 degree range, dew and cool air start working against the paint. Late October is often still workable. By late November, in most years, we are watching every day and some days we say no.
+
+## Winter: usually not for the outside
+
+I will not tell you winter exterior painting is impossible, but for most Baltimore homes it is the wrong time. Cold slows curing, damp mornings leave moisture on the surface, and there are fewer good days to work with. A short, cold, wet stretch is exactly when paint fails.
+
+Winter is a good time for the inside of the house, though. [Interior painting](/services/interior-painting) does not depend on the weather, so it is the work we steer people toward from December through February. If you are planning a [kitchen](/services/kitchen-remodeling) or [bathroom](/services/bathroom-remodeling) project, winter is also a good time to schedule the planning and ordering, so you are ready when spring arrives.
+
+## What to do before the painting day
+
+The weather is only half of it. A paint job outdoors is mostly preparation, and the preparation has its own scheduling needs. I covered this in [what your painting quote should include](/blog/what-painting-quote-should-include-prep-baltimore), but here is the short version:
+
+- Washing the house so paint bonds to a clean surface, then giving it time to dry fully.
+- Scraping and sanding loose paint, and priming bare spots.
+- Caulking gaps and repairing rotted trim.
+- Two coats, with the drying time the product needs between them.
+
+All of that takes days before a brush touches a wall, and every wash needs dry weather behind it. This is why a good contractor will never promise you an exact finish date in October. We give you a plan and tell you the weather could move it.
+
+## Rowhouses, colonials and split-levels
+
+Baltimore has all kinds of houses, and the season affects them differently.
+
+A brick rowhouse in [Canton](/areas/canton) or [Federal Hill](/areas/federal-hill) is mostly about the trim, doors and cornice, and about one wall front and back. It is a quicker job, which makes it easier to catch a good weather window. If you are thinking of painting the brick itself, read [painting a brick rowhouse in Baltimore](/blog/painting-brick-rowhouse-baltimore) first, and check with the city's historic preservation commission if you are in a historic district.
+
+A colonial or split-level in [Ellicott City](/areas/ellicott-city), [Columbia](/areas/columbia) or [Parkville](/areas/parkville) has more wall, more height and usually more shade from mature trees. Shade keeps surfaces damp longer in the morning, so we start later on those walls.
+
+## Planning around selling or a big event
+
+If you are thinking of listing the house, read [should you paint before selling your Baltimore home](/blog/should-you-paint-before-selling-home-baltimore). Spring is the busy season for buyers, so a fall paint job means the house is ready when the market picks up.
+
+## What I would do
+
+If you can plan ahead, my advice is simple. Look at the house in late summer. If it needs paint, book for early fall. If you miss that window, book for spring and call early. Do not rush a paint job into a cold, wet week to hit a date. That is how a well-priced job becomes a repaint in a couple of years.
+
+And if you are not sure whether your house needs paint this year, I will come out, look at it and tell you straight. If it can wait, I will say so. I would rather earn your trust than sell you a job. [Request a free estimate](/quote) or call me at 443-825-0206. Our offer right now is 10% off painting and drywall work.
+
+If you are comparing contractors, here is [how to choose one in Baltimore](/blog/cheaper-quote-cost-more-choosing-contractor-baltimore). Use it on us too.
+
+## Where we work
+
+We're based in Baltimore City and work across Baltimore County, Anne Arundel County and Howard County, including [Towson](/areas/towson), [Catonsville](/areas/catonsville), [Ellicott City](/areas/ellicott-city), [Columbia](/areas/columbia), [Glen Burnie](/areas/glen-burnie), [Annapolis](/areas/annapolis), [Parkville](/areas/parkville), [Pikesville](/areas/pikesville), [Dundalk](/areas/dundalk), [Hampden](/areas/hampden). See [all the areas we serve](/areas).
+
+## Keep reading
+
+- [How long does exterior paint last in Maryland?](/blog/how-long-does-exterior-paint-last-maryland)
+- [How much does it cost to paint a house in Baltimore?](/blog/cost-to-paint-a-house-baltimore)
+- [What your painting quote should include](/blog/what-painting-quote-should-include-prep-baltimore)
+- [Painting a brick rowhouse in Baltimore: smart move or mistake?](/blog/painting-brick-rowhouse-baltimore)
+- [Should you paint before selling your Baltimore home?](/blog/should-you-paint-before-selling-home-baltimore)
+- [How to choose interior paint colors for Baltimore homes](/blog/how-to-choose-interior-paint-colors-baltimore)
+
+**Our services:** [Interior painting](/services/interior-painting), [Exterior painting](/services/exterior-painting), [Bathroom remodeling](/services/bathroom-remodeling), [Kitchen remodeling](/services/kitchen-remodeling), [Basement finishing](/services/basement-remodeling), [Flooring](/services/flooring), [Home remodeling](/services/home-remodeling), [Decks](/services/decks), [Siding](/services/siding). [See everything we do](/services).`,
+  },
+  {
     slug: "what-to-ask-contractor-before-remodeling-bathroom-baltimore",
     title: "What to Ask a Contractor Before Remodeling Your Bathroom",
     description:
