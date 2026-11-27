@@ -292,14 +292,14 @@ const TIMELINE_OPTIONS: BuilderOption[] = [
 const OFFER_FINE_PRINT =
   "Limited-time offer. Cannot be combined with other discounts. Mention this offer at your free estimate.";
 
-// Remodel gift card offer, approved by the client. Ends November 30, 2026.
+// Remodel gift card offer, approved by the client. Ends December 31, 2026.
 const REMODEL_GIFT_CARD_FINE_PRINT =
-  "Offer valid on kitchen, bathroom and basement remodels booked by November 30, 2026. Gift card issued when you book. Cannot be combined with other discounts.";
+  "Offer valid on kitchen, bathroom and basement remodels booked by December 31, 2026. Gift card issued when you book. Cannot be combined with other discounts.";
 
 const REMODEL_GIFT_CARD_FAQ: FAQItem = {
   question: "How does the $500 gift card work?",
   answer:
-    "Book a kitchen, bathroom or basement remodel with Elite Finishes by November 30, 2026 and we'll give you a $500 gift card when you book. There's no minimum project size. It can't be combined with other discounts.",
+    "Book a kitchen, bathroom or basement remodel with Elite Finishes by December 31, 2026 and we'll give you a $500 gift card when you book. There's no minimum project size. It can't be combined with other discounts.",
 };
 
 const LICENSED_FAQ: FAQItem = {
@@ -510,7 +510,7 @@ const BATHROOM: LandingConfig = {
   serviceTitle: "Bathroom Remodeling",
   metaTitle: "Bathroom Remodeling | $500 Gift Card | Elite Finishes",
   metaDescription:
-    "Tile showers, new vanities and full bathroom remodels across the Baltimore area. Get a free estimate, plus a $500 gift card when you book your remodel by Nov 30.",
+    "Tile showers, new vanities and full bathroom remodels across the Baltimore area. Get a free estimate, plus a $500 gift card when you book your remodel by Dec 31.",
   heroSlides: [
     "/images/work/primary-bath-red-shower.jpg",
     "/images/work/primary-bath-red-vanity.jpg",
@@ -542,10 +542,10 @@ const BATHROOM: LandingConfig = {
   offer: {
     variant: "giftcard",
     badge: "$500 gift card when you book your remodel",
-    short: "Get a $500 gift card when you book your bathroom remodel by Nov 30",
+    short: "Get a $500 gift card when you book your bathroom remodel by Dec 31",
     title: "Book your bathroom remodel. Get a $500 gift card.",
     details:
-      "Book your bathroom remodel with Elite Finishes by November 30 and we'll give you a $500 gift card when you book. Any size bathroom project counts, with no minimum.",
+      "Book your bathroom remodel with Elite Finishes by December 31 and we'll give you a $500 gift card when you book. Any size bathroom project counts, with no minimum.",
     finePrint: REMODEL_GIFT_CARD_FINE_PRINT,
   },
   showFinancing: true,
@@ -682,7 +682,7 @@ const REMODELING: LandingConfig = {
   serviceTitle: "Kitchen, Bath & Basement Remodeling",
   metaTitle: "Kitchen, Bath & Basement Remodeling | $500 Gift Card | Elite Finishes",
   metaDescription:
-    "Kitchen, bathroom and basement remodeling across the Baltimore area. Get a free in-home estimate, plus a $500 gift card when you book your remodel by Nov 30.",
+    "Kitchen, bathroom and basement remodeling across the Baltimore area. Get a free in-home estimate, plus a $500 gift card when you book your remodel by Dec 31.",
   heroSlides: [
     "/images/work/kitchen-slate-blue-shaker-island.jpg",
     "/images/work/primary-bath-freestanding-tub.jpg",
@@ -693,7 +693,7 @@ const REMODELING: LandingConfig = {
   eyebrow: "Kitchen, bath and basement remodelers in the Baltimore area",
   headline: "Book your remodel, get a $500 gift card.",
   subheadline:
-    "Book a kitchen, bathroom or basement remodel with Elite Finishes by November 30 and get a $500 gift card when you book. It starts with a free in-home estimate.",
+    "Book a kitchen, bathroom or basement remodel with Elite Finishes by December 31 and get a $500 gift card when you book. It starts with a free in-home estimate.",
   heroBullets: [
     "$500 gift card on any kitchen, bath or basement remodel, no minimum",
     "Free in-home estimate with a clear written quote",
@@ -729,10 +729,10 @@ const REMODELING: LandingConfig = {
   offer: {
     variant: "giftcard",
     badge: "$500 gift card when you book your remodel",
-    short: "Get a $500 gift card when you book a kitchen, bath or basement remodel by Nov 30",
+    short: "Get a $500 gift card when you book a kitchen, bath or basement remodel by Dec 31",
     title: "Book your remodel. Get a $500 gift card.",
     details:
-      "Book a kitchen, bathroom or basement remodel with Elite Finishes by November 30 and we'll give you a $500 gift card when you book. Any size project counts, with no minimum.",
+      "Book a kitchen, bathroom or basement remodel with Elite Finishes by December 31 and we'll give you a $500 gift card when you book. Any size project counts, with no minimum.",
     finePrint: REMODEL_GIFT_CARD_FINE_PRINT,
   },
   showFinancing: true,

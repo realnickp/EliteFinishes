@@ -24,7 +24,7 @@ describe("remodel gift card landing pages", () => {
   it("states the offer end date in the gift card fine print", () => {
     for (const config of Object.values(LANDING_PAGES)) {
       if (config.offer.variant === "giftcard") {
-        expect(config.offer.finePrint).toContain("November 30, 2026");
+        expect(config.offer.finePrint).toContain("December 31, 2026");
       }
     }
   });
